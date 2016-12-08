@@ -1,0 +1,298 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: #fce8e7;
+}
+
+.navbar {
+    height: 50px;
+    background-color: #fac9c4;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-size: 15px;
+    color: black;
+    font-family: Nexa Black;
+}
+
+    .navbar-default .navbar-nav > li > a:hover {
+        color: black;
+        text-shadow: 0.5px 0px 1px;
+        transition: text-shadow 1s linear;
+    }
+
+.navbar-collapse {
+    position: relative;
+}
+
+    .navbar-collapse form[role="search"] {
+        top: 0px;
+        right: 0px;
+        padding: 0px;
+        margin: 0px;
+        z-index: 0;
+    }
+
+        .navbar-collapse form[role="search"] button,
+        .navbar-collapse form[role="search"] input {
+            padding: 15px 22px;
+            border-radius: 0px;
+            border-width: 0px;
+            background-color: #fac9c4;
+            color: #f0597c;
+            box-shadow: none;
+            outline: none;
+        }
+
+        .navbar-collapse form[role="search"] input {
+            padding: 25px 12px;
+            font-size: 10pt;
+            font-style: italic;
+            background-color: white;
+            -ms-opacity: 0;
+            opacity: 0;
+            box-shadow: none;
+            display: none;
+        }
+
+        .navbar-collapse form[role="search"].active button,
+        .navbar-collapse form[role="search"].active input {
+            display: table-cell;
+            -ms-opacity: 1;
+            opacity: 1;
+        }
+
+        .navbar-collapse form[role="search"].active input {
+            width: 100%;
+            text-align: left;
+        }
+
+        .navbar-collapse form[role="search"].active button[type="submit"] {
+            background-color: white;
+        }
+
+
+
+.banner {
+    background-image: url("http://lorempixel.com/1400/827/abstract");
+    height: 600px;
+}
+
+    .banner .banner-title {
+        margin-top: 50px;
+    }
+
+        .banner .banner-title h1 {
+            font-size: 100px;
+            color: white;
+            opacity: .5;
+        }
+
+        .banner .banner-title p {
+            color: white;
+            position: relative;
+            top: -40px;
+            font-size: 30px;
+            line-height: 1;
+        }
+
+.logo {
+    font-size: 40px;
+    color: white;
+    font-family: Mrs Eaves Small;
+}
+
+
+.banner-btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    width: 256px;
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 0px;
+    border: 5px solid #FFF;
+}
+
+    .banner-btn .btn-active {
+        color: white;
+        font-weight: bold;
+        border-radius: 0px;
+        background-color: #F0597C;
+        border: 5px solid #F0597C;
+    }
+
+    .banner-btn:hover {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        border-radius: 0px;
+        background-color: #F0597C;
+        border-color: #F0597C;
+    }
+
+.nav > li > a {
+    padding: 17px 10px;
+    font-weight: bold;
+    color: white;
+}
+
+.active {
+    color: #EF587B;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    background-color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+footer {
+    font-family: Nexa Light;
+    font-size: 15px;
+}
+
+footer strong {
+    font-family: Nexa Book;
+}
+
+div .footerblock {
+    margin: 70px 0 30px;
+    padding: 25px 0;
+    vertical-align: middle;
+    font-family: Nexa Black;
+    text-align: center;
+    height: 200px;
+    background-color: #f0597c;
+}
+
+    div .footerblock h1 {
+        font-family: Script mt Bold;
+        font-style: italic;
+        color: #FAABBE;
+        font-size: 50px;
+        font-weight: bold;
+        /*overlap*/
+        position: relative;
+    }
+
+    div .footerblock p {
+        color: #FFF;
+        font-size: 22px;
+        /*overlap*/
+        position: relative;
+        top: -30px;
+    }
+
+    div .footerblock ul {
+        top: -30px;
+        position: relative;
+    }
+
+        div .footerblock ul li {
+            display: inline-block;
+        }
+
+    div .footerblock img {
+        width: 35px;
+        filter: invert(100%);
+    }
+
+footer h4 {
+    font-family: Nexa Black;
+    color: #f0597c;
+}
+
+footer ul {
+    padding: 0;
+    list-style: none;
+}
+
+footer a {
+    display: block;
+    color: black;
+}
+
+    footer a:hover {
+        color: black;
+    }
+
+@font-face {
+    font-family: Nexa Black;
+    src: url('../fonts/Nexa W01 Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Nexa Bold;
+    src: url('../fonts/Nexa Bold.otf') format('truetype');
+}
+
+@font-face {
+    font-family: Nexa Light;
+    src: url('../fonts/Nexa Light.otf') format('truetype');
+}
+
+@font-face {
+    font-family: Nexa Book;
+    src: url('../fonts/Nexa W01 Book.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Script mt Bold;
+    src: url('../fonts/SCRIPTBL.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: Mrs Eaves Small;
+    src: url('../fonts/mrs-eaves-small-caps-regular-1361504609.ttf') format('truetype');
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .navbar {
+        max-width: 970px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .navbar {
+        max-width: 750px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        max-width: 100%;
+    }
+}

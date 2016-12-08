@@ -1,4 +1,6 @@
-﻿namespace Webapplicatie.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Webapplicatie.Controllers
 {
     public class HomeController : Controller
     {

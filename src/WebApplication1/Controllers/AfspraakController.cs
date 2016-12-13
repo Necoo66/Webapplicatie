@@ -19,7 +19,7 @@ namespace Webapplicatie.Controllers
         }
 
         [HttpPost]
-        public IActionResult Datum()
+        public IActionResult Datumm()
         {
             return View();
         }
@@ -30,7 +30,7 @@ namespace Webapplicatie.Controllers
         }
 
         [HttpPost]
-        public IActionResult Tijd()
+        public IActionResult Tijdd()
         {
             return View();
         }
@@ -42,7 +42,7 @@ namespace Webapplicatie.Controllers
 
         public IActionResult Controleer()
         {
-
+            return View();
         }
     }
 }

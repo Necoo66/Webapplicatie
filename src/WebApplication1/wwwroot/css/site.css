@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #fce8e7;
 }
 
 .navbar {
@@ -8,24 +9,18 @@
     background-color: #fac9c4;
     max-width: 1170px;
     margin: 0 auto;
-    border: 0;
 }
 
-.navbar-default .navbar-nav li a {
+.navbar-default .navbar-nav > li > a {
     font-size: 15px;
-    color: black;
     color: black;
     font-family: Nexa Black;
 }
 
-    .navbar-default .navbar-nav li a:hover {
+    .navbar-default .navbar-nav > li > a:hover {
         color: black;
-        transition: all 2s ease;        
-        background-color: salmon;
-        -webkit-animation: slide 0.5s forwards;
-        -webkit-animation-delay: 2s;
-        animation: slide 0.5s forwards;
-        animation-delay: 2s;
+        text-shadow: 0.5px 0px 1px;
+        transition: text-shadow 1s linear;
     }
 
 .navbar-collapse {
@@ -46,7 +41,7 @@
             border-radius: 0px;
             border-width: 0px;
             background-color: #fac9c4;
-            color: #F0597C;
+            color: #f0597c;
             box-shadow: none;
             outline: none;
         }
@@ -83,7 +78,6 @@
 .banner {
     background-image: url("http://lorempixel.com/1400/827/abstract");
     height: 600px;
-    padding: 0 15px;
 }
 
     .banner .banner-title {
@@ -93,13 +87,11 @@
         .banner .banner-title h1 {
             font-size: 100px;
             color: white;
-            font-family: Script mt Bold;
             opacity: .5;
         }
 
         .banner .banner-title p {
             color: white;
-            font-family: Nexa Black;
             position: relative;
             top: -40px;
             font-size: 30px;
@@ -150,13 +142,13 @@
 }
 
 .active {
-    color: #F0597C !important;
+    color: #EF587B;
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    background-color: #fce8e7;
+    background-color: white;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -184,33 +176,19 @@ footer {
     font-size: 15px;
 }
 
-    footer strong {
-        font-family: Nexa Book;
-    }
+footer strong {
+    font-family: Nexa Book;
+}
 
 div .footerblock {
-    margin: 50px 0 30px;
-    padding: 5px 0;
+    margin: 70px 0 30px;
+    padding: 25px 0;
     vertical-align: middle;
     font-family: Nexa Black;
     text-align: center;
-    height: 160px;
-    background-color: #F0597C;
-    -webkit-transition: all 0.5s ease; /* Safari and Chrome */
-    -moz-transition: all 0.5s ease; /* Firefox */
-    -ms-transition: all 0.5s ease; /* IE 9 */
-    -o-transition: all 0.5s ease; /* Opera */
-    transition: all 0.5s ease;
+    height: 200px;
+    background-color: #f0597c;
 }
-
-    div .footerblock:hover {
-        box-shadow: 10px 10px 5px #888888;
-        -webkit-transform: scale(1.1); /* Safari and Chrome */
-        -moz-transform: scale(1.1); /* Firefox */
-        -ms-transform: scale(1.1); /* IE 9 */
-        -o-transform: scale(1.1); /* Opera */
-        transform: scale(1.1);
-    }
 
     div .footerblock h1 {
         font-family: Script mt Bold;
@@ -246,7 +224,7 @@ div .footerblock {
 
 footer h4 {
     font-family: Nexa Black;
-    color: #F0597C;
+    color: #f0597c;
 }
 
 footer ul {

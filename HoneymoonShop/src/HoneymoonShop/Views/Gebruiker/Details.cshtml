@@ -1,0 +1,42 @@
+@model HoneymoonShop.Models.GebruikerModels.Gebruiker
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Gebruiker</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Emailadres)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Emailadres)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefoonnummer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefoonnummer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Trouwdatum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trouwdatum)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

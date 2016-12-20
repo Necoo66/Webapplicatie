@@ -10,6 +10,9 @@
             <h2 class="text-uppercase">Maak Je Pasafsprpaak</h2>
         </div>
     </div>
+    <div class="hidden">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    </div>
     <div class="row">
         <div class="afspraakmaken">
             <div class="menu">
@@ -73,7 +76,7 @@
                     </ul>
                 </div>
             </div>
-            <form asp-action="Maken">
+            <form asp-action="Maken" id="myform">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="left">
                     <div class="tab" id="stap1left" style="display: block">
@@ -132,14 +135,14 @@
                             <div class="form-group">
                                 <label asp-for="Gebruiker.Emailadres" class="col-md-5">Emailadres*</label>
                                 <div class="col-md-12">
-                                    <input asp-for="Gebruiker.Emailadres" class="form-control emailCheck" />
+                                    <input asp-for="Gebruiker.Emailadres" class="form-control emailCheck1" />
                                     <span asp-validation-for="Gebruiker.Emailadres" id="email" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="EmailCheck" class="col-md-6"> Herhaal emailadres*</label>
                                 <div class="col-md-12">
-                                    <input type="email" class="form-control emailCheck" />
+                                    <input type="email" class="form-control emailCheck2" />
                                 </div>
                             </div>
                             <div class="form-group">

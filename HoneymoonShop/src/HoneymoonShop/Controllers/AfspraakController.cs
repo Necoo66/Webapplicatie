@@ -17,9 +17,9 @@ namespace HoneymoonShop.Controllers
         }
 
         // GET: Afspraak
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Afspraak.ToListAsync());
+            return View();
         }
 
         // GET: Afspraak/Details/5

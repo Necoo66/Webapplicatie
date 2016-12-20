@@ -1,11 +1,10 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HoneymoonShop.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HoneymoonShop.Models.GebruikerModels;
+using System;
 
 namespace HoneymoonShop.Controllers
 {
@@ -15,17 +14,11 @@ namespace HoneymoonShop.Controllers
 
         public AfspraakController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: Afspraak
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: Gebruikers
-        public async Task<IActionResult> Beheer()
+        public async Task<IActionResult> Index()
         {
             return View(await _context.Afspraak.ToListAsync());
         }
@@ -64,7 +57,7 @@ namespace HoneymoonShop.Controllers
             {
                 _context.Add(afspraak);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Beheer");
+                return RedirectToAction("Index");
             }
             return View(afspraak);
         }
@@ -84,12 +77,16 @@ namespace HoneymoonShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(afspraakMaken.Afspraak);
+                var date = DateTime.Parse("17-05-2016");
+                
+                Afspraak a = new Afspraak { Datum = date, Gebruiker = afspraakMaken.Gebruiker, Tijd = "9:00"};
+                _context.Add(a);
                 _context.Add(afspraakMaken.Gebruiker);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Beheer");
+                return RedirectToAction("Index");
             }
-            return View(afspraakMaken);
+            return View();
+
         }
 
         // GET: Afspraak/Edit/5
@@ -138,7 +135,7 @@ namespace HoneymoonShop.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Beheer");
+                return RedirectToAction("Index");
             }
             return View(afspraak);
         }
@@ -168,22 +165,12 @@ namespace HoneymoonShop.Controllers
             var afspraak = await _context.Afspraak.SingleOrDefaultAsync(m => m.Id == id);
             _context.Afspraak.Remove(afspraak);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Beheer");
+            return RedirectToAction("Index");
         }
 
         private bool AfspraakExists(int id)
         {
             return _context.Afspraak.Any(e => e.Id == id);
-        }
-
-        public IActionResult Voltooid()
-        {
-            return View();
-        }
-        
-        public DateTime[] GetAvalibleDates(int month, int year)
-        {
-            return _context.Afspraak.Select(x => x.Datum.Date).Where(x => x.Month == month && x.Year == year).ToArray();
         }
     }
 }

@@ -7,10 +7,6 @@
     max-width: 1300px;
     width: 75%;
     margin: 0 auto;
-    -webkit-transition: width 2s;
-    -ms-transition: width 2s;
-    -o-transition: width 2s;
-    transition: width 2s;
 }
 
 nav {
@@ -349,10 +345,6 @@ footer a {
 
     .wrapper {
         width: 90%;
-        -webkit-transition: width 2s;
-        -ms-transition: width 2s;
-        -o-transition: width 2s;
-        transition: width 2s;
     }
 
     .navbar {

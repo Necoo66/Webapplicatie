@@ -18,6 +18,7 @@ namespace HoneymoonShop.Models.GebruikerModels
         public enum Soort { Trouwjurk, Trouwpak, Afspeld};
 
         public virtual Gebruiker Gebruiker { get; set; }
+        
     }
 
     

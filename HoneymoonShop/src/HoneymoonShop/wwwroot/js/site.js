@@ -46,3 +46,17 @@ function toggleAfsrpaakmaken(id1, id2, id3, id4, id5, id6, id7, id8, id9) {
     }
 }
 
+$("document").ready(function () {
+    $(".emailCheck").last().focusout(function () {
+        var email = [$("input[type='email']").val()];
+        if(email[0] !== email[1]){
+            var alert = $(".hidden");
+            alert.addClass("alert alert-warning alert-dismissible fade in").removeClass("hidden");
+            //alert.removeClass("hidden");
+        }
+    });
+    //$(".alert-warning alert-dismissable").on("")
+    //$("").is(":visible")
+
+    });
+

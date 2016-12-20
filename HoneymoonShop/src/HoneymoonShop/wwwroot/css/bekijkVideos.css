@@ -1,0 +1,51 @@
+﻿/*bekijk videos*/
+.bekijkVideos{
+    margin-bottom:50px;
+}
+
+.bekijkVideos > div{
+    position: absolute;
+    width: 355px;
+    height: 231px;
+    bottom: 10px;
+    right: 50px;
+    padding: 10px;
+}
+
+.bekijkVideos > div p {
+    box-shadow: 5px 5px 5px #404040;
+    background-color:white;
+    padding:20px;
+}
+    
+
+.bekijkVideos-lijst > div > div{
+    display:inline-block;
+    font-size: 20px;
+}
+
+.bekijkVideos-lijst > div >:first-child{
+    margin: 10px;
+    margin-left: 30px;
+    width: 40px;
+    height: 40px;
+    background-color: #D0D2D4;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px;
+}
+
+#bekijkVideos-nummer{
+    width: 70px;
+    height: 70px;
+    background-color: #F0597B;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 50px;
+    position:absolute;
+    margin-top:-35px;
+    margin-left:20px;
+}
+

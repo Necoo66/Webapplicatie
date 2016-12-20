@@ -1,41 +1,92 @@
 @model IEnumerable<HoneymoonShop.Models.GebruikerModels.Afspraak>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Afspraak";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a class="active" href="@Url.Action("index","home")">Home</a></li>
+        <li class="breadcrumb-item">Afspraak</li>
+    </ol>
+</div>
+<div class="row">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
+            <div class="row">
+                <div class="col-md-3">
+                    <h3 class="text-capitalize">Soorten afspraken</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                    </p>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-4">
+                    <div class="textOnImage">
+                        <a asp-controller="Afspraak" asp-action="maken">
+                            <img src="~/images/afspraak.jpeg" alt="Trouwjurken passen" class="img-responsive" />
+                            <h4>Trouwjurken <br> passen</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-4">
+                    <div class="textOnImage">
+                        <a asp-controller="Afspraak" asp-action="maken">
+                            <img src="~/images/afspraak.jpeg" alt="Trouwpakken passen" class="img-responsive" />
+                            <h4>Trouwpakken <br> passen</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-4">
+                    <div class="textOnImage">
+                        <a asp-controller="Afspraak" asp-action="maken">
+                            <img src="~/images/afspraak.jpeg" alt="Afspeldafspraak maken" class="img-responsive" />
+                            <h4>Afspeldafspraak <br> maken</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Datum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tijd)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Datum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tijd)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+    <div class="row">
+        <div class="title">
+            <h1>One stop, shop</h1>
+            <h2 >Een jurk of pak kopen?.<br>zo werkt het...</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 bekijkVideos">
+            <img src="~/images/onestopshop.jpeg" alt="" class="img-responsive">
+            <div>
+                <h2>> bekijk video</h2>
+                <p>
+                    Hoe vind je de perfecte outfit?<br />
+                    Onze specialisten nemen echt de tijd voor je en helpen je met elke stap. Oneindige jurken/pakken passen? geen probleem! Er kunnen zoveel mensen mee als jij zelf wilt
+                </p>
+            </div>
+            <span id="bekijkVideos-nummer">1</span>
+        </div>
+        <div class="col-md-4 bekijkVideos-lijst">
+            <div>
+                <div class="bg-donkerroze">1</div>
+                <div class="text-donkerroze">De winkel</div>
+            </div>
+            <div>
+                <div>2</div>
+                <div>Onze specialist</div>
+            </div>
+            <div>
+                <div>3</div>
+                <div>Naai-atelier</div>
+            </div>
+            <div>
+                <div>4</div>
+                <div>Servicepunten</div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

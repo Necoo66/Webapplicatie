@@ -1,0 +1,15 @@
+﻿.textOnImage {
+    position: relative;
+    margin-bottom: 20px;
+    text-align:center;
+}
+
+.textOnImage > a > h4 {
+    position: absolute;
+    left: 20px;
+    width: 150px;
+    color: black;
+    background-color: white;
+    top:100px;
+    padding:5px;
+}

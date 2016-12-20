@@ -1,19 +1,13 @@
 ﻿@model HoneymoonShop.Models.GebruikerModels.AfspraakMaken
-
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-
-<div class="hidden">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    De emails komen niet overeen!
-</div>
 <div class="content">
     <div class="row">
         <div class="title">
             <h1>Trouwjurken</h1>
-            <h2>Maak Je Pasafsrpaak</h2>
+            <h2 class="text-uppercase">Maak Je Pasafsprpaak</h2>
         </div>
     </div>
     <div class="row">
@@ -31,21 +25,27 @@
                             <li>|</li>
                             <li>|</li>
                             <li>|</li>
-                            <li><button onclick="toggleAfsrpaakmaken('stap2menu', 'stap2left', 'stap2right', 'stap1menu', 'stap1left', 'stap1right', 'stap3menu', 'stap3left', 'stap3right')">2</button><br />Gegevens invullen</li>
+                            <li><button onclick="toggleAfsrpaakmaken('stap2menu', 'stap2left', 'stap2right', 'stap1menu', 'stap1left', 'stap1right', 'stap3menu', 'stap3left', 'stap3right')">2</button><br /><span>Gegevens invullen</span></li>
                             <li>|</li>
-                            <li><button onclick="toggleAfsrpaakmaken('stap3menu', 'stap3left', 'stap3right', 'stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right')">3</button><br />Gegevens controleren</li>
+                            <li><button onclick="toggleAfsrpaakmaken('stap3menu', 'stap3left', 'stap3right', 'stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right')">3</button><br /><span>Gegevens controleren</span></li>
                         </ul>
                     </div>
                 </div>
                 <div class="tab" id="stap2menu" style="display: none">
                     <div class="lightcoral">
                         <ul>
-                            <li><button onclick="toggleAfsrpaakmaken('stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right', 'stap3menu', 'stap3left', 'stap3right')">1</button><br />Datum en tijd selecteren</li>
+                            <li>
+                                <button onclick="toggleAfsrpaakmaken
+    ('stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right', 'stap3menu', 'stap3left', 'stap3right')">
+                                    1
+                                </button>
+                                <br /><span>Datum en tijd selecteren</span>
+                            </li>
                             <li>|</li>
                         </ul>
                     </div>
                     <ul>
-                        <li><button onclick="toggleAfsrpaakmaken('stap2menu', 'stap2left', 'stap2right', 'stap1menu', 'stap1left', 'stap1right', 'stap3menu', 'stap3left', 'stap3right')">2</button><br />Gegevens invullen</li>
+                        <li><button onclick="toggleAfsrpaakmaken('stap2menu', 'stap2left', 'stap2right', 'stap1menu', 'stap1left', 'stap1right', 'stap3menu', 'stap3left', 'stap3right')">2</button><br /><span>Gegevens invullen</span></li>
                     </ul>
                     <div class="gray">
                         <ul>
@@ -78,6 +78,32 @@
                 <div class="left">
                     <div class="tab" id="stap1left" style="display: block">
                         <h4>Stap 1, Datum en tijd selecteren</h4>
+                        <div class="datumentijdselecteren">
+                            <p>Selecteer eerst een datum en vervolgens een tijdstip dat je wilt komen passen!</p>
+                            <br />
+                            <br />
+                            <p>Openingstijden:</p>
+                            <table>
+                                <tr>
+                                    <td>MA</td>
+                                    <td>12:00-17:30</td>
+                                </tr>
+                                <tr>
+                                    <td>DI-VR</td>
+                                    <td>09:30-17:30</td>
+                                </tr>
+                                <tr>
+                                    <td>ZA</td>
+                                    <td>09:30-18:00</td>
+                                </tr>
+                                <tr>
+                                    <td>ZO</td>
+                                    <td>11:00-17:00</td>
+                                </tr>
+                            </table>
+                            <br>
+                            <span>Op alle werkdagen kunnen er ook schoenen worden gepast. Helaas is dit niet mogelijk in het weekend.</span>
+                        </div>
                     </div>
                     <div class="tab" id="stap2left" style="display: none">
                         <h4>Stap 2, Gegevens invullen</h4>
@@ -85,7 +111,7 @@
                             <div class="form-group">
                                 <label asp-for="Gebruiker.Naam" class="col-md-5">Voor- achternaam*</label>
                                 <div class="col-md-12">
-                                    <input asp-for="Gebruiker.Naam" class="form-control"/>
+                                    <input asp-for="Gebruiker.Naam" class="form-control" />
                                     <span asp-validation-for="Gebruiker.Naam" class="text-danger"></span>
                                 </div>
                             </div>
@@ -131,9 +157,11 @@
                         </p>
                     </div>
                 </div>
-                <div class="right">
+                <div class="right datumselecteren">
                     <div class="tab" id="stap1right" style="display: block">
                         <h4><img src="~/images/heart-icon.png" />Selecteer een tijdstip</h4>
+                        <div id="datepicker"></div>
+                        <a href="@Url.Action("Stap01b", "Afspraak")" id="DatumSelecteren">Selecteer een tijd <img src="~/images/Arrow.png" alt="Alternate Text" /></a>
                     </div>
                     <div class="tab" id="stap2right" style="display: none">
                         <h4><img src="~/images/heart-icon.png" />Gekozen tijd en datum</h4>

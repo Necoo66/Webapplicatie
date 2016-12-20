@@ -119,7 +119,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Gebruiker.Trouwdatum" class="col-md-5">Trouwdatum</label>
+                                <label asp-for="Gebruiker.Trouwdatum" class="col-md-5">Trouwdatum*</label>
                                 <div class="col-md-12">
                                     <input asp-for="Gebruiker.Trouwdatum" type="date" class="form-control" />
                                     <span asp-validation-for="Gebruiker.Trouwdatum" class="text-danger"></span>
@@ -146,7 +146,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-offset-2 col-md-12">
+                                <div class="col-md-12">
                                     <input type="submit" id="CheckMail" value="Create" class="btn btn-default" />
                                 </div>
                             </div>
@@ -161,17 +161,24 @@
                     </div>
                 </div>
                 <div class="right datumselecteren">
+                    
                     <div class="tab" id="stap1right" style="display: block">
                         <h4><img src="~/images/heart-icon.png" />Selecteer een tijdstip</h4>
                         <div id="datepicker"></div>
                         <a href="@Url.Action("Stap01b", "Afspraak")" id="DatumSelecteren">Selecteer een tijd <img src="~/images/Arrow.png" alt="Alternate Text" /></a>
                     </div>
+
                     <div class="tab" id="stap2right" style="display: none">
-                        <h4><img src="~/images/heart-icon.png" />Gekozen tijd en datum</h4>
+                        <h4><img src="~/images/heart-icon.png" />Gekozen tijd en datum: </h4>
+
+                        <div class="col-md-12 backgroundLichtRoze well-sm gekozenDatum"> <h4>DO 15 September 2016 om 09:30 u</h4></div>
+                        <p class="col-md-12"> Vul je persoonlijke gegevens in om de pasafspraak compleet te maken</p>
                     </div>
+
                     <div class="tab" id="stap3right" style="display: none">
                         <h4><img src="~/images/heart-icon.png" />Controleer je gegevens</h4>
                     </div>
+
                 </div>
             </form>
         </div>

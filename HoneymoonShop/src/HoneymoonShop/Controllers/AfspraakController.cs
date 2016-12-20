@@ -4,6 +4,7 @@ using HoneymoonShop.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HoneymoonShop.Models.GebruikerModels;
+using System;
 
 namespace HoneymoonShop.Controllers
 {
@@ -13,7 +14,7 @@ namespace HoneymoonShop.Controllers
 
         public AfspraakController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: Afspraak
@@ -76,12 +77,16 @@ namespace HoneymoonShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(afspraakMaken.Afspraak);
+                var date = DateTime.Parse("17-05-2016");
+                
+                Afspraak a = new Afspraak { Datum = date, Gebruiker = afspraakMaken.Gebruiker, Tijd = "9:00"};
+                _context.Add(a);
                 _context.Add(afspraakMaken.Gebruiker);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(afspraakMaken);
+            return View();
+
         }
 
         // GET: Afspraak/Edit/5

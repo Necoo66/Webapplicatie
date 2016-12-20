@@ -232,6 +232,8 @@
 "C:\Users\Chin-Oui\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs"
 "C:\Users\Chin-Oui\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\Migrations\20161218170837_AfspraakGebruiker.cs"
 "C:\Users\Chin-Oui\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\Migrations\20161218170837_AfspraakGebruiker.Designer.cs"
+"C:\Users\Chin-Oui\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\Migrations\20161220104903_Update.cs"
+"C:\Users\Chin-Oui\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\Migrations\20161220104903_Update.Designer.cs"
 "C:\Users\Chin-Oui\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\Migrations\ApplicationDbContextModelSnapshot.cs"
 "C:\Users\Chin-Oui\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Models\ApplicationUser.cs"
 "C:\Users\Chin-Oui\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs"

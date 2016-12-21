@@ -183,9 +183,6 @@ namespace HoneymoonShop.Controllers
         
         public DateTime[] GetAvalibleDates(int month, int year)
         {
-            //DateTime[] test = _context.Afspraak.Select(x => x.Datum).Where(x => x.Month == month && x.Year == year).ToArray();
-
-
             return _context.Afspraak.Select(x => x.Datum.Date).Where(x => x.Month == month && x.Year == year).ToArray();
         }
     }

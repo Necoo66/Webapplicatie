@@ -101,7 +101,7 @@ namespace HoneymoonShop.Controllers
 
                 //Email verzenden
                 VerzendAfspraak(afspraakMaken);
-                return RedirectToAction("Index");
+                return RedirectToAction("Voltooid");
             }
             return View(afspraakMaken);
         }

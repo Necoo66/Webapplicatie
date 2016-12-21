@@ -88,8 +88,6 @@
                     </ul>
                 </div>
             </div>
-            <form asp-action="Maken">
-                <input type="hidden" asp-validation-for="Afspraak.Soort" value="@ViewData["afspraakSoort"]">
             <form asp-action="Maken" id="myform">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="left">

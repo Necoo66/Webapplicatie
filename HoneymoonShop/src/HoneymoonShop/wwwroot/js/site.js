@@ -79,7 +79,7 @@ function toggleAfsrpaakmaken(id1, id2, id3, id4, id5, id6, id7, id8, id9) {
 
 $("document").ready(function () {
     $('#myform').submit(function () {
-        if ($(".emailCheck2").val() === $(".emailCheck1").val()) {
+        if ($(".emailCheck2").val().toLowerCase() === $(".emailCheck1").val().toLowerCase()) {
             return true;
         } else {
             var alert = $(".hidden");

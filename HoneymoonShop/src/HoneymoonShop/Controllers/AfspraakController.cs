@@ -14,7 +14,7 @@ namespace HoneymoonShop.Controllers
 
         public AfspraakController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: Afspraak
@@ -75,15 +75,14 @@ namespace HoneymoonShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Maken([Bind("Afspraak,Gebruiker")] AfspraakMaken afspraakMaken)
         {
+           
             if (ModelState.IsValid)
             {
-                var date = DateTime.Parse("17-05-2016");
-
-                Afspraak a = new Afspraak { Datum = date, Gebruiker = afspraakMaken.Gebruiker, Tijd = "9:00" };
-                _context.Add(a);
-                _context.Add(afspraakMaken.Gebruiker);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                afspraakMaken.Afspraak.Gebruiker = afspraakMaken.Gebruiker;
+                _context.Afspraak.Add(afspraakMaken.Afspraak);
+                _context.Gebruiker.Add(afspraakMaken.Gebruiker);
+                await _context.SaveChangesAsync();                
+                return RedirectToAction("Voltooid");
             }
             return View();
 

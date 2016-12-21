@@ -4,6 +4,8 @@ using HoneymoonShop.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HoneymoonShop.Models.GebruikerModels;
+using static HoneymoonshopWebApk.Models.Mail;
+using System;
 
 namespace HoneymoonShop.Controllers
 {
@@ -50,7 +52,7 @@ namespace HoneymoonShop.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Datum,Tijd")] Afspraak afspraak, Gebruiker gebruiker)
+        public async Task<IActionResult> Create([Bind("Id,Datum,Tijd")] Afspraak afspraak)
         {
             if (ModelState.IsValid)
             {
@@ -62,8 +64,25 @@ namespace HoneymoonShop.Controllers
         }
 
         // GET: Afspraak/Maken
-        public IActionResult Maken()
+        public IActionResult Maken(string afspraakSoort)
         {
+            switch (afspraakSoort)
+            {
+                case "trouwjurk":
+                    ViewData["afspraakSoort"] = "trouwjurk";
+                    break;
+                case "trouwpak":
+                    ViewData["afspraakSoort"] = "trouwpak";
+                    break;
+                case "afspeld":
+                    ViewData["afspraakSoort"] = "afspeld";
+                    break;
+                default:
+                    ViewData["afspraakSoort"] = "trouwjurk";
+                    break;
+            }
+
+
             return View();
         }
 
@@ -79,6 +98,9 @@ namespace HoneymoonShop.Controllers
                 _context.Add(afspraakMaken.Afspraak);
                 _context.Add(afspraakMaken.Gebruiker);
                 await _context.SaveChangesAsync();
+
+                //Email verzenden
+                VerzendAfspraak(afspraakMaken);
                 return RedirectToAction("Index");
             }
             return View(afspraakMaken);

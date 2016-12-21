@@ -4,10 +4,22 @@
     Layout = "_Layout";
 }
 <div class="content">
+
     <div class="row">
         <div class="title">
-            <h1>Trouwjurken</h1>
-            <h2 class="text-uppercase">Maak Je Pasafsprpaak</h2>
+            @if (ViewData["afspraakSoort"].Equals("trouwjurk"))
+            {
+                <h1>Trouwjurken</h1>
+                <h2 class="text-uppercase">Maak Je Pasafsrpaak</h2>
+            }
+            @if(ViewData["afspraakSoort"].Equals("trouwpak")){
+                <h1>Trouwpakken</h1>
+                <h2 class="text-uppercase">Maak Je Pasafsrpaak</h2>
+            }
+            @if(ViewData["afspraakSoort"].Equals("afspeld")){
+                <h1>Afspelden</h1>
+                <h2  class="text-uppercase">Maak Je Afspeldafsrpaak</h2>
+            }
         </div>
     </div>
     <div class="hidden">
@@ -76,6 +88,8 @@
                     </ul>
                 </div>
             </div>
+            <form asp-action="Maken">
+                <input type="hidden" asp-validation-for="Afspraak.Soort" value="@ViewData["afspraakSoort"]">
             <form asp-action="Maken" id="myform">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="left">

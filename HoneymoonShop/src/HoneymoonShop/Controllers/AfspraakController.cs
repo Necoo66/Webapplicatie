@@ -4,6 +4,7 @@ using HoneymoonShop.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HoneymoonShop.Models.GebruikerModels;
+using static HoneymoonshopWebApk.Models.Mail;
 using System;
 
 namespace HoneymoonShop.Controllers
@@ -63,8 +64,25 @@ namespace HoneymoonShop.Controllers
         }
 
         // GET: Afspraak/Maken
-        public IActionResult Maken()
+        public IActionResult Maken(string afspraakSoort)
         {
+            switch (afspraakSoort)
+            {
+                case "trouwjurk":
+                    ViewData["afspraakSoort"] = "trouwjurk";
+                    break;
+                case "trouwpak":
+                    ViewData["afspraakSoort"] = "trouwpak";
+                    break;
+                case "afspeld":
+                    ViewData["afspraakSoort"] = "afspeld";
+                    break;
+                default:
+                    ViewData["afspraakSoort"] = "trouwjurk";
+                    break;
+            }
+
+
             return View();
         }
 
@@ -77,16 +95,15 @@ namespace HoneymoonShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                var date = DateTime.Parse("17-05-2016");
-
-                Afspraak a = new Afspraak { Datum = date, Gebruiker = afspraakMaken.Gebruiker, Tijd = "9:00" };
-                _context.Add(a);
+                _context.Add(afspraakMaken.Afspraak);
                 _context.Add(afspraakMaken.Gebruiker);
                 await _context.SaveChangesAsync();
+
+                //Email verzenden
+                VerzendAfspraak(afspraakMaken);
                 return RedirectToAction("Index");
             }
-            return View();
-
+            return View(afspraakMaken);
         }
 
         // GET: Afspraak/Edit/5

@@ -4,6 +4,7 @@ using HoneymoonShop.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HoneymoonShop.Models.GebruikerModels;
+using System;
 
 namespace HoneymoonShop.Controllers
 {
@@ -13,7 +14,7 @@ namespace HoneymoonShop.Controllers
 
         public AfspraakController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: Afspraak
@@ -62,8 +63,25 @@ namespace HoneymoonShop.Controllers
         }
 
         // GET: Afspraak/Maken
-        public IActionResult Maken()
+        public IActionResult Maken(string afspraakSoort)
         {
+            switch (afspraakSoort)
+            {
+                case "trouwjurk":
+                    ViewData["afspraakSoort"] = "trouwjurk";
+                    break;
+                case "trouwpak":
+                    ViewData["afspraakSoort"] = "trouwpak";
+                    break;
+                case "afspeld":
+                    ViewData["afspraakSoort"] = "afspeld";
+                    break;
+                default:
+                    ViewData["afspraakSoort"] = "trouwjurk";
+                    break;
+            }
+
+
             return View();
         }
 
@@ -74,14 +92,19 @@ namespace HoneymoonShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Maken([Bind("Afspraak,Gebruiker")] AfspraakMaken afspraakMaken)
         {
+           
             if (ModelState.IsValid)
             {
-                _context.Add(afspraakMaken.Afspraak);
-                _context.Add(afspraakMaken.Gebruiker);
+                afspraakMaken.Afspraak.Gebruiker = afspraakMaken.Gebruiker;
+                _context.Afspraak.Add(afspraakMaken.Afspraak);
+                _context.Gebruiker.Add(afspraakMaken.Gebruiker);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                //Email verzenden
+                VerzendAfspraak(afspraakMaken);
+                return RedirectToAction("Voltooid");
             }
-            return View(afspraakMaken);
+            return View();
+
         }
 
         // GET: Afspraak/Edit/5

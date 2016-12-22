@@ -69,8 +69,25 @@ namespace HoneymoonShop.Controllers
         }
 
         // GET: Afspraak/Maken
-        public IActionResult Maken()
+        public IActionResult Maken(string afspraakSoort)
         {
+            switch (afspraakSoort)
+            {
+                case "trouwjurk":
+                    ViewData["afspraakSoort"] = "trouwjurk";
+                    break;
+                case "trouwpak":
+                    ViewData["afspraakSoort"] = "trouwpak";
+                    break;
+                case "afspeld":
+                    ViewData["afspraakSoort"] = "afspeld";
+                    break;
+                default:
+                    ViewData["afspraakSoort"] = "trouwjurk";
+                    break;
+            }
+
+
             return View();
         }
 
@@ -81,15 +98,16 @@ namespace HoneymoonShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Maken([Bind("Afspraak,Gebruiker")] AfspraakMaken afspraakMaken)
         {
+           
             if (ModelState.IsValid)
             {
-                var date = DateTime.Parse("17-05-2016");
-                
-                Afspraak a = new Afspraak { Datum = date, Gebruiker = afspraakMaken.Gebruiker, Tijd = "9:00"};
-                _context.Add(a);
-                _context.Add(afspraakMaken.Gebruiker);
+                afspraakMaken.Afspraak.Gebruiker = afspraakMaken.Gebruiker;
+                _context.Afspraak.Add(afspraakMaken.Afspraak);
+                _context.Gebruiker.Add(afspraakMaken.Gebruiker);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Beheer");
+                //Email verzenden
+                VerzendAfspraak(afspraakMaken);
+                return RedirectToAction("Voltooid");
             }
             return View();
 

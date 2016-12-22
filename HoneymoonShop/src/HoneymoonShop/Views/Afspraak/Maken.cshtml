@@ -4,10 +4,22 @@
     Layout = "_Layout";
 }
 <div class="content">
+
     <div class="row">
         <div class="title">
-            <h1>Trouwjurken</h1>
-            <h2 class="text-uppercase">Maak Je Pasafsprpaak</h2>
+            @if (ViewData["afspraakSoort"].Equals("trouwjurk"))
+            {
+                <h1>Trouwjurken</h1>
+                <h2 class="text-uppercase">Maak Je Pasafsrpaak</h2>
+            }
+            @if(ViewData["afspraakSoort"].Equals("trouwpak")){
+                <h1>Trouwpakken</h1>
+                <h2 class="text-uppercase">Maak Je Pasafsrpaak</h2>
+            }
+            @if(ViewData["afspraakSoort"].Equals("afspeld")){
+                <h1>Afspelden</h1>
+                <h2  class="text-uppercase">Maak Je Afspeldafsrpaak</h2>
+            }
         </div>
     </div>
     <div class="hidden">
@@ -145,6 +157,8 @@
                                     <input type="email" class="form-control emailCheck2" />
                                 </div>
                             </div>
+                            <input asp-for="Afspraak.Datum" type="hidden" value="19-05-2016" />
+                            <input asp-for="Afspraak.Tijd" type="hidden" value="10.41"/>
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <input type="submit" id="CheckMail" value="Create" class="btn btn-default" />
@@ -164,8 +178,9 @@
                     
                     <div class="tab" id="stap1right" style="display: block">
                         <h4><img src="~/images/heart-icon.png" />Selecteer een tijdstip</h4>
-                        <div id="datepicker"></div>
-                        <a href="@Url.Action("Stap01b", "Afspraak")" id="DatumSelecteren">Selecteer een tijd <img src="~/images/Arrow.png" alt="Alternate Text" /></a>
+                        
+                        <input type="hidden" id="datepicker" />
+                        <a href="@Url.Action("Stap01b", "Afspraak")" id="DatumSelecteren">Selecteer een tijd <img src="~/images/pijl.png" alt="Alternate Text" /></a>
                     </div>
 
                     <div class="tab" id="stap2right" style="display: none">

@@ -1,8 +1,9 @@
 ﻿@model HoneymoonShop.Models.GebruikerModels.AfspraakMaken
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Afpraak maken";
     Layout = "_Layout";
 }
+
 <div class="content">
 
     <div class="row">
@@ -133,7 +134,7 @@
                             <div class="form-group">
                                 <label asp-for="Gebruiker.Trouwdatum" class="col-md-5">Trouwdatum*</label>
                                 <div class="col-md-12">
-                                    <input asp-for="Gebruiker.Trouwdatum" type="date" class="form-control" />
+                                    <input name="Gebruiker.Trouwdatum" id="Gebruiker_Trouwdatum" class="form-control" />
                                     <span asp-validation-for="Gebruiker.Trouwdatum" class="text-danger"></span>
                                 </div>
                             </div>
@@ -178,8 +179,7 @@
                     
                     <div class="tab" id="stap1right" style="display: block">
                         <h4><img src="~/images/heart-icon.png" />Selecteer een tijdstip</h4>
-                        
-                        <input type="hidden" id="datepicker" />
+                        <div id="datepicker"></div>
                         <a href="@Url.Action("Stap01b", "Afspraak")" id="DatumSelecteren">Selecteer een tijd <img src="~/images/pijl.png" alt="Alternate Text" /></a>
                     </div>
 

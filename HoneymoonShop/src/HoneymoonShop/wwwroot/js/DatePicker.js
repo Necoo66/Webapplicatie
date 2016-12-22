@@ -39,11 +39,16 @@ function success(sqlDates) {
     }
 
     $("#datepicker").datepicker("refresh");
-    console.log("sqlDates of data:", sqlDates.slice(0, 100));
-    console.log("disableddates of data:", disableddates.slice(0, 100));
 }
 
 function toDate(sqlDate) {
     var from = ("" + sqlDate).substr(0, 10).split('-');
     return from[2] + "-" + from[1] + "-" + from[0];
 }
+
+
+$('#Gebruiker_Trouwdatum')
+    .datepicker({
+        dateFormat: 'dd-mm-yy',
+        minDate: +0,
+    });

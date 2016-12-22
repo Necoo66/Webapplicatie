@@ -1,7 +1,4 @@
-﻿body {
-}
-
-.datumentijdselecteren table {
+﻿.datumentijdselecteren table {
     width: auto;
 }
 
@@ -41,7 +38,7 @@
 
 .afspraakmaken .tab {
     width: 100%;
-    padding: 20px 40px; /*Necati: Padding is te groot! niet overdrijven. We hebben ruimte nodig voor content & styling. */
+    padding: 20px 40px;
 }
 
 .afspraakmaken .tab a img {
@@ -123,7 +120,7 @@
     background-color: #F0597C;
 }
 
-a#DatumSelecteren {
+#DatumSelecteren {
     color: white;
     text-decoration: none;
     float: right;
@@ -143,5 +140,12 @@ a#DatumSelecteren {
 #stap2right p{
     margin-top:10px;
     font-size:larger;
+}
+
+body > .ui-widget.ui-widget-content {
+    height:auto;
+    width:auto;
+    box-shadow:2px 2px 10px grey;
+    left: 10px;
 }
 /* End Necati Unal*/

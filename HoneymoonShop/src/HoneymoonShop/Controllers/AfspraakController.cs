@@ -23,6 +23,12 @@ namespace HoneymoonShop.Controllers
             return View(await _context.Afspraak.ToListAsync());
         }
 
+        // GET: Afspraak
+        public async Task<IActionResult> Beheer()
+        {
+            return View(await _context.Afspraak.ToListAsync());
+        }
+
         // GET: Afspraak/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -57,7 +63,7 @@ namespace HoneymoonShop.Controllers
             {
                 _context.Add(afspraak);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Beheer");
             }
             return View(afspraak);
         }
@@ -83,7 +89,7 @@ namespace HoneymoonShop.Controllers
                 _context.Add(a);
                 _context.Add(afspraakMaken.Gebruiker);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Beheer");
             }
             return View();
 
@@ -135,7 +141,7 @@ namespace HoneymoonShop.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Beheer");
             }
             return View(afspraak);
         }
@@ -165,12 +171,17 @@ namespace HoneymoonShop.Controllers
             var afspraak = await _context.Afspraak.SingleOrDefaultAsync(m => m.Id == id);
             _context.Afspraak.Remove(afspraak);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Beheer");
         }
 
         private bool AfspraakExists(int id)
         {
             return _context.Afspraak.Any(e => e.Id == id);
+        }
+
+        public DateTime[] GetAvalibleDates(int month, int year)
+        {
+            return _context.Afspraak.Select(x => x.Datum.Date).Where(x => x.Month == month && x.Year == year).ToArray();
         }
     }
 }

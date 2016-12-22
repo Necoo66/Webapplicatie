@@ -33,6 +33,5 @@ namespace HoneymoonShop.Models.GebruikerModels
         public string Emailadres { get; set; }
 
         public virtual List<Afspraak> Afspraken { get; set; }
-
     }
 }

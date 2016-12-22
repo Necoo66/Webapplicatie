@@ -47,16 +47,16 @@ function toggleAfsrpaakmaken(id1, id2, id3, id4, id5, id6, id7, id8, id9) {
 }
 
 $("document").ready(function () {
-    $(".emailCheck").last().focusout(function () {
-        var email = [$("input[type='email']").val()];
-        if(email[0] !== email[1]){
+    $('#myform').submit(function () {
+        if ($(".emailCheck2").val().toLowerCase() === $(".emailCheck1").val().toLowerCase()) {
+            return true;
+        } else {
             var alert = $(".hidden");
-            alert.addClass("alert alert-warning alert-dismissible fade in").removeClass("hidden");
-            //alert.removeClass("hidden");
+            console.log(alert);
+            alert.addClass("alert alert-warning alert-dismissible fade in text-center").removeClass("hidden");
+            alert.html("<a href='#' class='close' data-dismiss='alert'>&times;</a><strong> De ingevoerde emails komen niet overeen. </strong>");
+            return false;
         }
     });
-    //$(".alert-warning alert-dismissable").on("")
-    //$("").is(":visible")
-
-    });
+});
 

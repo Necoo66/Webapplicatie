@@ -106,7 +106,7 @@ namespace HoneymoonShop.Controllers
                 _context.Gebruiker.Add(afspraakMaken.Gebruiker);
                 await _context.SaveChangesAsync();
                 //Email verzenden
-                VerzendAfspraak(afspraakMaken);
+                //VerzendAfspraak(afspraakMaken);
                 return RedirectToAction("Voltooid");
             }
             return View();
@@ -200,6 +200,11 @@ namespace HoneymoonShop.Controllers
         public DateTime[] GetAvalibleDates(int month, int year)
         {
             return _context.Afspraak.Select(x => x.Datum.Date).Where(x => x.Month == month && x.Year == year).ToArray();
+        }
+
+        public IActionResult Voltooid()
+        {
+            return View();
         }
     }
 }

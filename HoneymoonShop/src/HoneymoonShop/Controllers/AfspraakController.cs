@@ -18,9 +18,15 @@ namespace HoneymoonShop.Controllers
         }
 
         // GET: Afspraak
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _context.Afspraak.ToListAsync());
+        }
+
+        // GET: Afspraak
+        public async Task<IActionResult> Beheer()
+        {
+            return View(await _context.Afspraak.ToListAsync());
         }
 
         // GET: Afspraak/Details/5
@@ -57,7 +63,7 @@ namespace HoneymoonShop.Controllers
             {
                 _context.Add(afspraak);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Beheer");
             }
             return View(afspraak);
         }
@@ -153,7 +159,7 @@ namespace HoneymoonShop.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Beheer");
             }
             return View(afspraak);
         }
@@ -183,7 +189,7 @@ namespace HoneymoonShop.Controllers
             var afspraak = await _context.Afspraak.SingleOrDefaultAsync(m => m.Id == id);
             _context.Afspraak.Remove(afspraak);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Beheer");
         }
 
         private bool AfspraakExists(int id)
@@ -191,10 +197,14 @@ namespace HoneymoonShop.Controllers
             return _context.Afspraak.Any(e => e.Id == id);
         }
 
+        public DateTime[] GetAvalibleDates(int month, int year)
+        {
+            return _context.Afspraak.Select(x => x.Datum.Date).Where(x => x.Month == month && x.Year == year).ToArray();
+        }
+
         public IActionResult Voltooid()
         {
             return View();
         }
-
     }
 }

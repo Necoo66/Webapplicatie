@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using HoneymoonShop.Models.GebruikerModels;
 using MailKit.Net.Smtp;
 using MailKit.Security;
-using Microsoft.DotNet.Cli.Utils;
 using MimeKit;
 using MimeKit.Utils;
-using System.IO;
-using HoneymoonShop.Models.GebruikerModels;
 
-namespace HoneymoonshopWebApk.Models
+namespace HoneymoonShop.Models
 {
     public class Mail
     {
@@ -61,7 +59,7 @@ namespace HoneymoonshopWebApk.Models
 </table>", banner.ContentId, datum);
 
             //SendEmailAsync(afspraakMaken.Gebruiker.Emailadres, "Honeymoonshop afspraakbevestiging", builder);
-            SendEmailAsync("rchandoe@gmail.com", "Honeymoonshop afspraakbevestiging", builder);
+            var sendEmailAsync = SendEmailAsync("rchandoe@gmail.com", "Honeymoonshop afspraakbevestiging", builder);
         }
 
 

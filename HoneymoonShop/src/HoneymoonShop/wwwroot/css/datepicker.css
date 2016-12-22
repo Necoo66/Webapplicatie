@@ -1,4 +1,5 @@
-﻿.ui-datepicker .ui-datepicker-title {
+﻿div .ui-datepicker .ui-datepicker-title {
+    float:none;
 }
 
 .ui-datepicker .ui-datepicker-header {

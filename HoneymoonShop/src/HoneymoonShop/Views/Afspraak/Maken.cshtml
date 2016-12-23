@@ -4,7 +4,6 @@
     Layout = "_Layout";
 }
 <div class="content">
-
     <div class="row">
         <div class="title">
             @if (ViewData["afspraakSoort"].Equals("trouwjurk"))
@@ -32,7 +31,7 @@
             <div class="menu">
                 <div class="tab" id="stap1menu" style="display: block">
                     <ul>
-                        <li><button onclick="toggleAfsrpaakmaken('stap1menu', 'stap1left', 'stap1right', 'stap1bright' , 'stap2menu', 'stap2left', 'stap2right', 'stap3menu', 'stap3left', 'stap3right')">1</button><br />Datum en tijd selecteren</li>
+                        <li><button onclick="toggleAfsrpaakmaken('stap1menu', 'stap1left', 'stap1right', 'stap1bright', 'stap2menu', 'stap2left', 'stap2right', 'stap3menu', 'stap3left', 'stap3right')">1</button><br />Datum en tijd selecteren</li>
                     </ul>
                     <div class="gray">
                         <ul>
@@ -52,8 +51,7 @@
                     <div class="lightcoral">
                         <ul>
                             <li>
-                                <button onclick="toggleAfsrpaakmaken
-    ('stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right', 'stap3menu', 'stap3left', 'stap3right')">
+                                <button onclick="toggleAfsrpaakmaken('stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right', 'stap3menu', 'stap3left', 'stap3right')">
                                     1
                                 </button>
                                 <br /><span>Datum en tijd selecteren</span>
@@ -120,7 +118,7 @@
                             </table>
                             <br>
                             <span>Op alle werkdagen kunnen er ook schoenen worden gepast. Helaas is dit niet mogelijk in het weekend.</span>
-                            <button class="text-uppercase" id="ButtonStap2" type="button" onclick="toggleAfsrpaakmaken('stap2menu', 'stap2left', 'stap2right', 'stap1menu', 'stap1left', 'stap1bright', 'stap1right', 'stap3menu', 'stap3left', 'stap3right')" style="display : none;"> Naar stap 2 </button>
+                            <button class="text-uppercase" id="ButtonStap2" type="button" onclick="toggleAfsrpaakmaken('stap2menu', 'stap2left', 'stap2right', 'stap1menu', 'stap1left', 'stap1bright', 'stap1right', 'stap3menu', 'stap3left', 'stap3right')" style="display: none;"> Naar stap 2 </button>
                         </div>
                     </div>
                     <div class="tab" id="stap2left" style="display: none">
@@ -163,7 +161,7 @@
                             <input asp-for="Afspraak.Datum" type="hidden" value="19-05-2016" />
                             <input asp-for="Afspraak.Tijd" type="hidden" value="10.41" />
                             <input asp-for="Afspraak.AfspraakSoort" type="hidden" value="@ViewData["afspraakSoort"]" />
-                            
+
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <button class="text-uppercase" id="ButtonStap3" type="button" onclick="toggleAfsrpaakmaken('stap3menu', 'stap3left', 'stap3right', 'stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right')"> Naar stap 3 </button>
@@ -191,18 +189,17 @@
 
                     <div class="tab" id="stap1bright" style="display: none">
                         <h4><img src="~/images/heart-icon.png" />Selecteer een tijdstip:</h4>
-
-                        <span style="display : block" id="radio1" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')">
-                            <input type="radio" name="Tijd" value="9:30" />
-                            <label>09 : 30</label>
+                        <span style="display: block">
+                            <input type="radio" id="radio1" name="Tijd" value="9:30" />
+                            <label for="radio1">09 : 30</label>
                         </span>
-                        <span style="display : block" id="radio2" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')">
-                            <input type="radio" name="Tijd" value="12:30" />
-                            <label>12 : 30</label>
+                        <span style="display: block">
+                            <input type="radio" id="radio2" name="Tijd" value="12:30" />
+                            <label for="radio2">12 : 30</label>
                         </span>
-                        <span style="display : block" id="radio3" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')" >
-                            <input type="radio" name="Tijd" value="15:00" />
-                            <label>15 : 00</label>
+                        <span style="display: block">
+                            <input type="radio" id="radio3" name="Tijd" value="15:00" />
+                            <label for="radio3">15 : 00</label>
                         </span>
                         <span id="DatumSelecteren" onclick="toggleSelecteerTijd('stap1right', 'stap1bright', 'ButtonStap2')"><img src="~/images/pijllinks.png" alt="Alternate Text" />Terug naar datum selecteren </span>
                     </div>
@@ -210,7 +207,9 @@
                     <div class="tab" id="stap2right" style="display: none">
                         <h4><img src="~/images/heart-icon.png" />Gekozen tijd en datum: </h4>
 
-                        <div class="col-md-12 backgroundLichtRoze well-sm gekozenDatum"> <h4>DO 15 September 2016 om 09:30 u</h4></div>
+                        <div class="col-md-12 backgroundLichtRoze well-sm gekozenDatum">
+                            <h4>DO 15 September 2016 om 09:30 u</h4>
+                        </div>
                         <p class="col-md-12"> Vul je persoonlijke gegevens in om de pasafspraak compleet te maken</p>
                     </div>
 
@@ -221,9 +220,7 @@
                         <div> <span id="TrouwdatumOverzicht" class="text-left"></span> </div>
                         <div> <span id="TelefoonOverzicht" class="text-left"></span> </div>
                         <div> <span id="EmailOverzicht" class="text-left"></span> </div>
-
                     </div>
-
                 </div>
             </form>
         </div>

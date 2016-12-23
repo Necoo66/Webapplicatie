@@ -59,5 +59,36 @@ $("document").ready(function () {
             return false;
         }
     });
+
+
+    var datum;
+    var naam;
+    var trouwdatum;
+    var telefoonnummer;
+    var emailadres;
+    
+    $("#ButtonStap3").click(function () {
+        initData();
+        setData();
+    });
+
+
 });
 
+function setData() {
+    //alert(naam + trouwdatum + telefoonnummer + emailadres);
+    $("datumEntijdOverzicht").html("Datum en tijd: " + datum);
+    $("NaamOverzicht").html(naam);
+    $("TrouwdatumOverzicht").html(trouwdatum);
+    $("TelefoonOverzicht").html(telefoonnummer);
+    $("EmailOverzicht").html(emailadres);
+}
+
+function initData(){
+    datum = $("#Afspraak_Datum").val();
+    datum += $("#Afspraak_Tijd").val().toString;
+    naam = $("#Gebruiker_Naam").val();
+    trouwdatum = $("#Gebruiker_Trouwdatum").val();
+    telefoonnummer = $("#Gebruiker_Telefoonnummer").val();
+    emailadres = $("#Gebruiker_Emailadres").val();
+}

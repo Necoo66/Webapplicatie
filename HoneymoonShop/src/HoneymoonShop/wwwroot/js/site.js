@@ -59,5 +59,22 @@ $("document").ready(function () {
             return false;
         }
     });
+
+
+    var datum;
+    var tijd
+    var naam
+    var trouwdatum;
+    var telefoonnummer;
+    var emailadres;
+    
+    $("ButtonStap3").click(function () {
+        initData();
+    });
+
+
 });
 
+function initData(){
+
+}

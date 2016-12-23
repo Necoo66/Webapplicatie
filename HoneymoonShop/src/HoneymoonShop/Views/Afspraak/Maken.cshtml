@@ -189,20 +189,35 @@
 
                     <div class="tab" id="stap1bright" style="display: none">
                         <h4><img src="~/images/heart-icon.png" />Selecteer een tijdstip:</h4>
-
-                        <span style="display : block" id="radio1" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')">
-                            <input type="radio" name="Tijd" value="" />
-                            <label>09 : 30</label>
-                        </span>
-                        <span style="display : block" id="radio2" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')">
-                            <input type="radio" name="Tijd" value="" />
-                            <label>12 : 30</label>
-                        </span>
-                        <span style="display : block" id="radio3" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')" >
-                            <input type="radio" name="Tijd" value="" />
-                            <label>15 : 00</label>
-                        </span>
-                        <span id="DatumSelecteren" onclick="toggleSelecteerTijd('stap1right', 'stap1bright', 'ButtonStap2')"><img src="~/images/pijllinks.png" alt="Alternate Text" />Terug naar datum selecteren </span>
+                        <div class="row">
+                            <div class="datumbanner col-md-12">
+                                <div id="leftarrow">
+                                    <
+                                </div>
+                                <div class="text-center" id="datum">
+                                    VR 23 DECEMBER 2016
+                                </div>
+                                <div id="rightarrow">
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <br />
+                            <span style="display : block" id="radio1" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')">
+                                <input type="radio" name="Tijd" value="" />
+                                <label>09 : 30</label>
+                            </span>
+                            <span style="display : block" id="radio2" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')">
+                                <input type="radio" name="Tijd" value="" />
+                                <label>12 : 30</label>
+                            </span>
+                            <span style="display : block" id="radio3" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')">
+                                <input type="radio" name="Tijd" value="" />
+                                <label>15 : 00</label>
+                            </span>
+                            <span id="DatumSelecteren" onclick="toggleSelecteerTijd('stap1right', 'stap1bright', 'ButtonStap2')"><img src="~/images/pijllinks.png" alt="Alternate Text" />Terug naar datum selecteren </span>
+                        </div>
                     </div>
 
                     <div class="tab" id="stap2right" style="display: none">

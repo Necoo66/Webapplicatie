@@ -127,10 +127,9 @@
         background-color: #F0597C;
     }
 
-    .tab label
-    {
-        color:white;
-    }
+.form-group {
+    margin-bottom: 5px;
+}
     
     span#DatumSelecteren
     {
@@ -139,11 +138,12 @@
         float:right;
     }
 
-    button#ButtonStap2
+    .left .tab  button
     {
         background-color: #F0597C;
-        width: 110px;
-        height: 40px;
+        border: 0px;
+        width: auto;
+        padding: 10px 5px;
         font-family : Nexa Bold;
         color:white;
         font-size: 0.9vw;

@@ -32,7 +32,7 @@
             <div class="menu">
                 <div class="tab" id="stap1menu" style="display: block">
                     <ul>
-                        <li><button onclick="toggleAfsrpaakmaken('stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right', 'stap3menu', 'stap3left', 'stap3right')">1</button><br />Datum en tijd selecteren</li>
+                        <li><button onclick="toggleAfsrpaakmaken('stap1menu', 'stap1left', 'stap1right', 'stap1bright' , 'stap2menu', 'stap2left', 'stap2right', 'stap3menu', 'stap3left', 'stap3right')">1</button><br />Datum en tijd selecteren</li>
                     </ul>
                     <div class="gray">
                         <ul>
@@ -42,9 +42,9 @@
                             <li>|</li>
                             <li>|</li>
                             <li>|</li>
-                            <li><button onclick="toggleAfsrpaakmaken('stap2menu', 'stap2left', 'stap2right', 'stap1menu', 'stap1left', 'stap1right', 'stap3menu', 'stap3left', 'stap3right')">2</button><br /><span>Gegevens invullen</span></li>
+                            <li><button onclick="toggleAfsrpaakmaken('stap2menu', 'stap2left', 'stap2right', 'stap1menu', 'stap1left', 'stap1bright', 'stap1right', 'stap3menu', 'stap3left', 'stap3right')">2</button><br /><span>Gegevens invullen</span></li>
                             <li>|</li>
-                            <li><button onclick="toggleAfsrpaakmaken('stap3menu', 'stap3left', 'stap3right', 'stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right')">3</button><br /><span>Gegevens controleren</span></li>
+                            <li><button onclick="toggleAfsrpaakmaken('stap3menu', 'stap3left', 'stap3right', 'stap1menu', 'stap1left', 'stap1right', 'stap1bright', 'stap2menu', 'stap2left', 'stap2right')">3</button><br /><span>Gegevens controleren</span></li>
                         </ul>
                     </div>
                 </div>
@@ -120,45 +120,42 @@
                             </table>
                             <br>
                             <span>Op alle werkdagen kunnen er ook schoenen worden gepast. Helaas is dit niet mogelijk in het weekend.</span>
-                            <button class="text-uppercase" id="ButtonStap2" type="submit" style="display : none;"> Naar stap 2 </button>
+                            <button class="text-uppercase" id="ButtonStap2" type="button" onclick="toggleAfsrpaakmaken('stap2menu', 'stap2left', 'stap2right', 'stap1menu', 'stap1left', 'stap1bright', 'stap1right', 'stap3menu', 'stap3left', 'stap3right')" style="display : none;"> Naar stap 2 </button>
                         </div>
                     </div>
-
-
-
                     <div class="tab" id="stap2left" style="display: none">
                         <h4>Stap 2, Gegevens invullen</h4>
                         <div class="form-horizontal">
                             <div class="form-group">
-                                <label asp-for="Gebruiker.Naam" class="col-md-5">Voor- achternaam*</label>
+                                <label asp-for="Gebruiker.Naam" class="col-md-12">Voor- achternaam*</label>
                                 <div class="col-md-12">
                                     <input asp-for="Gebruiker.Naam" class="form-control" />
                                     <span asp-validation-for="Gebruiker.Naam" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Gebruiker.Trouwdatum" class="col-md-5">Trouwdatum*</label>
+                                <label asp-for="Gebruiker.Trouwdatum" class="col-md-12">Trouwdatum*</label>
                                 <div class="col-md-12">
                                     <input asp-for="Gebruiker.Trouwdatum" type="date" class="form-control" />
                                     <span asp-validation-for="Gebruiker.Trouwdatum" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Gebruiker.Telefoonnummer" class="col-md-5">Telefoonnummer</label>
+                                <label asp-for="Gebruiker.Telefoonnummer" class="col-md-12">Telefoonnummer</label>
                                 <div class="col-md-12">
                                     <input asp-for="Gebruiker.Telefoonnummer" class="form-control" />
                                     <span asp-validation-for="Gebruiker.Telefoonnummer" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Gebruiker.Emailadres" class="col-md-5">Emailadres*</label>
+                                <label asp-for="Gebruiker.Emailadres" class="col-md-12">Emailadres*</label>
                                 <div class="col-md-12">
                                     <input asp-for="Gebruiker.Emailadres" class="form-control emailCheck1" />
                                     <span asp-validation-for="Gebruiker.Emailadres" id="email" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="EmailCheck" class="col-md-6"> Herhaal emailadres*</label>
+                                <label for="EmailCheck" class="col-md-12"> Herhaal emailadres*</label>
                                 <div class="col-md-12">
                                     <input type="email" class="form-control emailCheck2" />
                                 </div>
@@ -167,7 +164,7 @@
                             <input asp-for="Afspraak.Tijd" type="hidden" value="10.41" />
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <input type="submit" id="CheckMail" value="Create" class="btn btn-default" />
+                                    <button class="text-uppercase" type="button" onclick="toggleAfsrpaakmaken('stap3menu', 'stap3left', 'stap3right', 'stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right')"> Naar stap 3 </button>
                                 </div>
                             </div>
                         </div>
@@ -178,6 +175,7 @@
                             Controleer alle gegevens voor je pasafspraak bij Honeymoon shop aan
                             Korte Hoogstraat 4, te Rotterdam
                         </p>
+                        <button class="text-uppercase" type="submit" onclick="toggleAfsrpaakmaken('stap3menu', 'stap3left', 'stap3right', 'stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right')"> AFSPRAAK BEVESTIGEN </button>
                     </div>
                 </div>
                 <div class="right datumselecteren">

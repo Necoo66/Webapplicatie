@@ -126,13 +126,27 @@
         height: 100%;
         background-color: #F0597C;
     }
+
+    .tab label
+    {
+        color:white;
+    }
     
-    a#DatumSelecteren
+    span#DatumSelecteren
     {
         color:white;
         text-decoration: none;
         float:right;
     }
 
+    button#ButtonStap2
+    {
+        background-color: #F0597C;
+        width: 110px;
+        height: 40px;
+        font-family : Nexa Bold;
+        color:white;
+        font-size: 0.9vw;
+    }
 
 

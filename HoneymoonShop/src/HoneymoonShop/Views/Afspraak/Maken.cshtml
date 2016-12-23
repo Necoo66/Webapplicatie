@@ -12,13 +12,15 @@
                 <h1>Trouwjurken</h1>
                 <h2 class="text-uppercase">Maak Je Pasafsrpaak</h2>
             }
-            @if(ViewData["afspraakSoort"].Equals("trouwpak")){
+            @if (ViewData["afspraakSoort"].Equals("trouwpak"))
+            {
                 <h1>Trouwpakken</h1>
                 <h2 class="text-uppercase">Maak Je Pasafsrpaak</h2>
             }
-            @if(ViewData["afspraakSoort"].Equals("afspeld")){
+            @if (ViewData["afspraakSoort"].Equals("afspeld"))
+            {
                 <h1>Afspelden</h1>
-                <h2  class="text-uppercase">Maak Je Afspeldafsrpaak</h2>
+                <h2 class="text-uppercase">Maak Je Afspeldafsrpaak</h2>
             }
         </div>
     </div>
@@ -118,8 +120,12 @@
                             </table>
                             <br>
                             <span>Op alle werkdagen kunnen er ook schoenen worden gepast. Helaas is dit niet mogelijk in het weekend.</span>
+                            <button class="text-uppercase" id="ButtonStap2" type="submit" style="display : none;"> Naar stap 2 </button>
                         </div>
                     </div>
+
+
+
                     <div class="tab" id="stap2left" style="display: none">
                         <h4>Stap 2, Gegevens invullen</h4>
                         <div class="form-horizontal">
@@ -158,7 +164,7 @@
                                 </div>
                             </div>
                             <input asp-for="Afspraak.Datum" type="hidden" value="19-05-2016" />
-                            <input asp-for="Afspraak.Tijd" type="hidden" value="10.41"/>
+                            <input asp-for="Afspraak.Tijd" type="hidden" value="10.41" />
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <input type="submit" id="CheckMail" value="Create" class="btn btn-default" />
@@ -175,12 +181,30 @@
                     </div>
                 </div>
                 <div class="right datumselecteren">
-                    
+
                     <div class="tab" id="stap1right" style="display: block">
-                        <h4><img src="~/images/heart-icon.png" />Selecteer een tijdstip</h4>
-                        
-                        <input type="hidden" id="datepicker" />
-                        <a href="@Url.Action("Stap01b", "Afspraak")" id="DatumSelecteren">Selecteer een tijd <img src="~/images/pijl.png" alt="Alternate Text" /></a>
+                        <h4><img src="~/images/heart-icon.png" />Selecteer een datum:</h4>
+
+                        <div id="datepicker"></div>
+                        <span id="DatumSelecteren" onclick="toggleSelecteerTijd('stap1right', 'stap1bright', 'ButtonStap2')">Selecteer een tijd <img src="~/images/pijl.png" alt="Alternate Text" /></span>
+                    </div>
+
+                    <div class="tab" id="stap1bright" style="display: none">
+                        <h4><img src="~/images/heart-icon.png" />Selecteer een tijdstip:</h4>
+
+                        <span style="display : block" id="radio1" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')">
+                            <input type="radio" name="Tijd" value="" />
+                            <label>09 : 30</label>
+                        </span>
+                        <span style="display : block" id="radio2" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')">
+                            <input type="radio" name="Tijd" value="" />
+                            <label>12 : 30</label>
+                        </span>
+                        <span style="display : block" id="radio3" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')" >
+                            <input type="radio" name="Tijd" value="" />
+                            <label>15 : 00</label>
+                        </span>
+                        <span id="DatumSelecteren" onclick="toggleSelecteerTijd('stap1right', 'stap1bright', 'ButtonStap2')"><img src="~/images/pijllinks.png" alt="Alternate Text" />Terug naar datum selecteren </span>
                     </div>
 
                     <div class="tab" id="stap2right" style="display: none">

@@ -1,6 +1,6 @@
 ﻿/*DATEPICKER*/
 var disableddates = new Array;
-
+var selected;
 var date = new Date();
 window.onload = getAvalibleDates(date.getMonth() + 1, date.getFullYear());
 
@@ -16,7 +16,7 @@ $('#datepicker')
         onSelect: function (dateText, inst) {
             var date = $(this).datepicker('getDate');
             selected = $(this).val();
-            getAvalibleTimes($(this).val());
+            //getAvalibleTimes();
         },
         onChangeMonthYear: function (year, month, widget) {
             getAvalibleDates(month, year);
@@ -52,20 +52,35 @@ function toDate(sqlDate) {
 
 function stringDateToJason(select) {
     var from = ("" + select).split('-');
-    //return "'{ day : " + from[0] + " , month : " + from[1] + " , year : " + from[2] + " }'";
     return jQuery.parseJSON('{ "day": "' + from[0] + '" , "month": "' + from[1] + '" , "year": "' + from[2] + '" }');
 }
 
-function getAvalibleTimes(select) {
+function getAvalibleTimes() {
     $.ajax({
         type: "POST",
         url: "/Afspraak/GetTakenTimes",
-        data: stringDateToJason(select),
+        data: stringDateToJason(selected),
         success: successTijd
     });
 }
 
 function successTijd(sqlDates) {
+
+    document.getElementById("radio1").style.display = "block";
+    document.getElementById("radio2").style.display = "block";
+    document.getElementById("radio3").style.display = "block";
+
+    for (var i = 0; i < sqlDates.length; i++) {
+        if ("" + sqlDates[i] === "9:30") {
+            document.getElementById("radio1").style.display = "none";
+        } 
+        if ("" + sqlDates[i] === "12:30") {
+            document.getElementById("radio2").style.display = "none";
+        } 
+        if ("" + sqlDates[i] === "15:00") {
+            document.getElementById("radio3").style.display = "none";
+        } 
+    }
     console.log("sqlDates of data:", sqlDates.slice(0, 100));
 }
 
@@ -88,19 +103,18 @@ function toggleSelecteerTijd(id1, id2, id3)
     var e2 = document.getElementById(id2);
     var e3 = document.getElementById(id3);
 
-    if(e1.style.display === "block")
-    {
-        e1.style.display = "none"
-        e2.style.display = "block"
-        e3.style.display = "block"
-        
+    if(e1.style.display === "block") {
+        e1.style.display = "none";
+        e2.style.display = "block";
+        e3.style.display = "block";
+
     }
     else {
-        e1.style.display = "block"
-        e2.style.display = "none"
-        e3.style.display = "none"
+        e1.style.display = "block";
+        e2.style.display = "none";
+        e3.style.display = "none";
     }
-
+    getAvalibleTimes();
 }
 
 function toggleSelecteerTijdstip(id1, id2, id3)

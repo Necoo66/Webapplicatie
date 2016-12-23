@@ -127,35 +127,35 @@
                         <h4>Stap 2, Gegevens invullen</h4>
                         <div class="form-horizontal">
                             <div class="form-group">
-                                <label asp-for="Gebruiker.Naam" class="col-md-5">Voor- achternaam*</label>
+                                <label asp-for="Gebruiker.Naam" class="col-md-12">Voor- achternaam*</label>
                                 <div class="col-md-12">
                                     <input asp-for="Gebruiker.Naam" class="form-control" />
                                     <span asp-validation-for="Gebruiker.Naam" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Gebruiker.Trouwdatum" class="col-md-5">Trouwdatum*</label>
+                                <label asp-for="Gebruiker.Trouwdatum" class="col-md-12">Trouwdatum*</label>
                                 <div class="col-md-12">
                                     <input asp-for="Gebruiker.Trouwdatum" type="date" class="form-control" />
                                     <span asp-validation-for="Gebruiker.Trouwdatum" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Gebruiker.Telefoonnummer" class="col-md-5">Telefoonnummer</label>
+                                <label asp-for="Gebruiker.Telefoonnummer" class="col-md-12">Telefoonnummer</label>
                                 <div class="col-md-12">
                                     <input asp-for="Gebruiker.Telefoonnummer" class="form-control" />
                                     <span asp-validation-for="Gebruiker.Telefoonnummer" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Gebruiker.Emailadres" class="col-md-5">Emailadres*</label>
+                                <label asp-for="Gebruiker.Emailadres" class="col-md-12">Emailadres*</label>
                                 <div class="col-md-12">
                                     <input asp-for="Gebruiker.Emailadres" class="form-control emailCheck1" />
                                     <span asp-validation-for="Gebruiker.Emailadres" id="email" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="EmailCheck" class="col-md-6"> Herhaal emailadres*</label>
+                                <label for="EmailCheck" class="col-md-12"> Herhaal emailadres*</label>
                                 <div class="col-md-12">
                                     <input type="email" class="form-control emailCheck2" />
                                 </div>
@@ -164,7 +164,7 @@
                             <input asp-for="Afspraak.Tijd" type="hidden" value="10.41" />
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <button class="text-uppercase" id="ButtonStap3" type="button" onclick="toggleAfsrpaakmaken('stap3menu', 'stap3left', 'stap3right', 'stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right')"> Naar stap 3 </button>
+                                    <button class="text-uppercase" type="button" onclick="toggleAfsrpaakmaken('stap3menu', 'stap3left', 'stap3right', 'stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right')"> Naar stap 3 </button>
                                 </div>
                             </div>
                         </div>
@@ -175,6 +175,7 @@
                             Controleer alle gegevens voor je pasafspraak bij Honeymoon shop aan
                             Korte Hoogstraat 4, te Rotterdam
                         </p>
+                        <button class="text-uppercase" type="submit" onclick="toggleAfsrpaakmaken('stap3menu', 'stap3left', 'stap3right', 'stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right')"> AFSPRAAK BEVESTIGEN </button>
                     </div>
                 </div>
                 <div class="right datumselecteren">
@@ -190,15 +191,15 @@
                         <h4><img src="~/images/heart-icon.png" />Selecteer een tijdstip:</h4>
 
                         <span style="display : block" id="radio1" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')">
-                            <input type="radio" name="Tijd" value="" />
+                            <input type="radio" name="Tijd" value="9:30" />
                             <label>09 : 30</label>
                         </span>
                         <span style="display : block" id="radio2" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')">
-                            <input type="radio" name="Tijd" value="" />
+                            <input type="radio" name="Tijd" value="12:30" />
                             <label>12 : 30</label>
                         </span>
                         <span style="display : block" id="radio3" onclick="toggleSelecteerTijdstip('radio1', 'radio2', 'radio3')" >
-                            <input type="radio" name="Tijd" value="" />
+                            <input type="radio" name="Tijd" value="15:00" />
                             <label>15 : 00</label>
                         </span>
                         <span id="DatumSelecteren" onclick="toggleSelecteerTijd('stap1right', 'stap1bright', 'ButtonStap2')"><img src="~/images/pijllinks.png" alt="Alternate Text" />Terug naar datum selecteren </span>

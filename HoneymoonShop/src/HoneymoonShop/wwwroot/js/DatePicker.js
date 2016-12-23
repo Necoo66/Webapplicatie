@@ -17,6 +17,7 @@ $('#datepicker')
             var date = $(this).datepicker('getDate');
             selected = $(this).val();
             //getAvalibleTimes();
+            $("#Afspraak_Datum").val(jQuery.datepicker.formatDate('dd-mm-yy', date));
         },
         onChangeMonthYear: function (year, month, widget) {
             getAvalibleDates(month, year);
@@ -122,6 +123,10 @@ function toggleSelecteerTijdstip(id1, id2, id3)
     var e1 = document.getElementById(id1);
     var e2 = document.getElementById(id2);
     var e3 = document.getElementById(id3);
-
-
 }
+
+/*radiobuttons voor tijd*/
+$("input[name='Tijd']").change(function () {
+    var tijd = $(this).val();
+    $("#Afspraak_Tijd").val(tijd);
+});

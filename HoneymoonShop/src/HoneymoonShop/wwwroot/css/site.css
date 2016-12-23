@@ -438,3 +438,16 @@ footer a {
         width: 70%;
     }
 }
+
+/*Breadcrumb*/
+.breadcrumb{
+    background-color:transparent;
+}
+.breadcrumb > li + li:before {
+    content: "\003e";
+}
+
+.breadcrumb > li a{
+    color:#F0597C;
+    text-decoration:underline;
+}

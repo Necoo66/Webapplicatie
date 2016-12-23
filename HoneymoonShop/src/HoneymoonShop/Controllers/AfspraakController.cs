@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HoneymoonShop.Models.GebruikerModels;
 using System;
+using System.Collections.Generic;
 
 namespace HoneymoonShop.Controllers
 {
@@ -98,7 +99,7 @@ namespace HoneymoonShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Maken([Bind("Afspraak,Gebruiker")] AfspraakMaken afspraakMaken)
         {
-           
+
             if (ModelState.IsValid)
             {
                 afspraakMaken.Afspraak.Gebruiker = afspraakMaken.Gebruiker;
@@ -199,7 +200,18 @@ namespace HoneymoonShop.Controllers
 
         public DateTime[] GetAvalibleDates(int month, int year)
         {
-            return _context.Afspraak.Select(x => x.Datum.Date).Where(x => x.Month == month && x.Year == year).ToArray();
+            return _context.Afspraak
+                .Select(x => x.Datum.Date)
+                .Where(x => x.Month == month && x.Year == year)
+                .GroupBy(x => x)
+                .Where(g => g.Count() > 2)
+                .Select(g => g.Key)
+                .ToArray();
+        }
+
+        public String[] GetTakenTimes(int day, int month, int year)
+        {
+            return _context.Afspraak.Where(x => x.Datum.Day == day && x.Datum.Month == month && x.Datum.Year == year).Select(x => x.Tijd).ToArray();
         }
 
         public IActionResult Voltooid()

@@ -10,10 +10,11 @@
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/elements.css" />
         <link rel="stylesheet" href="~/css/font.css" />
-        <link rel="stylesheet" href="~/css/AfspraakMaken.css" />
         <link rel="stylesheet" href="~/css/afspraak.css" />
+        <link rel="stylesheet" href="~/css/AfspraakMaken.css" />
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="~/css/datepicker.css" />
+        
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -180,10 +181,8 @@
                     asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
             </script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-            <script src="~/js/DatePicker.min.js" asp-append-version="true"></script>
             <script src="~/js/site.min.js" asp-append-version="true"></script>
         </environment>
-
 
         @RenderSection("scripts", required: false)
     </div>

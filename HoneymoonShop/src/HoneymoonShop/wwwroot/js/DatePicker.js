@@ -70,3 +70,44 @@ function successTijd(sqlDates) {
 }
 
 
+
+/*TOGGLE*/
+function toggleVisibility(id) {
+    var e = document.getElementById(id);
+    if (e.style.display === "none") {
+        e.style.display = "none";
+    } else {
+        e.style.display = "block";
+    }
+}
+
+function toggleSelecteerTijd(id1, id2, id3)
+{
+   // alert("message alert");
+    var e1 = document.getElementById(id1);
+    var e2 = document.getElementById(id2);
+    var e3 = document.getElementById(id3);
+
+    if(e1.style.display === "block")
+    {
+        e1.style.display = "none"
+        e2.style.display = "block"
+        e3.style.display = "block"
+        
+    }
+    else {
+        e1.style.display = "block"
+        e2.style.display = "none"
+        e3.style.display = "none"
+    }
+
+}
+
+function toggleSelecteerTijdstip(id1, id2, id3)
+{
+    var e1 = document.getElementById(id1);
+    var e2 = document.getElementById(id2);
+    var e3 = document.getElementById(id3);
+
+
+}

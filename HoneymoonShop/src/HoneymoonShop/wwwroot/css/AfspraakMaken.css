@@ -1,27 +1,26 @@
 ﻿body {
 }
 
-.datumentijdselecteren table{
-    width:auto;
-}
-.datumentijdselecteren table tr td {
-    list-style: none;
-    font-family: Nexa Bold!important;
-   
+.datumentijdselecteren table {
+    width: auto;
 }
 
-.datumentijdselecteren table tr td:first-child {
-    padding-right : 15px;
-   
-}
+    .datumentijdselecteren table tr td {
+        list-style: none;
+        font-family: Nexa Bold !important;
+    }
 
-.datumentijdselecteren table tr td:last-child {
-    font-family : Nexa Light;
-    font-weight:lighter;
-}
+        .datumentijdselecteren table tr td:first-child {
+            padding-right: 15px;
+        }
 
-.datumentijdselecteren > span{
-    font-family : Nexa Light;
+        .datumentijdselecteren table tr td:last-child {
+            font-family: Nexa Light;
+            font-weight: lighter;
+        }
+
+.datumentijdselecteren > span {
+    font-family: Nexa Light;
     font-size: 13px;
 }
 
@@ -40,116 +39,111 @@
         float: left;
     }
 
-    .afspraakmaken .tab {
-        width: 100%;
-        height: 100%;
-        padding: 30px 10%;
-    }
+.afspraakmaken .tab {
+    width: 100%;
+    height: 100%;
+    padding: 30px 10%;
+}
 
-    .afspraakmaken .tab a img{
-        /*width:100px;
-        height:25px;*/
-    }
+.afspraakmaken .tab a img {
+    /*width:100px;
+height:25px;*/
+}
 
-    .afspraakmaken img {
-        padding-right: 10px;
-    }
+.afspraakmaken img {
+    padding-right: 10px;
+}
 
-    .afspraakmaken form {
-        height: 100%;
-    }
+.afspraakmaken form {
+    height: 100%;
+}
 
-    .afspraakmaken .menu {
-        width: 15%;
-        margin: 0;
-        height: 100%;
-    }
+.afspraakmaken .menu {
+    width: 15%;
+    margin: 0;
+    height: 100%;
+}
 
-        .afspraakmaken .menu ul {
-            padding: 0 20%;
-            float: left;
-            width: 100%;
-            font-family: Nexa Book;
-            font-weight: bold;
-        }
+.afspraakmaken .menu ul {
+    padding: 0 20%;
+    float: left;
+    width: 100%;
+    font-family: Nexa Book;
+    font-weight: bold;
+}
 
-            .afspraakmaken .menu ul li {
-                text-align: center;
-                float: left;
-                width: 100%;
-            }
+.afspraakmaken .menu ul li {
+    text-align: center;
+    float: left;
+    width: 100%;
+}
 
-                /*.afspraakmaken .menu ul li span {
-                    color: #F0597C;
-                }*/
+.afspraakmaken .menu ul li button {
+    width: 35px;
+    height: 35px;
+    margin: 5px;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    background-color: #F0597C;
+    -ms-border-radius: 50%;
+    border: 0;
+    border-radius: 50%;
+}
 
-                .afspraakmaken .menu ul li button {
-                    width: 35px;
-                    height: 35px;
-                    margin: 5px;
-                    color: white;
-                    font-size: 15px;
-                    text-align: center;
-                    background-color: #F0597C;
-                    -ms-border-radius: 50%;
-                    border: 0;
-                    border-radius: 50%;
-                }
-
-        .afspraakmaken .menu .gray {
-            width: 100%;
-            color: gainsboro;
-        }
+.afspraakmaken .menu .gray {
+    width: 100%;
+    color: gainsboro;
+}
 
 
-            .afspraakmaken .menu .gray ul li button {
-                background-color: gainsboro;
-            }
+.afspraakmaken .menu .gray ul li button {
+    background-color: gainsboro;
+}
 
-        .afspraakmaken .menu .lightcoral {
-            width: 100%;
-            color: #FAC9C4;
-        }
+.afspraakmaken .menu .lightcoral {
+    width: 100%;
+    color: #FAC9C4;
+}
 
-            .afspraakmaken .menu .lightcoral ul li button {
-                background-color: #FAC9C4;
-            }
+.afspraakmaken .menu .lightcoral ul li button {
+    background-color: #FAC9C4;
+}
 
 
-    .afspraakmaken .left {
-        width: 40%;
-        height: 100%;
-    }
+.afspraakmaken .left {
+    width: 40%;
+    height: 100%;
+}
 
-    .afspraakmaken .right {
-        color: white;
-        width: 45%;
-        height: 100%;
-        background-color: #F0597C;
-    }
+.afspraakmaken .right {
+    color: white;
+    width: 45%;
+    height: 100%;
+    background-color: #F0597C;
+}
 
 .form-group {
     margin-bottom: 5px;
 }
-    
-    span#DatumSelecteren
-    {
-        color:white;
-        text-decoration: none;
-        float:right;
-    }
 
-    .left .tab  button
-    {
-        background-color: #F0597C;
-        border: 0px;
-        width: auto;
-        margin: 20px 0;
-        padding: 15px;
-        font-family : Nexa Bold;
-        color:white;
-        font-size: 13px;
-    }
+span#DatumSelecteren {
+    color: white;
+    text-decoration: none;
+    float: right;
+}
 
+.left .tab button {
+    background-color: #F0597C;
+    border: 0px;
+    width: auto;
+    margin: 20px 0;
+    padding: 15px;
+    font-family: Nexa Bold;
+    color: white;
+    font-size: 13px;
+}
 
-
+#backgroundLichtRoze{
+    background-color:RGB(242, 115, 114);
+}

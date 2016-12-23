@@ -163,7 +163,6 @@
                             <input asp-for="Afspraak.Datum" type="hidden" value="19-05-2016" />
                             <input asp-for="Afspraak.Tijd" type="hidden" value="10.41" />
                             <input asp-for="Afspraak.AfspraakSoort" type="hidden" value="@ViewData["afspraakSoort"]" />
-                            
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <button class="text-uppercase" id="ButtonStap3" type="button" onclick="toggleAfsrpaakmaken('stap3menu', 'stap3left', 'stap3right', 'stap1menu', 'stap1left', 'stap1right', 'stap2menu', 'stap2left', 'stap2right')"> Naar stap 3 </button>
@@ -216,11 +215,20 @@
 
                     <div class="tab" id="stap3right" style="display: none">
                         <h4><img src="~/images/heart-icon.png" />Controleer je gegevens</h4>
-                        <div class="backgroundLichtRoze"> <span id="datumEntijdOverzicht" class="backgroundLichtRoze text-center text-capitalize"></span> </div>
-                        <div> <span id="NaamOverzicht" class="text-center"></span> </div>
-                        <div> <span id="TrouwdatumOverzicht" class="text-left"></span> </div>
-                        <div> <span id="TelefoonOverzicht" class="text-left"></span> </div>
-                        <div> <span id="EmailOverzicht" class="text-left"></span> </div>
+                        <div id="GegevensOverzicht" class="row">
+                            <div class="col-md-12">
+                                <div class="backgroundLichtRoze"> 
+                                    <h4 id="datumEntijdOverzicht" class="backgroundLichtRoze text-center text-capitalize"></h4>
+                                </div>
+                            
+                            </div>
+                            
+                            <div> <span id="NaamOverzicht" class="text-center"></span> </div>
+                            <div> <span id="TrouwdatumOverzicht" class="text-left"></span> </div>
+                            <div> <span id="TelefoonOverzicht" class="text-left"></span> </div>
+                            <div> <span id="EmailOverzicht" class="text-left"></span> </div>
+                        </div>
+                        
 
                     </div>
 

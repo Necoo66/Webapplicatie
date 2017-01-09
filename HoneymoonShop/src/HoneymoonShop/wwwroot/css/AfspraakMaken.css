@@ -89,41 +89,37 @@
             width: 100%;
         }
 
-            /*.afspraakmaken .menu ul li span {
-                    color: #F0597C;
-                }*/
+.afspraakmaken .menu ul li button {
+    width: 35px;
+    height: 35px;
+    margin: 5px;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    background-color: #F0597C;
+    -ms-border-radius: 50%;
+    border: 0;
+    border-radius: 50%;
+}
 
-            .afspraakmaken .menu ul li button {
-                width: 35px;
-                height: 35px;
-                margin: 5px;
-                color: white;
-                font-size: 22px;
-                text-align: center;
-                background-color: #F0597C;
-                -ms-border-radius: 50%;
-                border: 0;
-                border-radius: 50%;
-            }
-
-    .afspraakmaken .menu .gray {
-        width: 100%;
-        color: gainsboro;
-    }
+.afspraakmaken .menu .gray {
+    width: 100%;
+    color: gainsboro;
+}
 
 
-        .afspraakmaken .menu .gray ul li button {
-            background-color: gainsboro;
-        }
+.afspraakmaken .menu .gray ul li button {
+    background-color: gainsboro;
+}
 
-    .afspraakmaken .menu .lightcoral {
-        width: 100%;
-        color: #FAC9C4;
-    }
+.afspraakmaken .menu .lightcoral {
+    width: 100%;
+    color: #FAC9C4;
+}
 
-        .afspraakmaken .menu .lightcoral ul li button {
-            background-color: #FAC9C4;
-        }
+.afspraakmaken .menu .lightcoral ul li button {
+    background-color: #FAC9C4;
+}
 
 
 .afspraakmaken .left {
@@ -181,4 +177,18 @@ span#DatumSelecteren label {
 
 #rightarrow {
     margin-left: 50px;
+}
+   #leftarrow
+    {
+       margin-right:50px;
+    }
+   
+   #rightarrow{
+       margin-left:50px;
+   }
+
+
+
+#backgroundLichtRoze{
+    background-color:RGB(242, 115, 114);
 }

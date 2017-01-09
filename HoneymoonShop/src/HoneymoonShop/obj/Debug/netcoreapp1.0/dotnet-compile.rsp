@@ -245,6 +245,8 @@ C:\Users\wytze\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\M
 C:\Users\wytze\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\Migrations\20161220104903_Update.Designer.cs
 C:\Users\wytze\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\Migrations\20161221103858_afspraakSoort.cs
 C:\Users\wytze\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\Migrations\20161221103858_afspraakSoort.Designer.cs
+C:\Users\wytze\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\Migrations\20161227183849_GebruikerAfsrpaakUpdate.cs
+C:\Users\wytze\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\Migrations\20161227183849_GebruikerAfsrpaakUpdate.Designer.cs
 C:\Users\wytze\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Data\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\wytze\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Models\ApplicationUser.cs
 C:\Users\wytze\Source\Repos\Webapplicatie\HoneymoonShop\src\HoneymoonShop\Models\Mail.cs

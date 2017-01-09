@@ -67,19 +67,19 @@ function getAvalibleTimes() {
 
 function successTijd(sqlDates) {
 
-    document.getElementById("radio1").style.display = "block";
-    document.getElementById("radio2").style.display = "block";
-    document.getElementById("radio3").style.display = "block";
+    document.getElementById("radio1").style.visibility = "visible";
+    document.getElementById("radio2").style.visibility = "visible";
+    document.getElementById("radio3").style.visibility = "visible";
 
     for (var i = 0; i < sqlDates.length; i++) {
         if ("" + sqlDates[i] === "9:30") {
-            document.getElementById("radio1").style.display = "none";
+            document.getElementById("radio1").style.visibility = "hidden";
         } 
         if ("" + sqlDates[i] === "12:30") {
-            document.getElementById("radio2").style.display = "none";
+            document.getElementById("radio2").style.visibility = "hidden";
         } 
         if ("" + sqlDates[i] === "15:00") {
-            document.getElementById("radio3").style.display = "none";
+            document.getElementById("radio3").style.visibility = "hidden";
         } 
     }
     console.log("sqlDates of data:", sqlDates.slice(0, 100));
@@ -97,9 +97,20 @@ function toggleVisibility(id) {
     }
 }
 
+function ToggelPages(id1, id2, id3) {
+    if (id1 === "stap1") {
+        $('div[id="stap1a"]').css("display", "block");
+    } else {
+        $('div[id="stap1a"]').css("display", "none");
+    }
+    $('div[id="'+id1+'"]').css("display", "block");
+    $('div[id="'+id2+'"]').css("display", "none");
+    $('div[id="' + id3 + '"]').css("display", "none");
+    $('div[id="stap1b"]').css("display", "none");
+}
+
 function toggleSelecteerTijd(id1, id2, id3)
 {
-   // alert("message alert");
     var e1 = document.getElementById(id1);
     var e2 = document.getElementById(id2);
     var e3 = document.getElementById(id3);
@@ -130,3 +141,4 @@ $("input[name='Tijd']").change(function () {
     var tijd = $(this).val();
     $("#Afspraak_Tijd").val(tijd);
 });
+

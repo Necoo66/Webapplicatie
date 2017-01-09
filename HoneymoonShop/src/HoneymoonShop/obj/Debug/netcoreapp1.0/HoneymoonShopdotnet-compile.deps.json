@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0/",
-    "signature": "530b0d2496b0b3da8b156750a52ff44fcc785cbd"
+    "signature": "a6b07f8de3c08a1e9defbecd61b10c5328165b4a"
   },
   "compilationOptions": {
     "defines": [
@@ -36,12 +36,14 @@
           "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
           "System.Runtime": "4.3.0",
-          "MailKit": "1.10.1"
+          "MailKit": "1.10.1",
+          "Microsoft.jQuery.Unobtrusive.Ajax": "3.2.3"
         },
         "compile": {
           "HoneymoonShop.dll": {}
         }
       },
+      "jQuery/1.8.0": {},
       "Libuv/1.9.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -1137,6 +1139,11 @@
         },
         "compile": {
           "lib/netstandard1.0/Microsoft.Extensions.WebEncoders.dll": {}
+        }
+      },
+      "Microsoft.jQuery.Unobtrusive.Ajax/3.2.3": {
+        "dependencies": {
+          "jQuery": "1.8.0"
         }
       },
       "Microsoft.Net.Http.Headers/1.0.0": {
@@ -2942,12 +2949,14 @@
           "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
           "System.Runtime": "4.3.0",
-          "MailKit": "1.10.1"
+          "MailKit": "1.10.1",
+          "Microsoft.jQuery.Unobtrusive.Ajax": "3.2.3"
         },
         "runtime": {
           "HoneymoonShop.dll": {}
         }
       },
+      "jQuery/1.8.0": {},
       "Libuv/1.9.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -4046,6 +4055,11 @@
         },
         "runtime": {
           "lib/netstandard1.0/Microsoft.Extensions.WebEncoders.dll": {}
+        }
+      },
+      "Microsoft.jQuery.Unobtrusive.Ajax/3.2.3": {
+        "dependencies": {
+          "jQuery": "1.8.0"
         }
       },
       "Microsoft.Net.Http.Headers/1.0.0": {
@@ -5733,6 +5747,11 @@
       "serviceable": false,
       "sha512": ""
     },
+    "jQuery/1.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-laDFQRJrIRHT0Z0GVYklMt3bE0iu0MZFJwHwg21kt3SHb7Bj8TdNiM3K+ZdK1DzB8ZxKy8z7NkJvwMas+dmHBw=="
+    },
     "Libuv/1.9.0": {
       "type": "package",
       "serviceable": true,
@@ -6157,6 +6176,11 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-NSSIBREmHHiyoAFXV2LMA+a6RMZtTHxgUbHJGHRtnjmTKnRyticx5HAzNpy8VG9+HCCHenL9QD7zSA8jjgAi5A=="
+    },
+    "Microsoft.jQuery.Unobtrusive.Ajax/3.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bp8G1m66xaNE9RLm58qk7eXNDlH/yUBc/Dt8dMof/t0hBN3JpUQpPF7pavEVAauPCmcvM90pTrATG8nXbCi9yw=="
     },
     "Microsoft.Net.Http.Headers/1.0.0": {
       "type": "package",

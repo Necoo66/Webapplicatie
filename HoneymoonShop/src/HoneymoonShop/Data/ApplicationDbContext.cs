@@ -20,8 +20,8 @@ namespace HoneymoonShop.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<Afspraak> Afspraak { get; set; }
-
         public DbSet<Gebruiker> Gebruiker { get; set; }
+
+        public DbSet<Afspraak> Afspraak { get; set; }
     }
 }

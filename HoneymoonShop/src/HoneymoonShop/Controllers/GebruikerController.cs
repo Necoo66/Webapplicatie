@@ -1,8 +1,11 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HoneymoonShop.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using HoneymoonShop.Data;
 using HoneymoonShop.Models.GebruikerModels;
 
 namespace HoneymoonShop.Controllers
@@ -16,13 +19,13 @@ namespace HoneymoonShop.Controllers
             _context = context;    
         }
 
-        // GET: Gebruikers
+        // GET: Gebruiker
         public async Task<IActionResult> Index()
         {
             return View(await _context.Gebruiker.ToListAsync());
         }
 
-        // GET: Gebruikers/Details/5
+        // GET: Gebruiker/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,18 +42,18 @@ namespace HoneymoonShop.Controllers
             return View(gebruiker);
         }
 
-        // GET: Gebruikers/Create
+        // GET: Gebruiker/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Gebruikers/Create
+        // POST: Gebruiker/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Emailadres,Naam,Telefoonnummer,Trouwdatum")] Gebruiker gebruiker)
+        public async Task<IActionResult> Create([Bind("Id,Email,Nieuwsbrief,Telefoonnummer,Trouwdatum,VoornaamAchternaam")] Gebruiker gebruiker)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +64,7 @@ namespace HoneymoonShop.Controllers
             return View(gebruiker);
         }
 
-        // GET: Gebruikers/Edit/5
+        // GET: Gebruiker/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,12 +80,12 @@ namespace HoneymoonShop.Controllers
             return View(gebruiker);
         }
 
-        // POST: Gebruikers/Edit/5
+        // POST: Gebruiker/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Emailadres,Naam,Telefoonnummer,Trouwdatum")] Gebruiker gebruiker)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Email,Nieuwsbrief,Telefoonnummer,Trouwdatum,VoornaamAchternaam")] Gebruiker gebruiker)
         {
             if (id != gebruiker.Id)
             {
@@ -112,7 +115,7 @@ namespace HoneymoonShop.Controllers
             return View(gebruiker);
         }
 
-        // GET: Gebruikers/Delete/5
+        // GET: Gebruiker/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,7 +132,7 @@ namespace HoneymoonShop.Controllers
             return View(gebruiker);
         }
 
-        // POST: Gebruikers/Delete/5
+        // POST: Gebruiker/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

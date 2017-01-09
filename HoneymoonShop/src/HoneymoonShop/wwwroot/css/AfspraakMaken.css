@@ -126,12 +126,13 @@ height:25px;*/
 .form-group {
     margin-bottom: 5px;
 }
-
-span#DatumSelecteren {
-    color: white;
-    text-decoration: none;
-    float: right;
-}
+    
+    span#DatumSelecteren label
+    {
+        color:white;
+        text-decoration: none;
+        float:right;
+    }
 
 .left .tab button {
     background-color: #F0597C;
@@ -143,6 +144,36 @@ span#DatumSelecteren {
     color: white;
     font-size: 13px;
 }
+
+    .right label
+    {
+        color:white!important;
+    }
+
+    .datumbanner{
+        background-color:#ff7494 ;
+        padding-left:35px;
+        padding-right:35px;
+        padding-bottom:10px;
+        padding-top:10px;
+
+    }
+
+    #datum{
+            text-transform: uppercase;
+    font-family: Nexa Bold;
+    }
+
+   #leftarrow
+    {
+       margin-right:50px;
+    }
+   
+   #rightarrow{
+       margin-left:50px;
+   }
+
+
 
 #backgroundLichtRoze{
     background-color:RGB(242, 115, 114);

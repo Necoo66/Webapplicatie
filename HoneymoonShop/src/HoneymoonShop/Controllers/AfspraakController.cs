@@ -87,9 +87,10 @@ namespace HoneymoonShop.Controllers
                     ViewData["afspraakSoort"] = "trouwjurk";
                     break;
             }
+            var afsrpaakMaken = new AfspraakMaken();
+            afsrpaakMaken.Afspraak.AfspraakSoort = afspraakSoort;
 
-
-            return View();
+            return View(afsrpaakMaken);
         }
 
         // POST: Afspraak/Create

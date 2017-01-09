@@ -11,14 +11,13 @@ namespace HoneymoonShop.Models.GebruikerModels
         [DisplayFormat(DataFormatString = "{0:dd - MM - yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Datum { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:hh : mm}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0: hh : mm}", ApplyFormatInEditMode = true)]
         public string Tijd { get; set; }
-        
-        public string AfspraakSoort { get; set; }
+
+        public SoortAfspraak AfspraakSoort { get; set; }
 
         public virtual Gebruiker Gebruiker { get; set; }
-        
     }
 
-    
+    public enum SoortAfspraak { Trouwjurken, Trouwpakken, Afspeldafspraak }
 }

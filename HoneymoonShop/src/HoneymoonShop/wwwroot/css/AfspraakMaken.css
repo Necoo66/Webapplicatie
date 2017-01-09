@@ -31,52 +31,63 @@
 .afspraakmaken {
     margin: 0 auto 150px;
     width: 95%;
-    height: 500px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.10);
 }
 
-    .afspraakmaken div {
-        float: left;
+    .afspraakmaken .tab {
+        padding: 30px 8%;
+        height: 100%;
+        width: 100%;
     }
 
-.afspraakmaken .tab {
-    width: 100%;
-    height: 100%;
-    padding: 30px 10%;
-}
+    .afspraakmaken input[type="radio"], .afspraakmaken input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        vertical-align: middle;
+    }
 
-.afspraakmaken .tab a img {
-    /*width:100px;
-height:25px;*/
-}
+    .afspraakmaken label, .afspraakmaken label {
+        height: 20px;
+    }
+
+        .afspraakmaken input[type="radio"]:before, .afspraakmaken input[type="checkbox"]:before {
+        }
+
+        .afspraakmaken input[type="radio"]:focus, .afspraakmaken input[type="checkbox"]:focus {
+            background: #f0597c;
+            box-shadow: none !important;
+        }
+
+        .afspraakmaken input[type="radio"]:checked, .afspraakmaken input[type="checkbox"]:checked {
+            background: #f0597c;
+            box-shadow: none !important;
+        }
+
 
 .afspraakmaken img {
     padding-right: 10px;
 }
 
-.afspraakmaken form {
-    height: 100%;
-}
-
 .afspraakmaken .menu {
     width: 15%;
-    margin: 0;
-    height: 100%;
+    margin-bottom: 40px;
 }
 
-.afspraakmaken .menu ul {
-    padding: 0 20%;
-    float: left;
-    width: 100%;
-    font-family: Nexa Book;
-    font-weight: bold;
-}
+    .afspraakmaken .menu ul {
+        padding: 0 20%;
+        float: left;
+        width: 100%;
+        font-family: Nexa Book;
+        font-weight: bold;
+    }
 
-.afspraakmaken .menu ul li {
-    text-align: center;
-    float: left;
-    width: 100%;
-}
+        .afspraakmaken .menu ul li {
+            text-align: center;
+            float: left;
+            width: 100%;
+        }
 
 .afspraakmaken .menu ul li button {
     width: 35px;
@@ -113,57 +124,60 @@ height:25px;*/
 
 .afspraakmaken .left {
     width: 40%;
-    height: 100%;
 }
 
 .afspraakmaken .right {
     color: white;
     width: 45%;
-    height: 100%;
     background-color: #F0597C;
 }
 
-.form-group {
+.afspraakmaken .form-group {
     margin-bottom: 5px;
+    width: 100%;
 }
-    
-    span#DatumSelecteren label
-    {
-        color:white;
-        text-decoration: none;
-        float:right;
-    }
+
+span#DatumSelecteren label {
+    color: white;
+    text-decoration: none;
+    float: right;
+}
 
 .left .tab button {
     background-color: #F0597C;
     border: 0px;
     width: auto;
-    margin: 20px 0;
+    margin-top: 20px;
     padding: 15px;
     font-family: Nexa Bold;
     color: white;
     font-size: 13px;
 }
 
-    .right label
-    {
-        color:white!important;
-    }
+.right label {
+    color: white !important;
+}
 
-    .datumbanner{
-        background-color:#ff7494 ;
-        padding-left:35px;
-        padding-right:35px;
-        padding-bottom:10px;
-        padding-top:10px;
+.datumbanner {
+    background-color: #ff7494;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
 
-    }
-
-    #datum{
-            text-transform: uppercase;
+#datum {
+    text-transform: uppercase;
     font-family: Nexa Bold;
-    }
+}
 
+#leftarrow {
+    margin-right: 50px;
+}
+
+#rightarrow {
+    margin-left: 50px;
+}
    #leftarrow
     {
        margin-right:50px;

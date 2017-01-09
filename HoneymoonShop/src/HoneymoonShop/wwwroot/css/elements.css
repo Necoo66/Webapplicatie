@@ -61,8 +61,22 @@ label {
 input {
     -ms-border-radius: 0 !important;
     border-radius: 0 !important;
-    border: 1.5px solid #d3d3d3 !important;
+    border: 2px solid #d3d3d3 !important;
+    max-width: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
+
+    input:focus {
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3) !important;
+        border: 2px solid #d3d3d3 !important;
+        -webkit-transform: scale(1.05); /* Safari and Chrome */
+        -moz-transform: scale(1.05); /* Firefox */
+        -ms-transform: scale(1.05); /* IE 9 */
+        -o-transform: scale(1.05); /* Opera */
+        transform: scale(1.05);
+        -webkit-transition: transform 0.5s ease-in-out;
+    }
 
 .title {
     text-align: center;

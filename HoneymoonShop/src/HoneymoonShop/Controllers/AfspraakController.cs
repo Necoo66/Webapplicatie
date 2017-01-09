@@ -1,11 +1,13 @@
-using System.Linq;
-using System.Threading.Tasks;
-using HoneymoonShop.Data;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using HoneymoonShop.Models.GebruikerModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using HoneymoonShop.Data;
+using HoneymoonShop.Models.GebruikerModels;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace HoneymoonShop.Controllers
 {
@@ -19,9 +21,9 @@ namespace HoneymoonShop.Controllers
         }
 
         // GET: Afspraak
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Afspraak.ToListAsync());
+            return View();
         }
 
         // GET: Afspraak
@@ -70,27 +72,9 @@ namespace HoneymoonShop.Controllers
         }
 
         // GET: Afspraak/Maken
-        public IActionResult Maken(string afspraakSoort)
+        public IActionResult Maken(SoortAfspraak soortAfspraak)
         {
-            switch (afspraakSoort)
-            {
-                case "trouwjurk":
-                    ViewData["afspraakSoort"] = "trouwjurk";
-                    break;
-                case "trouwpak":
-                    ViewData["afspraakSoort"] = "trouwpak";
-                    break;
-                case "afspeld":
-                    ViewData["afspraakSoort"] = "afspeld";
-                    break;
-                default:
-                    ViewData["afspraakSoort"] = "trouwjurk";
-                    break;
-            }
-            var afsrpaakMaken = new AfspraakMaken();
-            afsrpaakMaken.Afspraak.AfspraakSoort = afspraakSoort;
-
-            return View(afsrpaakMaken);
+            return View(new AfspraakMaken {Afspraak = {AfspraakSoort = soortAfspraak}});
         }
 
         // POST: Afspraak/Create
@@ -100,7 +84,6 @@ namespace HoneymoonShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Maken([Bind("Afspraak,Gebruiker")] AfspraakMaken afspraakMaken)
         {
-
             if (ModelState.IsValid)
             {
                 afspraakMaken.Afspraak.Gebruiker = afspraakMaken.Gebruiker;
@@ -111,8 +94,7 @@ namespace HoneymoonShop.Controllers
                 //VerzendAfspraak(afspraakMaken);
                 return RedirectToAction("Voltooid");
             }
-            return View();
-
+            return View(afspraakMaken);
         }
 
         // GET: Afspraak/Edit/5
@@ -210,9 +192,11 @@ namespace HoneymoonShop.Controllers
                 .ToArray();
         }
 
-        public String[] GetTakenTimes(int day, int month, int year)
+        public string[] GetTakenTimes(int day, int month, int year)
         {
-            return _context.Afspraak.Where(x => x.Datum.Day == day && x.Datum.Month == month && x.Datum.Year == year).Select(x => x.Tijd).ToArray();
+            return _context.Afspraak.Where(x => x.Datum.Day == day && x.Datum.Month == month && x.Datum.Year == year)
+                .Select(x => x.Tijd)
+                .ToArray();
         }
 
         public IActionResult Voltooid()

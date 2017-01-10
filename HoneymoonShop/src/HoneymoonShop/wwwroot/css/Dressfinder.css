@@ -1,0 +1,24 @@
+﻿body {
+    
+}
+
+.filterOpties > h4{
+    font-family:Nexa Black;
+    text-transform:uppercase;
+}
+
+.categorie span{
+    display:block;
+    margin-top: 5px;
+    font-weight:700;
+    padding:1px 7px;
+    margin-left:10px;
+}
+
+.backgroundLichtRoze{
+    background-color: #FCE8E7;
+}
+
+#filters{
+    margin-top:30px;
+}

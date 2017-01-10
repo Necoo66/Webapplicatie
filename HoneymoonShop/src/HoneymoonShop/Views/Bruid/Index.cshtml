@@ -1,0 +1,69 @@
+﻿<link rel="stylesheet" href="~/css/Dressfinder.css" />
+<div class="container-fluid">
+    <div class="row">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="active" href="@Url.Action("index")">Home</a></li>
+                <li class="breadcrumb-item active">Afspraak</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 filterOpties">
+            <h4>Categorieën</h4>
+            <div class="categorie">
+                <span class="backgroundLichtRoze">
+                    <h5>Summer SALE</h5>
+                </span>
+                <span class="backgroundLichtRoze">
+                    <h5><u>Nieuwe Collectie </u></h5>
+                </span>
+                <span class="backgroundLichtRoze">
+                    <h5>Alle jurken bekijken</h5>
+                </span>
+            </div>
+            <div id="filters">
+                <h4>Filter op:</h4>
+                <h5 data-toggle="collapse" data-target="#merk">Merk</h5>
+                <div id="merk" class="collapse">
+                    <ul>
+                        <li>Diane legrand</li>
+                        <li>Diane legrand</li>
+                        <li>Diane legrand</li>
+                        <li>Diane legrand</li>
+                        <li>Diane legrand</li>
+                    </ul>
+                </div>
+                <h5 data-toggle="collapse" data-target="#stijlJurk">Stijl jurk</h5>
+                <div id="stijlJurk" class="collapse">
+                    <ul>
+                        <li>Kant</li>
+                        <li>Klassieke bruid</li>
+                        <li>Prinses bruid</li>
+                        <li>Ruches rok</li>
+                        <li>Modieuze bruid</li>
+                    </ul>
+                </div>
+                @*<div data-role="main" class="ui-content">
+                    <form method="post" action="demoform.asp">
+                        <div data-role="rangeslider">
+                            <label for="price-min">Price:</label>
+                            <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
+                            <label for="price-max">Price:</label>
+                            <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
+                        </div>
+                        <input type="submit" data-inline="true" value="Submit">
+                    </form>
+                </div>*@
+            </div>
+            <h4>Filters verfijnen</h4>
+        </div>
+
+        <div class="col-md-9 jurkenOverzicht"> </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+    document.body.style.backgroundColor = "#FFE4EA";
+</script>

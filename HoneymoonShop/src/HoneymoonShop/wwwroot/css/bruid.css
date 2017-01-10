@@ -1,0 +1,35 @@
+﻿.kleur-bolletje{
+    display: inline-block;
+    border: 2px solid gray;
+    border-radius: 50%;
+    width: 15px;
+    height: 14px;
+    background-color: green;
+}
+
+.afbeelding-kiezen img{
+    margin-bottom:20px;
+}
+
+.sub-titel {
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 2px solid black; 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+} 
+
+.sub-titel span { 
+    background:#fff;
+    padding:0 10px;
+    font-size: 22px;
+}
+
+.knop{
+    display: inline-block;
+    background-color: #F0597C;
+    color: white;
+    padding:10px;
+    font-weight:bold;
+    font-family: Nexa Black;
+}

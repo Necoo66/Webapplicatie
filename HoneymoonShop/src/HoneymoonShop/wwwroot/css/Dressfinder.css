@@ -1,0 +1,67 @@
+﻿.filterOpties > h4{
+    font-family:Nexa Black;
+    text-transform:uppercase;
+}
+.filterOpties ul > li{
+    background-color:RGB(250, 250, 250);
+}
+
+.filterOpties ul > li:last-child{
+    border-bottom:1px solid grey;
+}
+
+/*.filterOpties ul > li > input[type='checkbox']{
+
+}*/
+
+#filters > h5:first-of-type{
+    border-top:1px solid grey;
+    
+}
+#filters > h5{
+    padding: 6px 10px; 
+    background-color:RGB(240, 240, 240);
+    border-bottom: 1px solid grey;
+    margin:0;
+}
+
+#filters > h5:last-of-type
+{
+    border-bottom:1px solid grey;
+}
+
+
+.categorie span{
+    display:block;
+    margin-top: 5px;
+    font-weight:700;
+    padding:1px 12px;
+    margin-left:10px;
+}
+
+.backgroundLichtRoze{
+    background-color: #FCE8E7;
+}
+
+.jurkenOverzicht{
+    display:flex;
+    flex-wrap:wrap;
+    margin: auto;
+}
+
+
+
+.topBorder{
+    border-top:1px solid grey;
+}
+.marginTop{
+    margin-top:30px;
+}
+#filters{
+    margin-top:30px;
+}
+
+.product{
+    border:1px solid black;
+}
+

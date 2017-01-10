@@ -12,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HoneymoonShop", "src\HoneymoonShop\HoneymoonShop.xproj", "{7A79A983-ACAF-4601-AE53-02AF0554B0F3}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HoneymoonShopTest", "src\HoneymoonShopTest\HoneymoonShopTest.xproj", "{19E40557-7819-4D31-A431-B0853E39AE67}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,16 +22,11 @@ Global
 		{7A79A983-ACAF-4601-AE53-02AF0554B0F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A79A983-ACAF-4601-AE53-02AF0554B0F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A79A983-ACAF-4601-AE53-02AF0554B0F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19E40557-7819-4D31-A431-B0853E39AE67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19E40557-7819-4D31-A431-B0853E39AE67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19E40557-7819-4D31-A431-B0853E39AE67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19E40557-7819-4D31-A431-B0853E39AE67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7A79A983-ACAF-4601-AE53-02AF0554B0F3} = {20824DA5-2E1A-42B9-A346-CD9109E72255}
-		{19E40557-7819-4D31-A431-B0853E39AE67} = {20824DA5-2E1A-42B9-A346-CD9109E72255}
 	EndGlobalSection
 EndGlobal

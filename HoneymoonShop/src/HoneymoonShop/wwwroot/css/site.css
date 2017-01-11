@@ -456,3 +456,18 @@ footer a {
 #DatumSelecteren{
     cursor:pointer;
 }
+
+/*de roze knop/button, A element*/
+.knop{
+    background-color: #F0597C;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    text-transform: capitalize;
+    display: inline-block;
+    font-family:Nexa Black;
+}
+
+.knop:hover{
+    text-decoration:none;
+
+}

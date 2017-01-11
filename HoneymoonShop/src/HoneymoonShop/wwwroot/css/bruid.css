@@ -7,14 +7,16 @@
     background-color: green;
 }
 
+.afbeelding-kiezen > div{
+    height:200px;
+    overflow:hidden;
+    margin-bottom:10px;
+}
+
+
 .side-img{
     max-width: 240px;
-    max-height:230px;
-    /**
-    position: absolute;
-    clip: rect(0px,240px,200px,0px);
-
-    */
+    max-height:225px;
 }
 
 .sub-titel {
@@ -31,16 +33,7 @@
     font-size: 22px;
 }
 
-.knop{
-    display: inline-block;
-    background-color: #F0597C;
-    color: white;
-    padding:10px;
-    font-weight:bold;
-    font-family: Nexa Black;
-}
-
-/*meer ruimte voor een div onderaan*/
+/*meer ruimte voor onderaan een div*/
 .spacer{
     margin-bottom:40px;
 }

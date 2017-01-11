@@ -23,6 +23,12 @@ namespace HoneymoonShop.Controllers
             return View();
         }
 
+        public IActionResult Bruid()
+        {
+            return View();
+        }
+
+
         public IActionResult Error()
         {
             return View();

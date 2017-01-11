@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Bruid";
+}
+
+
+<div id="banner"><img src="~/images/banner1.png" /></div>
+<div class="content">
+    <div class="row">
+        <div class="title">
+            <h1>Collectie</h1>
+            <h2 class="text-uppercase">Een jurk of pak kopen?.<br>De trouwjurk voor je droombruiloft</h2>
+        </div>
+    </div>
+    <style>
+        .slider{
+            width: 99.9%;
+            height: 630px;
+            margin:20px auto;
+            padding:0;
+            overflow:hidden;
+        }
+
+        .slider > div{
+            width:2000px;
+        }
+
+        #img-wrap{
+            width:230px;
+            position: relative;
+            margin: 20px 20px 0 0;
+            float: left;
+            overflow:hidden;
+        }
+
+        #img-wrap .img-text {
+            text-transform:capitalize;
+            font-family:Nexa Black;
+            position: relative;
+            bottom: 290px;
+            left: 60px;
+            padding: 10px;
+            visibility: hidden;
+            font-weight: bold;
+            background-color: white;
+            width: 125px;
+        }
+
+        #img-wrap:hover .img-text {
+            visibility:visible;
+        }
+    </style>
+    <div class="row slider">
+        <div>
+            <div id="img-wrap">
+                <a href="#"></a>
+                <img src="http://placehold.it/280x630" class="hover img-responsive" />
+                <p class="img-text">Bekijk de jurk</p>
+            </div>
+            <div id="img-wrap">
+                <img src="http://placehold.it/280x630" class="hover img-responsive" />
+                <p class="img-text">Bekijk de jurk</p>
+            </div>
+            <div id="img-wrap">
+                <img src="http://placehold.it/280x630" class="hover img-responsive" />
+                <p class="img-text">Bekijk de jurk</p>
+            </div>
+            <div id="img-wrap">
+                <img src="http://placehold.it/280x630" class="hover img-responsive" />
+                <p class="img-text">Bekijk de jurk</p>
+            </div>
+            <div id="img-wrap">
+                <img src="http://placehold.it/280x630" class="hover img-responsive" />
+                <p class="img-text">Bekijk de jurk</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="/Bruid" class="knop text-capitalize">Naar de dresfinder</a>
+        </div>
+        <div class="col-md-12 text-center">
+            V
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="title">
+            <h1>The Dress</h1>
+            <h2 class="text-uppercase">Een jurk of pak kopen?.<br>Wat komt er bij kijken?</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 bekijkVideos">
+            <img src="~/images/onestopshop.jpeg" alt="" class="img-responsive">
+            <div>
+                <h2>> bekijk video</h2>
+                <p>
+                    Hoe vind je de perfecte outfit?<br />
+                    Onze specialisten nemen echt de tijd voor je en helpen je met elke stap. Oneindige jurken/pakken passen? geen probleem! Er kunnen zoveel mensen mee als jij zelf wilt
+                </p>
+            </div>
+            <span id="bekijkVideos-nummer">1</span>
+        </div>
+        <div class="col-md-4 bekijkVideos-lijst">
+            <div>
+                <div class="">1</div>
+                <div class="">Afspraak maken</div>
+            </div>
+            <div>
+                <div>2</div>
+                <div>De perfecte jurk vinden</div>
+            </div>
+            <div>
+                <div>3</div>
+                <div>Doorpassen en vermaken</div>
+            </div>
+            <div>
+                <div>4</div>
+                <div>Bruiloft</div>
+            </div>
+        </div>
+    </div>
+
+</div>

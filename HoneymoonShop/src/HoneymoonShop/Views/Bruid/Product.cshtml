@@ -20,13 +20,20 @@
 
     <div class="row spacer">
         <div class="col-md-3 afbeelding-kiezen">
-            @for (int i = 0; i < 3; i++)
-            {
-                <div><img src="~/images/Producten/Trouwjurken/jurk1.png" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;"></div>
-            }
+             <div>
+                 
+                <img src="~/images/Producten/Trouwjurken/12649_1_Wit.jpg" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
+            </div>
+            <div>
+                <img src="~/images/Producten/Trouwjurken/12649_2_Wit.jpg" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
+            </div>
+            <div>
+                <img src="~/images/Producten/Trouwjurken/12649_3_Wit.jpg" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
+            </div>
         </div>
+
         <div class="col-md-6">
-            <img src="http://placehold.it/569x751" id="big-image" alt="Jurk afbeelding" class="img-responsive">
+            <img src="~/images/Producten/Trouwjurken/12649_1_Wit.jpg" id="big-image" alt="Jurk afbeelding" class="img-responsive">
         </div>
 
         <div class="col-md-3">
@@ -42,62 +49,85 @@
                     Kenmerken:
                     @foreach (var kenmerk in Model.Kenmerken)
                     {
-                        <a href="#">@kenmerk.Naam</a>
+                        <a href="">@kenmerk.Naam,</a>
                     }
-
                 </li>
                 <li>Prijsindicatie: €@Model.Prijs</li>
                 <li>
                     Beschikbare kleuren:
                     @foreach (var kleur in Model.Kleuren)
                     {
-                        <a href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode;"></a>
+                        <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode;" onclick='changeImage("@kleur.naam")'></span>
                     }
                 </li>
             </ul>
+            <script language="javascript">
+                var artikelnr = @Model.ArtikelNummer;
+                function changeImage(kleur) {
+                    kleur = 'ivoor'; //test
+                    artikelnr = 12649; //test
+                    var paden = document.getElementsByClassName("side-img");
+                    for(var i = 0; i < paden.length; i++){
+                        var pad = '/images/Producten/Trouwjurken/' + artikelnr + "_" + (i+1) + "_" + kleur + ".jpg";
+                        console.log(pad);
+                        paden[i].src = pad;
+                    }
+
+                }
+            </script>
+
             <br><br>
             <p> Kom deze jurk passen!</p>
             <a asp-controller="Afspraak" asp-action="Index" class="knop">PASAFSPRAAK MAKEN</a>
         </div>
     </div>
 
-        <div class="row spacer">
-            <div class="col-md-12">
-                <h2 class="sub-titel"><span>Bijpassende sieraden</span></h2>
-            </div>
-            @for (int i = 0; i < 4; i++)
-            {
-                <div class="col-md-3">
-                    <img src="http://placehold.it/272x384" class="img-responsive">
-                    <h4>Abrazi</h4>
-                </div>
-            }
-
-            <div class="col-md-12 text-center">
-                <a href="#" class="knop">Bezoek de webshop</a>
-            </div>
+    <div class="row spacer">
+        <div class="col-md-12">
+            <h2 class="sub-titel"><span>Bijpassende sieraden</span></h2>
         </div>
-
-        <div class="row spacer">
-            <div class="col-md-12">
-                <h2 class="sub-titel"><span>Of zijn deze jurken mischien iets voor jou</span></h2>
-            </div>
-
-            <div class="col-md-3">
-                <img src="http://placehold.it/272x384" class="img-responsive">
-                <h4>Maggie Soretto</h4>
-            </div>
-            <div class="col-md-3">
-                <img src="http://placehold.it/272x384" class="img-responsive">
-                <h4>Maggie Soretto</h4>
-            </div>
-            <div class="col-md-3">
-                <img src="http://placehold.it/272x384" class="img-responsive">
-                <h4>Maggie Soretto</h4>
-            </div>
-            <div class="col-md-3">
-                <img src="http://placehold.it/272x384" class="img-responsive">
-                <h4>Maggie Soretto</h4>
-            </div>
+        <div class="col-md-3">
+            <img src="~/images/Producten/Sieraden/a2-6-650-mf-7.jpg" class="img-responsive">
+            <h4>Abrazi</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="~/images/Producten/Sieraden/bb-905-232-1-5.jpg" class="img-responsive">
+            <h4>Abrazi</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="~/images/Producten/Sieraden/a2-6-650-mf-7.jpg" class="img-responsive">
+            <h4>Abrazi</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="~/images/Producten/Sieraden/bb-905-232-1-5.jpg" class="img-responsive">
+            <h4>Abrazi</h4>
+        </div>
+            
+        <div class="col-md-12 text-center">
+            <a href="#" class="knop">Bezoek de webshop</a>
         </div>
     </div>
+
+    <div class="row spacer">
+        <div class="col-md-12">
+            <h2 class="sub-titel"><span>Of zijn deze jurken mischien iets voor jou</span></h2>
+        </div>
+
+        <div class="col-md-3">
+            <img src="http://placehold.it/272x384" class="img-responsive">
+            <h4>Maggie Soretto</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="http://placehold.it/272x384" class="img-responsive">
+            <h4>Maggie Soretto</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="http://placehold.it/272x384" class="img-responsive">
+            <h4>Maggie Soretto</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="http://placehold.it/272x384" class="img-responsive">
+            <h4>Maggie Soretto</h4>
+        </div>
+    </div>
+</div>

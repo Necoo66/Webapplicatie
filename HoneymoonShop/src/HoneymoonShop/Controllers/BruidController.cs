@@ -35,26 +35,26 @@ namespace HoneymoonShop.Controllers
                  return NotFound();
              }*/
 
-            var trouwjurk = new Trouwjurk()
-            {
-                Beschrijving = "asdafanfnas'gn'savkn akfn kadnf kadnf daf adnkf'nda'kf nad'gn ádn adn'f nadn 43t",
-                ArtikelNummer = "123",
-                Prijs = 10.20,
-                Merk = new Merk() { naam = "Merknaam" },
-                Categorie = new Categorie() { Naam = "cat1" },
-                Kleuren = new List<Kleur>() {
-                                                new Kleur() { naam = "blue", Kleurcode = "0000FF" },
-                                                new Kleur() { naam = "rood", Kleurcode = "FF0000" }
-                                            },
-                Kenmerken = new List<Kenmerk>() { new Kenmerk { Naam = "lange nek", KenmerkType = "Neklijn"},
-                        new Kenmerk { Naam = "korte nek", KenmerkType = "Neklijn"},
-                        new Kenmerk { Naam = "kort", KenmerkType = "Silhouette"},
-                        new Kenmerk { Naam = "kort", KenmerkType = "Stijl"},
-                        new Kenmerk { Naam = "lang", KenmerkType = "Stijl"},
-                }
+            //var trouwjurk = new Product()
+            //{
+            //    Beschrijving = "asdafanfnas'gn'savkn akfn kadnf kadnf daf adnkf'nda'kf nad'gn ádn adn'f nadn 43t",
+            //    ArtikelNummer = "123",
+            //    Prijs = 10.20,
+            //    Merk = new Merk() { naam = "Merknaam" },
+            //    Categorie = new Categorie() { Naam = "cat1" },
+            //    Kleuren = new List<Kleur>() {
+            //                                    new Kleur() { naam = "blue", Kleurcode = "0000FF" },
+            //                                    new Kleur() { naam = "rood", Kleurcode = "FF0000" }
+            //                                },
+            //    Kenmerken = new List<Kenmerk>() { new Kenmerk { Naam = "lange nek", KenmerkType = "Neklijn"},
+            //            new Kenmerk { Naam = "korte nek", KenmerkType = "Neklijn"},
+            //            new Kenmerk { Naam = "kort", KenmerkType = "Silhouette"},
+            //            new Kenmerk { Naam = "kort", KenmerkType = "Stijl"},
+            //            new Kenmerk { Naam = "lang", KenmerkType = "Stijl"},
+            //    }
                 
-            };
-            return View(trouwjurk);
+            //};
+            return View();
         }
     }
 }

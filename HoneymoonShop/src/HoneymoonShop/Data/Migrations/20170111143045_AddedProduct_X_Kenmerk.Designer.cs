@@ -8,9 +8,10 @@ using HoneymoonShop.Data;
 namespace HoneymoonShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170111143045_AddedProduct_X_Kenmerk")]
+    partial class AddedProduct_X_Kenmerk
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -83,17 +84,12 @@ namespace HoneymoonShop.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
-
                     b.Property<string>("Naam")
                         .IsRequired();
 
                     b.HasKey("Id");
 
                     b.ToTable("Kenmerk");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Kenmerk");
                 });
 
             modelBuilder.Entity("HoneymoonShop.Models.Bruid.Merk", b =>
@@ -298,38 +294,6 @@ namespace HoneymoonShop.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Kleur", b =>
-                {
-                    b.HasBaseType("HoneymoonShop.Models.Bruid.Kenmerk");
-
-                    b.Property<string>("Kleurcode")
-                        .HasAnnotation("MaxLength", 6);
-
-                    b.ToTable("Kleur");
-
-                    b.HasDiscriminator().HasValue("Kleur");
-                });
-
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Neklijn", b =>
-                {
-                    b.HasBaseType("HoneymoonShop.Models.Bruid.Kenmerk");
-
-
-                    b.ToTable("Neklijn");
-
-                    b.HasDiscriminator().HasValue("Neklijn");
-                });
-
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Silhouette", b =>
-                {
-                    b.HasBaseType("HoneymoonShop.Models.Bruid.Kenmerk");
-
-
-                    b.ToTable("Silhouette");
-
-                    b.HasDiscriminator().HasValue("Silhouette");
                 });
 
             modelBuilder.Entity("HoneymoonShop.Models.Bruid.Product", b =>

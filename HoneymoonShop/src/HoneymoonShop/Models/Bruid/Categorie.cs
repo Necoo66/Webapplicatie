@@ -6,10 +6,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HoneymoonShop.Models.Bruid
 {
-    public class Categorie
+    public class Categorie 
     {
         public int Id { get; set; }
         [Required]
         public string Naam { get; set; }
+
+        public List<Product> Producten { get; set; }
     }
 }

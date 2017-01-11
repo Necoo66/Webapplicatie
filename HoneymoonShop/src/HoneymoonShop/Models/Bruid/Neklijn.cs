@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace HoneymoonShop.Models.Bruid
 {
-    public class Afbeelding
+    [Table("Neklijn")]
+    public class Neklijn : Kenmerk
     {
-        public int Id { get; set; }
-        public string pad { get; set; }
-        
     }
 }

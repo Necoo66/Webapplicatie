@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HoneymoonShop.Models.Bruid
 {
-    public class Kleur
+    [Table("Kleur")]
+    public class Kleur : Kenmerk
     {
-        public int Id { get; set; }
-        [Required]
-        public string naam { get; set; }
-
         [MaxLength(6)]
         //hex value
         public string Kleurcode { get; set; }
-
-        public List<Afbeelding> Afbeeldingen { get; set; }
     }
 }

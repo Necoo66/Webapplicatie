@@ -8,9 +8,10 @@ using HoneymoonShop.Data;
 namespace HoneymoonShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170111115132_OpzetBruid")]
+    partial class OpzetBruid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -83,17 +84,12 @@ namespace HoneymoonShop.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
-
                     b.Property<string>("Naam")
                         .IsRequired();
 
                     b.HasKey("Id");
 
                     b.ToTable("Kenmerk");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Kenmerk");
                 });
 
             modelBuilder.Entity("HoneymoonShop.Models.Bruid.Merk", b =>
@@ -121,6 +117,8 @@ namespace HoneymoonShop.Data.Migrations
 
                     b.Property<int?>("CategorieId");
 
+                    b.Property<int?>("KenmerkId");
+
                     b.Property<int?>("MerkId");
 
                     b.Property<double>("Prijs");
@@ -129,24 +127,11 @@ namespace HoneymoonShop.Data.Migrations
 
                     b.HasIndex("CategorieId");
 
+                    b.HasIndex("KenmerkId");
+
                     b.HasIndex("MerkId");
 
                     b.ToTable("Product");
-                });
-
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Product_X_Kenmerk", b =>
-                {
-                    b.Property<int>("ProductId");
-
-                    b.Property<int>("KenmerkId");
-
-                    b.HasKey("ProductId", "KenmerkId");
-
-                    b.HasIndex("KenmerkId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Product_X_Kenmerk");
                 });
 
             modelBuilder.Entity("HoneymoonShop.Models.GebruikerModels.Afspraak", b =>
@@ -300,60 +285,19 @@ namespace HoneymoonShop.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Kleur", b =>
-                {
-                    b.HasBaseType("HoneymoonShop.Models.Bruid.Kenmerk");
-
-                    b.Property<string>("Kleurcode")
-                        .HasAnnotation("MaxLength", 6);
-
-                    b.ToTable("Kleur");
-
-                    b.HasDiscriminator().HasValue("Kleur");
-                });
-
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Neklijn", b =>
-                {
-                    b.HasBaseType("HoneymoonShop.Models.Bruid.Kenmerk");
-
-
-                    b.ToTable("Neklijn");
-
-                    b.HasDiscriminator().HasValue("Neklijn");
-                });
-
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Silhouette", b =>
-                {
-                    b.HasBaseType("HoneymoonShop.Models.Bruid.Kenmerk");
-
-
-                    b.ToTable("Silhouette");
-
-                    b.HasDiscriminator().HasValue("Silhouette");
-                });
-
             modelBuilder.Entity("HoneymoonShop.Models.Bruid.Product", b =>
                 {
                     b.HasOne("HoneymoonShop.Models.Bruid.Categorie", "Categorie")
                         .WithMany("Producten")
                         .HasForeignKey("CategorieId");
 
+                    b.HasOne("HoneymoonShop.Models.Bruid.Kenmerk")
+                        .WithMany("Producten")
+                        .HasForeignKey("KenmerkId");
+
                     b.HasOne("HoneymoonShop.Models.Bruid.Merk", "Merk")
                         .WithMany("Producten")
                         .HasForeignKey("MerkId");
-                });
-
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Product_X_Kenmerk", b =>
-                {
-                    b.HasOne("HoneymoonShop.Models.Bruid.Kenmerk", "Kenmerk")
-                        .WithMany("Product_X_Kenmerk")
-                        .HasForeignKey("KenmerkId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HoneymoonShop.Models.Bruid.Product", "Product")
-                        .WithMany("Product_X_Kenmerk")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HoneymoonShop.Models.GebruikerModels.Afspraak", b =>

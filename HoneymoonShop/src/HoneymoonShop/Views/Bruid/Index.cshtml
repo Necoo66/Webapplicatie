@@ -1,1 +1,138 @@
-﻿
+﻿<link rel="stylesheet" href="~/css/Dressfinder.css" />
+<div class="container-fluid">
+    <div class="row">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="active" href="@Url.Action("index")">Home</a></li>
+                <li class="breadcrumb-item active">Categories</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 filterOpties">
+            <h4>Categorieën</h4>
+            <div class="categorie">
+                <span class="backgroundLichtRoze">
+                    <h5>Summer SALE</h5>
+                </span>
+                <span class="backgroundLichtRoze">
+                    <h5><u>Nieuwe Collectie </u></h5>
+                </span>
+                <span class="backgroundLichtRoze">
+                    <h5>Alle jurken bekijken</h5>
+                </span>
+            </div>
+            <div id="filters">
+                <h4>Filter op:</h4>
+                <h5 class="topBorder"data-toggle="collapse" data-target="#merk">Merk <span class="glyphicon glyphicon-chevron-down text-right"></span> </h5> 
+                <div id="merk" class="collapse">
+                    <ul>
+                        @{
+                            for (int i = 0; i < 5; i++)
+                            {
+                                <li><input type="checkbox" value="Diane legrand" /> <label>Diane legrand</label></li> 
+                            }
+                        }
+
+                    </ul>
+                </div>
+                <h5 data-toggle="collapse" data-target="#stijlJurk">Stijl jurk</h5>
+                <div id="stijlJurk" class="collapse">
+                    <ul>
+                        @{
+                            for (int i = 0; i < 5; i++)
+                            {
+                                <li><input type="checkbox" value="Prinses bruid" /> <label>Prinses bruid</label></li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <h5 data-toggle="collapse" data-target="#prijs">Prijs </h5>
+                <div id="prijs" class="collapse">
+                    <ul>
+                        @*<div data-role="main" class="ui-content">
+                            <form method="post" action="demoform.asp">
+                                <div data-role="rangeslider">
+                                    <label for="price-min">Price:</label>
+                                    <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
+                                    <label for="price-max">Price:</label>
+                                    <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
+                                </div>
+                                <input type="submit" data-inline="true" value="Submit">
+                            </form>
+                        </div>*@
+                        @{
+                            for (int i = 0; i < 5; i++)
+                            {
+                                <li><input type="checkbox" value="Prinses bruid" /> <label>50K NEEF</label></li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <h4 class="marginTop">Filters verfijnen</h4>
+                <h5 class="topBorder" data-toggle="collapse" data-target="#nekLijn">Neklijn</h5>
+                <div id="nekLijn" class="collapse">
+                    <ul>
+                        @{
+                            for (int i = 0; i < 5; i++)
+                            {
+                                <li><input type="checkbox" value="Kant" /> <label>Kant</label></li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <h5 data-toggle="collapse" data-target="#silhouette">Silhouette</h5>
+                <div id="silhouette" class="collapse">
+                    <ul>
+                        @{
+                            for (int i = 0; i < 5; i++)
+                            {
+                                <li><input type="checkbox" value="Ruches rok" /> <label> Ruches rok</label></li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <h5 data-toggle="collapse" data-target="#kleur">Kleur</h5>
+                <div id="kleur" class="collapse">
+                    <ul>
+                        @{
+                            for (int i = 0; i < 5; i++)
+                            {
+                                <li><input type="checkbox" value="Bloed rood" /> <label>Bloed rood</label></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 jurkenOverzicht">
+            <div class="product"><img src="http://placehold.it/250x360" class="img-responsive" />
+                <div class="productNaam"><h5>Beautiful by Enzoani</h5></div>
+                @*<div class="artikelInfo">
+                    <h6>Artikel nr. 41745</h6>
+                    <span>1</span> <span>2</span> <span>3</span>
+                </div>*@
+                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+            </div>
+            <div class="product">
+                <img src="http://placehold.it/250x360" class="img-responsive" />
+                <div class="productNaam"><h5>Ladybird</h5></div>
+                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+            </div>
+            <div class="product">
+                    <img src="http://placehold.it/250x360" class="img-responsive" />
+                    <div class="productNaam"><h5>Tres chic</h5></div>
+                    <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+                    <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+    document.body.style.backgroundColor = "#FFE4EA";
+</script>

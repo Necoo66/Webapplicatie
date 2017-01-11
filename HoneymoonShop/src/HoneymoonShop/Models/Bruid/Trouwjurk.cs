@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using HoneymoonShop.Models.Bruid;
 
-namespace HoneymoonShop.Models
+namespace HoneymoonShop.Models.Bruid
 {
     public class Trouwjurk
     {
@@ -13,21 +14,18 @@ namespace HoneymoonShop.Models
         [Required]
         public string ArtikelNummer { get; set; }
 
-        public string beschrijving { get; set; }
+        public string Beschrijving { get; set; }
 
         public double Prijs { get; set; }
         
         [Required]
         public Merk Merk { get; set; }
-
-        public List<Stijl> Stijlen { get; set; }
-
-        public List<Neklijn> Neklijnen { get; set; }
-
-        public List<Silhouette> Silhouetten { get; set; }
         
+        public List<Kenmerk> Kenmerken { get; set; }
+
         public List<Kleur> Kleuren { get; set; }
-        
+
+        /*categorie kan null zijn*/
         public Categorie Categorie { get; set; }
     }
 }

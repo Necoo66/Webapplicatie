@@ -1,4 +1,5 @@
 ﻿using HoneymoonShop.Models;
+using HoneymoonShop.Models.Bruid;
 using HoneymoonShop.Models.GebruikerModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -11,12 +12,7 @@ namespace HoneymoonShop.Data
             : base(options)
         {
         }
-
-        public ApplicationDbContext()
-        {
-
-        }
-
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -27,6 +23,8 @@ namespace HoneymoonShop.Data
 
         public virtual DbSet<Gebruiker> Gebruiker { get; set; }
 
-        public virtual DbSet<Afspraak> Afspraak { get; set; }
+        public DbSet<Afspraak> Afspraak { get; set; }
+
+        public DbSet<Trouwjurk> Trouwjurk { get; set; }
     }
 }

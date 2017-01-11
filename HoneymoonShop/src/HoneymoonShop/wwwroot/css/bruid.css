@@ -7,8 +7,14 @@
     background-color: green;
 }
 
-.afbeelding-kiezen img{
-    margin-bottom:20px;
+.side-img{
+    max-width: 240px;
+    max-height:230px;
+    /**
+    position: absolute;
+    clip: rect(0px,240px,200px,0px);
+
+    */
 }
 
 .sub-titel {
@@ -32,4 +38,9 @@
     padding:10px;
     font-weight:bold;
     font-family: Nexa Black;
+}
+
+/*meer ruimte voor een div onderaan*/
+.spacer{
+    margin-bottom:40px;
 }

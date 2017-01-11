@@ -1,4 +1,6 @@
-﻿<link rel="stylesheet" href="~/css/bruid.css" />
+﻿@model HoneymoonShop.Models.Bruid.Trouwjurk
+
+<link rel="stylesheet" href="~/css/bruid.css" />
 
 <div class="container">
     <div class="row">
@@ -11,38 +13,45 @@
         </ol>
     </div>
 
-    <div class="row" style="margin:20px 0;">
-        <img src="~/images/Arrow.png" alt="Terug naar overzicht" style=" transform: scaleX(-1);width:100px;">
+    <div class="row spacer">
+        <img src="~/images/Arrow.png" alt="Terug naar overzicht" style="transform: scaleX(-1);width:100px;">
         <u>Terug naar overzicht</u>
     </div>
 
-    <div class="row">
+    <div class="row spacer">
         <div class="col-md-3 afbeelding-kiezen">
-            <img src="http://placehold.it/250x250" class="img-responsive">
-            <img src="http://placehold.it/250x250" class="img-responsive">
-            <img src="http://placehold.it/250x250" class="img-responsive">
+            @for (int i = 0; i < 3; i++){
+                <div><img src="~/images/Producten/Trouwjurken/jurk1.png" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;"></div>
+            }
         </div>
+
         <div class="col-md-6">
-            <img src="http://placehold.it/569x751" alt="Jurk afbeelding" class="img-responsive">
+            <img src="~/images/Producten/Trouwjurken/jurk1.png" id="big-image" alt="Jurk afbeelding" class="img-responsive">
         </div>
 
         <div class="col-md-3">
-            <h2>{merk}Maggie Sottero</h2>
-            {artikelnr.}artikel nr 12294
-            <p>{beschrijving}Trouwjurk van het merk Maggie Sottero gemaakt van kant. De top kan met- en zonder schouders gedragen worden. de jurk heeft een laag uitgesneden rug en fishtail model met een sleep.</p>
+            <h2>@Model.Merk.naam</h2>
+            <span>Artikel nr. @Model.ArtikelNummer</span>
+            <p>@Model.Beschrijving</p>
             <br>
             <ul>
                 <li>
-                    Merk:<a href="#">{merk}</a>
+                    Merk:<a href="#">@Model.Merk.naam</a>
                 </li>
                 <li>
-                    Kenmerken:<a href="#">{Kenmerken}</a>, <a href="#">{Kenmerken2}</a>, <a href="#">{Kenmerken3}</a>
+                    Kenmerken:
+                    @foreach (var kenmerk in Model.Kenmerken)
+                    {
+                        <a href="">@kenmerk.Naam,</a>
+                    }
                 </li>
-                <li>Prijsindicatie: €{prijs}</li>
+                <li>Prijsindicatie: €@Model.Prijs</li>
                 <li>
                     Beschikbare kleuren:
-                    <a href="#" class="kleur-bolletje"></a>
-                    <a href="#" class="kleur-bolletje"></a>
+                    @foreach (var kleur in Model.Kleuren)
+                    {
+                        <a href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode;"></a>
+                    }
                 </li>
             </ul>
             <br><br>
@@ -51,33 +60,33 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row spacer">
         <div class="col-md-12">
             <h2 class="sub-titel"><span>Bijpassende sieraden</span></h2>
         </div>
-
         <div class="col-md-3">
-            <img src="http://placehold.it/272x384" class="img-responsive">
+            <img src="~/images/Producten/Sieraden/a2-6-650-mf-7.jpg" class="img-responsive">
             <h4>Abrazi</h4>
         </div>
         <div class="col-md-3">
-            <img src="http://placehold.it/272x384" class="img-responsive">
+            <img src="~/images/Producten/Sieraden/bb-905-232-1-5.jpg" class="img-responsive">
             <h4>Abrazi</h4>
         </div>
         <div class="col-md-3">
-            <img src="http://placehold.it/272x384" class="img-responsive">
+            <img src="~/images/Producten/Sieraden/a2-6-650-mf-7.jpg" class="img-responsive">
             <h4>Abrazi</h4>
         </div>
         <div class="col-md-3">
-            <img src="http://placehold.it/272x384" class="img-responsive">
+            <img src="~/images/Producten/Sieraden/bb-905-232-1-5.jpg" class="img-responsive">
             <h4>Abrazi</h4>
         </div>
+            
         <div class="col-md-12 text-center">
             <a href="#" class="knop">Bezoek de webshop</a>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row spacer">
         <div class="col-md-12">
             <h2 class="sub-titel"><span>Of zijn deze jurken mischien iets voor jou</span></h2>
         </div>

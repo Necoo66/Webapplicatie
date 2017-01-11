@@ -1,4 +1,6 @@
 ﻿<link rel="stylesheet" href="~/css/Dressfinder.css" />
+<link rel="stylesheet" href="~/css/bruid.css" />
+
 <div class="container-fluid">
     <div class="row">
         <div class="row">
@@ -24,30 +26,36 @@
             </div>
             <div id="filters">
                 <h4>Filter op:</h4>
-                <h5 class="topBorder"data-toggle="collapse" data-target="#merk">Merk <span class="glyphicon glyphicon-chevron-down text-right"></span> </h5> 
+                <h5 class="topBorder"data-toggle="collapse" data-target="#merk">Merk<span class="glyphicon glyphicon-chevron-down pijltje"></span > <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span> </h5> 
                 <div id="merk" class="collapse">
                     <ul>
                         @{
                             for (int i = 0; i < 5; i++)
                             {
-                                <li><input type="checkbox" value="Diane legrand" /> <label>Diane legrand</label></li> 
+                                <li>
+                                    <input id="cbMerk@(i)" type="checkbox" value="Diane legrand" />Diane legrand
+                                    <label for="cbMerk@(i)"></label>
+                                </li> 
                             }
                         }
 
                     </ul>
                 </div>
-                <h5 data-toggle="collapse" data-target="#stijlJurk">Stijl jurk</h5>
+                <h5 data-toggle="collapse" data-target="#stijlJurk">Stijl jurk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
                 <div id="stijlJurk" class="collapse">
                     <ul>
                         @{
                             for (int i = 0; i < 5; i++)
                             {
-                                <li><input type="checkbox" value="Prinses bruid" /> <label>Prinses bruid</label></li>
+                                <li>
+                                    <input id="cbStijl@(i)" type="checkbox" value="Prinses bruid" />Prinses bruid
+                                    <label for="cbStijl@(i)"></label>
+                                </li>
                             }
                         }
                     </ul>
                 </div>
-                <h5 data-toggle="collapse" data-target="#prijs">Prijs </h5>
+                <h5 data-toggle="collapse" data-target="#prijs">Prijs <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
                 <div id="prijs" class="collapse">
                     <ul>
                         @*<div data-role="main" class="ui-content">
@@ -64,41 +72,57 @@
                         @{
                             for (int i = 0; i < 5; i++)
                             {
-                                <li><input type="checkbox" value="Prinses bruid" /> <label>50K NEEF</label></li>
+                                <li>
+                                    <input id="cbPrijs@(i)" type="checkbox" value="Prinses bruid" /> 50K NEEF
+                                    <label for="cbPrijs@(i)"></label>
+                                </li>
+                                    
                             }
                         }
                     </ul>
                 </div>
                 <h4 class="marginTop">Filters verfijnen</h4>
-                <h5 class="topBorder" data-toggle="collapse" data-target="#nekLijn">Neklijn</h5>
+                <h5 class="topBorder" data-toggle="collapse" data-target="#nekLijn">Neklijn <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
                 <div id="nekLijn" class="collapse">
                     <ul>
                         @{
                             for (int i = 0; i < 5; i++)
                             {
-                                <li><input type="checkbox" value="Kant" /> <label>Kant</label></li>
+                                <li>
+                                    <input id="cbNeklijn@(i)" type="checkbox" value="Kant" />Kant
+                                    <label for="cbNeklijn@(i)"></label>
+                                </li>
+                                
                             }
                         }
                     </ul>
                 </div>
-                <h5 data-toggle="collapse" data-target="#silhouette">Silhouette</h5>
+                <h5 data-toggle="collapse" data-target="#silhouette"> Silhouette <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
                 <div id="silhouette" class="collapse">
                     <ul>
                         @{
                             for (int i = 0; i < 5; i++)
                             {
-                                <li><input type="checkbox" value="Ruches rok" /> <label> Ruches rok</label></li>
+                                <li>
+                                    <input id="cbSilhouette@(i)" type="checkbox" value="Ruches rok" />Ruches rok
+                                    <label for="cbSilhouette@(i)"></label>
+                                </li>
+                                
+
                             }
                         }
                     </ul>
                 </div>
-                <h5 data-toggle="collapse" data-target="#kleur">Kleur</h5>
+                <h5 data-toggle="collapse" data-target="#kleur">Kleur <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
                 <div id="kleur" class="collapse">
                     <ul>
                         @{
                             for (int i = 0; i < 5; i++)
                             {
-                                <li><input type="checkbox" value="Bloed rood" /> <label>Bloed rood</label></li>
+                                <li>
+                                    <input class="" type="checkbox" value="Bloed rood" />Bloed rood
+                                    <label for=""></label>
+                                </li>
                             }
                         }
                     </ul>
@@ -135,4 +159,6 @@
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
     document.body.style.backgroundColor = "#FFE4EA";
+
 </script>
+<script src="~/js/Arrows.js" asp-append-version="true"></script>

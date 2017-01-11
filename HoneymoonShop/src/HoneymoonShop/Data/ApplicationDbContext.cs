@@ -1,4 +1,5 @@
 ﻿using HoneymoonShop.Models;
+using HoneymoonShop.Models.Bruid;
 using HoneymoonShop.Models.GebruikerModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -23,5 +24,7 @@ namespace HoneymoonShop.Data
         public DbSet<Gebruiker> Gebruiker { get; set; }
 
         public DbSet<Afspraak> Afspraak { get; set; }
+
+        public DbSet<Trouwjurk> Trouwjurk { get; set; }
     }
 }

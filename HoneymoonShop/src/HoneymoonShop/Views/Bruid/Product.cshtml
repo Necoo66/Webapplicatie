@@ -1,0 +1,103 @@
+﻿@model HoneymoonShop.Models.Bruid.Trouwjurk
+
+<link rel="stylesheet" href="~/css/bruid.css" />
+
+<div class="container">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="active" href="@Url.Action("index","home")">Home</a></li>
+            <li class="breadcrumb-item"><a class="active" href="@Url.Action("index","Bruid")">Bruid</a></li>
+            <li class="breadcrumb-item"><a class="active" href="@Url.Action("index","#")">Dressfinder</a></li>
+            <li class="breadcrumb-item"><a class="active" href="@Url.Action("index","#")">{Categorie naam}</a></li>
+            <li class="breadcrumb-item">Afspraak Gemaakt</li>
+        </ol>
+    </div>
+
+    <div class="row spacer">
+        <img src="~/images/Arrow.png" alt="Terug naar overzicht" style="transform: scaleX(-1);width:100px;">
+        <u>Terug naar overzicht</u>
+    </div>
+
+    <div class="row spacer">
+        <div class="col-md-3 afbeelding-kiezen">
+            @for (int i = 0; i < 3; i++)
+            {
+                <div><img src="~/images/Producten/Trouwjurken/jurk1.png" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;"></div>
+            }
+        </div>
+        <div class="col-md-6">
+            <img src="http://placehold.it/569x751" id="big-image" alt="Jurk afbeelding" class="img-responsive">
+        </div>
+
+        <div class="col-md-3">
+            <h2>@Model.Merk.naam</h2>
+            <span>Artikel nr. @Model.ArtikelNummer</span>
+            <p>@Model.Beschrijving</p>
+            <br>
+            <ul>
+                <li>
+                    Merk:<a href="#">@Model.Merk.naam</a>
+                </li>
+                <li>
+                    Kenmerken:
+                    @foreach (var kenmerk in Model.Kenmerken)
+                    {
+                        <a href="#">@kenmerk.Naam</a>
+                    }
+
+                </li>
+                <li>Prijsindicatie: €@Model.Prijs</li>
+                <li>
+                    Beschikbare kleuren:
+                    @foreach (var kleur in Model.Kleuren)
+                    {
+                        <a href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode;"></a>
+                    }
+                </li>
+            </ul>
+            <br><br>
+            <p> Kom deze jurk passen!</p>
+            <a asp-controller="Afspraak" asp-action="Index" class="knop">PASAFSPRAAK MAKEN</a>
+        </div>
+    </div>
+
+        <div class="row spacer">
+            <div class="col-md-12">
+                <h2 class="sub-titel"><span>Bijpassende sieraden</span></h2>
+            </div>
+            @for (int i = 0; i < 4; i++)
+            {
+                <div class="col-md-3">
+                    <img src="http://placehold.it/272x384" class="img-responsive">
+                    <h4>Abrazi</h4>
+                </div>
+            }
+
+            <div class="col-md-12 text-center">
+                <a href="#" class="knop">Bezoek de webshop</a>
+            </div>
+        </div>
+
+        <div class="row spacer">
+            <div class="col-md-12">
+                <h2 class="sub-titel"><span>Of zijn deze jurken mischien iets voor jou</span></h2>
+            </div>
+
+            <div class="col-md-3">
+                <img src="http://placehold.it/272x384" class="img-responsive">
+                <h4>Maggie Soretto</h4>
+            </div>
+            <div class="col-md-3">
+                <img src="http://placehold.it/272x384" class="img-responsive">
+                <h4>Maggie Soretto</h4>
+            </div>
+            <div class="col-md-3">
+                <img src="http://placehold.it/272x384" class="img-responsive">
+                <h4>Maggie Soretto</h4>
+            </div>
+            <div class="col-md-3">
+                <img src="http://placehold.it/272x384" class="img-responsive">
+                <h4>Maggie Soretto</h4>
+            </div>
+        </div>
+    </div>

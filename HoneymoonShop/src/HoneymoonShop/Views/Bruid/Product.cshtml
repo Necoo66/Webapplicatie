@@ -20,13 +20,13 @@
 
     <div class="row spacer">
         <div class="col-md-3 afbeelding-kiezen">
-            @for (int i = 0; i < 3; i++)
-            {
+            @for (int i = 0; i < 3; i++){
                 <div><img src="~/images/Producten/Trouwjurken/jurk1.png" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;"></div>
             }
         </div>
+
         <div class="col-md-6">
-            <img src="http://placehold.it/569x751" id="big-image" alt="Jurk afbeelding" class="img-responsive">
+            <img src="~/images/Producten/Trouwjurken/jurk1.png" id="big-image" alt="Jurk afbeelding" class="img-responsive">
         </div>
 
         <div class="col-md-3">
@@ -42,9 +42,8 @@
                     Kenmerken:
                     @foreach (var kenmerk in Model.Kenmerken)
                     {
-                        <a href="#">@kenmerk.Naam</a>
+                        <a href="">@kenmerk.Naam,</a>
                     }
-
                 </li>
                 <li>Prijsindicatie: €@Model.Prijs</li>
                 <li>
@@ -61,43 +60,52 @@
         </div>
     </div>
 
-        <div class="row spacer">
-            <div class="col-md-12">
-                <h2 class="sub-titel"><span>Bijpassende sieraden</span></h2>
-            </div>
-            @for (int i = 0; i < 4; i++)
-            {
-                <div class="col-md-3">
-                    <img src="http://placehold.it/272x384" class="img-responsive">
-                    <h4>Abrazi</h4>
-                </div>
-            }
-
-            <div class="col-md-12 text-center">
-                <a href="#" class="knop">Bezoek de webshop</a>
-            </div>
+    <div class="row spacer">
+        <div class="col-md-12">
+            <h2 class="sub-titel"><span>Bijpassende sieraden</span></h2>
         </div>
-
-        <div class="row spacer">
-            <div class="col-md-12">
-                <h2 class="sub-titel"><span>Of zijn deze jurken mischien iets voor jou</span></h2>
-            </div>
-
-            <div class="col-md-3">
-                <img src="http://placehold.it/272x384" class="img-responsive">
-                <h4>Maggie Soretto</h4>
-            </div>
-            <div class="col-md-3">
-                <img src="http://placehold.it/272x384" class="img-responsive">
-                <h4>Maggie Soretto</h4>
-            </div>
-            <div class="col-md-3">
-                <img src="http://placehold.it/272x384" class="img-responsive">
-                <h4>Maggie Soretto</h4>
-            </div>
-            <div class="col-md-3">
-                <img src="http://placehold.it/272x384" class="img-responsive">
-                <h4>Maggie Soretto</h4>
-            </div>
+        <div class="col-md-3">
+            <img src="~/images/Producten/Sieraden/a2-6-650-mf-7.jpg" class="img-responsive">
+            <h4>Abrazi</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="~/images/Producten/Sieraden/bb-905-232-1-5.jpg" class="img-responsive">
+            <h4>Abrazi</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="~/images/Producten/Sieraden/a2-6-650-mf-7.jpg" class="img-responsive">
+            <h4>Abrazi</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="~/images/Producten/Sieraden/bb-905-232-1-5.jpg" class="img-responsive">
+            <h4>Abrazi</h4>
+        </div>
+            
+        <div class="col-md-12 text-center">
+            <a href="#" class="knop">Bezoek de webshop</a>
         </div>
     </div>
+
+    <div class="row spacer">
+        <div class="col-md-12">
+            <h2 class="sub-titel"><span>Of zijn deze jurken mischien iets voor jou</span></h2>
+        </div>
+
+        <div class="col-md-3">
+            <img src="http://placehold.it/272x384" class="img-responsive">
+            <h4>Maggie Soretto</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="http://placehold.it/272x384" class="img-responsive">
+            <h4>Maggie Soretto</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="http://placehold.it/272x384" class="img-responsive">
+            <h4>Maggie Soretto</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="http://placehold.it/272x384" class="img-responsive">
+            <h4>Maggie Soretto</h4>
+        </div>
+    </div>
+</div>

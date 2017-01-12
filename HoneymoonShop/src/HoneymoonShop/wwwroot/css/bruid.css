@@ -95,7 +95,6 @@
     margin-top: 5px;
     font-weight:700;
     padding:1px 12px;
-    margin-left:10px;
 }
 
 
@@ -113,6 +112,7 @@ h5 > .glyphicon{
     display:flex;
     flex-wrap:wrap;
     margin: auto;
+    margin-bottom: 80px;
 }
 
 .bottomBorder{
@@ -126,9 +126,10 @@ h5 > .glyphicon{
 }
 
 .product{
-    margin:5px 10px;
+    margin:5px 10px 15px 10px;
     background-color:white;
     z-index:0;
+    
 }
 
 .artikelInfo{

@@ -126,6 +126,27 @@
             </div>
 
             <div class="col-md-9 jurkenOverzicht">
+                @foreach (var item in Model)
+                {
+                    <div class="product">
+                        <img src="http://placehold.it/250x360" class="img-responsive" />
+                        <div class="productNaam"><h5>@item.Merk.Naam</h5></div>
+                        <div class="artikelNummer"><h6>@item.ArtikelNummer</h6></div>
+
+
+                        @foreach (var x in item.Product_X_Kenmerk)
+                        {
+                            @if (x.Kenmerk.Type.Equals("Kleur"))
+                            {
+                                var kleur = (HoneymoonShop.Models.Bruid.Kleur) x.Kenmerk;
+                                <div class="artikelKleur"><span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode" onclick='changeImage("@x.Kenmerk.Naam")'></span></div>
+                            }
+                        }
+                        
+                    </div>
+                }
+                
+                    
                 <div class="product">
                     <img src="http://placehold.it/250x360" class="img-responsive" />
                     <div class="productNaam"><h5>Beautiful by Enzoani</h5></div>

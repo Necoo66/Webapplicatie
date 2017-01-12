@@ -12,7 +12,7 @@ namespace HoneymoonShop.Data
             : base(options)
         {
            //Database.EnsureDeleted();
-          Database.EnsureCreated();
+          // Database.EnsureCreated();
         }
         
         protected override void OnModelCreating(ModelBuilder builder)
@@ -51,6 +51,8 @@ namespace HoneymoonShop.Data
         public virtual DbSet<Afspraak> Afspraak { get; set; }
 
         public virtual DbSet<Product> Product { get; set; }
+
+        public virtual DbSet<Merk> Merk { get; set; }
 
         public virtual DbSet<Kenmerk> Kenmerk { get; set; }
 

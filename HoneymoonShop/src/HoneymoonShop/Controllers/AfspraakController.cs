@@ -93,7 +93,7 @@ namespace HoneymoonShop.Controllers
                 _context.Gebruiker.Add(afspraakMaken.Gebruiker);
                 await _context.SaveChangesAsync();
                 //Email verzenden
-                Mail.VerzendAfspraak(afspraakMaken);
+                await Mail.VerzendAfspraak(afspraakMaken);
                 return RedirectToAction("Voltooid");
             }
             return View(afspraakMaken);

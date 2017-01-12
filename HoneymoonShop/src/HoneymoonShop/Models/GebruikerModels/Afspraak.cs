@@ -19,5 +19,9 @@ namespace HoneymoonShop.Models.GebruikerModels
         public virtual Gebruiker Gebruiker { get; set; }
     }
 
-    public enum SoortAfspraak { Trouwjurken, Trouwpakken, Afspeldafspraak }
+    public enum SoortAfspraak {
+        Trouwjurken = 0,
+        Trouwpakken = 1,
+        Afspeldafspraak = 2
+    }
 }

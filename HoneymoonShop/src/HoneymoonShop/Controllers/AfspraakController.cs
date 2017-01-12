@@ -185,7 +185,7 @@ namespace HoneymoonShop.Controllers
 
         public DateTime[] GetAvalibleDates(int month, int year)
         {
-            return _context.Afspraak
+          return _context.Afspraak
                 .Select(x => x.Datum.Date)
                 .Where(x => x.Month == month && x.Year == year)
                 .GroupBy(x => x)

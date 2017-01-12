@@ -22,7 +22,6 @@
     margin-right: 10px;
 }
 
-
 .filterOpties ul > li:last-child{
     padding-bottom: 6px;
 }
@@ -31,7 +30,7 @@
     width: 20px;
     height: 20px;
     background: #ddd;
-    
+
     -webkit-border-radius: 50px;
 	-moz-border-radius: 50px;
 	border-radius: 50px;
@@ -83,6 +82,7 @@
     background-color:RGB(240, 240, 240);
     margin:0;
     border-top: 1px solid rgb(219, 219, 220);
+    cursor: pointer;
 }
 
 #filters > div{
@@ -136,13 +136,13 @@
 }
 .product:hover{
     box-sizing:border-box;
-    padding: 28px 32px 15px 32px;
-    margin: -38px -22px -48px -22px;
+    padding: 20px 32px 20px 32px;
+    margin: -40px -22px -40px -22px;
     z-index:10;
     box-shadow: 3px 4px 13px 1px rgba(0, 0, 0, .25);
 }
 
-.glyphicon{
+h5 > .glyphicon{
     float:right;
     color: RGB(250, 200, 196);
 }

@@ -1,63 +1,62 @@
 ﻿<link rel="stylesheet" href="~/css/Dressfinder.css" />
 <link rel="stylesheet" href="~/css/bruid.css" />
 
-<div class="container-fluid">
+<div class="row">
     <div class="row">
-        <div class="row">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a class="active" href="@Url.Action("index")">Home</a></li>
-                <li class="breadcrumb-item active">Categories</li>
-            </ol>
-        </div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="active" href="@Url.Action("index")">Home</a></li>
+            <li class="breadcrumb-item active">Categories</li>
+        </ol>
     </div>
-    <div class="row">
-        <div class="col-md-3 filterOpties">
-            <h4>Categorieën</h4>
-            <div class="categorie">
-                <span class="backgroundLichtRoze">
-                    <h5>Summer SALE</h5>
-                </span>
-                <span class="backgroundLichtRoze">
-                    <h5><u>Nieuwe Collectie </u></h5>
-                </span>
-                <span class="backgroundLichtRoze">
-                    <h5>Alle jurken bekijken</h5>
-                </span>
+</div>
+<div class="row">
+    <div class="col-md-3 filterOpties">
+        <h4>Categorieën</h4>
+        <div class="categorie">
+            <span class="backgroundLichtRoze">
+                <h5>Summer SALE</h5>
+            </span>
+            <span class="backgroundLichtRoze">
+                <h5><u>Nieuwe Collectie </u></h5>
+            </span>
+            <span class="backgroundLichtRoze">
+                <h5>Alle jurken bekijken</h5>
+            </span>
+        </div>
+        <div id="filters">
+            <h4>Filter op:</h4>
+            <h5 data-toggle="collapse" data-target="#merk">Merk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span> </h5>
+            <div id="merk" class="collapse">
+                <ul>
+                    @{
+                        for (int i = 0; i < 5; i++)
+                        {
+                            <li>
+                                <input id="cbMerk@(i)" type="checkbox" value="Diane legrand" />Diane legrand
+                                <label for="cbMerk@(i)"></label>
+                            </li>
+                        }
+                    }
+                </ul>
             </div>
-            <div id="filters">
-                <h4>Filter op:</h4>
-                <h5 data-toggle="collapse" data-target="#merk">Merk <span class="glyphicon glyphicon-chevron-down pijltje"></span > <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span> </h5> 
-                <div id="merk" class="collapse">
-                    <ul>
-                        @{
-                            for (int i = 0; i < 5; i++)
-                            {
-                                <li>
-                                    <input id="cbMerk@(i)" type="checkbox" value="Diane legrand" />Diane legrand
-                                    <label for="cbMerk@(i)"></label>
-                                </li> 
-                            }
+            <h5 data-toggle="collapse" data-target="#stijlJurk">Stijl jurk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+            <div id="stijlJurk" class="collapse">
+                <ul>
+                    @{
+                        for (int i = 0; i < 5; i++)
+                        {
+                            <li>
+                                <input id="cbStijl@(i)" type="checkbox" value="Prinses bruid" />Prinses bruid
+                                <label for="cbStijl@(i)"></label>
+                            </li>
                         }
-                    </ul>
-                </div>
-                <h5 data-toggle="collapse" data-target="#stijlJurk">Stijl jurk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
-                <div id="stijlJurk" class="collapse">
-                    <ul>
-                        @{
-                            for (int i = 0; i < 5; i++)
-                            {
-                                <li>
-                                    <input id="cbStijl@(i)" type="checkbox" value="Prinses bruid" />Prinses bruid
-                                    <label for="cbStijl@(i)"></label>
-                                </li>
-                            }
-                        }
-                    </ul>
-                </div>
-                <h5 class="bottomBorder" data-toggle="collapse" data-target="#prijs">Prijs <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
-                <div id="prijs" class="collapse bottomBorder" >
-                    <ul>
-                        @*<div data-role="main" class="ui-content">
+                    }
+                </ul>
+            </div>
+            <h5 class="bottomBorder" data-toggle="collapse" data-target="#prijs">Prijs <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+            <div id="prijs" class="collapse bottomBorder">
+                <ul>
+                    @*<div data-role="main" class="ui-content">
                             <form method="post" action="demoform.asp">
                                 <div data-role="rangeslider">
                                     <label for="price-min">Price:</label>
@@ -68,136 +67,138 @@
                                 <input type="submit" data-inline="true" value="Submit">
                             </form>
                         </div>*@
-                        @{
-                            for (int i = 0; i < 5; i++)
-                            {
-                                <li>
-                                    <input id="cbPrijs@(i)" type="checkbox" value="Prinses bruid" /> 50K NEEF
-                                    <label for="cbPrijs@(i)"></label>
-                                </li>
-                                    
-                            }
-                        }
-                    </ul>
-                </div>
-                <h4 class="marginTop">Filters verfijnen</h4>
-                <h5 data-toggle="collapse" data-target="#nekLijn">Neklijn <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
-                <div id="nekLijn" class="collapse">
-                    <ul>
-                        @{
-                            for (int i = 0; i < 5; i++)
-                            {
-                                <li>
-                                    <input id="cbNeklijn@(i)" type="checkbox" value="Kant" />Kant
-                                    <label for="cbNeklijn@(i)"></label>
-                                </li>
-                                
-                            }
-                        }
-                    </ul>
-                </div>
-                <h5 data-toggle="collapse" data-target="#silhouette"> Silhouette <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
-                <div id="silhouette" class="collapse">
-                    <ul>
-                        @{
-                            for (int i = 0; i < 5; i++)
-                            {
-                                <li>
-                                    <input id="cbSilhouette@(i)" type="checkbox" value="Ruches rok" />Ruches rok
-                                    <label for="cbSilhouette@(i)"></label>
-                                </li>
-                                
+                    @{
+                        for (int i = 0; i < 5; i++)
+                        {
+                            <li>
+                                <input id="cbPrijs@(i)" type="checkbox" value="Prinses bruid" /> 50K NEEF
+                                <label for="cbPrijs@(i)"></label>
+                            </li>
 
-                            }
                         }
-                    </ul>
-                </div>
-                <h5 class="bottomBorder" data-toggle="collapse" data-target="#kleur">Kleur <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
-                <div id="kleur" class="collapse bottomBorder">
-                    <ul>
-                        @{
-                            for (int i = 0; i < 5; i++)
-                            {
-                                <li>
-                                    <input class="" type="checkbox" value="Bloed rood" />Bloed rood
-                                    <label for=""></label>
-                                </li>
-                            }
-                        }
-                    </ul>
-                </div>
+                    }
+                </ul>
             </div>
-        </div>
+            <h4 class="marginTop">Filters verfijnen</h4>
+            <h5 data-toggle="collapse" data-target="#nekLijn">Neklijn <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+            <div id="nekLijn" class="collapse">
+                <ul>
+                    @{
+                        for (int i = 0; i < 5; i++)
+                        {
+                            <li>
+                                <input id="cbNeklijn@(i)" type="checkbox" value="Kant" />Kant
+                                <label for="cbNeklijn@(i)"></label>
+                            </li>
 
-        <div class="col-md-9 jurkenOverzicht">
-            <div class="product"><img src="http://placehold.it/250x360" class="img-responsive" />
-                <div class="productNaam"><h5>Beautiful by Enzoani</h5></div>
-                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+                        }
+                    }
+                </ul>
             </div>
-            <div class="product">
-                <img src="http://placehold.it/250x360" class="img-responsive" />
-                <div class="productNaam"><h5>Ladybird</h5></div>
-                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+            <h5 data-toggle="collapse" data-target="#silhouette"> Silhouette <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+            <div id="silhouette" class="collapse">
+                <ul>
+                    @{
+                        for (int i = 0; i < 5; i++)
+                        {
+                            <li>
+                                <input id="cbSilhouette@(i)" type="checkbox" value="Ruches rok" />Ruches rok
+                                <label for="cbSilhouette@(i)"></label>
+                            </li>
+
+
+                        }
+                    }
+                </ul>
             </div>
-            <div class="product">
-                <img src="http://placehold.it/250x360" class="img-responsive" />
-                <div class="productNaam"><h5>Tres chic</h5></div>
-                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-            </div>
-            <div class="product">
-                <img src="http://placehold.it/250x360" class="img-responsive" />
-                <div class="productNaam"><h5>Tres chic</h5></div>
-                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-            </div>
-            <div class="product">
-                <img src="http://placehold.it/250x360" class="img-responsive" />
-                <div class="productNaam"><h5>Tres chic</h5></div>
-                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-            </div>
-            <div class="product">
-                <img src="http://placehold.it/250x360" class="img-responsive" />
-                <div class="productNaam"><h5>Tres chic</h5></div>
-                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-            </div>
-            <div class="product">
-                <img src="http://placehold.it/250x360" class="img-responsive" />
-                <div class="productNaam"><h5>Tres chic</h5></div>
-                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-            </div>
-            <div class="product">
-                <img src="http://placehold.it/250x360" class="img-responsive" />
-                <div class="productNaam"><h5>Tres chic</h5></div>
-                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-            </div>
-            <div class="product">
-                <img src="http://placehold.it/250x360" class="img-responsive" />
-                <div class="productNaam"><h5>Tres chic</h5></div>
-                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-            </div>
-            <div class="product">
-                <img src="http://placehold.it/250x360" class="img-responsive" />
-                <div class="productNaam"><h5>Tres chic</h5></div>
-                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-            </div>
-            <div class="product">
-                <img src="http://placehold.it/250x360" class="img-responsive" />
-                <div class="productNaam"><h5>Tres chic</h5></div>
-                <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+            <h5 class="bottomBorder" data-toggle="collapse" data-target="#kleur">Kleur <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+            <div id="kleur" class="collapse bottomBorder">
+                <ul>
+                    @{
+                        for (int i = 0; i < 5; i++)
+                        {
+                            <li>
+                                <input class="" type="checkbox" value="Bloed rood" />Bloed rood
+                                <label for=""></label>
+                            </li>
+                        }
+                    }
+                </ul>
             </div>
         </div>
     </div>
+
+    <div class="col-md-9 jurkenOverzicht">
+        <div class="product">
+            <img src="http://placehold.it/250x360" class="img-responsive" />
+            <div class="productNaam"><h5>Beautiful by Enzoani</h5></div>
+            <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+            <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+        </div>
+        <div class="product">
+            <img src="http://placehold.it/250x360" class="img-responsive" />
+            <div class="productNaam"><h5>Ladybird</h5></div>
+            <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+            <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+        </div>
+        <div class="product">
+            <img src="http://placehold.it/250x360" class="img-responsive" />
+            <div class="productNaam"><h5>Tres chic</h5></div>
+            <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+            <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+        </div>
+        <div class="product">
+            <img src="http://placehold.it/250x360" class="img-responsive" />
+            <div class="productNaam"><h5>Tres chic</h5></div>
+            <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+            <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+        </div>
+        <div class="product">
+            <img src="http://placehold.it/250x360" class="img-responsive" />
+            <div class="productNaam"><h5>Tres chic</h5></div>
+            <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+            <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+        </div>
+        <div class="product">
+            <img src="http://placehold.it/250x360" class="img-responsive" />
+            <div class="productNaam"><h5>Tres chic</h5></div>
+            <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+            <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+        </div>
+        <div class="product">
+            <img src="http://placehold.it/250x360" class="img-responsive" />
+            <div class="productNaam"><h5>Tres chic</h5></div>
+            <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+            <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+        </div>
+        <div class="product">
+            <img src="http://placehold.it/250x360" class="img-responsive" />
+            <div class="productNaam"><h5>Tres chic</h5></div>
+            <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+            <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+        </div>
+        <div class="product">
+            <img src="http://placehold.it/250x360" class="img-responsive" />
+            <div class="productNaam"><h5>Tres chic</h5></div>
+            <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+            <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+        </div>
+        <div class="product">
+            <img src="http://placehold.it/250x360" class="img-responsive" />
+            <div class="productNaam"><h5>Tres chic</h5></div>
+            <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+            <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+        </div>
+        <div class="product">
+            <img src="http://placehold.it/250x360" class="img-responsive" />
+            <div class="productNaam"><h5>Tres chic</h5></div>
+            <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
+            <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
+        </div>
+    </div>
 </div>
+
+<div><img src="~/images/Footer/417033-3-3.jpg" class="img-responsive" /></div>
 
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>

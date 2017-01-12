@@ -25,7 +25,7 @@ $('#datepicker')
         dayNamesShort: ["zon", "maa", "din", "woe", "don", "vri", "zat"],
         dayNamesMin: dayNamesMin,
         weekHeader: "Wk",
-        onSelect: function (dateText, inst) {
+        onSelect: function(dateText, inst) {
             date = $(this).datepicker('getDate');
             selected = $(this).val();
             //getAvalibleTimes();
@@ -136,7 +136,7 @@ function toggleSelecteerTijd(id1, id2, id3) {
 }
 
 function toggleSelecteerDatum(id1, id2, id3) {
-   
+
     if (selected == null) {
         alert("Selecteer een Datum");
     } else {
@@ -157,7 +157,7 @@ function toggleSelecteerDatum(id1, id2, id3) {
         }
         getAvalibleTimes();
     }
-    
+
 }
 
 function checkform() {
@@ -171,7 +171,7 @@ function checkform() {
         document.getElementById('LBtrouwdatum').innerHTML = toDate($('#Gebruiker_Trouwdatum').val());
         document.getElementById('LBtelefoon').innerHTML = $('#Gebruiker_Telefoonnummer').val();
         document.getElementById('LBemail').innerHTML = $('#Gebruiker_Email').val();
-    } 
+    }
 }
 
 /*radiobuttons voor tijd*/
@@ -179,4 +179,3 @@ $("input[name='Tijd']").change(function () {
     var tijd = $(this).val();
     $("#Afspraak_Tijd").val(tijd);
 });
-

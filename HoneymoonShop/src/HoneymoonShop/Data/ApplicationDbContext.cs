@@ -11,7 +11,7 @@ namespace HoneymoonShop.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-           Database.EnsureDeleted();
+           //Database.EnsureDeleted();
           // Database.EnsureCreated();
         }
         
@@ -51,6 +51,8 @@ namespace HoneymoonShop.Data
         public virtual DbSet<Afspraak> Afspraak { get; set; }
 
         public virtual DbSet<Product> Product { get; set; }
+
+        public virtual DbSet<Merk> Merk { get; set; }
 
         public virtual DbSet<Kenmerk> Kenmerk { get; set; }
 

@@ -1,4 +1,4 @@
-﻿@model HoneymoonShop.Models.Bruid.Trouwjurk
+﻿@model HoneymoonShop.Models.Bruid.Product
 
 <link rel="stylesheet" href="~/css/bruid.css" />
 
@@ -37,28 +37,40 @@
         </div>
 
         <div class="col-md-3">
-            <h2>@Model.Merk.naam</h2>
+            <h2>@Model.Merk.Naam</h2>
             <span>Artikel nr. @Model.ArtikelNummer</span>
             <p>@Model.Beschrijving</p>
             <br>
             <ul>
                 <li>
-                    Merk:<a href="#">@Model.Merk.naam</a>
+                    Merk:<a href="#">@Model.Merk.Naam</a>
                 </li>
                 <li>
                     Kenmerken:
-                    @foreach (var kenmerk in Model.Kenmerken)
+                    @foreach (var x in Model.Product_X_Kenmerk)
                     {
-                        <a href="">@kenmerk.Naam,</a>
+                        @if (!x.Kenmerk.Type.Equals("Kleur"))
+                        {
+                            <a href="">@x.Kenmerk.Naam,</a>
+                        }
+                        
                     }
                 </li>
                 <li>Prijsindicatie: €@Model.Prijs</li>
                 <li>
                     Beschikbare kleuren:
-                    @foreach (var kleur in Model.Kleuren)
+
+                    @foreach (var x in Model.Product_X_Kenmerk)
                     {
-                        <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode;" onclick='changeImage("@kleur.naam")'></span>
+                        @if (x.Kenmerk.Type.Equals("Kleur"))
+                        {
+
+                            var y = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
+
+                            <span href="#" class="kleur-bolletje" style="background-color:#@y.Kleurcode" onclick='changeImage("@x.Kenmerk.Naam")'></span>
+                        }
                     }
+
                 </li>
             </ul>
             <script language="javascript">

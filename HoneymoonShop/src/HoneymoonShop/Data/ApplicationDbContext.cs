@@ -12,6 +12,11 @@ namespace HoneymoonShop.Data
         {
         }
 
+        public ApplicationDbContext()
+        {
+
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -20,8 +25,8 @@ namespace HoneymoonShop.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<Gebruiker> Gebruiker { get; set; }
+        public virtual DbSet<Gebruiker> Gebruiker { get; set; }
 
-        public DbSet<Afspraak> Afspraak { get; set; }
+        public virtual DbSet<Afspraak> Afspraak { get; set; }
     }
 }

@@ -157,6 +157,10 @@
                                     </label>
                                 </div>
                             </div>
+                            <input asp-for="Afspraak.Datum" type="hidden" value="19-05-2016" />
+                            <input asp-for="Afspraak.Tijd" type="hidden" value="10.41" />
+                            <input asp-for="Afspraak.AfspraakSoort" type="hidden" value="@ViewData["afspraakSoort"]" />
+
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <button onclick="return checkform()" class="text-uppercase" id="ButtonStap3" type="button"> Naar stap 3 </button>

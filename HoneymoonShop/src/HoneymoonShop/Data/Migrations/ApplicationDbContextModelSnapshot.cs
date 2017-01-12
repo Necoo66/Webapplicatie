@@ -78,24 +78,25 @@ namespace HoneymoonShop.Data.Migrations
                     b.ToTable("Categorie");
                 });
 
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Kleur", b =>
+            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Kenmerk", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Kleurcode")
-                        .HasAnnotation("MaxLength", 6);
-
-                    b.Property<int?>("TrouwjurkId");
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
 
                     b.Property<string>("Naam")
                         .IsRequired();
 
+                    b.Property<string>("Type")
+                        .IsRequired();
+
                     b.HasKey("Id");
 
-                    b.HasIndex("TrouwjurkId");
+                    b.ToTable("Kenmerk");
 
-                    b.ToTable("Kleur");
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Kenmerk");
                 });
 
             modelBuilder.Entity("HoneymoonShop.Models.Bruid.Merk", b =>
@@ -111,58 +112,7 @@ namespace HoneymoonShop.Data.Migrations
                     b.ToTable("Merk");
                 });
 
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Neklijn", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("TrouwjurkId");
-
-                    b.Property<string>("Naam")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TrouwjurkId");
-
-                    b.ToTable("Neklijn");
-                });
-
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Silhouette", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("TrouwjurkId");
-
-                    b.Property<string>("Naam")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TrouwjurkId");
-
-                    b.ToTable("Silhouette");
-                });
-
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Stijl", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("TrouwjurkId");
-
-                    b.Property<string>("Naam")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TrouwjurkId");
-
-                    b.ToTable("Stijl");
-                });
-
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Trouwjurk", b =>
+            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -170,14 +120,13 @@ namespace HoneymoonShop.Data.Migrations
                     b.Property<string>("ArtikelNummer")
                         .IsRequired();
 
+                    b.Property<string>("Beschrijving");
+
                     b.Property<int?>("CategorieId");
 
-                    b.Property<int?>("MerkId")
-                        .IsRequired();
+                    b.Property<int?>("MerkId");
 
                     b.Property<double>("Prijs");
-
-                    b.Property<string>("Beschrijving");
 
                     b.HasKey("Id");
 
@@ -185,7 +134,22 @@ namespace HoneymoonShop.Data.Migrations
 
                     b.HasIndex("MerkId");
 
-                    b.ToTable("Trouwjurk");
+                    b.ToTable("Product");
+                });
+
+            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Product_X_Kenmerk", b =>
+                {
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("KenmerkId");
+
+                    b.HasKey("ProductId", "KenmerkId");
+
+                    b.HasIndex("KenmerkId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Product_X_Kenmerk");
                 });
 
             modelBuilder.Entity("HoneymoonShop.Models.GebruikerModels.Afspraak", b =>
@@ -341,41 +305,57 @@ namespace HoneymoonShop.Data.Migrations
 
             modelBuilder.Entity("HoneymoonShop.Models.Bruid.Kleur", b =>
                 {
-                    b.HasOne("HoneymoonShop.Models.Bruid.Trouwjurk")
-                        .WithMany("Kleuren")
-                        .HasForeignKey("TrouwjurkId");
+                    b.HasBaseType("HoneymoonShop.Models.Bruid.Kenmerk");
+
+                    b.Property<string>("Kleurcode")
+                        .HasAnnotation("MaxLength", 6);
+
+                    b.ToTable("Kleur");
+
+                    b.HasDiscriminator().HasValue("Kleur");
                 });
 
             modelBuilder.Entity("HoneymoonShop.Models.Bruid.Neklijn", b =>
                 {
-                    b.HasOne("HoneymoonShop.Models.Bruid.Trouwjurk")
-                        .WithMany("Neklijnen")
-                        .HasForeignKey("TrouwjurkId");
+                    b.HasBaseType("HoneymoonShop.Models.Bruid.Kenmerk");
+
+
+                    b.ToTable("Neklijn");
+
+                    b.HasDiscriminator().HasValue("Neklijn");
                 });
 
             modelBuilder.Entity("HoneymoonShop.Models.Bruid.Silhouette", b =>
                 {
-                    b.HasOne("HoneymoonShop.Models.Bruid.Trouwjurk")
-                        .WithMany("Silhouetten")
-                        .HasForeignKey("TrouwjurkId");
+                    b.HasBaseType("HoneymoonShop.Models.Bruid.Kenmerk");
+
+
+                    b.ToTable("Silhouette");
+
+                    b.HasDiscriminator().HasValue("Silhouette");
                 });
 
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Stijl", b =>
-                {
-                    b.HasOne("HoneymoonShop.Models.Bruid.Trouwjurk")
-                        .WithMany("Stijlen")
-                        .HasForeignKey("TrouwjurkId");
-                });
-
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Trouwjurk", b =>
+            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Product", b =>
                 {
                     b.HasOne("HoneymoonShop.Models.Bruid.Categorie", "Categorie")
-                        .WithMany()
+                        .WithMany("Producten")
                         .HasForeignKey("CategorieId");
 
                     b.HasOne("HoneymoonShop.Models.Bruid.Merk", "Merk")
-                        .WithMany()
-                        .HasForeignKey("MerkId")
+                        .WithMany("Producten")
+                        .HasForeignKey("MerkId");
+                });
+
+            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Product_X_Kenmerk", b =>
+                {
+                    b.HasOne("HoneymoonShop.Models.Bruid.Kenmerk", "Kenmerk")
+                        .WithMany("Product_X_Kenmerk")
+                        .HasForeignKey("KenmerkId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("HoneymoonShop.Models.Bruid.Product", "Product")
+                        .WithMany("Product_X_Kenmerk")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

@@ -22,38 +22,20 @@ namespace HoneymoonShop.Controllers
             return View();
         }
 
-        public IActionResult Product(int? id)
+        public async Task<IActionResult> Product(int? id)
         {
-            /* if (id == null)
+             if (id == null)
              {
                  return NotFound();
              }
 
-             var trouwjurk = await _context.Trouwjurk.SingleOrDefaultAsync(t => t.Id == id);
+             var trouwjurk = await _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).SingleOrDefaultAsync(t => t.Id == id);
+            
              if (trouwjurk == null)
              {
                  return NotFound();
-             }*/
+             }
 
-            var trouwjurk = new Trouwjurk()
-            {
-                Beschrijving = "asdafanfnas'gn'savkn akfn kadnf kadnf daf adnkf'nda'kf nad'gn ádn adn'f nadn 43t",
-                ArtikelNummer = "123",
-                Prijs = 10.20,
-                Merk = new Merk() { naam = "Merknaam" },
-                Categorie = new Categorie() { Naam = "cat1" },
-                Kleuren = new List<Kleur>() {
-                                                new Kleur() { naam = "blue", Kleurcode = "0000FF" },
-                                                new Kleur() { naam = "rood", Kleurcode = "FF0000" }
-                                            },
-                Kenmerken = new List<Kenmerk>() { new Kenmerk { Naam = "lange nek", KenmerkType = "Neklijn"},
-                        new Kenmerk { Naam = "korte nek", KenmerkType = "Neklijn"},
-                        new Kenmerk { Naam = "kort", KenmerkType = "Silhouette"},
-                        new Kenmerk { Naam = "kort", KenmerkType = "Stijl"},
-                        new Kenmerk { Naam = "lang", KenmerkType = "Stijl"},
-                }
-                
-            };
             return View(trouwjurk);
         }
     }

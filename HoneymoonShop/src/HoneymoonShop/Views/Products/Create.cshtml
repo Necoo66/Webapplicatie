@@ -1,0 +1,49 @@
+@model HoneymoonShop.Models.Bruid.Product
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ArtikelNummer" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ArtikelNummer" class="form-control" />
+                <span asp-validation-for="ArtikelNummer" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Beschrijving" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Beschrijving" class="form-control" />
+                <span asp-validation-for="Beschrijving" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Prijs" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Prijs" class="form-control" />
+                <span asp-validation-for="Prijs" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -49,10 +49,6 @@ hr {
     padding: 0 4%;
 }
 
-.row {
-    margin: 0px;
-}
-
 label {
     font-family: Nexa Book;
     color: black;
@@ -102,7 +98,7 @@ input {
         top: -30px;
         overflow: hidden;
     }
-
+    
 @media screen and (max-width: 1650px) {
 
     .title {

@@ -86,7 +86,7 @@ function setData() {
 
 function initData(){
     datum = $("#Afspraak_Datum").val();
-    datum += $("#Afspraak_Tijd").val().toString;
+    datum += $("#Afspraak_Tijd").val();
     naam = $("#Gebruiker_Naam").val();
     trouwdatum = $("#Gebruiker_Trouwdatum").val();
     telefoonnummer = $("#Gebruiker_Telefoonnummer").val();

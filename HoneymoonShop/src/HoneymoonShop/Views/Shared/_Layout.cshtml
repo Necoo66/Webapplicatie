@@ -7,18 +7,17 @@
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/elements.css" />
         <link rel="stylesheet" href="~/css/font.css" />
         <link rel="stylesheet" href="~/css/afspraak.css" />
         <link rel="stylesheet" href="~/css/bekijkVideos.css" />
         <link rel="stylesheet" href="~/css/AfspraakMaken.css" />
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="~/css/datepicker.css" />
-        <link rel="stylesheet" href="~/css/OneStopShop.css" />
         <link rel="stylesheet" href="~/css/bekijkVideos.css" />
-
-        
+        <link rel="stylesheet" href="~/css/rangeslider.css" />
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -172,6 +171,8 @@
             <script src="~/lib/jquery/dist/jquery.js"></script>
             <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            @*<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>*@
             <script src="~/js/DatePicker.js" asp-append-version="true"></script>
             <script src="~/js/site.js" asp-append-version="true"></script>
         </environment>
@@ -186,6 +187,7 @@
             </script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
             <script src="~/js/site.min.js" asp-append-version="true"></script>
+            
         </environment>
 
         @RenderSection("scripts", required: false)

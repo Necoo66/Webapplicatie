@@ -1,5 +1,6 @@
 ﻿.filterOpties{
     margin-bottom: 150px;
+    padding-left: 25px;
 }
 .filterOpties > h4{
     font-family:Nexa Black;
@@ -115,6 +116,7 @@
 }
 #filters{
     margin-top:30px;
+    margin-left: 10px;
 }
 
 .product{

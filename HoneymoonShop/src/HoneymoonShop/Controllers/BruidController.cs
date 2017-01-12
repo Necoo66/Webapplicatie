@@ -17,10 +17,21 @@ namespace HoneymoonShop.Controllers
         {
             _context = context;
         }
+
         public IActionResult Index()
         {
+            
+
             return View();
         }
+
+        public IActionResult Categorie()
+        {
+
+            var trouwjurk = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk);
+            return View();
+        }
+
 
         public async Task<IActionResult> Product(int? id)
         {

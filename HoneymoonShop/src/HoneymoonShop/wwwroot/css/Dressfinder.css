@@ -1,15 +1,21 @@
 ﻿.filterOpties{
-    margin-bottom: 50px;
+    margin-bottom: 150px;
 }
 .filterOpties > h4{
     font-family:Nexa Black;
     text-transform:uppercase;
 }
+
+.filterOpties ul{
+    height: 150px;
+    overflow-y:auto;
+}
+
 .filterOpties ul > li{
-    background-color:RGB(250, 250, 250);
+    background-color: RGB(250, 250, 250);
     color: rgb(150, 150, 150);
     padding-left: 15px;
-    position:relative;
+    position: relative;
 }
 
 .filterOpties ul > li > input {
@@ -18,7 +24,7 @@
 
 
 .filterOpties ul > li:last-child{
-    border-bottom:1px solid grey;
+    padding-bottom: 6px;
 }
 
 .filterOpties ul > li > input[type='checkbox']{
@@ -36,6 +42,7 @@
 }
 
 .filterOpties ul > li > label {
+    margin-top: 5px;
     cursor: pointer;
     display: block;
     width: 19px;
@@ -70,22 +77,17 @@
 #filters{
     color: RGB(96, 96, 96);
 }
-#filters > h5:first-of-type{
-    border-top:1px solid grey;   
-}
+
 #filters > h5{
     padding: 6px 10px; 
     background-color:RGB(240, 240, 240);
-    border-bottom: 1px solid grey;
     margin:0;
-
+    border-top: 1px solid rgb(219, 219, 220);
 }
 
-#filters > h5:last-of-type
-{
-    border-bottom:1px solid grey;
+#filters > div{
+    border-top:1px solid rgb(219, 219, 220);
 }
-
 
 .categorie span{
     display:block;
@@ -105,8 +107,8 @@
     margin: auto;
 }
 
-.topBorder{
-    border-top:1px solid grey;
+.bottomBorder{
+    border-bottom:1px solid rgb(219, 219, 220);
 }
 .marginTop{
     margin-top:30px;
@@ -119,11 +121,8 @@
     margin:5px 10px;
     background-color:white;
     z-index:0;
-    -moz-transition: all 300ms ease; /* Firefox */
-    -ms-transition: all 300ms ease; /* IE 9 */
-    -o-transition: all 300ms ease; /* Opera */
-    transition: all 300ms ease;
 }
+
 .artikelInfo{
     display:none;
 }
@@ -137,8 +136,8 @@
 }
 .product:hover{
     box-sizing:border-box;
-    padding: 28px 32px 28px 32px;
-    margin: -40px -22px -40px -22px;
+    padding: 28px 32px 15px 32px;
+    margin: -38px -22px -48px -22px;
     z-index:10;
     box-shadow: 3px 4px 13px 1px rgba(0, 0, 0, .25);
 }
@@ -148,26 +147,6 @@
     color: RGB(250, 200, 196);
 }
 
-/*.product:hover{
-    z-index:2;
-    background-color:white;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    -o-transform: scale(1.2);
-    transform: scale(1.2);
-}
-
-.product:hover .artikelInfo{
-    display:block;
-}
-
-.product:hover .artikelNummer, .product:hover .artikelKleur{
-    display:block;
-    position:absolute;
-    background-color:white;
-    width:100%;
-}*/
 
 
 

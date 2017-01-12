@@ -8,9 +8,10 @@ using HoneymoonShop.Data;
 namespace HoneymoonShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170112095537_addedDiscriminator")]
+    partial class addedDiscriminator
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -87,9 +88,6 @@ namespace HoneymoonShop.Data.Migrations
                         .IsRequired();
 
                     b.Property<string>("Naam")
-                        .IsRequired();
-
-                    b.Property<string>("Type")
                         .IsRequired();
 
                     b.HasKey("Id");

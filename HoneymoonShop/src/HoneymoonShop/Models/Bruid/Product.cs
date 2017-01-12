@@ -30,6 +30,7 @@ namespace HoneymoonShop.Models.Bruid
         //public List<Kleur> Kleuren { get; set; }
 
         /*categorie kan null zijn*/
+        
         public virtual Categorie Categorie { get; set; }
 
         public virtual Merk Merk { get; set; }

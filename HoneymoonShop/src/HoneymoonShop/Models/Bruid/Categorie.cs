@@ -9,6 +9,7 @@ namespace HoneymoonShop.Models.Bruid
     public class Categorie 
     {
         public int Id { get; set; }
+
         [Required]
         public string Naam { get; set; }
 

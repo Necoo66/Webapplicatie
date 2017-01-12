@@ -26,7 +26,6 @@ namespace HoneymoonShop.Controllers
         public IActionResult Categorie()
         {
             var trouwjurk = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
-            trouwjurk.ForEach(x => System.Diagnostics.Debug.WriteLine(x.ArtikelNummer));
             return View(trouwjurk);
         }
 
@@ -38,7 +37,7 @@ namespace HoneymoonShop.Controllers
                  return NotFound();
              }
 
-             var trouwjurk = await _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).SingleOrDefaultAsync(t => t.Id == id);
+             var trouwjurk = await _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).Include(x => x.Categorie).SingleOrDefaultAsync(t => t.Id == id);
             
              if (trouwjurk == null)
              {

@@ -129,7 +129,15 @@ h5 > .glyphicon{
     margin:5px 10px 15px 10px;
     background-color:white;
     z-index:0;
-    
+}
+
+.product > a > img{
+    width: 250px;
+    height: 360px;
+}
+
+.product a:link{
+    text-decoration:none;
 }
 
 .artikelInfo{
@@ -146,7 +154,7 @@ h5 > .glyphicon{
 .product:hover{
     box-sizing:border-box;
     padding: 20px 32px 20px 32px;
-    margin: -40px -22px -40px -22px;
+    margin: -40px -22px -23px -22px;
     z-index:10;
     box-shadow: 3px 4px 13px 1px rgba(0, 0, 0, .25);
 }

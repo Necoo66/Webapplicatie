@@ -2,8 +2,10 @@
     <div class="container">
         <div class="row">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a class="active" href="@Url.Action("index")">Home</a></li>
-                <li class="breadcrumb-item active">Categories</li>
+                <li class="breadcrumb-item"><a class="active" href="@Url.Action("index", "home")">Home</a></li>
+                <li class="breadcrumb-item"><a class="active" href="@Url.Action("Bruid", "Home")">Bruid</a></li>
+                <li class="breadcrumb-item"><a class="active" href="@Url.Action("Categorie", "Bruid")">Dressfinder</a></li>
+                <li class="breadcrumb-item active">categorie</li>
             </ol>
         </div>
         <div class="row">
@@ -129,90 +131,25 @@
                 @foreach (var item in Model)
                 {
                     <div class="product">
-                        <img src="http://placehold.it/250x360" class="img-responsive" />
-                        <div class="productNaam"><h5>@item.Merk.Naam</h5></div>
-                        <div class="artikelNummer"><h6>@item.ArtikelNummer</h6></div>
+                        <a href="/bruid/product/@item.Id">
+                            <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.ToList().Where(x => x.Kenmerk.Type.Equals("Kleur")).First().Kenmerk.Naam + ".jpg")" class="img-responsive" />
+                            <div class="productNaam"><h5>@item.Merk.Naam</h5></div>
+                            <div class="artikelNummer"><h6>@( "Artikel nr." + item.ArtikelNummer)</h6></div>
 
+                            <div class="artikelKleur">
+                                @foreach (var x in item.Product_X_Kenmerk)
+                                {
+                                    @if (x.Kenmerk.Type.Equals("Kleur"))
+                                    {
+                                        var kleur = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
+                                        <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode" onclick='changeImage("@x.Kenmerk.Naam")'></span>
 
-                        @foreach (var x in item.Product_X_Kenmerk)
-                        {
-                            @if (x.Kenmerk.Type.Equals("Kleur"))
-                            {
-                                var kleur = (HoneymoonShop.Models.Bruid.Kleur) x.Kenmerk;
-                                <div class="artikelKleur"><span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode" onclick='changeImage("@x.Kenmerk.Naam")'></span></div>
-                            }
-                        }
-                        
+                                    }
+                                }
+                            </div>
+                        </a>
                     </div>
                 }
-                
-                    
-                <div class="product">
-                    <img src="http://placehold.it/250x360" class="img-responsive" />
-                    <div class="productNaam"><h5>Beautiful by Enzoani</h5></div>
-                    <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                    <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-                </div>
-                <div class="product">
-                    <img src="http://placehold.it/250x360" class="img-responsive" />
-                    <div class="productNaam"><h5>Ladybird</h5></div>
-                    <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                    <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-                </div>
-                <div class="product">
-                    <img src="http://placehold.it/250x360" class="img-responsive" />
-                    <div class="productNaam"><h5>Tres chic</h5></div>
-                    <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                    <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-                </div>
-                <div class="product">
-                    <img src="http://placehold.it/250x360" class="img-responsive" />
-                    <div class="productNaam"><h5>Tres chic</h5></div>
-                    <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                    <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-                </div>
-                <div class="product">
-                    <img src="http://placehold.it/250x360" class="img-responsive" />
-                    <div class="productNaam"><h5>Tres chic</h5></div>
-                    <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                    <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-                </div>
-                <div class="product">
-                    <img src="http://placehold.it/250x360" class="img-responsive" />
-                    <div class="productNaam"><h5>Tres chic</h5></div>
-                    <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                    <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-                </div>
-                <div class="product">
-                    <img src="http://placehold.it/250x360" class="img-responsive" />
-                    <div class="productNaam"><h5>Tres chic</h5></div>
-                    <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                    <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-                </div>
-                <div class="product">
-                    <img src="http://placehold.it/250x360" class="img-responsive" />
-                    <div class="productNaam"><h5>Tres chic</h5></div>
-                    <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                    <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-                </div>
-                <div class="product">
-                    <img src="http://placehold.it/250x360" class="img-responsive" />
-                    <div class="productNaam"><h5>Tres chic</h5></div>
-                    <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                    <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-                </div>
-                <div class="product">
-                    <img src="http://placehold.it/250x360" class="img-responsive" />
-                    <div class="productNaam"><h5>Tres chic</h5></div>
-                    <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                    <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-                </div>
-                <div class="product">
-                    <img src="http://placehold.it/250x360" class="img-responsive" />
-                    <div class="productNaam"><h5>Tres chic</h5></div>
-                    <div class="artikelNummer"><h6>Artikel nr. 41745</h6></div>
-                    <div class="artikelKleur"><a href="#" class="kleur-bolletje"></a></div>
-                </div>
             </div>
 
         </div>

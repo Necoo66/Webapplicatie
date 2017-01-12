@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HoneymoonShop.Data;
+using HoneymoonShop.Models;
 using HoneymoonShop.Models.GebruikerModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace HoneymoonShop.Controllers
@@ -91,7 +93,7 @@ namespace HoneymoonShop.Controllers
                 _context.Gebruiker.Add(afspraakMaken.Gebruiker);
                 await _context.SaveChangesAsync();
                 //Email verzenden
-                //VerzendAfspraak(afspraakMaken);
+                Mail.VerzendAfspraak(afspraakMaken);
                 return RedirectToAction("Voltooid");
             }
             return View(afspraakMaken);

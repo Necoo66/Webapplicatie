@@ -77,16 +77,16 @@ $("document").ready(function () {
 
 function setData() {
     //alert(naam + trouwdatum + telefoonnummer + emailadres);
-    $("#datumEntijdOverzicht").html("Datum en tijd: " + datum);
-    $("#NaamOverzicht").html(naam);
-    $("#TrouwdatumOverzicht").html(trouwdatum);
-    $("#TelefoonOverzicht").html(telefoonnummer);
-    $("#EmailOverzicht").html(emailadres);
+    $("datumEntijdOverzicht").html("Datum en tijd: " + datum);
+    $("NaamOverzicht").html(naam);
+    $("TrouwdatumOverzicht").html(trouwdatum);
+    $("TelefoonOverzicht").html(telefoonnummer);
+    $("EmailOverzicht").html(emailadres);
 }
 
 function initData(){
     datum = $("#Afspraak_Datum").val();
-    datum += $("#Afspraak_Tijd").val().toString();
+    datum += $("#Afspraak_Tijd").val();
     naam = $("#Gebruiker_Naam").val();
     trouwdatum = $("#Gebruiker_Trouwdatum").val();
     telefoonnummer = $("#Gebruiker_Telefoonnummer").val();

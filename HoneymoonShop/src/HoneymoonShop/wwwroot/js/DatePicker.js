@@ -1,7 +1,7 @@
 ﻿/*DATEPICKER*/
 var disableddates = new Array;
-var selected;
 var date = new Date();
+var selected;
 window.onload = getAvalibleDates(date.getMonth() + 1, date.getFullYear());
 
 function DisableSpecificDates(date) {
@@ -9,15 +9,28 @@ function DisableSpecificDates(date) {
     return [disableddates.indexOf(string) === -1];
 }
 
+var dayNames = ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
+var monthNames = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
+var dayNamesMin = ["zo", "ma", "di", "wo", "do", "vr", "za"];
+
 $('#datepicker')
     .datepicker({
         dateFormat: 'dd-mm-yy',
         inline: true,
-        onSelect: function (dateText, inst) {
-            var date = $(this).datepicker('getDate');
+        currentText: "Vandaag",
+        monthNames: monthNames,
+        monthNamesShort: ["jan", "feb", "mrt", "apr", "mei", "jun",
+        "jul", "aug", "sep", "okt", "nov", "dec"],
+        dayNames: dayNames,
+        dayNamesShort: ["zon", "maa", "din", "woe", "don", "vri", "zat"],
+        dayNamesMin: dayNamesMin,
+        weekHeader: "Wk",
+        onSelect: function(dateText, inst) {
+            date = $(this).datepicker('getDate');
             selected = $(this).val();
             //getAvalibleTimes();
             $("#Afspraak_Datum").val(jQuery.datepicker.formatDate('dd-mm-yy', date));
+            $(".datumbanner").text(dayNamesMin[date.getDay()] + " " + date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear());
         },
         onChangeMonthYear: function (year, month, widget) {
             getAvalibleDates(month, year);
@@ -42,6 +55,8 @@ function successDate(sqlDates) {
     }
 
     $("#datepicker").datepicker("refresh");
+    //console.log("sqlDates of data:", sqlDates.slice(0, 100));
+    //console.log("disableddates of data:", disableddates.slice(0, 100));
 }
 
 function toDate(sqlDate) {
@@ -65,25 +80,23 @@ function getAvalibleTimes() {
 
 function successTijd(sqlDates) {
 
-    document.getElementById("radio1").style.visibility = "visible";
-    document.getElementById("radio2").style.visibility = "visible";
-    document.getElementById("radio3").style.visibility = "visible";
+    document.getElementById("radio1").style.display = "block";
+    document.getElementById("radio2").style.display = "block";
+    document.getElementById("radio3").style.display = "block";
 
     for (var i = 0; i < sqlDates.length; i++) {
         if ("" + sqlDates[i] === "9:30") {
-            document.getElementById("radio1").style.visibility = "hidden";
-        } 
+            document.getElementById("radio1").style.display = "none";
+        }
         if ("" + sqlDates[i] === "12:30") {
-            document.getElementById("radio2").style.visibility = "hidden";
-        } 
+            document.getElementById("radio2").style.display = "none";
+        }
         if ("" + sqlDates[i] === "15:00") {
-            document.getElementById("radio3").style.visibility = "hidden";
-        } 
+            document.getElementById("radio3").style.display = "none";
+        }
     }
-    console.log("sqlDates of data:", sqlDates.slice(0, 100));
+    //console.log("sqlDates of data:", sqlDates.slice(0, 100));
 }
-
-
 
 /*TOGGLE*/
 function toggleVisibility(id) {
@@ -101,37 +114,64 @@ function ToggelPages(id1, id2, id3) {
     } else {
         $('div[id="stap1a"]').css("display", "none");
     }
-    $('div[id="'+id1+'"]').css("display", "block");
-    $('div[id="'+id2+'"]').css("display", "none");
+    $('div[id="' + id1 + '"]').css("display", "block");
+    $('div[id="' + id2 + '"]').css("display", "none");
     $('div[id="' + id3 + '"]').css("display", "none");
     $('div[id="stap1b"]').css("display", "none");
 }
 
-function toggleSelecteerTijd(id1, id2, id3)
-{
-    var e1 = document.getElementById(id1);
-    var e2 = document.getElementById(id2);
-    var e3 = document.getElementById(id3);
+function toggleSelecteerTijd(id1, id2, id3) {
 
-    if(e1.style.display === "block") {
-        e1.style.display = "none";
-        e2.style.display = "block";
-        e3.style.display = "block";
-
+    if (!$("input[name='Afspraak.Tijd']:checked").val()) {
+        alert('Selecteer een tijd!');
     }
     else {
-        e1.style.display = "block";
-        e2.style.display = "none";
-        e3.style.display = "none";
+        $('div[id="' + id1 + '"]').css("display", "block");
+        $('div[id="' + id2 + '"]').css("display", "none");
+        $('div[id="' + id3 + '"]').css("display", "none");
+        $('div[id="stap1b"]').css("display", "none");
+        $('div[id="stap1a"]').css("display", "none");
+        $(".datumbanner").text(dayNamesMin[date.getDay()] + " " + date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear() + " om " + $("input:radio[name='Afspraak.Tijd']:checked").val() + " u");
     }
-    getAvalibleTimes();
 }
 
-function toggleSelecteerTijdstip(id1, id2, id3)
-{
-    var e1 = document.getElementById(id1);
-    var e2 = document.getElementById(id2);
-    var e3 = document.getElementById(id3);
+function toggleSelecteerDatum(id1, id2, id3) {
+
+    if (selected == null) {
+        alert("Selecteer een Datum");
+    } else {
+        var e1 = document.getElementById(id1);
+        var e2 = document.getElementById(id2);
+        var e3 = document.getElementById(id3);
+
+        if (e1.style.display === "block") {
+            e1.style.display = "none";
+            e2.style.display = "block";
+            e3.style.display = "block";
+
+        }
+        else {
+            e1.style.display = "block";
+            e2.style.display = "none";
+            e3.style.display = "none";
+        }
+        getAvalibleTimes();
+    }
+
+}
+
+function checkform() {
+    if ($("#MyForm").valid()) {
+        $('div[id="stap3"]').css("display", "block");
+        $('div[id="stap1"]').css("display", "none");
+        $('div[id="stap2"]').css("display", "none");
+
+        //Set
+        document.getElementById('LBnaam').innerHTML = $('#Gebruiker_VoornaamAchternaam').val();
+        document.getElementById('LBtrouwdatum').innerHTML = toDate($('#Gebruiker_Trouwdatum').val());
+        document.getElementById('LBtelefoon').innerHTML = $('#Gebruiker_Telefoonnummer').val();
+        document.getElementById('LBemail').innerHTML = $('#Gebruiker_Email').val();
+    }
 }
 
 /*radiobuttons voor tijd*/
@@ -139,43 +179,3 @@ $("input[name='Tijd']").change(function () {
     var tijd = $(this).val();
     $("#Afspraak_Tijd").val(tijd);
 });
-
-/* Dutch (UTF-8) initialisation for the jQuery UI date picker plugin. */
-/* Written by Mathias Bynens <http://mathiasbynens.be/> */
-(function (factory) {
-    if (typeof define === "function" && define.amd) {
-
-        // AMD. Register as an anonymous module.
-        define(["../widgets/datepicker"], factory);
-    } else {
-
-        // Browser globals
-        factory(jQuery.datepicker);
-    }
-}(function (datepicker) {
-
-    datepicker.regional.nl = {
-        closeText: "Sluiten",
-        prevText: "←",
-        nextText: "→",
-        currentText: "Vandaag",
-        monthNames: ["januari", "februari", "maart", "april", "mei", "juni",
-        "juli", "augustus", "september", "oktober", "november", "december"],
-        monthNamesShort: ["jan", "feb", "mrt", "apr", "mei", "jun",
-        "jul", "aug", "sep", "okt", "nov", "dec"],
-        dayNames: ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"],
-        dayNamesShort: ["zon", "maa", "din", "woe", "don", "vri", "zat"],
-        dayNamesMin: ["zo", "ma", "di", "wo", "do", "vr", "za"],
-        weekHeader: "Wk",
-        dateFormat: "dd-mm-yy",
-        firstDay: 1,
-        isRTL: false,
-        showMonthAfterYear: false,
-        yearSuffix: ""
-    };
-    datepicker.setDefaults(datepicker.regional.nl);
-
-    return datepicker.regional.nl;
-
-}));
-

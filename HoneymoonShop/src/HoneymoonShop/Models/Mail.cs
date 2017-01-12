@@ -1,12 +1,14 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using HoneymoonShop.Models.GebruikerModels;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.DotNet.Cli.Utils;
 using MimeKit;
 using MimeKit.Utils;
+using System.IO;
+using HoneymoonShop.Models.GebruikerModels;
 
 namespace HoneymoonShop.Models
 {
@@ -15,15 +17,15 @@ namespace HoneymoonShop.Models
         private static String OurEmail = "infohoneymoonshop@gmail.com";
         private static String OurPassword = "Keeskees01";
 
-        public static void VerzendAfspraak(AfspraakMaken afspraakMaken)
+        public static async Task VerzendAfspraak(AfspraakMaken afspraakMaken)
         {
             var builder = new BodyBuilder();
             string path = Directory.GetCurrentDirectory() + @"\wwwroot\images\mail.png";
             var banner = builder.LinkedResources.Add(path);
             banner.ContentId = MimeUtils.GenerateMessageId();
             System.Diagnostics.Debug.WriteLine(path);
-            //var datum = afspraakMaken.Afspraak.Datum.ToString("MMMM dd, yyyy") + " om " + afspraakMaken.Afspraak.Tijd;
-            var datum = "hi";
+            var datum = afspraakMaken.Afspraak.Datum.ToString("MMMM dd, yyyy") + " om " + afspraakMaken.Afspraak.Tijd;
+
             builder.HtmlBody = string.Format(@"
 <table style=""width:100%;"">
 <tr>
@@ -38,7 +40,6 @@ namespace HoneymoonShop.Models
         <p>Uw afspraak is gemaakt op:</p>
         <p>{1}</p>
     </td>
-
     <td style=""padding:20px; width:50%; background-color:#F0597C;"">
         <h4>Wilt u uw afspraak wijzigen?</h4>
         <p>Klik dan op de onderstaande link</p>
@@ -58,8 +59,7 @@ namespace HoneymoonShop.Models
 </tr>
 </table>", banner.ContentId, datum);
 
-            //SendEmailAsync(afspraakMaken.Gebruiker.Emailadres, "Honeymoonshop afspraakbevestiging", builder);
-            var sendEmailAsync = SendEmailAsync("rchandoe@gmail.com", "Honeymoonshop afspraakbevestiging", builder);
+            await SendEmailAsync(afspraakMaken.Gebruiker.Email, "Honeymoonshop afspraakbevestiging", builder);
         }
 
 

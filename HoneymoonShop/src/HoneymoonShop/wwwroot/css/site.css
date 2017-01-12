@@ -471,3 +471,8 @@ footer a {
     text-decoration:none;
 
 }
+
+/*meer ruimte voor onderaan een div*/
+.spacer{
+    margin-bottom:40px;
+}

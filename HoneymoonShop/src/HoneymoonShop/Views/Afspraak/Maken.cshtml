@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <form asp-action="Maken" id="MyForm">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="afspraakmaken">
                 <div class="menu">
                     <div class="tab" id="stap1" style="display: block;">
@@ -157,9 +157,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <input asp-for="Afspraak.Datum" type="hidden" value="19-05-2016" />
-                            <input asp-for="Afspraak.Tijd" type="hidden" value="10.41" />
-
+                            <input asp-for="Afspraak.Datum" type="hidden" value="" />
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <button onclick="return checkform()" class="text-uppercase" id="ButtonStap3" type="button"> Naar stap 3 </button>

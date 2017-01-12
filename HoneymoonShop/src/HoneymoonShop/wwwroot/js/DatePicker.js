@@ -25,7 +25,7 @@ $('#datepicker')
         dayNamesShort: ["zon", "maa", "din", "woe", "don", "vri", "zat"],
         dayNamesMin: dayNamesMin,
         weekHeader: "Wk",
-        onSelect: function(dateText, inst) {
+        onSelect: function (dateText, inst) {
             date = $(this).datepicker('getDate');
             selected = $(this).val();
             //getAvalibleTimes();

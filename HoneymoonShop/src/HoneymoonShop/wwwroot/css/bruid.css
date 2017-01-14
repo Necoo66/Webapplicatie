@@ -1,7 +1,15 @@
 ﻿/*Filter*/
 .filterOpties{
     margin-bottom: 150px;
+    position:relative;
 }
+
+/*@media (min-width: 500px) { 
+  .filterHolder{
+    position: fixed;
+  } 
+}*/
+
 .filterOpties > h4{
     font-family:Nexa Black;
     text-transform:uppercase;

@@ -31,7 +31,8 @@ namespace HoneymoonShop.Controllers
         // GET: Afspraak
         public async Task<IActionResult> Beheer()
         {
-            return View(await _context.Afspraak.ToListAsync());
+            System.Diagnostics.Debug.WriteLine(await _context.Afspraak.ToListAsync().);
+            return View();
         }
 
         // GET: Afspraak/Details/5

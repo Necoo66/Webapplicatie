@@ -207,3 +207,35 @@ h5 > .glyphicon{
     padding:0 10px;
     font-size: 22px;
 }
+
+/* Sorteren boven de producten categorie */
+
+.sorting{
+    text-align: right;
+    margin-bottom: 40px;
+}
+
+.sorting > select{
+    padding: 5px 31px 5px 10px;
+    border: 1px solid #f0f0f0;
+    color: #b5b5b5;
+    margin-left:10px;
+}
+
+.sorting > h5, .sorting > select{
+    display:inline-block;
+}
+
+.aantalProducten{
+    float:left;
+}
+.aantalProducten > select{
+    padding: 5px 31px 5px 10px;
+    border: 1px solid #f0f0f0;
+    color: #b5b5b5;
+    margin-left:10px;
+}
+
+.aantalProducten > h5, .aantalProducten > select{
+    display:inline-block
+}

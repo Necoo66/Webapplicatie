@@ -57,16 +57,16 @@
                         <div id="prijs" class="collapse bottomBorder">
                             <ul>
                                 @*<div data-role="main" class="ui-content">
-                        <form method="post" action="demoform.asp">
-                            <div data-role="rangeslider">
-                                <label for="price-min">Price:</label>
-                                <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
-                                <label for="price-max">Price:</label>
-                                <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
-                            </div>
-                            <input type="submit" data-inline="true" value="Submit">
-                        </form>
-                    </div>*@
+                                    <form method="post" action="demoform.asp">
+                                        <div data-role="rangeslider">
+                                            <label for="price-min">Price:</label>
+                                            <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
+                                            <label for="price-max">Price:</label>
+                                            <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
+                                        </div>
+                                        <input type="submit" data-inline="true" value="Submit">
+                                    </form>
+                                </div>*@
                                 @{
                                     for (int i = 0; i < 5; i++)
                                     {
@@ -128,8 +128,17 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-9 jurkenOverzicht">
+                <div class="col-md-12 sorting">
+                    <h5>Sorteren op: </h5> 
+                    <select name="sortingOptie">
+                        <option value="prijsHoogNaarLaag">Prijs hoog - laag</option>
+                        <option value="prijsLaagNaarHoog">Prijs laag - hoog</option>
+                        <option value="merkAZ">Merk A - Z</option>
+                        <option value="merkZA">Merk Z - A</option>
+                    </select>
+                </div>
+
                 @foreach (var item in Model)
                 {
                     <div class="product">
@@ -152,9 +161,30 @@
                         </a>
                     </div>
                 }
-            </div>
 
+                <div class="col-md-6 aantalProducten">
+                    <h5>Aantal tonen: </h5>
+                    <select name="sortingOptie">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <div class="col-lg-6">
+                    <span class="glyphicon glyphicon-triangle-left"></span>
+                    <ul class="pagination">
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                    </ul>
+                    <span class="glyphicon glyphicon-triangle-right"></span>
+                </div>
+            </div>
         </div>
+
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script>
             document.body.style.backgroundColor = "#FFE4EA";

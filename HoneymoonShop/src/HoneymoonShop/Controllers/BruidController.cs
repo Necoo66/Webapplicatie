@@ -23,8 +23,10 @@ namespace HoneymoonShop.Controllers
             return View();
         }
 
-        public IActionResult Categorie()
+        public IActionResult Categorie(FilterOpties filter)
         {
+
+
             ViewBag.CategorieLijst = _context.Categorie.ToList();
             ViewBag.Merklijst = _context.Merk;
             ViewBag.StijlLijst = _context.Kenmerk.Where(x => x.Type.Equals("Stijl"));
@@ -32,7 +34,33 @@ namespace HoneymoonShop.Controllers
             ViewBag.SilhouetteLijst = _context.Kenmerk.Where(x => x.Type.Equals("Silhouette"));
             ViewBag.KleurLijst = _context.Kenmerk.Where(x => x.Type.Equals("Kleur"));
 
-            var trouwjurk = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk);
+            var trouwjurk = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
+            //var ProductXKenmerk = _context.Product_X_Kenmerk.Select(x=>x.ProductId).ToList();
+            trouwjurk = trouwjurk.Where(x => x.Prijs > filter.MinPrijs && x.Prijs > filter.MaxPrijs).ToList();
+
+
+            if (filter.Categorie != null)
+            {
+                trouwjurk = trouwjurk.Where(x => x.Categorie.Id == filter.Categorie.Id).ToList();
+            }
+
+            if (filter.Merk != null)
+            {
+                var merken = new List<Product>();
+                foreach(var m in filter.Merk)
+                {
+                    merken = merken.Union(trouwjurk.Where(x => x.Merk.Id == m.Id).ToList()).ToList();
+                }
+                trouwjurk = merken;
+            }
+
+            if(filter.Kenmerken != null)
+            {
+                
+                    trouwjurk = trouwjurk.FindAll( x => x.Product_X_Kenmerk.Any( y => filter.Kenmerken.Contains(y.Kenmerk) ) );
+                
+            }
+        
             return View(trouwjurk);
         }
 

@@ -23,16 +23,18 @@ namespace HoneymoonShop.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Categorie(FilterOpties filter)
         {
 
 
-            ViewBag.CategorieLijst = _context.Categorie.ToList();
-            ViewBag.Merklijst = _context.Merk;
-            ViewBag.StijlLijst = _context.Kenmerk.Where(x => x.Type.Equals("Stijl"));
-            ViewBag.NeklijnLijst = _context.Kenmerk.Where(x => x.Type.Equals("Neklijn"));
-            ViewBag.SilhouetteLijst = _context.Kenmerk.Where(x => x.Type.Equals("Silhouette"));
-            ViewBag.KleurLijst = _context.Kenmerk.Where(x => x.Type.Equals("Kleur"));
+            //ViewBag.CategorieLijst = _context.Categorie.ToList();
+            //ViewBag.Merklijst = _context.Merk;
+            //ViewBag.StijlLijst = _context.Kenmerk.Where(x => x.Type.Equals("Stijl"));
+            //ViewBag.NeklijnLijst = _context.Kenmerk.Where(x => x.Type.Equals("Neklijn"));
+            //ViewBag.SilhouetteLijst = _context.Kenmerk.Where(x => x.Type.Equals("Silhouette"));
+            //ViewBag.KleurLijst = _context.Kenmerk.Where(x => x.Type.Equals("Kleur"));
 
             var trouwjurk = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
             //var ProductXKenmerk = _context.Product_X_Kenmerk.Select(x=>x.ProductId).ToList();
@@ -47,37 +49,35 @@ namespace HoneymoonShop.Controllers
             if (filter.Merk != null)
             {
                 var merken = new List<Product>();
-                foreach(var m in filter.Merk)
+                foreach (var m in filter.Merk)
                 {
                     merken = merken.Union(trouwjurk.Where(x => x.Merk.Id == m.Id).ToList()).ToList();
                 }
                 trouwjurk = merken;
             }
 
-            if(filter.Kenmerken != null)
+            if (filter.Kenmerken != null)
             {
-                
-                    trouwjurk = trouwjurk.FindAll( x => x.Product_X_Kenmerk.Any( y => filter.Kenmerken.Contains(y.Kenmerk) ) );
-                
+                trouwjurk = trouwjurk.FindAll(x => x.Product_X_Kenmerk.Any(y => filter.Kenmerken.Contains(y.Kenmerk)));
             }
-        
+
             return View(trouwjurk);
         }
 
 
         public async Task<IActionResult> Product(int? id)
         {
-             if (id == null)
-             {
-                 return NotFound();
-             }
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-             var trouwjurk = await _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).Include(x => x.Categorie).SingleOrDefaultAsync(t => t.Id == id);
-            
-             if (trouwjurk == null)
-             {
-                 return NotFound();
-             }
+            var trouwjurk = await _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).Include(x => x.Categorie).SingleOrDefaultAsync(t => t.Id == id);
+
+            if (trouwjurk == null)
+            {
+                return NotFound();
+            }
 
             return View(trouwjurk);
         }

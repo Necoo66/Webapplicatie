@@ -51,13 +51,13 @@
             </div>
             <div class="hamburger-menu" id="hamburger-menu-toggle" style="display: none;">
                 <ul>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">HOME</a></li>
-                    <li><a href="/home/bruid">BRUID</a></li>
+                    <li><a asp-controller="Home" asp-action="Index">HOME</a></li>
+                    <li><a asp-controller="Home" asp-action="Bruid">BRUID</a></li>
                     <li><a href="">BRUIDEGOM</a></li>
-                    <li><a href="">DE WINKEL</a></li>
+                    <li><a  asp-controller="Bruid" asp-action="Categorie">DE WINKEL</a></li>
                     <li><a href="">BLOG</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">CONTACT</a></li>
-                    <li><a asp-area="" asp-controller="Afspraak" asp-action="Index">AFSPRAAK MAKEN</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact">CONTACT</a></li>
+                    <li><a asp-controller="Afspraak" asp-action="Index">AFSPRAAK MAKEN</a></li>
                 </ul>
             </div>
             <div id="IDnavigation" class="navigation">
@@ -65,9 +65,9 @@
                 <div class="buttons">
                     <ul>
                         <li><a asp-area="" asp-controller="Home" asp-action="Index">HOME</a></li>
-                        <li><a href="/home/bruid">BRUID</a></li>
+                        <li><a asp-controller="Home" asp-action="Bruid">BRUID</a></li>
                         <li><a href="">BRUIDEGOM</a></li>
-                        <li><a href="">DE WINKEL</a></li>
+                        <li><a asp-controller="Bruid" asp-action="Categorie">DE WINKEL</a></li>
                         <li><a href="">BLOG</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Contact">CONTACT</a></li>
                         <li><a asp-area="" asp-controller="Afspraak" asp-action="Index" style="background-color: #F0597C; color: white;">AFSPRAAK MAKEN</a></li>

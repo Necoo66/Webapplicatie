@@ -22,5 +22,6 @@ namespace HoneymoonShop.Models.GebruikerModels
     public enum SoortAfspraak {
         Trouwjurken,
         Trouwpakken,
-        Afspeldafspraak }
+        Afspeldafspraak
+    }
 }

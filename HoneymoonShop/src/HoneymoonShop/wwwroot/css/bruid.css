@@ -1,7 +1,15 @@
 ﻿/*Filter*/
 .filterOpties{
     margin-bottom: 150px;
+    position:relative;
 }
+
+/*@media (min-width: 500px) { 
+  .filterHolder{
+    position: fixed;
+  } 
+}*/
+
 .filterOpties > h4{
     font-family:Nexa Black;
     text-transform:uppercase;
@@ -129,7 +137,15 @@ h5 > .glyphicon{
     margin:5px 10px 15px 10px;
     background-color:white;
     z-index:0;
-    
+}
+
+.product > a > img{
+    width: 250px;
+    height: 360px;
+}
+
+.product a:link{
+    text-decoration:none;
 }
 
 .artikelInfo{
@@ -146,7 +162,7 @@ h5 > .glyphicon{
 .product:hover{
     box-sizing:border-box;
     padding: 20px 32px 20px 32px;
-    margin: -40px -22px -40px -22px;
+    margin: -40px -22px -23px -22px;
     z-index:10;
     box-shadow: 3px 4px 13px 1px rgba(0, 0, 0, .25);
 }
@@ -190,4 +206,36 @@ h5 > .glyphicon{
     background:#fff;
     padding:0 10px;
     font-size: 22px;
+}
+
+/* Sorteren boven de producten categorie */
+
+.sorting{
+    text-align: right;
+    margin-bottom: 40px;
+}
+
+.sorting > select{
+    padding: 5px 31px 5px 10px;
+    border: 1px solid #f0f0f0;
+    color: #b5b5b5;
+    margin-left:10px;
+}
+
+.sorting > h5, .sorting > select{
+    display:inline-block;
+}
+
+.aantalProducten{
+    float:left;
+}
+.aantalProducten > select{
+    padding: 5px 31px 5px 10px;
+    border: 1px solid #f0f0f0;
+    color: #b5b5b5;
+    margin-left:10px;
+}
+
+.aantalProducten > h5, .aantalProducten > select{
+    display:inline-block
 }

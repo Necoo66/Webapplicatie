@@ -3,7 +3,7 @@
 }
 
 
-<div id="banner"><img src="~/images/banner1.png" /></div>
+<div id="banner" class="banner"><img src="~/images/banner1.png" /></div>
 <div class="content">
     <div class="row">
         <div class="title">
@@ -17,32 +17,41 @@
             height: 630px;
             margin:20px auto;
             padding:0;
-            overflow:hidden;
+            overflow-x:scroll;
+        }
+
+        .slider::-webkit-scrollbar{
+            display:none;
         }
 
         .slider > div{
             width:2000px;
+            
         }
 
         #img-wrap{
             width:230px;
-            position: relative;
             margin: 20px 20px 0 0;
+            cursor: pointer;
             float: left;
-            overflow:hidden;
         }
 
         #img-wrap .img-text {
             text-transform:capitalize;
             font-family:Nexa Black;
             position: relative;
-            bottom: 290px;
-            left: 60px;
             padding: 10px;
+            margin: 0 auto;
+            bottom: 190px;
             visibility: hidden;
             font-weight: bold;
             background-color: white;
             width: 125px;
+        }
+
+        #img-wrap .img-text p {
+            position: absolute; 
+            overflow:hidden;
         }
 
         #img-wrap:hover .img-text {
@@ -53,7 +62,7 @@
         <div>
             <div id="img-wrap">
                 <a href="#"></a>
-                <img src="http://placehold.it/280x630" class="hover img-responsive" />
+                <img src="http://placehold.it/280x630" class="hover img-responsive">
                 <p class="img-text">Bekijk de jurk</p>
             </div>
             <div id="img-wrap">

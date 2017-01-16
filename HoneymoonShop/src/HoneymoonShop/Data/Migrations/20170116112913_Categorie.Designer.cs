@@ -8,9 +8,10 @@ using HoneymoonShop.Data;
 namespace HoneymoonShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170116112913_Categorie")]
+    partial class Categorie
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -333,16 +334,6 @@ namespace HoneymoonShop.Data.Migrations
                     b.ToTable("Silhouette");
 
                     b.HasDiscriminator().HasValue("Silhouette");
-                });
-
-            modelBuilder.Entity("HoneymoonShop.Models.Bruid.Stijl", b =>
-                {
-                    b.HasBaseType("HoneymoonShop.Models.Bruid.Kenmerk");
-
-
-                    b.ToTable("Stijl");
-
-                    b.HasDiscriminator().HasValue("Stijl");
                 });
 
             modelBuilder.Entity("HoneymoonShop.Models.Bruid.Product", b =>

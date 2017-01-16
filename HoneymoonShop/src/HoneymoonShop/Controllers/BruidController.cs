@@ -25,7 +25,14 @@ namespace HoneymoonShop.Controllers
 
         public IActionResult Categorie()
         {
-            var trouwjurk = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
+            ViewBag.CategorieLijst = _context.Categorie.ToList();
+            ViewBag.Merklijst = _context.Merk;
+            ViewBag.StijlLijst = _context.Kenmerk.Where(x => x.Type.Equals("Stijl"));
+            ViewBag.NeklijnLijst = _context.Kenmerk.Where(x => x.Type.Equals("Neklijn"));
+            ViewBag.SilhouetteLijst = _context.Kenmerk.Where(x => x.Type.Equals("Silhouette"));
+            ViewBag.KleurLijst = _context.Kenmerk.Where(x => x.Type.Equals("Kleur"));
+
+            var trouwjurk = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk);
             return View(trouwjurk);
         }
 

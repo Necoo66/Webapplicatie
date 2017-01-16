@@ -56,11 +56,15 @@ namespace HoneymoonShop.Data
 
         public virtual DbSet<Kenmerk> Kenmerk { get; set; }
 
+        public virtual DbSet<Categorie> Categorie { get; set; }
+
         public virtual DbSet<Product_X_Kenmerk> Product_X_Kenmerk { get; set; }
 
         public virtual DbSet<Neklijn> Neklijn { get; set; }
 
         public virtual DbSet<Kleur> Kleur { get; set; }
+
+        public virtual DbSet<Stijl> Stijl { get; set; }
 
         public virtual DbSet<Silhouette> Silhouette { get; set; }
 

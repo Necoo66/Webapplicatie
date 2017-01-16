@@ -45,8 +45,13 @@ namespace HoneymoonShop.Controllers
         // GET: Beheer/Create
         public IActionResult Create()
         {
+            SoortAfspraak k = new SoortAfspraak();
 
-            //ViewData["SoortAfspraak"] = SoortAfspraak;
+            //ViewBag.AfspeldAfspraak = SoortAfspraak.Afspeldafspraak;
+            //ViewBag.Trouwjurken = SoortAfspraak.Trouwjurken;
+            //ViewBag.Trouwpakken = SoortAfspraak.Trouwpakken;
+            
+            ViewBag.SoortAfspraak = k;
             return View();
         }
 

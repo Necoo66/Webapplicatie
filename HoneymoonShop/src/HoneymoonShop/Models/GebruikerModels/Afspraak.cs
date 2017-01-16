@@ -8,10 +8,10 @@ namespace HoneymoonShop.Models.GebruikerModels
         public int Id { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd - MM - yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Datum { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0: hh : mm}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0: hh:mm}", ApplyFormatInEditMode = true)]
         public string Tijd { get; set; }
 
         public SoortAfspraak AfspraakSoort { get; set; }

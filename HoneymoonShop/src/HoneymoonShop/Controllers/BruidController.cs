@@ -25,31 +25,33 @@ namespace HoneymoonShop.Controllers
 
         public IActionResult Categorie()
         {
-            ViewBag.CategorieLijst = _context.Categorie.ToList();
-            ViewBag.Merklijst = _context.Merk;
-            ViewBag.StijlLijst = _context.Kenmerk.Where(x => x.Type.Equals("Stijl"));
-            ViewBag.NeklijnLijst = _context.Kenmerk.Where(x => x.Type.Equals("Neklijn"));
-            ViewBag.SilhouetteLijst = _context.Kenmerk.Where(x => x.Type.Equals("Silhouette"));
-            ViewBag.KleurLijst = _context.Kenmerk.Where(x => x.Type.Equals("Kleur"));
+          var filter = new Filter()
+            {
+                Merken = _context.Merk.ToList(),
+                Categorieën = _context.Categorie.ToList(),
+                Stijlen = _context.Kenmerk.Where(x => x.Type.Equals("Stijl")).ToList(),
+                KenmerkNamen = _context.Kenmerk.Where(x => !x.Type.Equals("Stijl")).Select(x => x.Type).Distinct().ToList(),
+                Kenmerken = _context.Kenmerk.ToList()
+            };
 
             var trouwjurk = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk);
-            return View(trouwjurk);
+            return View(new ProductFilter(filter, trouwjurk));
         }
 
 
         public async Task<IActionResult> Product(int? id)
         {
-             if (id == null)
-             {
-                 return NotFound();
-             }
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-             var trouwjurk = await _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).Include(x => x.Categorie).SingleOrDefaultAsync(t => t.Id == id);
-            
-             if (trouwjurk == null)
-             {
-                 return NotFound();
-             }
+            var trouwjurk = await _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).Include(x => x.Categorie).SingleOrDefaultAsync(t => t.Id == id);
+
+            if (trouwjurk == null)
+            {
+                return NotFound();
+            }
 
             return View(trouwjurk);
         }

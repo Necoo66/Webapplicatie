@@ -46,7 +46,7 @@ namespace HoneymoonShop.Controllers
         public IActionResult Create()
         {
 
-            ViewData["SoortAfspraak"] = SoortAfspraak;
+            //ViewData["SoortAfspraak"] = SoortAfspraak;
             return View();
         }
 

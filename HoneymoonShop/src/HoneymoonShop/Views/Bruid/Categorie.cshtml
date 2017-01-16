@@ -1,4 +1,8 @@
 ﻿@model IEnumerable<HoneymoonShop.Models.Bruid.Product>
+<link rel="stylesheet" href="~/css/slider.css" />
+<style>
+
+</style>
     <div class="container">
         <div class="row">
             <ol class="breadcrumb">
@@ -55,29 +59,7 @@
                         </div>
                         <h5 class="bottomBorder" data-toggle="collapse" data-target="#prijs">Prijs <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
                         <div id="prijs" class="collapse bottomBorder">
-                            <ul>
-                                @*<div data-role="main" class="ui-content">
-                                    <form method="post" action="demoform.asp">
-                                        <div data-role="rangeslider">
-                                            <label for="price-min">Price:</label>
-                                            <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
-                                            <label for="price-max">Price:</label>
-                                            <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
-                                        </div>
-                                        <input type="submit" data-inline="true" value="Submit">
-                                    </form>
-                                </div>*@
-                                @{
-                                    for (int i = 0; i < 5; i++)
-                                    {
-                                        <li>
-                                            <input id="cbPrijs@(i)" type="checkbox" value="Prinses bruid" /> €1000
-                                            <label for="cbPrijs@(i)"></label>
-                                        </li>
-
-                                    }
-                                }
-                            </ul>
+                            <input id="prijsSlider" type="text" class="span2" value="" data-slider-id='ex1Slider' data-slider-min="10" data-slider-max="1000" data-slider-step="10" data-slider-value="[250,450]" />
                         </div>
                         <h4 class="marginTop">Filters verfijnen</h4>
                         <h5 data-toggle="collapse" data-target="#nekLijn">Neklijn <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
@@ -131,11 +113,11 @@
             <div class="col-md-9 jurkenOverzicht">
                 <div class="col-md-12 sorting">
                     <h5>Sorteren op: </h5> 
-                    <select name="sortingOptie">
-                        <option value="prijsHoogNaarLaag">Prijs hoog - laag</option>
-                        <option value="prijsLaagNaarHoog">Prijs laag - hoog</option>
-                        <option value="merkAZ">Merk A - Z</option>
-                        <option value="merkZA">Merk Z - A</option>
+                    <select name="SortingOptie">
+                        <option value="PrijsHL">Prijs hoog - laag</option>
+                        <option value="PrijsLH">Prijs laag - hoog</option>
+                        <option value="MerkAZ">Merk A - Z</option>
+                        <option value="MerkZA">Merk Z - A</option>
                     </select>
                 </div>
 
@@ -184,11 +166,8 @@
                 </div>
             </div>
         </div>
-
-        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script>
             document.body.style.backgroundColor = "#FFE4EA";
         </script>
-        <script src="~/js/Arrows.js" asp-append-version="true"></script>
     </div>
     <div><img src="~/images/Footer/417033-3-3.jpg" class="img-responsive" /></div>

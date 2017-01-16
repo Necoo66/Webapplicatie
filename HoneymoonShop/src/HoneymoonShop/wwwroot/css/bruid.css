@@ -4,12 +4,6 @@
     position:relative;
 }
 
-/*@media (min-width: 500px) { 
-  .filterHolder{
-    position: fixed;
-  } 
-}*/
-
 .filterOpties > h4{
     font-family:Nexa Black;
     text-transform:uppercase;
@@ -167,11 +161,6 @@ h5 > .glyphicon{
     box-shadow: 3px 4px 13px 1px rgba(0, 0, 0, .25);
 }
 
-
-
-
-
-
 /*Product pagina*/
 .kleur-bolletje{
     display: inline-block;
@@ -238,4 +227,9 @@ h5 > .glyphicon{
 
 .aantalProducten > h5, .aantalProducten > select{
     display:inline-block
+}
+
+#prijs .slider-horizontal{
+    width:100% !important;
+    
 }

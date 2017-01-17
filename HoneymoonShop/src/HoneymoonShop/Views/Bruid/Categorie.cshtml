@@ -21,11 +21,81 @@
     <div class="row">
         <div class="col-md-3 filterOpties">
             <form asp-controller="Bruid" asp-action="Categorie">
-                @foreach(var x in Model.Filter.Merken)
-                {
-                    <input type="checkbox" value="@x.Id" name="merken"/> <label>@x.Naam</label> 
-                    <br>
-
+                <h4>Categorieën</h4>
+                <div class="categorie">
+                    @{
+                        foreach (var categorie in @Model.Filter.Categorieën)
+                        {
+                            <div class="backgroundLichtRoze">
+                                <input type="radio" value="@categorie.Id" name="categorie" />
+                                <label>@categorie.Naam</label>
+                            </div>
+                        }
+                    }
+                </div>
+                <div id="filters">
+                    <h4>Filter op:</h4>
+                    <h5 data-toggle="collapse" data-target="#merk">Merk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span> </h5>
+                    <div id="merk" class="collapse">
+                        <ul>
+                            @{
+                                foreach (var merk in @Model.Filter.Merken)
+                                {
+                                    <li>
+                                        <input type="checkbox" id="@merk.Id@merk.Naam" value="@merk.Id" name="merken" /> @merk.Naam
+                                        <label for="@merk.Id@merk.Naam"></label>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <h5 data-toggle="collapse" data-target="#stijlJurk">Stijl jurk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+                    <div id="stijlJurk" class="collapse">
+                        <ul>
+                            @{
+                                foreach (var stijl in @Model.Filter.Stijlen)
+                                {
+                                    <li>
+                                        <input type="checkbox" id="@stijl.Id@stijl.Naam" value="@stijl.Id" name="kenmerken"/>@stijl.Naam
+                                        <label for="@stijl.Id@stijl.Naam"></label>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <h5 class="bottomBorder" data-toggle="collapse" data-target="#prijs">Prijs <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+                    <div id="prijs" class="collapse bottomBorder">
+                        <input type="hidden" name="minPrijs" value="@Model.Filter.MinPrijs" />
+                        <input type="hidden" name="maxPrijs" value="@Model.Filter.MaxPrijs" />
+                        <b>€<span class="minPrijs">200</span></b> <input id="prijsSlider" type="text" class="span2" value="123"
+                                                                         data-slider-tooltip="show"
+                                                                         data-slider-ticks-labels='["short", "medium", "long"]'
+                                                                         data-slider-min="10"
+                                                                         data-slider-max="1000"
+                                                                         data-slider-step="10"
+                                                                         data-slider-value="[200,800]" />
+                        <b>€<span class="maxPrijs">800</span></b>
+                    </div>
+                </div>
+                <h4 class="marginTop">Filters verfijnen</h4>
+                @{foreach (var kenmerkNaam in @Model.Filter.KenmerkNamen)
+                    {
+                        <h5 data-toggle="collapse" data-target="#@kenmerkNaam">@kenmerkNaam <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+                        <div id="@kenmerkNaam" class="collapse">
+                            <ul>
+                                @foreach (var kenmerk in @Model.Filter.Kenmerken)
+                                {
+                                    if (kenmerkNaam.Equals(kenmerk.Type))
+                                    {
+                                        <li>
+                                            <input type="checkbox" id="@kenmerk.Id@kenmerk.Naam" value="@kenmerk.Id" name="kenmerken"/> @kenmerk.Naam
+                                            <label for="@kenmerk.Id@kenmerk.Naam"></label>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    }
                 }
                 <button type="submit">VERZENDEN!</button>
             </form>

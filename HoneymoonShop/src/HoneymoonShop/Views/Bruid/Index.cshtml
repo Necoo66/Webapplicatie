@@ -66,29 +66,16 @@
                         </div>
                         <h5 class="bottomBorder" data-toggle="collapse" data-target="#prijs">Prijs <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
                         <div id="prijs" class="collapse bottomBorder">
-                            <ul>
-                                @*<div data-role="main" class="ui-content">
-                                        <form method="post" action="demoform.asp">
-                                            <div data-role="rangeslider">
-                                                <label for="price-min">Price:</label>
-                                                <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
-                                                <label for="price-max">Price:</label>
-                                                <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
-                                            </div>
-                                            <input type="submit" data-inline="true" value="Submit">
-                                        </form>
-                                    </div>*@
-                                @{
-                                    for (int i = 0; i < 5; i++)
-                                    {
-                                        <li>
-                                            <input id="cbPrijs@(i)" type="checkbox" value="Prinses bruid" /> €1000
-                                            <label for="cbPrijs@(i)"></label>
-                                        </li>
-
-                                    }
-                                }
-                            </ul>
+                            <input type="hidden" name="minPrijs" value=""/>
+                            <input type="hidden" name="maxPrijs" value="" />
+                            <b>€<span class="minPrijs">200</span></b> <input id="prijsSlider" type="text" class="span2" value="123"
+                                                data-slider-tooltip="show" 
+                                                data-slider-ticks-labels='["short", "medium", "long"]'
+                                                data-slider-min="10" 
+                                                data-slider-max="1000" 
+                                                data-slider-step="10"
+                                                data-slider-value="[200,800]" /> 
+                            <b>€<span class="maxPrijs">800</span></b>
                         </div>
                         <h4 class="marginTop">Filters verfijnen</h4>
 
@@ -176,7 +163,6 @@
         <script>
             document.body.style.backgroundColor = "#FFE4EA";
         </script>
-        <script src="~/js/Arrows.js" asp-append-version="true"></script>
     </div>
 </div>
 <div><img src="~/images/Footer/417033-3-3.jpg" class="img-responsive" /></div>

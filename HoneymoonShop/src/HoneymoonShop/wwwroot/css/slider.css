@@ -136,3 +136,15 @@
 .slider-handle.triangle {
   background: transparent none;
 }
+
+.slider-handle{
+    background-color : white;
+    border:2px solid rgb(255, 228, 234);
+    background-image:none;
+    opacity: 1;
+}
+
+.slider-selection{
+	background-color: rgb(255, 228, 234);
+    background-image: none;
+}

@@ -5,26 +5,28 @@ using System.Threading.Tasks;
 
 namespace HoneymoonShop.Models.Bruid
 {
-    public class FilterOpties
+    /*
+    Classe met geselecteerde filters
+    variable zijn lijsten met ID's 
+    */
+    public class FilterSelectie
     {
-        public FilterOpties()
+        public FilterSelectie()
         {
             Paginanummer = 1;
             AantalTonen = 10;
             SortingOptie = "PrijsHL";
             MinPrijs = 0;
             MaxPrijs = 10000;
-            Kenmerken = new List<Kenmerk>();
-            Merk = new List<Merk>();
-            Stijlen = new List<Kenmerk>();
+            Kenmerken = new List<int>();
+            Merken = new List<int>();
         }
 
-        public List<Kenmerk> Kenmerken { get; set; }
-        public List<Kenmerk> Stijlen { get; set; }
-        public List<Merk> Merk { get; set; }
+        public List<int> Kenmerken { get; set; }
+        public List<int> Merken { get; set; }
         public double MinPrijs { get; set; }
         public double MaxPrijs { get; set; }
-        public Categorie Categorie { get; set; }
+        public int Categorie { get; set; }
 
         public int Paginanummer { get; set; }
         public int AantalTonen { get; set; }

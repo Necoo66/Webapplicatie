@@ -9,10 +9,10 @@ namespace HoneymoonShop.Models.Bruid
     public class ProductFilter
     {
         public Filter Filter { get; set; }
-        public FilterOpties FilterOpties { get; set; }
+        public FilterSelectie FilterOpties { get; set; }
         public List<Product> Producten { get; set; }
 
-        public ProductFilter(Filter filter, FilterOpties filterOpties, List<Product> producten)
+        public ProductFilter(Filter filter, FilterSelectie filterOpties, List<Product> producten)
         {
             Filter = filter;
             FilterOpties = filterOpties;

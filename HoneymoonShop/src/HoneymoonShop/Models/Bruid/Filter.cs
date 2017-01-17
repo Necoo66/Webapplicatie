@@ -7,6 +7,7 @@ using HoneymoonShop.Models.GebruikerModels;
 
 namespace HoneymoonShop.Models.Bruid
 {
+    /*Alle filter opties vanuit de database*/
     public class Filter
     {
         public double MinPrijs { get; set; }
@@ -16,7 +17,6 @@ namespace HoneymoonShop.Models.Bruid
         public List<Kenmerk> Stijlen { get; set; }
         public List<string> KenmerkNamen { get; set; }
         public List<Kenmerk> Kenmerken { get; set; }
-        
 
         public Filter()
         {

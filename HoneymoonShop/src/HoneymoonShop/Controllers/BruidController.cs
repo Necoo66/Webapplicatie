@@ -27,7 +27,7 @@ namespace HoneymoonShop.Controllers
             var productFilter = new ProductFilter()
             {
                 Filter = filter,
-                producten = trouwjurk
+                Producten = trouwjurk
             };
 
 
@@ -45,7 +45,7 @@ namespace HoneymoonShop.Controllers
                 Kenmerken = _context.Kenmerk.ToList()
             };
 
-            var filterOpties = new FilterOpties();
+            var filterOpties = new FilterSelectie();
             var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
 
 
@@ -53,7 +53,7 @@ namespace HoneymoonShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult Categorie(Filter filter)
+        public IActionResult Categorie(FilterSelectie filter)
         {
             //ViewBag.CategorieLijst = _context.Categorie.ToList();
             //ViewBag.Merklijst = _context.Merk;

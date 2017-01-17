@@ -9,10 +9,18 @@ namespace HoneymoonShop.Models.Bruid
     public class ProductFilter
     {
         public Filter Filter { get; set; }
+        public FilterOpties FilterOpties { get; set; }
+        public List<Product> Producten { get; set; }
 
-        public ProductFilter(Filter filter, IIncludableQueryable<Product, Kenmerk> trouwjurk)
+        public ProductFilter(Filter filter, FilterOpties filterOpties, List<Product> producten)
         {
             Filter = filter;
+            FilterOpties = filterOpties;
+            Producten = producten;
+        }
+
+        public ProductFilter()
+        {
         }
     }
 }

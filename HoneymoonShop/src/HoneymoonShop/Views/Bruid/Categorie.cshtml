@@ -1,4 +1,4 @@
-﻿@model HoneymoonShop.Models.Bruid.ProductFilter
+﻿@model HoneymoonShop.Models.Bruid.Filter
 <div class="container">
     <div class="row">
         <ol class="breadcrumb">
@@ -10,171 +10,72 @@
     </div>
     <div class="row">
         <div class="col-md-3 filterOpties">
-            <form asp-controller="Bruid"  asp-action="Categorie" data-ajax="true" data-ajax-method="POST">
-                <div class="filterHolder">
-                    <h4>Categorieën</h4>
-                    <div class="categorie">
-                        @{
-                            foreach (var categorie in @Model.Filter.Categorieën)
-                            {
-                                <div class="backgroundLichtRoze">
-                                    @Html.RadioButtonFor(model => model.Filter.Categorieën, categorie.Naam)
-                                    @Html.Label(categorie.Naam)
-                                </div>
-                            }
-                        }
-                        @*<span class="backgroundLichtRoze">
-                        <h5>Summer SALE</h5>
-                    </span>
-                    <span class="backgroundLichtRoze">
-                        <h5><u>Nieuwe Collectie </u></h5>
-                    </span>
-                    <span class="backgroundLichtRoze">
-                        <h5>Alle jurken bekijken</h5>
-                    </span>*@
-                    </div>
-                    <div id="filters">
-                        <h4>Filter op:</h4>
-                        <h5 data-toggle="collapse" data-target="#merk">Merk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span> </h5>
-                        <div id="merk" class="collapse">
-                            <ul>
-                                @{
-                                    foreach (var merk in @Model.Filter.Merken)
-                                    {
-                                        <li>
-                                            <input id="@merk" type="checkbox" value="@merk" />@merk.Naam
-                                            <label for="@merk"></label>
-                                        </li>
-                                    }
-                                }
-                            </ul>
-                        </div>
-                        <h5 data-toggle="collapse" data-target="#stijlJurk">Stijl jurk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
-                        <div id="stijlJurk" class="collapse">
-                            <ul>
-                                @{
-                                    foreach (var stijl in @Model.Filter.Stijlen)
-                                    {
-                                        <li>
-                                            <input id="@stijl" type="checkbox" value="@stijl" />@stijl.Naam
-                                            <label for="@stijl"></label>
-                                        </li>
-                                    }
-                                }
-                            </ul>
-                        </div>
-                        <h5 class="bottomBorder" data-toggle="collapse" data-target="#prijs">Prijs <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
-                        <div id="prijs" class="collapse bottomBorder">
-                            <ul>
-                                @*<div data-role="main" class="ui-content">
-                                <form method="post" action="demoform.asp">
-                                    <div data-role="rangeslider">
-                                        <label for="price-min">Price:</label>
-                                        <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
-                                        <label for="price-max">Price:</label>
-                                        <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
-                                    </div>
-                                    <input type="submit" data-inline="true" value="Submit">
-                                </form>
-                            </div>*@
-                                @{
-                                    for (int i = 0; i < 5; i++)
-                                    {
-                                        <li>
-                                            <input id="cbPrijs@(i)" type="checkbox" value="Prinses bruid" /> €1000
-                                            <label for="cbPrijs@(i)"></label>
-                                        </li>
-
-                                    }
-                                }
-                            </ul>
-                        </div>
-                        <h4 class="marginTop">Filters verfijnen</h4>
-
-                        @{foreach (var kenmerkNaam in @Model.Filter.KenmerkNamen)
-                            {
-                                <h5 data-toggle="collapse" data-target="#@kenmerkNaam">@kenmerkNaam <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
-                                <div id="@kenmerkNaam" class="collapse">
-                                    <ul>
-                                        @foreach (var kenmerk in @Model.Filter.Kenmerken)
-                                        {
-                                            if (kenmerkNaam.Equals(kenmerk.Type))
-                                            {
-                                                <li>
-                                                    <input id="@kenmerk" type="checkbox" value="@kenmerk" />@kenmerk.Naam
-                                                    <label for="@kenmerk"></label>
-                                                </li>
-                                            }
-                                        }
-                                    </ul>
-                                </div>
-                            }
-                        }
-                    </div>
-                </div>
-                <div class="col-md-9 jurkenOverzicht">
-                    <div class="col-md-12 sorting">
-                        <h5>Sorteren op: </h5>
-                        <select name="sortingOptie">
-                            <option value="prijsHoogNaarLaag">Prijs hoog - laag</option>
-                            <option value="prijsLaagNaarHoog">Prijs laag - hoog</option>
-                            <option value="merkAZ">Merk A - Z</option>
-                            <option value="merkZA">Merk Z - A</option>
-                        </select>
-                    </div>
-                    @*
-                @foreach (var item in Model)
-                {
-                    <div class="product">
-                        <a href="/bruid/product/@item.Id">
-                            <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.Where(x => x.Kenmerk.Type.Equals("Kleur")).First().Kenmerk.Naam + ".jpg")" class="img-responsive" />
-                            <div class="productNaam"><h5>@item.Merk.Naam</h5></div>
-                            <div class="artikelNummer"><h6>@( "Artikel nr." + item.ArtikelNummer)</h6></div>
-
-                            <div class="artikelKleur">
-                                @foreach (var x in item.Product_X_Kenmerk)
-                                {
-                                    @if (x.Kenmerk.Type.Equals("Kleur"))
-                                    {
-                                        var kleur = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
-                                        <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode" onclick='changeImage("@x.Kenmerk.Naam")'></span>
-
-                                    }
-                                }
-                            </div>
-                        </a>
-                    </div>
-                }*@
-
-                    <div class="col-md-6 aantalProducten">
-                        <h5>Aantal tonen: </h5>
-                        <select name="sortingOptie">
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-6">
-                        <span class="glyphicon glyphicon-triangle-left"></span>
-                        <ul class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li class="active"><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
-                        <span class="glyphicon glyphicon-triangle-right"></span>
-                    </div>
-                </div>
+            <form asp-controller="Bruid" asp-action="Categorie">
+            
                 <button type="submit">VERZENDEN!</button>
             </form>
         </div>
 
-        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script>
-            document.body.style.backgroundColor = "#FFE4EA";
-        </script>
-        <script src="~/js/Arrows.js" asp-append-version="true"></script>
+        <div class="col-md-9 jurkenOverzicht">
+            <div class="col-md-12 sorting">
+                <h5>Sorteren op: </h5>
+                <select name="sortingOptie">
+                    <option value="prijsHoogNaarLaag">Prijs hoog - laag</option>
+                    <option value="prijsLaagNaarHoog">Prijs laag - hoog</option>
+                    <option value="merkAZ">Merk A - Z</option>
+                    <option value="merkZA">Merk Z - A</option>
+                </select>
+            </div>
+
+            @*@foreach (var item in @Model.Producten)
+            {
+                <div class="product">
+                    <a href="/bruid/product/@item.Id">
+                        <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.First(x => x.Kenmerk.Type.Equals("Kleur")).Kenmerk.Naam + ".jpg")" class="img-responsive" />
+                        <div class="productNaam"><h5>@item.Merk.Naam</h5></div>
+                        <div class="artikelNummer"><h6>@( "Artikel nr." + item.ArtikelNummer)</h6></div>
+
+                        <div class="artikelKleur">
+                            @foreach (var x in item.Product_X_Kenmerk)
+                            {
+                                if (x.Kenmerk.Type.Equals("Kleur"))
+                                {
+                                    var kleur = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
+                                    <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode" onclick='changeImage("@x.Kenmerk.Naam")'></span>
+                                }
+                            }
+                        </div>
+                    </a>
+                </div>
+            }*@
+
+            <div class="col-md-6 aantalProducten">
+                <h5>Aantal tonen: </h5>
+                <select name="sortingOptie">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+            <div class="col-lg-6">
+                <span class="glyphicon glyphicon-triangle-left"></span>
+                <ul class="pagination">
+                    <li><a href="#">1</a></li>
+                    <li class="active"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>
+                <span class="glyphicon glyphicon-triangle-right"></span>
+            </div>
+        </div>
     </div>
-    <div><img src="~/images/Footer/417033-3-3.jpg" class="img-responsive" /></div>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        document.body.style.backgroundColor = "#FFE4EA";
+    </script>
+    <script src="~/js/Arrows.js" asp-append-version="true"></script>
+</div>
+<div><img src="~/images/Footer/417033-3-3.jpg" class="img-responsive" /></div>

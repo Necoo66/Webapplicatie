@@ -14,9 +14,13 @@ namespace HoneymoonShop.Models.Bruid
             SortingOptie = "PrijsHL";
             MinPrijs = 0;
             MaxPrijs = 10000;
+            Kenmerken = new List<Kenmerk>();
+            Merk = new List<Merk>();
+            Stijlen = new List<Kenmerk>();
         }
 
         public List<Kenmerk> Kenmerken { get; set; }
+        public List<Kenmerk> Stijlen { get; set; }
         public List<Merk> Merk { get; set; }
         public double MinPrijs { get; set; }
         public double MaxPrijs { get; set; }

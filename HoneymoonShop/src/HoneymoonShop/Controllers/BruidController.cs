@@ -23,12 +23,27 @@ namespace HoneymoonShop.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Categorie(FilterOpties filter)
+        public IActionResult Categorie()
         {
+            var filter = new Filter()
+            {
+                Merken = _context.Merk.ToList(),
+                Categorieën = _context.Categorie.ToList(),
+                Stijlen = _context.Kenmerk.Where(x => x.Type.Equals("Stijl")).ToList(),
+                KenmerkNamen = _context.Kenmerk.Where(x => !x.Type.Equals("Stijl")).Select(x => x.Type).Distinct().ToList(),
+                Kenmerken = _context.Kenmerk.ToList()
+            };
+
+            var filterOpties = new FilterOpties();
+            var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
 
 
+            return View(filter);
+        }
+
+        [HttpPost]
+        public IActionResult Categorie(Filter filter)
+        {
             //ViewBag.CategorieLijst = _context.Categorie.ToList();
             //ViewBag.Merklijst = _context.Merk;
             //ViewBag.StijlLijst = _context.Kenmerk.Where(x => x.Type.Equals("Stijl"));
@@ -36,32 +51,32 @@ namespace HoneymoonShop.Controllers
             //ViewBag.SilhouetteLijst = _context.Kenmerk.Where(x => x.Type.Equals("Silhouette"));
             //ViewBag.KleurLijst = _context.Kenmerk.Where(x => x.Type.Equals("Kleur"));
 
-            var trouwjurk = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
-            //var ProductXKenmerk = _context.Product_X_Kenmerk.Select(x=>x.ProductId).ToList();
-            trouwjurk = trouwjurk.Where(x => x.Prijs > filter.MinPrijs && x.Prijs > filter.MaxPrijs).ToList();
+            //var producten = productFilter.Producten;
+            ////var ProductXKenmerk = _context.Product_X_Kenmerk.Select(x=>x.ProductId).ToList();
+            //producten = producten.Where(x => x.Prijs > productFilter.FilterOpties.MinPrijs && x.Prijs > productFilter.FilterOpties.MaxPrijs).ToList();
 
 
-            if (filter.Categorie != null)
-            {
-                trouwjurk = trouwjurk.Where(x => x.Categorie.Id == filter.Categorie.Id).ToList();
-            }
+            //if (productFilter.FilterOpties.Categorie != null)
+            //{
+            //    producten = producten.Where(x => x.Categorie.Id == productFilter.FilterOpties.Categorie.Id).ToList();
+            //}
 
-            if (filter.Merk != null)
-            {
-                var merken = new List<Product>();
-                foreach (var m in filter.Merk)
-                {
-                    merken = merken.Union(trouwjurk.Where(x => x.Merk.Id == m.Id).ToList()).ToList();
-                }
-                trouwjurk = merken;
-            }
+            //if (productFilter.FilterOpties.Merk != null)
+            //{
+            //    var merken = new List<Product>();
+            //    foreach (var m in productFilter.FilterOpties.Merk)
+            //    {
+            //        merken = merken.Union(producten.Where(x => x.Merk.Id == m.Id).ToList()).ToList();
+            //    }
+            //    producten = merken;
+            //}
 
-            if (filter.Kenmerken != null)
-            {
-                trouwjurk = trouwjurk.FindAll(x => x.Product_X_Kenmerk.Any(y => filter.Kenmerken.Contains(y.Kenmerk)));
-            }
+            //if (productFilter.FilterOpties.Kenmerken != null)
+            //{
+            //    producten = producten.FindAll(x => x.Product_X_Kenmerk.Any(y => productFilter.FilterOpties.Kenmerken.Contains(y.Kenmerk)));
+            //}
 
-            return View(trouwjurk);
+            return View(filter);
         }
 
 

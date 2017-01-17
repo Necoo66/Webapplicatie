@@ -27,20 +27,11 @@ namespace HoneymoonShop.Controllers
             };
         }
 
-        public IActionResult Index()
+        public IActionResult Index(FilterSelectie filterSelectie)
         {
-            var filter = new Filter();
             var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).Take(6).ToList();
 
-
-            var productFilter = new ProductFilter()
-            {
-                Filter = filter,
-                Producten = producten
-            };
-
-
-            return View(productFilter);
+            return View(new ProductFilter(_filter, filterSelectie, producten));
         }
 
         public IActionResult Categorie(FilterSelectie filterSelectie)
@@ -48,6 +39,7 @@ namespace HoneymoonShop.Controllers
 
             var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
 
+            
 
             if (filterSelectie.Categorie != null && filterSelectie.Categorie != 0)
             {
@@ -63,17 +55,17 @@ namespace HoneymoonShop.Controllers
             {
                 producten = producten.Where(x => filterSelectie.Merken.Contains(x.Merk.Id)).ToList();
             }
-
-            /* niet af
-            if (filterSelectie.Kenmerken != null)
+            
+            if (filterSelectie.Kenmerken.Count() != 0)
             {
                 producten = producten.FindAll(x => x.Product_X_Kenmerk.Any(y => filterSelectie.Kenmerken.Contains(y.KenmerkId)));
             }
-            */
+            
+
+            /*paginanummering*/
 
             /*sorteren*/
 
-            /*paginanummering*/
 
             return View(new ProductFilter(_filter, filterSelectie, producten));
         }

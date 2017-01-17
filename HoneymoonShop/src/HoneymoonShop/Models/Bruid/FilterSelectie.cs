@@ -20,6 +20,7 @@ namespace HoneymoonShop.Models.Bruid
             MaxPrijs = 10000;
             Kenmerken = new List<int>();
             Merken = new List<int>();
+            Categorie = null;
         }
 
         public List<int> Kenmerken { get; set; }

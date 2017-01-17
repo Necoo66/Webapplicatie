@@ -233,3 +233,33 @@ h5 > .glyphicon{
     width:100% !important;
     
 }
+
+.paginaNummer{
+    text-align:right;
+}
+
+.paginaNummer > .pagination{
+    color: #b5b5b5;
+}
+
+.paginaNummer > .pagination > li > a{
+    padding:0px 5px;
+    border:none;
+    padding: 2px 10px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color:inherit;
+}
+
+.paginanummerActief{
+    color:black;
+    font-weight:900;
+}
+
+.paginaNummer > span, .paginaNummer > ul > li
+{
+    display:inline-block;
+}
+.paginaNummer > span{
+    vertical-align:super;
+}

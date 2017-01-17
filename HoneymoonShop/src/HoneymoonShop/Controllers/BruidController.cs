@@ -12,22 +12,31 @@ namespace HoneymoonShop.Controllers
     public class BruidController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly Filter _filter;
 
         public BruidController(ApplicationDbContext context)
         {
             _context = context;
+            _filter = new Filter()
+            {
+                Merken = _context.Merk.ToList(),
+                Categorieën = _context.Categorie.ToList(),
+                Stijlen = _context.Kenmerk.Where(x => x.Type.Equals("Stijl")).ToList(),
+                KenmerkNamen = _context.Kenmerk.Where(x => !x.Type.Equals("Stijl")).Select(x => x.Type).Distinct().ToList(),
+                Kenmerken = _context.Kenmerk.ToList()
+            };
         }
 
         public IActionResult Index()
         {
             var filter = new Filter();
-            var trouwjurk = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).Take(6).ToList();
+            var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).Take(6).ToList();
 
 
             var productFilter = new ProductFilter()
             {
                 Filter = filter,
-                Producten = trouwjurk
+                Producten = producten
             };
 
 
@@ -36,24 +45,12 @@ namespace HoneymoonShop.Controllers
 
         public IActionResult Categorie()
         {
-            var filter = new Filter()
-            {
-                Merken = _context.Merk.ToList(),
-                Categorieën = _context.Categorie.ToList(),
-                Stijlen = _context.Kenmerk.Where(x => x.Type.Equals("Stijl")).ToList(),
-                KenmerkNamen = _context.Kenmerk.Where(x => !x.Type.Equals("Stijl")).Select(x => x.Type).Distinct().ToList(),
-                Kenmerken = _context.Kenmerk.ToList()
-            };
-
-            var filterOpties = new FilterSelectie();
-            var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
-
-
-            return View(filter);
+            List<Product> producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
+            return View(new ProductFilter(_filter, null, producten));
         }
 
         [HttpPost]
-        public IActionResult Categorie(FilterSelectie filter)
+        public IActionResult Categorie(ProductFilter productFilter)
         {
             //ViewBag.CategorieLijst = _context.Categorie.ToList();
             //ViewBag.Merklijst = _context.Merk;
@@ -87,7 +84,7 @@ namespace HoneymoonShop.Controllers
             //    producten = producten.FindAll(x => x.Product_X_Kenmerk.Any(y => productFilter.FilterOpties.Kenmerken.Contains(y.Kenmerk)));
             //}
 
-            return View(filter);
+            return View(new ProductFilter(_filter, null, null));
         }
 
 

@@ -6,7 +6,7 @@
             <li class="breadcrumb-item"><a class="active" href="@Url.Action("Bruid", "Home")">Bruid</a></li>
             <li class="breadcrumb-item"><a class="active" href="@Url.Action("Categorie", "Bruid")">Dressfinder</a></li>
             <li class="breadcrumb-item">
-                @if(Model.FilterSelectie.Categorie != null)
+                @if (Model.FilterSelectie.Categorie != null)
                 {
                     @Model.Filter.Categorieën.Single(x => x.Id == Model.FilterSelectie.Categorie).Naam
                 }
@@ -56,7 +56,7 @@
                                 foreach (var stijl in @Model.Filter.Stijlen)
                                 {
                                     <li>
-                                        <input type="checkbox" id="@stijl.Id@stijl.Naam" value="@stijl.Id" name="kenmerken"/>@stijl.Naam
+                                        <input type="checkbox" id="@stijl.Id@stijl.Naam" value="@stijl.Id" name="kenmerken" />@stijl.Naam
                                         <label for="@stijl.Id@stijl.Naam"></label>
                                     </li>
                                 }
@@ -76,27 +76,27 @@
                                                                          data-slider-value="[200,800]" />
                         <b>€<span class="maxPrijs">800</span></b>
                     </div>
-                </div>
-                <h4 class="marginTop">Filters verfijnen</h4>
-                @{foreach (var kenmerkNaam in @Model.Filter.KenmerkNamen)
-                    {
-                        <h5 data-toggle="collapse" data-target="#@kenmerkNaam">@kenmerkNaam <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
-                        <div id="@kenmerkNaam" class="collapse">
-                            <ul>
-                                @foreach (var kenmerk in @Model.Filter.Kenmerken)
-                                {
-                                    if (kenmerkNaam.Equals(kenmerk.Type))
+                    <h4 class="marginTop">Filters verfijnen</h4>
+                    @{foreach (var kenmerkNaam in @Model.Filter.KenmerkNamen)
+                        {
+                            <h5 data-toggle="collapse" data-target="#@kenmerkNaam">@kenmerkNaam <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+                            <div id="@kenmerkNaam" class="collapse">
+                                <ul>
+                                    @foreach (var kenmerk in @Model.Filter.Kenmerken)
                                     {
-                                        <li>
-                                            <input type="checkbox" id="@kenmerk.Id@kenmerk.Naam" value="@kenmerk.Id" name="kenmerken"/> @kenmerk.Naam
-                                            <label for="@kenmerk.Id@kenmerk.Naam"></label>
-                                        </li>
+                                        if (kenmerkNaam.Equals(kenmerk.Type))
+                                        {
+                                            <li>
+                                                <input type="checkbox" id="@kenmerk.Id@kenmerk.Naam" value="@kenmerk.Id" name="kenmerken" /> @kenmerk.Naam
+                                                <label for="@kenmerk.Id@kenmerk.Naam"></label>
+                                            </li>
+                                        }
                                     }
-                                }
-                            </ul>
-                        </div>
+                                </ul>
+                            </div>
+                        }
                     }
-                }
+                </div>
                 <button type="submit">VERZENDEN!</button>
             </form>
         </div>
@@ -147,7 +147,7 @@
                 <span class="glyphicon glyphicon-triangle-left"></span>
                 <ul class="pagination">
                     <li><a href="#">1</a></li>
-                    <li class="paginanummerActief" ><a href="#">2</a></li>
+                    <li class="paginanummerActief"><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
                     <li><a href="#">4</a></li>
                     <li><a href="#">5</a></li>

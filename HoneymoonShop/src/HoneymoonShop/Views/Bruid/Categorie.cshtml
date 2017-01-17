@@ -65,15 +65,15 @@
                     </div>
                     <h5 class="bottomBorder" data-toggle="collapse" data-target="#prijs">Prijs <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
                     <div id="prijs" class="collapse bottomBorder">
-                        <input type="hidden" name="minPrijs" value="@Model.Filter.MinPrijs" />
-                        <input type="hidden" name="maxPrijs" value="@Model.Filter.MaxPrijs" />
+                        <input type="hidden" name="minPrijs" value="@Model.FilterSelectie.MinPrijs" />
+                        <input type="hidden" name="maxPrijs" value="@Model.FilterSelectie.MaxPrijs" />
                         <b>€<span class="minPrijs">200</span></b> <input id="prijsSlider" type="text" class="span2" value="123"
                                                                          data-slider-tooltip="show"
                                                                          data-slider-ticks-labels='["short", "medium", "long"]'
-                                                                         data-slider-min="10"
-                                                                         data-slider-max="1000"
+                                                                         data-slider-min="@Model.FilterSelectie.MinPrijs"
+                                                                         data-slider-max="@Model.FilterSelectie.MaxPrijs"
                                                                          data-slider-step="10"
-                                                                         data-slider-value="[200,800]" />
+                                                                         data-slider-value="[@Model.Filter.MinPrijs,@Model.Filter.MaxPrijs]" />
                         <b>€<span class="maxPrijs">800</span></b>
                     </div>
                     <h4 class="marginTop">Filters verfijnen</h4>
@@ -111,7 +111,7 @@
                     <option value="merkZA">Merk Z - A</option>
                 </select>
             </div>
-            @Model.Producten.Count()
+
             @foreach (var item in @Model.Producten)
             {
                 <div class="product">

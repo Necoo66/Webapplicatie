@@ -20,7 +20,18 @@ namespace HoneymoonShop.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var filter = new Filter();
+            var trouwjurk = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).Take(6).ToList();
+
+
+            var productFilter = new ProductFilter()
+            {
+                Filter = filter,
+                producten = trouwjurk
+            };
+
+
+            return View(productFilter);
         }
 
         public IActionResult Categorie()

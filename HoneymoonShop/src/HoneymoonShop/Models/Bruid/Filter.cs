@@ -26,6 +26,7 @@ namespace HoneymoonShop.Models.Bruid
             Merken = new List<Merk>();
             Kenmerken = new List<Kenmerk>();
             Stijlen = new List<Kenmerk>();
+            KenmerkNamen = new List<string>();
         }
     }
 }

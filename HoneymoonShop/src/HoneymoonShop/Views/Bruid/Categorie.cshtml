@@ -1,17 +1,27 @@
-﻿@model HoneymoonShop.Models.Bruid.Filter
+﻿@model HoneymoonShop.Models.Bruid.ProductFilter
 <div class="container">
     <div class="row">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a class="active" href="@Url.Action("index", "home")">Home</a></li>
             <li class="breadcrumb-item"><a class="active" href="@Url.Action("Bruid", "Home")">Bruid</a></li>
             <li class="breadcrumb-item"><a class="active" href="@Url.Action("Categorie", "Bruid")">Dressfinder</a></li>
-            <li class="breadcrumb-item active">categorie</li>
+            <li class="breadcrumb-item">
+                @if(Model.FilterSelectie.Categorie != null)
+                {
+                    @Model.Filter.Categorieën.Single(x => x.Id == Model.FilterSelectie.Categorie).Naam
+                }
+                else
+                {
+                    <span>Alle jurken</span>
+                }
+
+            </li>
         </ol>
     </div>
     <div class="row">
         <div class="col-md-3 filterOpties">
             <form asp-controller="Bruid" asp-action="Categorie">
-                @foreach(var x in Model.Merken)
+                @foreach(var x in Model.Filter.Merken)
                 {
                     <input type="checkbox" value="@x.Id" name="merken"/> <label>@x.Naam</label> 
                     <br>
@@ -31,8 +41,8 @@
                     <option value="merkZA">Merk Z - A</option>
                 </select>
             </div>
-
-            @*@foreach (var item in @Model.Producten)
+            @Model.Producten.Count()
+            @foreach (var item in @Model.Producten)
             {
                 <div class="product">
                     <a href="/bruid/product/@item.Id">
@@ -52,7 +62,7 @@
                         </div>
                     </a>
                 </div>
-            }*@
+            }
 
             <div class="col-md-6 aantalProducten">
                 <h5>Aantal tonen: </h5>
@@ -63,11 +73,11 @@
                     <option value="100">100</option>
                 </select>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-6 paginaNummer">
                 <span class="glyphicon glyphicon-triangle-left"></span>
                 <ul class="pagination">
                     <li><a href="#">1</a></li>
-                    <li class="active"><a href="#">2</a></li>
+                    <li class="paginanummerActief" ><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
                     <li><a href="#">4</a></li>
                     <li><a href="#">5</a></li>

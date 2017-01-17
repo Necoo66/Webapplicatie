@@ -34,7 +34,7 @@ namespace HoneymoonShop.Controllers
             return View(productFilter);
         }
 
-        public IActionResult Categorie()
+        public IActionResult Categorie(FilterSelectie filterSelectie)
         {
             var filter = new Filter()
             {
@@ -45,13 +45,36 @@ namespace HoneymoonShop.Controllers
                 Kenmerken = _context.Kenmerk.ToList()
             };
 
-            var filterOpties = new FilterSelectie();
             var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
 
 
-            return View(filter);
+            if (filterSelectie.Categorie != null && filterSelectie.Categorie != 0)
+            {
+                producten = producten.Where(x => x.Categorie.Id == filterSelectie.Categorie).ToList();
+            }
+
+            if (filterSelectie.MinPrijs != null && filterSelectie.MaxPrijs != null)
+            {
+                producten = producten.Where(x => x.Prijs >= filterSelectie.MinPrijs && x.Prijs <= filterSelectie.MaxPrijs).ToList();
+            }
+
+            if (filterSelectie.Merken != null)
+            {
+
+                producten = producten.Where(x => filterSelectie.Merken.Contains(x.Merk.Id) ).ToList();
+            }
+
+            if (filterSelectie.Kenmerken != null)
+            {
+                producten = producten.FindAll(x => x.Product_X_Kenmerk.Any(y => filterSelectie.Kenmerken.Contains(y.KenmerkId)));
+            }
+
+
+
+            return View(new ProductFilter(filter, filterSelectie, producten));
         }
 
+        /*
         [HttpPost]
         public IActionResult Categorie(FilterSelectie filter)
         {
@@ -88,7 +111,7 @@ namespace HoneymoonShop.Controllers
             //}
 
             return View(filter);
-        }
+        }*/
 
 
         public async Task<IActionResult> Product(int? id)

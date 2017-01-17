@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,6 +20,9 @@ namespace HoneymoonShop.Models.Bruid
 
         [Required]
         public string Naam { get; set; }
+
+        [NotMapped]
+        public bool Selected { get; set; }
 
         public virtual HashSet<Product_X_Kenmerk> Product_X_Kenmerk { get; set; }
 

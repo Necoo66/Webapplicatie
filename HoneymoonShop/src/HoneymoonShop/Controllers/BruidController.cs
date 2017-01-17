@@ -12,59 +12,64 @@ namespace HoneymoonShop.Controllers
     public class BruidController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly Filter _filter;
 
         public BruidController(ApplicationDbContext context)
         {
             _context = context;
+            _filter = new Filter()
+            {
+                Merken = _context.Merk.ToList(),
+                Categorieën = _context.Categorie.ToList(),
+                Stijlen = _context.Kenmerk.Where(x => x.Type.Equals("Stijl")).ToList(),
+                KenmerkNamen = _context.Kenmerk.Where(x => !x.Type.Equals("Stijl")).Select(x => x.Type).Distinct().ToList(),
+                Kenmerken = _context.Kenmerk.ToList()
+            };
         }
 
-        public IActionResult Index()
+        public IActionResult Index(FilterSelectie filterSelectie)
         {
-            return View();
+            var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).Take(6).ToList();
+
+            return View(new ProductFilter(_filter, filterSelectie, producten));
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Categorie(FilterOpties filter)
+        public IActionResult Categorie(FilterSelectie filterSelectie)
         {
 
+            var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
 
-            //ViewBag.CategorieLijst = _context.Categorie.ToList();
-            //ViewBag.Merklijst = _context.Merk;
-            //ViewBag.StijlLijst = _context.Kenmerk.Where(x => x.Type.Equals("Stijl"));
-            //ViewBag.NeklijnLijst = _context.Kenmerk.Where(x => x.Type.Equals("Neklijn"));
-            //ViewBag.SilhouetteLijst = _context.Kenmerk.Where(x => x.Type.Equals("Silhouette"));
-            //ViewBag.KleurLijst = _context.Kenmerk.Where(x => x.Type.Equals("Kleur"));
+            
 
-            var trouwjurk = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
-            //var ProductXKenmerk = _context.Product_X_Kenmerk.Select(x=>x.ProductId).ToList();
-            trouwjurk = trouwjurk.Where(x => x.Prijs > filter.MinPrijs && x.Prijs > filter.MaxPrijs).ToList();
-
-
-            if (filter.Categorie != null)
+            if (filterSelectie.Categorie != null && filterSelectie.Categorie != 0)
             {
-                trouwjurk = trouwjurk.Where(x => x.Categorie.Id == filter.Categorie.Id).ToList();
+                producten = producten.Where(x => x.Categorie.Id == filterSelectie.Categorie).ToList();
             }
 
-            if (filter.Merk != null)
+            if (filterSelectie.MinPrijs != null && filterSelectie.MaxPrijs != null)
             {
-                var merken = new List<Product>();
-                foreach (var m in filter.Merk)
-                {
-                    merken = merken.Union(trouwjurk.Where(x => x.Merk.Id == m.Id).ToList()).ToList();
-                }
-                trouwjurk = merken;
+                producten = producten.Where(x => x.Prijs >= filterSelectie.MinPrijs && x.Prijs <= filterSelectie.MaxPrijs).ToList();
             }
 
-            if (filter.Kenmerken != null)
+            if (filterSelectie.Merken.Count() != 0)
             {
-                trouwjurk = trouwjurk.FindAll(x => x.Product_X_Kenmerk.Any(y => filter.Kenmerken.Contains(y.Kenmerk)));
+                producten = producten.Where(x => filterSelectie.Merken.Contains(x.Merk.Id)).ToList();
             }
+            
+            if (filterSelectie.Kenmerken.Count() != 0)
+            {
+                producten = producten.FindAll(x => x.Product_X_Kenmerk.Any(y => filterSelectie.Kenmerken.Contains(y.KenmerkId)));
+            }
+            
 
-            return View(trouwjurk);
+            /*paginanummering*/
+
+            /*sorteren*/
+
+
+            return View(new ProductFilter(_filter, filterSelectie, producten));
         }
-
-
+        
         public async Task<IActionResult> Product(int? id)
         {
             if (id == null)

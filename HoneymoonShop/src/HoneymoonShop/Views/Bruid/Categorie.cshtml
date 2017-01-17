@@ -1,130 +1,106 @@
-﻿@model IEnumerable<HoneymoonShop.Models.Bruid.Product>
+﻿@model HoneymoonShop.Models.Bruid.ProductFilter
 <div class="container">
     <div class="row">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a class="active" href="@Url.Action("index", "home")">Home</a></li>
             <li class="breadcrumb-item"><a class="active" href="@Url.Action("Bruid", "Home")">Bruid</a></li>
             <li class="breadcrumb-item"><a class="active" href="@Url.Action("Categorie", "Bruid")">Dressfinder</a></li>
-            <li class="breadcrumb-item active">categorie</li>
+            <li class="breadcrumb-item">
+                @if (Model.FilterSelectie.Categorie != null)
+                {
+                    @Model.Filter.Categorieën.Single(x => x.Id == Model.FilterSelectie.Categorie).Naam
+                }
+                else
+                {
+                    <span>Alle jurken</span>
+                }
+
+            </li>
         </ol>
     </div>
     <div class="row">
         <div class="col-md-3 filterOpties">
-            <div class="filterHolder">
+            <form asp-controller="Bruid" asp-action="Categorie">
                 <h4>Categorieën</h4>
                 <div class="categorie">
-                    <span class="backgroundLichtRoze">
-                        <h5>Summer SALE</h5>
-                    </span>
-                    <span class="backgroundLichtRoze">
-                        <h5><u>Nieuwe Collectie </u></h5>
-                    </span>
-                    <span class="backgroundLichtRoze">
-                        <h5>Alle jurken bekijken</h5>
-                    </span>
+                    @{
+                        foreach (var categorie in @Model.Filter.Categorieën)
+                        {
+                            <div class="backgroundLichtRoze">
+                                <input type="radio" value="@categorie.Id" name="categorie" />
+                                <label>@categorie.Naam</label>
+                            </div>
+                        }
+                    }
                 </div>
                 <div id="filters">
                     <h4>Filter op:</h4>
-                    <h5 data-toggle="collapse" data-target="#merk">Merk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span> </h5>
+                    <h5 data-toggle="collapse" data-target="#merk">Merk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span> </h5>
                     <div id="merk" class="collapse">
                         <ul>
                             @{
-                                foreach (var merk in ViewBag.Merklijst)
+                                foreach (var merk in @Model.Filter.Merken)
                                 {
                                     <li>
-                                        <input id="@merk" type="checkbox" value="@merk" />@merk.Naam
-                                        <label for="@merk"></label>
+                                        <input type="checkbox" id="@merk.Id@merk.Naam" value="@merk.Id" name="merken" /> @merk.Naam
+                                        <label for="@merk.Id@merk.Naam"></label>
                                     </li>
                                 }
                             }
                         </ul>
                     </div>
-                    <h5 data-toggle="collapse" data-target="#stijlJurk">Stijl jurk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+                    <h5 data-toggle="collapse" data-target="#stijlJurk">Stijl jurk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
                     <div id="stijlJurk" class="collapse">
                         <ul>
                             @{
-                                foreach (var stijl in ViewBag.StijlLijst)
+                                foreach (var stijl in @Model.Filter.Stijlen)
                                 {
                                     <li>
-                                        <input id="@stijl" type="checkbox" value="@stijl" />@stijl.Naam
-                                        <label for="@stijl"></label>
+                                        <input type="checkbox" id="@stijl.Id@stijl.Naam" value="@stijl.Id" name="kenmerken" />@stijl.Naam
+                                        <label for="@stijl.Id@stijl.Naam"></label>
                                     </li>
                                 }
                             }
                         </ul>
                     </div>
-                    <h5 class="bottomBorder" data-toggle="collapse" data-target="#prijs">Prijs <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+                    <h5 class="bottomBorder" data-toggle="collapse" data-target="#prijs">Prijs <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
                     <div id="prijs" class="collapse bottomBorder">
-                        <ul>
-                            @*<div data-role="main" class="ui-content">
-                                    <form method="post" action="demoform.asp">
-                                        <div data-role="rangeslider">
-                                            <label for="price-min">Price:</label>
-                                            <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
-                                            <label for="price-max">Price:</label>
-                                            <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
-                                        </div>
-                                        <input type="submit" data-inline="true" value="Submit">
-                                    </form>
-                                </div>*@
-                            @{
-                                for (int i = 0; i < 5; i++)
-                                {
-                                    <li>
-                                        <input id="cbPrijs@(i)" type="checkbox" value="Prinses bruid" /> €1000
-                                        <label for="cbPrijs@(i)"></label>
-                                    </li>
-
-                                }
-                            }
-                        </ul>
+                        <input type="hidden" name="minPrijs" value="@Model.FilterSelectie.MinPrijs" />
+                        <input type="hidden" name="maxPrijs" value="@Model.FilterSelectie.MaxPrijs" />
+                        <b>€<span class="minPrijs">200</span></b> <input id="prijsSlider" type="text" class="span2" value="123"
+                                                                         data-slider-tooltip="show"
+                                                                         data-slider-ticks-labels='["short", "medium", "long"]'
+                                                                         data-slider-min="@Model.FilterSelectie.MinPrijs"
+                                                                         data-slider-max="@Model.FilterSelectie.MaxPrijs"
+                                                                         data-slider-step="10"
+                                                                         data-slider-value="[@Model.Filter.MinPrijs,@Model.Filter.MaxPrijs]" />
+                        <b>€<span class="maxPrijs">800</span></b>
                     </div>
                     <h4 class="marginTop">Filters verfijnen</h4>
-                    <h5 data-toggle="collapse" data-target="#nekLijn">Neklijn <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
-                    <div id="nekLijn" class="collapse">
-                        <ul>
-                            @{
-                                foreach (var neklijn in ViewBag.NeklijnLijst)
-                                {
-                                    <li>
-                                        <input id="@neklijn" type="checkbox" value="@neklijn" />@neklijn.Naam
-                                        <label for="@neklijn"></label>
-                                    </li>
-                                }
-                            }
-                        </ul>
-                    </div>
-                    <h5 data-toggle="collapse" data-target="#silhouette"> Silhouette <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
-                    <div id="silhouette" class="collapse">
-                        <ul>
-                            @{
-                                foreach (var silhouette in ViewBag.SilhouetteLijst)
-                                {
-                                    <li>
-                                        <input id="@silhouette" type="checkbox" value="@silhouette" />@silhouette.Naam
-                                        <label for="@silhouette"></label>
-                                    </li>
-                                }
-                            }
-                        </ul>
-                    </div>
-                    <h5 class="bottomBorder" data-toggle="collapse" data-target="#kleur">Kleur <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display:none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
-                    <div id="kleur" class="collapse bottomBorder">
-                        <ul>
-                            @{
-                                foreach (var kleur in ViewBag.KleurLijst)
-                                {
-                                    <li>
-                                        <input id="@kleur" type="checkbox" value="@kleur" />@kleur.Naam
-                                        <label for="@kleur"></label>
-                                    </li>
-                                }
-                            }
-                        </ul>
-                    </div>
+                    @{foreach (var kenmerkNaam in @Model.Filter.KenmerkNamen)
+                        {
+                            <h5 data-toggle="collapse" data-target="#@kenmerkNaam">@kenmerkNaam <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+                            <div id="@kenmerkNaam" class="collapse">
+                                <ul>
+                                    @foreach (var kenmerk in @Model.Filter.Kenmerken)
+                                    {
+                                        if (kenmerkNaam.Equals(kenmerk.Type))
+                                        {
+                                            <li>
+                                                <input type="checkbox" id="@kenmerk.Id@kenmerk.Naam" value="@kenmerk.Id" name="kenmerken" /> @kenmerk.Naam
+                                                <label for="@kenmerk.Id@kenmerk.Naam"></label>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    }
                 </div>
-            </div>
+                <button type="submit">VERZENDEN!</button>
+            </form>
         </div>
+
         <div class="col-md-9 jurkenOverzicht">
             <div class="col-md-12 sorting">
                 <h5>Sorteren op: </h5>
@@ -136,22 +112,21 @@
                 </select>
             </div>
 
-            @foreach (var item in Model)
+            @foreach (var item in @Model.Producten)
             {
                 <div class="product">
                     <a href="/bruid/product/@item.Id">
-                        <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.Where(x => x.Kenmerk.Type.Equals("Kleur")).First().Kenmerk.Naam + ".jpg")" class="img-responsive" />
+                        <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.First(x => x.Kenmerk.Type.Equals("Kleur")).Kenmerk.Naam + ".jpg")" class="img-responsive" />
                         <div class="productNaam"><h5>@item.Merk.Naam</h5></div>
                         <div class="artikelNummer"><h6>@( "Artikel nr." + item.ArtikelNummer)</h6></div>
 
                         <div class="artikelKleur">
                             @foreach (var x in item.Product_X_Kenmerk)
                             {
-                                @if (x.Kenmerk.Type.Equals("Kleur"))
+                                if (x.Kenmerk.Type.Equals("Kleur"))
                                 {
                                     var kleur = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
                                     <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode" onclick='changeImage("@x.Kenmerk.Naam")'></span>
-
                                 }
                             }
                         </div>
@@ -168,11 +143,11 @@
                     <option value="100">100</option>
                 </select>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-6 paginaNummer">
                 <span class="glyphicon glyphicon-triangle-left"></span>
                 <ul class="pagination">
                     <li><a href="#">1</a></li>
-                    <li class="active"><a href="#">2</a></li>
+                    <li class="paginanummerActief"><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
                     <li><a href="#">4</a></li>
                     <li><a href="#">5</a></li>

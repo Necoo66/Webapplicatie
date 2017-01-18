@@ -44,6 +44,7 @@
 }
 
 .filterOpties ul > li > label {
+    content: " ";
     margin-top: 5px;
     cursor: pointer;
     display: block;

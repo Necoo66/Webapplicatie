@@ -38,9 +38,7 @@ namespace HoneymoonShop.Controllers
         {
 
             var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
-
             
-
             if (filterSelectie.Categorie != null && filterSelectie.Categorie != 0)
             {
                 producten = producten.Where(x => x.Categorie.Id == filterSelectie.Categorie).ToList();
@@ -84,6 +82,9 @@ namespace HoneymoonShop.Controllers
                 return NotFound();
             }
 
+            var bijpassend = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
+            bijpassend = bijpassend.Where(x => x.Merk == trouwjurk.Merk).Take(4).ToList();
+            ViewBag.bijpassend = bijpassend;
             return View(trouwjurk);
         }
     }

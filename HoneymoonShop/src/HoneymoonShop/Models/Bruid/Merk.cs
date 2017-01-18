@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HoneymoonShop.Models.Bruid
 {
@@ -15,6 +16,9 @@ namespace HoneymoonShop.Models.Bruid
         public int Id { get; set; }
         [Required]
         public string Naam { get; set; }
+
+        [NotMapped]
+        public bool Selected { get; set; }
 
         public virtual ICollection<Product> Producten { get; set; }
     }

@@ -34,11 +34,10 @@ namespace HoneymoonShop.Controllers
             return View(new ProductFilter(_filter, filterSelectie, producten));
         }
 
-        public IActionResult Categorie(ProductFilter productFilter)
+        public IActionResult Categorie(FilterSelectie filterSelectie)
         {
-            var filterSelectie = new FilterSelectie();
             var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
-            
+
             if (filterSelectie.Categorie != null && filterSelectie.Categorie != 0)
             {
                 producten = producten.Where(x => x.Categorie.Id == filterSelectie.Categorie).ToList();
@@ -54,20 +53,19 @@ namespace HoneymoonShop.Controllers
                 producten = producten.Where(x => filterSelectie.Merken.Contains(x.Merk.Id)).ToList();
             }
 
-            /* niet af
-            if (filterSelectie.Kenmerken != null)
+            if (filterSelectie.Kenmerken.Count != 0)
             {
                 producten = producten.FindAll(x => x.Product_X_Kenmerk.Any(y => filterSelectie.Kenmerken.Contains(y.KenmerkId)));
             }
-            
+
 
             /*sorteren*/
             producten = sorteren(filterSelectie, producten);
             /*paginanummering*/
-            
+
             paginanummering(filterSelectie, producten);
 
-            var limitedProducts = producten.Skip( (filterSelectie.Paginanummer - 1) * filterSelectie.AantalTonen).Take(filterSelectie.AantalTonen).ToList();
+            var limitedProducts = producten.Skip((filterSelectie.Paginanummer - 1) * filterSelectie.AantalTonen).Take(filterSelectie.AantalTonen).ToList();
 
             //ViewBag.url(filterSelectie.geefUrl());
             return View(new ProductFilter(_filter, filterSelectie, limitedProducts));
@@ -79,7 +77,7 @@ namespace HoneymoonShop.Controllers
             ViewBag.huidigePagina = f.Paginanummer;
             ViewBag.aantalTonen = f.AantalTonen;
         }
-        
+
         private List<Product> sorteren(FilterSelectie f, List<Product> p)
         {
             switch (f.SortingOptie)
@@ -87,14 +85,14 @@ namespace HoneymoonShop.Controllers
                 case "PrijsLH":
                     return p.OrderByDescending(x => x.Prijs).ToList();
                 case "PrijsHL":
-                    return p.OrderBy    (x => x.Prijs).ToList();
+                    return p.OrderBy(x => x.Prijs).ToList();
                 case "MerkAZ":
                     return p.OrderBy(x => x.Merk.Naam).ToList();
                 case "MerkZA":
                     return p.OrderByDescending(x => x.Merk.Naam).ToList();
             }
             return p;
-            
+
         }
 
         public async Task<IActionResult> Product(int? id)

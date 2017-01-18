@@ -6,10 +6,10 @@
 <div class="container">
     <div class="row">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="active" href="@Url.Action("index","home")">Home</a></li>
-            <li class="breadcrumb-item"><a class="active" href="@Url.Action("Bruid","home")">Bruid</a></li>
-            <li class="breadcrumb-item"><a class="active" href="@Url.Action("Categorie","Bruid")">Dressfinder</a></li>
-            <li class="breadcrumb-item"><a class="active" href="@Url.Action("Categorie","Bruid")">@Model.Categorie.Naam</a></li>
+            <li class="breadcrumb-item"><a class="active" asp-controller="Home" asp-action="Index" >Home</a></li>
+            <li class="breadcrumb-item"><a class="active" asp-controller="Home" asp-action="Bruid" >Bruid</a></li>
+            <li class="breadcrumb-item"><a class="active" asp-controller="Bruid" asp-action="Index">Dressfinder</a></li>
+            <li class="breadcrumb-item"><a class="active" asp-controller="Bruid" asp-action="Categorie" asp-route-categorie="@Model.Categorie.Id">@Model.Categorie.Naam</a></li>
             <li class="breadcrumb-item active">@Model.Merk.Naam</li>
         </ol>
     </div>

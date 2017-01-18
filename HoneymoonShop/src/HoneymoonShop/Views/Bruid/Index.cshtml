@@ -9,6 +9,7 @@
             <li class="breadcrumb-item">Dressfinder</li>
         </ol>
     </div>
+
     <div class="row">
         <form asp-controller="Bruid" asp-action="Categorie" data-ajax="true" data-ajax-method="POST">
             <div class="col-md-3 filterOpties">
@@ -19,20 +20,15 @@
                             foreach (var categorie in @Model.Filter.Categorieën)
                             {
                                 <div class="backgroundLichtRoze">
-                                    @Html.RadioButtonFor(model => model.Filter.Categorieën, categorie.Naam)
-                                    @Html.Label(categorie.Naam)
+                                    <input type="radio" value="@categorie.Id" name="categorie" @(Model.FilterSelectie.Categorie == categorie.Id ? "checked" : "") />
+                                    <label>@categorie.Naam</label>
                                 </div>
                             }
                         }
-                        @*<span class="backgroundLichtRoze">
-                                <h5>Summer SALE</h5>
-                            </span>
-                            <span class="backgroundLichtRoze">
-                                <h5><u>Nieuwe Collectie </u></h5>
-                            </span>
-                            <span class="backgroundLichtRoze">
-                                <h5>Alle jurken bekijken</h5>
-                            </span>*@
+                        <div class="backgroundLichtRoze">
+                            <input type="radio" value="" name="categorie" @(Model.FilterSelectie.Categorie == null ? "checked" : "" ) />
+                            <label>Alle Jurken</label>
+                        </div>
                     </div>
                     <div id="filters">
                         <h4>Filter op:</h4>
@@ -43,7 +39,7 @@
                                     foreach (var merk in @Model.Filter.Merken)
                                     {
                                         <li>
-                                            <input id="@merk" type="checkbox" value="@merk" />@merk.Naam
+                                            <input id="@merk" type="checkbox" value="@merk" @(Model.FilterSelectie.Merken.Contains(merk.Id)?"checked":"") />@merk.Naam
                                             <label for="@merk"></label>
                                         </li>
                                     }
@@ -57,7 +53,7 @@
                                     foreach (var stijl in @Model.Filter.Stijlen)
                                     {
                                         <li>
-                                            <input id="@stijl" type="checkbox" value="@stijl" />@stijl.Naam
+                                            <input id="@stijl" type="checkbox" value="@stijl" @(Model.FilterSelectie.Kenmerken.Contains(stijl.Id) ? "checked" : "")/>@stijl.Naam
                                             <label for="@stijl"></label>
                                         </li>
                                     }
@@ -89,7 +85,7 @@
                                             if (kenmerkNaam.Equals(kenmerk.Type))
                                             {
                                                 <li>
-                                                    <input id="@kenmerk" type="checkbox" value="@kenmerk" />@kenmerk.Naam
+                                                    <input id="@kenmerk" type="checkbox" value="@kenmerk" @(Model.FilterSelectie.Kenmerken.Contains(kenmerk.Id) ? "checked" : "")/>@kenmerk.Naam
                                                     <label for="@kenmerk"></label>
                                                 </li>
                                             }

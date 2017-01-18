@@ -34,9 +34,9 @@ namespace HoneymoonShop.Controllers
             return View(new ProductFilter(_filter, filterSelectie, producten));
         }
 
-        public IActionResult Categorie(FilterSelectie filterSelectie)
+        public IActionResult Categorie(ProductFilter productFilter)
         {
-
+            var filterSelectie = new FilterSelectie();
             var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
             
             if (filterSelectie.Categorie != null && filterSelectie.Categorie != 0)

@@ -14,7 +14,7 @@ namespace HoneymoonShop.Models.GebruikerModels
         [DisplayFormat(DataFormatString = "{0: hh:mm}", ApplyFormatInEditMode = true)]
         public string Tijd { get; set; }
 
-        public SoortAfspraak AfspraakSoort { get; set; }
+        public virtual SoortAfspraak AfspraakSoort { get; set; }
 
         public virtual Gebruiker Gebruiker { get; set; }
     }

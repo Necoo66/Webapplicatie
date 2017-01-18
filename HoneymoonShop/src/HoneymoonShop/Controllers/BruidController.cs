@@ -27,30 +27,18 @@ namespace HoneymoonShop.Controllers
             };
         }
 
-        
-        public IActionResult Index()
+        public IActionResult Index(FilterSelectie filterSelectie)
         {
-            var filter = new Filter();
             var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).Take(6).ToList();
 
-
-            var productFilter = new ProductFilter()
-            {
-                Filter = filter,
-                Producten = producten
-            };
-
-
-            return View(productFilter);
+            return View(new ProductFilter(_filter, filterSelectie, producten));
         }
-        
-        public IActionResult Categorie(ProductFilter productFilter)
+
+        public IActionResult Categorie(FilterSelectie filterSelectie)
         {
-            var filterSelectie = new FilterSelectie();
 
             var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
-
-
+            
             if (filterSelectie.Categorie != null && filterSelectie.Categorie != 0)
             {
                 producten = producten.Where(x => x.Categorie.Id == filterSelectie.Categorie).ToList();
@@ -71,15 +59,44 @@ namespace HoneymoonShop.Controllers
             {
                 producten = producten.FindAll(x => x.Product_X_Kenmerk.Any(y => filterSelectie.Kenmerken.Contains(y.KenmerkId)));
             }
-            */
+            
 
             /*sorteren*/
-
+            producten = sorteren(filterSelectie, producten);
             /*paginanummering*/
+            
+            paginanummering(filterSelectie, producten);
 
-            return View(new ProductFilter(_filter, filterSelectie, producten));
+            var limitedProducts = producten.Skip( (filterSelectie.Paginanummer - 1) * filterSelectie.AantalTonen).Take(filterSelectie.AantalTonen).ToList();
+
+            //ViewBag.url(filterSelectie.geefUrl());
+            return View(new ProductFilter(_filter, filterSelectie, limitedProducts));
+        }
+
+        private void paginanummering(FilterSelectie f, List<Product> p)
+        {
+            ViewBag.aantalPagina = Math.Ceiling(Double.Parse(p.Count + "") / f.AantalTonen);
+            ViewBag.huidigePagina = f.Paginanummer;
+            ViewBag.aantalTonen = f.AantalTonen;
         }
         
+        private List<Product> sorteren(FilterSelectie f, List<Product> p)
+        {
+            switch (f.SortingOptie)
+            {
+                case "PrijsLH":
+                    return p.OrderByDescending(x => x.Prijs).ToList();
+                case "PrijsHL":
+                    return p.OrderBy    (x => x.Prijs).ToList();
+                case "MerkAZ":
+                    return p.OrderBy(x => x.Merk.Naam).ToList();
+                case "MerkZA":
+                    return p.OrderByDescending(x => x.Merk.Naam).ToList();
+            }
+            return p;
+            
+        }
+
         public async Task<IActionResult> Product(int? id)
         {
             if (id == null)
@@ -94,6 +111,9 @@ namespace HoneymoonShop.Controllers
                 return NotFound();
             }
 
+            var bijpassend = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
+            bijpassend = bijpassend.Where(x => x.Merk == trouwjurk.Merk).Take(4).ToList();
+            ViewBag.bijpassend = bijpassend;
             return View(trouwjurk);
         }
     }

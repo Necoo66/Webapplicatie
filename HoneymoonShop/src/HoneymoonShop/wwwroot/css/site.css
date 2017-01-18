@@ -476,3 +476,8 @@ footer a {
 .spacer{
     margin-bottom:40px;
 }
+
+/*text kleur */
+.active{
+    color:#F4587F;
+}

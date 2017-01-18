@@ -10,22 +10,22 @@ using HoneymoonShop.Models.GebruikerModels;
 
 namespace HoneymoonShop.Controllers
 {
-    public class BeheerController : Controller
+    public class BeheerGebruikerController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public BeheerController(ApplicationDbContext context)
+        public BeheerGebruikerController(ApplicationDbContext context)
         {
             _context = context;    
         }
 
-        // GET: Beheer
+        // GET: BeheerGebruiker
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Afspraak.ToListAsync());
+            return View(await _context.Gebruiker.ToListAsync());
         }
 
-        // GET: Beheer/Details/5
+        // GET: BeheerGebruiker/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,46 +33,38 @@ namespace HoneymoonShop.Controllers
                 return NotFound();
             }
 
-            var afspraak = await _context.Afspraak.SingleOrDefaultAsync(m => m.Id == id);
-            if (afspraak == null)
+            var gebruiker = await _context.Gebruiker.SingleOrDefaultAsync(m => m.Id == id);
+            if (gebruiker == null)
             {
                 return NotFound();
             }
 
-            return View(afspraak);
+            return View(gebruiker);
         }
 
-        // GET: Beheer/Create
+        // GET: BeheerGebruiker/Create
         public IActionResult Create()
         {
-            SoortAfspraak k = new SoortAfspraak();
-
-            //ViewBag.AfspeldAfspraak = SoortAfspraak.Afspeldafspraak;
-            //ViewBag.Trouwjurken = SoortAfspraak.Trouwjurken;
-            //ViewBag.Trouwpakken = SoortAfspraak.Trouwpakken;
-            
-            ViewBag.SoortAfspraak = k;
             return View();
         }
 
-
-        // POST: Beheer/Create
+        // POST: BeheerGebruiker/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AfspraakSoort,Datum,Tijd")] Afspraak afspraak)
+        public async Task<IActionResult> Create([Bind("Id,Email,Nieuwsbrief,Telefoonnummer,Trouwdatum,VoornaamAchternaam, EmailBevestiging")] Gebruiker gebruiker)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(afspraak);
+                _context.Add(gebruiker);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index"); 
             }
-            return View(afspraak);
+            return View(gebruiker);
         }
 
-        // GET: Beheer/Edit/5
+        // GET: BeheerGebruiker/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,22 +72,22 @@ namespace HoneymoonShop.Controllers
                 return NotFound();
             }
 
-            var afspraak = await _context.Afspraak.SingleOrDefaultAsync(m => m.Id == id);
-            if (afspraak == null)
+            var gebruiker = await _context.Gebruiker.SingleOrDefaultAsync(m => m.Id == id);
+            if (gebruiker == null)
             {
                 return NotFound();
             }
-            return View(afspraak);
+            return View(gebruiker);
         }
 
-        // POST: Beheer/Edit/5
+        // POST: BeheerGebruiker/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AfspraakSoort,Datum,Tijd")] Afspraak afspraak)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Email,Nieuwsbrief,Telefoonnummer,Trouwdatum,VoornaamAchternaam, EmailBevestiging")] Gebruiker gebruiker)
         {
-            if (id != afspraak.Id)
+            if (id != gebruiker.Id)
             {
                 return NotFound();
             }
@@ -104,12 +96,12 @@ namespace HoneymoonShop.Controllers
             {
                 try
                 {
-                    _context.Update(afspraak);
+                    _context.Update(gebruiker);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AfspraakExists(afspraak.Id))
+                    if (!GebruikerExists(gebruiker.Id))
                     {
                         return NotFound();
                     }
@@ -120,10 +112,10 @@ namespace HoneymoonShop.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            return View(afspraak);
+            return View(gebruiker);
         }
 
-        // GET: Beheer/Delete/5
+        // GET: BeheerGebruiker/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -131,29 +123,29 @@ namespace HoneymoonShop.Controllers
                 return NotFound();
             }
 
-            var afspraak = await _context.Afspraak.SingleOrDefaultAsync(m => m.Id == id);
-            if (afspraak == null)
+            var gebruiker = await _context.Gebruiker.SingleOrDefaultAsync(m => m.Id == id);
+            if (gebruiker == null)
             {
                 return NotFound();
             }
 
-            return View(afspraak);
+            return View(gebruiker);
         }
 
-        // POST: Beheer/Delete/5
+        // POST: BeheerGebruiker/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var afspraak = await _context.Afspraak.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Afspraak.Remove(afspraak);
+            var gebruiker = await _context.Gebruiker.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Gebruiker.Remove(gebruiker);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        private bool AfspraakExists(int id)
+        private bool GebruikerExists(int id)
         {
-            return _context.Afspraak.Any(e => e.Id == id);
+            return _context.Gebruiker.Any(e => e.Id == id);
         }
     }
 }

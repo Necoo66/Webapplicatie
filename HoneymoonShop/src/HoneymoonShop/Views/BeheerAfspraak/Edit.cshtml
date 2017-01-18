@@ -15,7 +15,7 @@
         <div class="form-group">
             <label asp-for="AfspraakSoort" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="AfspraakSoort" class="form-control"></select>
+                <select asp-for="AfspraakSoort" asp-items="ViewBag.SoortAfspraak" class="form-control"></select>
                 <span asp-validation-for="AfspraakSoort" class="text-danger" />
             </div>
         </div>
@@ -31,6 +31,13 @@
             <div class="col-md-10">
                 <input asp-for="Tijd" class="form-control" />
                 <span asp-validation-for="Tijd" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Gebruiker" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Gebruiker" asp-items="ViewBag.Gebruikers" class="form-control"></select>
+                <span asp-validation-for="Gebruiker" class="text-danger" />
             </div>
         </div>
         <div class="form-group">

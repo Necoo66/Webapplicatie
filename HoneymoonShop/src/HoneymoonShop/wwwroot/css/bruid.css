@@ -169,6 +169,7 @@ h5 > .glyphicon{
     border-radius: 50%;
     width: 15px;
     height: 14px;
+    cursor: pointer;
     background-color: green;
 }
 

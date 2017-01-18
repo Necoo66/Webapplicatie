@@ -1,5 +1,5 @@
 ﻿@model HoneymoonShop.Models.Bruid.ProductFilter
-<div class="container">
+<div class="content">
     <div class="row">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a class="active" asp-controller="Home" asp-action="Index">Home</a></li>
@@ -113,59 +113,74 @@
             </form>
         </div>
 
-        <div class="col-md-9 jurkenOverzicht">
-            <div class="col-md-12 sorting">
-                <h5>Sorteren op: </h5>
-                <select name="sortingOptie">
-                    <option value="prijsHoogNaarLaag">Prijs hoog - laag</option>
-                    <option value="prijsLaagNaarHoog">Prijs laag - hoog</option>
-                    <option value="merkAZ">Merk A - Z</option>
-                    <option value="merkZA">Merk Z - A</option>
-                </select>
-            </div>
-
-            @foreach (var item in @Model.Producten)
-            {
-                <div class="product">
-                    <a href="/bruid/product/@item.Id">
-                        <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.First(x => x.Kenmerk.Type.Equals("Kleur")).Kenmerk.Naam + ".jpg")" class="img-responsive" />
-                        <div class="productNaam"><h5>@item.Merk.Naam</h5></div>
-                        <div class="artikelNummer"><h6>@( "Artikel nr." + item.ArtikelNummer)</h6></div>
-
-                        <div class="artikelKleur">
-                            @foreach (var x in item.Product_X_Kenmerk)
-                            {
-                                if (x.Kenmerk.Type.Equals("Kleur"))
-                                {
-                                    var kleur = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
-                                    <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode" onclick='changeImage("@x.Kenmerk.Naam")'></span>
-                                }
-                            }
-                        </div>
-                    </a>
+        <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12 sorting">
+                        <h5>Sorteren op: </h5>
+                        <select name="sortingOptie">
+                            <option value="PrijsLH" selected>Prijs laag - hoog</option>
+                            <option value="PrijsHL">Prijs hoog - laag</option>
+                            <option value="MerkAZ">Merk A - Z</option>
+                            <option value="MerkZA">Merk Z - A</option>
+                        </select>
+                    </div>
+                    
                 </div>
-            }
+            
+            <div class="row">
+                <div class="col-md-12 jurkenOverzicht">
+                    @foreach (var item in @Model.Producten)
+                    {
+                        <div class="product">
+                            <a href="/bruid/product/@item.Id">
+                                <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.First(x => x.Kenmerk.Type.Equals("Kleur")).Kenmerk.Naam + ".jpg")" class="img-responsive" />
+                                <div class="productNaam"><h5>@item.Merk.Naam</h5></div>
+                                <div class="artikelNummer"><h6>@( "Artikel nr." + item.ArtikelNummer)</h6></div>
 
-            <div class="col-md-6 aantalProducten">
-                <h5>Aantal tonen: </h5>
-                <select name="sortingOptie">
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
+                                <div class="artikelKleur">
+                                    @foreach (var x in item.Product_X_Kenmerk)
+                                    {
+                                        if (x.Kenmerk.Type.Equals("Kleur"))
+                                        {
+                                            var kleur = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
+                                            <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode"></span>
+                                        }
+                                    }
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
             </div>
-            <div class="col-md-6 paginaNummer">
-                <span class="glyphicon glyphicon-triangle-left"></span>
-                <ul class="pagination">
-                    <li><a href="#">1</a></li>
-                    <li class="paginanummerActief"><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                </ul>
-                <span class="glyphicon glyphicon-triangle-right"></span>
+            
+            <div class="row">
+                <div class="col-md-6 aantalProducten">
+                    <h5>Aantal tonen: </h5>
+                    <select name="sortingOptie">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <div class="col-md-6 paginaNummer">
+                    <span class="glyphicon glyphicon-triangle-left"></span>
+                    <ul class="pagination">
+                        @{
+                            for (int i = 1; i <= ViewBag.aantalPagina; i++)
+                            {
+                                Model.FilterSelectie.Paginanummer = i;
+                                <li>
+                                    @Html.ActionLink(i.ToString(), "Categorie", "Bruid", Model.FilterSelectie, null)
+                                </li>
+                            }
+
+                        }
+                    </ul>
+                    <span class="glyphicon glyphicon-triangle-right"></span>
+                </div>
             </div>
+            
         </div>
     </div>
 
@@ -173,6 +188,5 @@
     <script>
         document.body.style.backgroundColor = "#FFE4EA";
     </script>
-    <script src="~/js/Arrows.js" asp-append-version="true"></script>
 </div>
 <div><img src="~/images/Footer/417033-3-3.jpg" class="img-responsive" /></div>

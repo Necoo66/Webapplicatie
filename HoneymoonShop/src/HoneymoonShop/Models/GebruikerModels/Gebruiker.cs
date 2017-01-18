@@ -16,8 +16,8 @@ namespace HoneymoonShop.Models.GebruikerModels
         public int Id { get; set; }
 
         [MaxLength(100),
-        Required(ErrorMessage = "Voor- en achternaam zijn verijst"),
-        VoorEnAchternaam,
+        Required(ErrorMessage = "Voor- en achternaam zijn vereist"),
+        VoorEnAchternaam(ErrorMessage = "Voor- en achternaam zijn vereist"),
         Display(Name = "Voor- en achternaam*")]
         public String VoornaamAchternaam { get; set; }
 
@@ -59,7 +59,7 @@ namespace HoneymoonShop.Models.GebruikerModels
                         return ValidationResult.Success;
                     }
                 }
-                return new ValidationResult("Voor- en achternaam zijn verijst");
+                return new ValidationResult("Voor- en achternaam zijn vereist");
             }
         }
     }

@@ -53,21 +53,50 @@ namespace HoneymoonShop.Controllers
             {
                 producten = producten.Where(x => filterSelectie.Merken.Contains(x.Merk.Id)).ToList();
             }
-            
-            if (filterSelectie.Kenmerken.Count() != 0)
+
+            /* niet af
+            if (filterSelectie.Kenmerken != null)
             {
                 producten = producten.FindAll(x => x.Product_X_Kenmerk.Any(y => filterSelectie.Kenmerken.Contains(y.KenmerkId)));
             }
             
 
-            /*paginanummering*/
-
             /*sorteren*/
+            producten = sorteren(filterSelectie, producten);
+            /*paginanummering*/
+            
+            paginanummering(filterSelectie, producten);
 
+            var limitedProducts = producten.Skip( (filterSelectie.Paginanummer - 1) * filterSelectie.AantalTonen).Take(filterSelectie.AantalTonen).ToList();
 
-            return View(new ProductFilter(_filter, filterSelectie, producten));
+            //ViewBag.url(filterSelectie.geefUrl());
+            return View(new ProductFilter(_filter, filterSelectie, limitedProducts));
+        }
+
+        private void paginanummering(FilterSelectie f, List<Product> p)
+        {
+            ViewBag.aantalPagina = Math.Ceiling(Double.Parse(p.Count + "") / f.AantalTonen);
+            ViewBag.huidigePagina = f.Paginanummer;
+            ViewBag.aantalTonen = f.AantalTonen;
         }
         
+        private List<Product> sorteren(FilterSelectie f, List<Product> p)
+        {
+            switch (f.SortingOptie)
+            {
+                case "PrijsLH":
+                    return p.OrderByDescending(x => x.Prijs).ToList();
+                case "PrijsHL":
+                    return p.OrderBy    (x => x.Prijs).ToList();
+                case "MerkAZ":
+                    return p.OrderBy(x => x.Merk.Naam).ToList();
+                case "MerkZA":
+                    return p.OrderByDescending(x => x.Merk.Naam).ToList();
+            }
+            return p;
+            
+        }
+
         public async Task<IActionResult> Product(int? id)
         {
             if (id == null)

@@ -4,7 +4,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a class="active" asp-controller="Home" asp-action="Index">Home</a></li>
             <li class="breadcrumb-item"><a class="active" asp-controller="Home" asp-action="Bruid">Bruid</a></li>
-            <li class="breadcrumb-item"><a class="active" asp-controller="Bruid" asp-action="Categorie">Dressfinder</a></li>
+            <li class="breadcrumb-item"><a class="active" asp-controller="Bruid" asp-action="Index">Dressfinder</a></li>
             <li class="breadcrumb-item">
                 @if (Model.FilterSelectie.Categorie != null)
                 {
@@ -19,52 +19,49 @@
         </ol>
     </div>
     <div class="row">
-        <div class="col-md-3 filterOpties">
-            <form asp-controller="Bruid" asp-action="Categorie">
+        <form asp-controller="Bruid" asp-action="Categorie">
+            <div class="col-md-3 filterOpties">
                 <h4>Categorieën</h4>
-                @for (int i = 0; i < Model.Filter.Categorieën.Count(); i++)
-                {
-                    <div class="backgroundLichtRoze">
-                        <input asp-for="@Model.Filter.Categorieën[i].Selected" type="checkbox" />
-                        <label asp-for="@Model.Filter.Categorieën[i].Selected">@Model.Filter.Categorieën[i].Naam</label>
-
-                        @*If these are not included, all OptionIds become 0 and all OptionName becomes null*@
-                        @Html.HiddenFor(x => @Model.Filter.Categorieën[i].Id)
-                        @Html.HiddenFor(y => @Model.Filter.Categorieën[i].Naam)
-                    </div>
+                @{
+                    foreach (var categorie in @Model.Filter.Categorieën)
+                    {
+                        <div class="backgroundLichtRoze">
+                            <input type="radio" value="@categorie.Id" name="categorie" @(Model.FilterSelectie.Categorie == categorie.Id ? "checked" : "") />
+                            <label>@categorie.Naam</label>
+                        </div>
+                    }
                 }
+                <div class="backgroundLichtRoze">
+                    <input type="radio" value="" name="categorie" @(Model.FilterSelectie.Categorie == null ? "checked" : "" ) />
+                    <label>Alle Jurken</label>
+                </div>
                 <div id="filters">
                     <h4>Filter op:</h4>
                     <h5 data-toggle="collapse" data-target="#merk">Merk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span> </h5>
                     <div id="merk" class="collapse">
                         <ul>
-                            @for (int i = 0; i < @Model.Filter.Merken.Count(); i++)
-                            {
-                                <li>
-                                    <input asp-for="@Model.Filter.Merken[i].Selected" type="checkbox" />@Model.Filter.Stijlen[i].Naam
-                                    <label asp-for="@Model.Filter.Merken[i].Selected">&nbsp;</label>
-
-                                    @*If these are not included, all OptionIds become 0 and all OptionName becomes null*@
-                                    @Html.HiddenFor(x => @Model.Filter.Merken[i].Id)
-                                    @Html.HiddenFor(y => @Model.Filter.Merken[i].Naam)
-                                </li>
+                            @{
+                                foreach (var merk in @Model.Filter.Merken)
+                                {
+                                    <li>
+                                        <input type="checkbox" id="@merk.Id@merk.Naam" value="@merk.Id" name="merken" @(Model.FilterSelectie.Merken.Contains(merk.Id) ? "checked" : "") /> @merk.Naam
+                                        <label for="@merk.Id@merk.Naam"></label>
+                                    </li>
+                                }
                             }
                         </ul>
                     </div>
                     <h5 data-toggle="collapse" data-target="#stijlJurk">Stijl jurk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
                     <div id="stijlJurk" class="collapse">
                         <ul>
-                            @for (int i = 0; i < @Model.Filter.Stijlen.Count(); i++)
-                            {
-                                <li>
-                                    <input asp-for="@Model.Filter.Stijlen[i].Selected" type="checkbox" />@Model.Filter.Stijlen[i].Naam
-                                    <label asp-for="@Model.Filter.Stijlen[i].Selected">&nbsp;</label>
-
-                                    @*If these are not included, all OptionIds become 0 and all OptionName becomes null*@
-                                    @Html.HiddenFor(x => @Model.Filter.Stijlen[i].Id)
-                                    @Html.HiddenFor(y => @Model.Filter.Stijlen[i].Naam)
-                                    @Html.HiddenFor(y => @Model.Filter.Stijlen[i].Type)
-                                </li>
+                            @{
+                                foreach (var stijl in @Model.Filter.Stijlen)
+                                {
+                                    <li>
+                                        <input type="checkbox" id="@stijl.Id@stijl.Naam" value="@stijl.Id" name="kenmerken" @(Model.FilterSelectie.Kenmerken.Contains(stijl.Id) ? "checked" : "") />@stijl.Naam
+                                        <label for="@stijl.Id@stijl.Naam"></label>
+                                    </li>
+                                }
                             }
                         </ul>
                     </div>
@@ -88,18 +85,13 @@
                             <h5 data-toggle="collapse" data-target="#@kenmerkNaam">@kenmerkNaam <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
                             <div id="@kenmerkNaam" class="collapse">
                                 <ul>
-                                    @for (int i = 0; i < @Model.Filter.Kenmerken.Count(); i++)
+                                    @foreach (var kenmerk in @Model.Filter.Kenmerken)
                                     {
-                                        if (kenmerkNaam.Equals(@Model.Filter.Kenmerken[i].Type))
+                                        if (kenmerkNaam.Equals(kenmerk.Type))
                                         {
                                             <li>
-                                                <input asp-for="@Model.Filter.Kenmerken[i].Selected" type="checkbox" /> @Model.Filter.Kenmerken[i].Naam
-                                                <label asp-for="@Model.Filter.Kenmerken[i].Selected">&nbsp;</label>
-
-                                                @*If these are not included, all OptionIds become 0 and all OptionName becomes null*@
-                                                @Html.HiddenFor(x => @Model.Filter.Kenmerken[i].Id)
-                                                @Html.HiddenFor(y => @Model.Filter.Kenmerken[i].Naam)
-                                                @Html.HiddenFor(y => @Model.Filter.Kenmerken[i].Type)
+                                                <input type="checkbox" id="@kenmerk.Id@kenmerk.Naam" value="@kenmerk.Id" name="kenmerken" @(Model.FilterSelectie.Kenmerken.Contains(kenmerk.Id) ? "checked" : "") /> @kenmerk.Naam
+                                                <label for="@kenmerk.Id@kenmerk.Naam"></label>
                                             </li>
                                         }
                                     }
@@ -110,12 +102,11 @@
                 </div>
 
                 <button type="submit">VERZENDEN!</button>
-            </form>
-        </div>
+            </div>
 
-        <div class="col-md-9">
+            <div class="col-md-9">
                 <div class="row">
-                    <div class="col-md-12 text-right">
+                    <div class="col-md-12 sorting">
                         <h5>Sorteren op: </h5>
                         <select name="sortingOptie">
                             <option value="PrijsLH" selected>Prijs laag - hoog</option>
@@ -124,64 +115,66 @@
                             <option value="MerkZA">Merk Z - A</option>
                         </select>
                     </div>
-                    
-                </div>
-            
-            <div class="row">
-                <div class="col-md-12 jurkenOverzicht">
-                    @foreach (var item in @Model.Producten)
-                    {
-                        <div class="product">
-                            <a href="/bruid/product/@item.Id">
-                                <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.First(x => x.Kenmerk.Type.Equals("Kleur")).Kenmerk.Naam + ".jpg")" class="img-responsive" />
-                                <div class="productNaam"><h5>@item.Merk.Naam</h5></div>
-                                <div class="artikelNummer"><h6>@( "Artikel nr." + item.ArtikelNummer)</h6></div>
 
-                                <div class="artikelKleur">
-                                    @foreach (var x in item.Product_X_Kenmerk)
-                                    {
-                                        if (x.Kenmerk.Type.Equals("Kleur"))
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 jurkenOverzicht">
+                        @foreach (var item in @Model.Producten)
+                        {
+                            <div class="product">
+                                <a href="/bruid/product/@item.Id">
+                                    <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.First(x => x.Kenmerk.Type.Equals("Kleur")).Kenmerk.Naam + ".jpg")" class="img-responsive" />
+                                    <div class="productNaam"><h5>@item.Merk.Naam</h5></div>
+                                    <div class="artikelNummer"><h6>@( "Artikel nr." + item.ArtikelNummer)</h6></div>
+
+                                    <div class="artikelKleur">
+                                        @foreach (var x in item.Product_X_Kenmerk)
                                         {
-                                            var kleur = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
-                                            <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode"></span>
+                                            if (x.Kenmerk.Type.Equals("Kleur"))
+                                            {
+                                                var kleur = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
+                                                <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode"></span>
+                                            }
                                         }
-                                    }
-                                </div>
-                            </a>
-                        </div>
-                    }
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-6 aantalProducten">
-                    <h5>Aantal tonen: </h5>
-                    <select name="sortingOptie">
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </select>
-                </div>
-                <div class="col-md-6 paginaNummer">
-                    <span class="glyphicon glyphicon-triangle-left"></span>
-                    <ul class="pagination">
-                        @{
-                            for (int i = 1; i <= ViewBag.aantalPagina; i++)
-                            {
-                                Model.FilterSelectie.Paginanummer = i;
-                                <li>
-                                    @Html.ActionLink(i.ToString(), "Categorie", "Bruid", Model.FilterSelectie, null)
-                                </li>
-                            }
-
+                                    </div>
+                                </a>
+                            </div>
                         }
-                    </ul>
-                    <span class="glyphicon glyphicon-triangle-right"></span>
+                    </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-6 aantalProducten">
+                        <h5>Aantal tonen: </h5>
+                        <select name="sortingOptie">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 paginaNummer">
+                        <span class="glyphicon glyphicon-triangle-left"></span>
+                        <ul class="pagination">
+                            @{
+                                for (int i = 1; i <= ViewBag.aantalPagina; i++)
+                                {
+                                    Model.FilterSelectie.Paginanummer = i;
+                                    <li>
+                                        @Html.ActionLink(i.ToString(), "Categorie", "Bruid", Model.FilterSelectie, null)
+                                    </li>
+                                }
+
+                            }
+                        </ul>
+                        <span class="glyphicon glyphicon-triangle-right"></span>
+                    </div>
+                </div>
+
             </div>
-            
-        </div>
+
+        </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>

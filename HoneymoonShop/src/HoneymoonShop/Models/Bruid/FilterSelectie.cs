@@ -32,6 +32,5 @@ namespace HoneymoonShop.Models.Bruid
         public int Paginanummer { get; set; }
         public int AantalTonen { get; set; }
         public string SortingOptie { get; set; }
-
     }
 }

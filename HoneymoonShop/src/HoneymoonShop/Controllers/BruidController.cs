@@ -18,13 +18,15 @@ namespace HoneymoonShop.Controllers
         public BruidController(ApplicationDbContext context)
         {
             _context = context;
+
+            //Dit blokje code alleen voor testing.
             
-            // Dit blokje code alleen voor testing.
-            //var Merken = _context.Merk; // Hier komt geen foutmelding
-            //var Categorieën = _context.Categorie.ToList(); // Hier wel
-            //var Stijlen = _context.Kenmerk.Where(x => x.Type.Equals("Stijl")).ToList();
-            //var KenmerkNamen = _context.Kenmerk.Where(x => !x.Type.Equals("Stijl")).Select(x => x.Type).Distinct().ToList();
-            //var Kenmerken = _context.Kenmerk.ToList();
+            var Merken = _context.Merk; // Hier komt geen foutmelding
+            var Categorieën = _context.Categorie.ToList(); // Hier wel
+            var Stijlen = _context.Kenmerk.Where(x => x.Type.Equals("Stijl")).ToList();
+            var KenmerkNamen = _context.Kenmerk.Where(x => !x.Type.Equals("Stijl")).Select(x => x.Type).Distinct().ToList();
+            var Kenmerken = _context.Kenmerk.ToList();
+            
 
             _filter = new Filter()
             {
@@ -35,7 +37,6 @@ namespace HoneymoonShop.Controllers
                 KenmerkNamen = _context.Kenmerk.Where(x => !x.Type.Equals("Stijl")).Select(x => x.Type).Distinct().ToList(),
                 Kenmerken = _context.Kenmerk.ToList()
             };
-
         }
 
 

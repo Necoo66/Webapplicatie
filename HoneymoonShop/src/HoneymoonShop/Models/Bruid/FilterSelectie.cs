@@ -14,7 +14,7 @@ namespace HoneymoonShop.Models.Bruid
         public FilterSelectie()
         {
             Paginanummer = 1;
-            AantalTonen = 10;
+            AantalTonen = 6;
             SortingOptie = "PrijsHL";
             MinPrijs = 0;
             MaxPrijs = 10000;

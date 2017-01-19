@@ -14,7 +14,6 @@
                 {
                     <span>Alle jurken</span>
                 }
-
             </li>
         </ol>
     </div>
@@ -80,7 +79,7 @@
                                                                          data-slider-value="[@Model.Filter.MinPrijs,@Model.Filter.MaxPrijs]" />
                         <b>€<span class="maxPrijs">800</span></b>
                     </div>
-                    <h4 class="marginTop">Filters verfijnen</h4>
+                    <h4 class="marginTop">Filters verfijnen:</h4>
                     @{
                         foreach (var kenmerkNaam in @Model.Filter.KenmerkNamen)
                         {
@@ -110,11 +109,17 @@
                 <div class="row">
                     <div class="col-md-12 sorting">
                         <h5>Sorteren op: </h5>
-                        <select name="sortingOptie">
-                            <option value="PrijsLH" selected>Prijs laag - hoog</option>
-                            <option value="PrijsHL">Prijs hoog - laag</option>
-                            <option value="MerkAZ">Merk A - Z</option>
-                            <option value="MerkZA">Merk Z - A</option>
+
+                        @{
+                            var sorteer = new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Prijs Laag/Hoog", Value = "PrijsLH", Selected = (Model.FilterSelectie.SortingOptie == "PrijsLH") },
+                                new SelectListItem { Text = "Prijs Hoog/Laag", Value = "PrijsHL", Selected = (Model.FilterSelectie.SortingOptie == "PrijsHL") },
+                                new SelectListItem { Text = "Merk A/Z", Value = "MerkAZ", Selected = (Model.FilterSelectie.SortingOptie == "MerkAZ") },
+                                new SelectListItem { Text = "Merk Z/A", Value = "MerkZA", Selected = (Model.FilterSelectie.SortingOptie == "MerkZA") }
+                            };
+                        }
+                        <select name="sortingOptie" asp-items="sorteer">
                         </select>
                     </div>
 
@@ -158,12 +163,16 @@
                 <div class="row">
                     <div class="col-md-6 aantalProducten">
                         <h5>Aantal tonen: </h5>
-                        <select name="sortingOptie">
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>
+
+                        @{
+                            var aantalTonen = new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "3", Value = "3", Selected = (Model.FilterSelectie.AantalTonen == 3) },
+                                new SelectListItem { Text = "6", Value = "6", Selected = (Model.FilterSelectie.AantalTonen == 6) },
+                                new SelectListItem { Text = "9", Value = "9", Selected = (Model.FilterSelectie.AantalTonen == 9) }
+                            };
+                        }
+                        <select name="AantalTonen" asp-items="@aantalTonen"></select>
                     </div>
                     <div class="col-md-6 paginaNummer">
                         <span class="glyphicon glyphicon-triangle-left"></span>

@@ -18,15 +18,26 @@ namespace HoneymoonShop.Controllers
         public BruidController(ApplicationDbContext context)
         {
             _context = context;
+            
+            // Dit blokje code alleen voor testing.
+            //var Merken = _context.Merk; // Hier komt geen foutmelding
+            //var Categorieën = _context.Categorie.ToList(); // Hier wel
+            //var Stijlen = _context.Kenmerk.Where(x => x.Type.Equals("Stijl")).ToList();
+            //var KenmerkNamen = _context.Kenmerk.Where(x => !x.Type.Equals("Stijl")).Select(x => x.Type).Distinct().ToList();
+            //var Kenmerken = _context.Kenmerk.ToList();
+
             _filter = new Filter()
             {
+                // de toList bij merken komt de foutmelding
                 Merken = _context.Merk.ToList(),
                 Categorieën = _context.Categorie.ToList(),
                 Stijlen = _context.Kenmerk.Where(x => x.Type.Equals("Stijl")).ToList(),
                 KenmerkNamen = _context.Kenmerk.Where(x => !x.Type.Equals("Stijl")).Select(x => x.Type).Distinct().ToList(),
                 Kenmerken = _context.Kenmerk.ToList()
             };
+
         }
+
 
         public IActionResult Index(FilterSelectie filterSelectie)
         {
@@ -63,8 +74,8 @@ namespace HoneymoonShop.Controllers
 
             /*sorteren*/
             producten = sorteren(filterSelectie, producten);
-            /*paginanummering*/
 
+            /*paginanummering*/
             paginanummering(filterSelectie, producten);
 
             var limitedProducts = producten.Skip((filterSelectie.Paginanummer - 1) * filterSelectie.AantalTonen).Take(filterSelectie.AantalTonen).ToList();

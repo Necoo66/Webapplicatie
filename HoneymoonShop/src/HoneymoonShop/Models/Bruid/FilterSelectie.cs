@@ -21,14 +21,16 @@ namespace HoneymoonShop.Models.Bruid
             Kenmerken = new List<int>();
             Merken = new List<int>();
             Categorie = null;
+            Kleurselected = false;
         }
-
+        
         public List<int> Kenmerken { get; set; }
         public List<int> Merken { get; set; }
         public double? MinPrijs { get; set; }
         public double? MaxPrijs { get; set; }
         public int? Categorie { get; set; }
 
+        public bool Kleurselected { get; set; }
         public int Paginanummer { get; set; }
         public int AantalTonen { get; set; }
         public string SortingOptie { get; set; }

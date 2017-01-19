@@ -28,16 +28,5 @@ namespace HoneymoonShop.Models.Bruid
             Stijlen = new List<Kenmerk>();
             KenmerkNamen = new List<string>();
         }
-
-        public Filter(double minPrijs, double maxPrijs, List<Categorie> categorieën, List<Merk> merken, List<Kenmerk> stijlen, List<string> kenmerkNamen, List<Kenmerk> kenmerken)
-        {
-            MinPrijs = minPrijs;
-            MaxPrijs = maxPrijs;
-            Categorieën = categorieën;
-            Merken = merken;
-            Stijlen = stijlen;
-            KenmerkNamen = kenmerkNamen;
-            Kenmerken = kenmerken;
-        }
     }
 }

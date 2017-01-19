@@ -17,9 +17,6 @@ namespace HoneymoonShop.Models.Bruid
         [Required]
         public string Naam { get; set; }
 
-        [NotMapped]
-        public bool Selected { get; set; }
-
         public virtual ICollection<Product> Producten { get; set; }
     }
 }

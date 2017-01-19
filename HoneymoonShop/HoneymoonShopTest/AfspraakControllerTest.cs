@@ -58,7 +58,7 @@ namespace HoneymoonShopTest
 
             mockDbSetGebruiker.Setup(x => x.Add(gebruiker));
 
-            var result = await ac.Maken(new AfspraakMaken() { Gebruiker = mockDbSetGebruiker.Object.First() });
+            var result = await ac.Maken(new AfspraakMaken() { Gebruiker = gebruiker });
             var redirectToActionResult = Assert.IsType<RedirectToActionResult>(result);
 
 

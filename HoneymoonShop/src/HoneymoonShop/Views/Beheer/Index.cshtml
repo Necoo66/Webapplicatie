@@ -1,4 +1,4 @@
-﻿<div class="container">
+﻿<div class="content">
     <div class="row">
         <div class="col-md-12">
             <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "BeheerAfspraak")'" name="" value="" title="">Afspraken beheren</button>
@@ -9,4 +9,5 @@
             <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "BeheerGebruiker")'" name="" value="" title="">Gebruikers beheren</button>
         </div>
     </div>
+    @await Html.PartialAsync("_LoginPartial")
 </div>

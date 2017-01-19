@@ -4,49 +4,52 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
-<div class="row">
-    <div class="col-md-12">
-        <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Beheer")'" name="" value="" title="">Beheer</button>
+<div class="content">
+    <h2>Details</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Beheer")'" name="" value="" title="">Beheer</button>
+        </div>
     </div>
-</div>
-<div>
-    <h4>Gebruiker</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Nieuwsbrief)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Nieuwsbrief)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefoonnummer)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Telefoonnummer)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Trouwdatum)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Trouwdatum)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.VoornaamAchternaam)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.VoornaamAchternaam)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <div>
+        <h4>Gebruiker</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Nieuwsbrief)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nieuwsbrief)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefoonnummer)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Telefoonnummer)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trouwdatum)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trouwdatum)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.VoornaamAchternaam)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.VoornaamAchternaam)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+    @await Html.PartialAsync("_LoginPartial")
 </div>

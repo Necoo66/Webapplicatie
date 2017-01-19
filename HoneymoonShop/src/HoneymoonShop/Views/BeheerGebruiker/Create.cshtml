@@ -3,73 +3,73 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<h2>Create</h2>
-<div class="row">
-    <div class="col-md-12">
-        <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Beheer")'" name="" value="" title="">Beheer</button>
+<div class="content">
+    <h2>Create</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Beheer")'" name="" value="" title="">Beheer</button>
+        </div>
     </div>
-</div>
-<form asp-action="Create">
-    <div class="form-horizontal">
-        <h4>Gebruiker</h4>
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Email" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger" />
+    <form asp-action="Create">
+        <div class="form-horizontal">
+            <h4>Gebruiker</h4>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger" />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="EmailBevestiging" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="EmailBevestiging" class="form-control" />
-                <span asp-validation-for="EmailBevestiging" class="text-danger" />
+            <div class="form-group">
+                <label asp-for="EmailBevestiging" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="EmailBevestiging" class="form-control" />
+                    <span asp-validation-for="EmailBevestiging" class="text-danger" />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="checkbox">
-                    <input asp-for="Nieuwsbrief" />
-                    <label asp-for="Nieuwsbrief"></label>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="checkbox">
+                        <input asp-for="Nieuwsbrief" />
+                        <label asp-for="Nieuwsbrief"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefoonnummer" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Telefoonnummer" class="form-control" />
+                    <span asp-validation-for="Telefoonnummer" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trouwdatum" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Trouwdatum" class="form-control" />
+                    <span asp-validation-for="Trouwdatum" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="VoornaamAchternaam" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="VoornaamAchternaam" class="form-control" />
+                    <span asp-validation-for="VoornaamAchternaam" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Telefoonnummer" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Telefoonnummer" class="form-control" />
-                <span asp-validation-for="Telefoonnummer" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Trouwdatum" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Trouwdatum" class="form-control" />
-                <span asp-validation-for="Trouwdatum" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="VoornaamAchternaam" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="VoornaamAchternaam" class="form-control" />
-                <span asp-validation-for="VoornaamAchternaam" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+    </form>
+    <div>
+        <a asp-action="Index">Back to List</a>
     </div>
-</form>
-
-<div>
-    <a asp-action="Index">Back to List</a>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+    @await Html.PartialAsync("_LoginPartial")
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

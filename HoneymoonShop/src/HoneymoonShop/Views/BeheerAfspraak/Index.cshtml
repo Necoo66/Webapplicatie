@@ -3,54 +3,57 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h2>Index</h2>
-<div class="row">
-    <div class="col-md-12">
-        <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Beheer")'" name="" value="" title="">Beheer</button>
+<div class="content">
+    <h2>Index</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Beheer")'" name="" value="" title="">Beheer</button>
+        </div>
     </div>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AfspraakSoort)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Datum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tijd)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gebruiker.Email)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AfspraakSoort)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tijd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gebruiker.Email)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @await Html.PartialAsync("_LoginPartial")
 </div>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AfspraakSoort)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Datum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tijd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gebruiker.Email)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AfspraakSoort)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Datum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tijd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gebruiker.Email)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>

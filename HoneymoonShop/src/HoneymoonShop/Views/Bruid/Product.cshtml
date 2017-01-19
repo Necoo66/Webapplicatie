@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="~/css/bruid.css" />
 
-<div class="container">
+<div class="content">
     <div class="row">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a class="active" asp-controller="Home" asp-action="Index" >Home</a></li>
@@ -23,19 +23,20 @@
 
     <div class="row spacer">
         <div class="col-md-3 afbeelding-kiezen">
+            @{var imgkleur = Model.Product_X_Kenmerk.ToList().Where(x => x.Kenmerk.Type.Equals("Kleur")).First().Kenmerk.Naam; }
             <div>
-                <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_1_" + Model.Product_X_Kenmerk.ToList().Where(x => x.Kenmerk.Type.Equals("Kleur")).First().Kenmerk.Naam + ".jpg")" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
+                <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_1_" + imgkleur + ".jpg")" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
             </div>
             <div>
-                <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_2_" + Model.Product_X_Kenmerk.ToList().Where(x => x.Kenmerk.Type.Equals("Kleur")).First().Kenmerk.Naam + ".jpg")" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
+                <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_2_" + imgkleur + ".jpg")" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
             </div>
             <div>
-                <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_3_" + Model.Product_X_Kenmerk.ToList().Where(x => x.Kenmerk.Type.Equals("Kleur")).First().Kenmerk.Naam + ".jpg")" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
+                <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_3_" + imgkleur + ".jpg")" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
             </div>
         </div>
 
         <div class="col-md-6">
-            <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_1_" + Model.Product_X_Kenmerk.ToList().Where(x => x.Kenmerk.Type.Equals("Kleur")).Single().Kenmerk.Naam + ".jpg")" id="big-image" alt="Jurk afbeelding" class="img-responsive">
+            <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_1_" + imgkleur + ".jpg")" id="big-image" alt="Jurk afbeelding" class="img-responsive">
         </div>
 
         <div class="col-md-3">

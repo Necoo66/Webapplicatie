@@ -54,6 +54,7 @@ namespace HoneymoonShop.Controllers
             return View(afspraakMaken);
         }
         
+        //haalt de datums op die vol gepland zijn
         public DateTime[] GetAvalibleDates(int month, int year)
         {
           return _context.Afspraak
@@ -65,6 +66,7 @@ namespace HoneymoonShop.Controllers
                 .ToArray();
         }
 
+        //haalt de tijden op die niet beschikbaar zijn op geselecteerde datum
         public string[] GetTakenTimes(int day, int month, int year)
         {
             return _context.Afspraak.Where(x => x.Datum.Day == day && x.Datum.Month == month && x.Datum.Year == year)

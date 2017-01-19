@@ -22,13 +22,6 @@ namespace HoneymoonShop.Models.Bruid
 
         public double Prijs { get; set; }
 
-        //[Required]
-        //public Merk Merk { get; set; }
-
-        //public List<Kenmerk> Kenmerken { get; set; }
-
-        //public List<Kleur> Kleuren { get; set; }
-
         /*categorie kan null zijn*/
         
         public virtual Categorie Categorie { get; set; }

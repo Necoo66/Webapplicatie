@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using HoneymoonShop.Data;
 using HoneymoonShop.Models.Bruid;
 using Microsoft.EntityFrameworkCore;
+using MimeKit.Encodings;
 
 namespace HoneymoonShop.Controllers
 {
@@ -70,6 +71,7 @@ namespace HoneymoonShop.Controllers
                 producten = producten.FindAll(x => x.Product_X_Kenmerk.Any(y => filterSelectie.Kenmerken.Contains(y.KenmerkId)));
             }
 
+            filterSelectie.Kleurselected = filterSelectie.Kenmerken.Intersect(_context.Kenmerk.Where(x => x.Type.Equals("Kleur")).Select(x => x.Id)).Any();
 
             /*sorteren*/
             producten = sorteren(filterSelectie, producten);

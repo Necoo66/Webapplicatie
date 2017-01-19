@@ -21,9 +21,6 @@ namespace HoneymoonShop.Models.Bruid
         [Required]
         public string Naam { get; set; }
 
-        [NotMapped]
-        public bool Selected { get; set; }
-
         public virtual HashSet<Product_X_Kenmerk> Product_X_Kenmerk { get; set; }
 
 

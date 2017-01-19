@@ -7,16 +7,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HoneymoonShop.Data;
 using HoneymoonShop.Models.GebruikerModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HoneymoonShop.Controllers
 {
+    [Authorize]
     public class BeheerAfspraakController : Controller
     {
         private readonly ApplicationDbContext _context;
         private List<SoortAfspraak> AfspraakSoort;
         private List<Gebruiker> Gebruikers;
         private List<SelectListItem> listItems;
-
+        
         public BeheerAfspraakController(ApplicationDbContext context)
         {
             _context = context;   

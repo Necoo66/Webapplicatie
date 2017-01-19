@@ -18,21 +18,19 @@
         </ol>
     </div>
     <div class="row">
-        <form asp-controller="Bruid" asp-action="Categorie">
+        <form asp-controller="Bruid" asp-action="Categorie" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace">
             <div class="col-md-3 filterOpties">
                 <h4>Categorieën</h4>
-                @{
-                    foreach (var categorie in @Model.Filter.Categorieën)
-                    {
-                        <div class="backgroundLichtRoze">
-                            <input type="radio" value="@categorie.Id" name="categorie" @(Model.FilterSelectie.Categorie == categorie.Id ? "checked" : "") />
-                            <label>@categorie.Naam</label>
-                        </div>
-                    }
-                }
-                <div class="backgroundLichtRoze">
-                    <input type="radio" value="" name="categorie" @(Model.FilterSelectie.Categorie == null ? "checked" : "" ) />
-                    <label>Alle Jurken</label>
+                <div class="categorie">
+                    <span class="backgroundLichtRoze">
+                        <a asp-action="Categorie" asp-controller="Bruid" asp-route-categorie="1"> <h5>Summer SALE</h5> </a>
+                    </span>
+                    <span class="backgroundLichtRoze">
+                        <a asp-action="Categorie" asp-controller="Bruid" asp-route-categorie="7"><h5><u>Nieuwe Collectie </u></h5> </a>
+                    </span>
+                    <span class="backgroundLichtRoze">
+                        <a asp-action="Categorie" asp-controller="Bruid"><h5>Alle jurken bekijken</h5></a>
+                    </span>
                 </div>
                 <div id="filters">
                     <h4>Filter op:</h4>
@@ -100,7 +98,7 @@
                     }
                 </div>
 
-                <button type="submit">VERZENDEN!</button>
+                <button class="btn" type="submit">VERZENDEN!</button>
             </div>
 
             <div class="col-md-9">
@@ -117,8 +115,7 @@
                                 new SelectListItem { Text = "Merk Z/A", Value = "MerkZA", Selected = (Model.FilterSelectie.SortingOptie == "MerkZA") }
                             };
                         }
-                        <select name="sortingOptie" asp-items="sorteer">
-                        </select>
+                        <select name="sortingOptie" asp-items="sorteer"></select>
                     </div>
 
                 </div>
@@ -129,9 +126,20 @@
                         {
                             <div class="product">
                                 <a href="/bruid/product/@item.Id">
-                                    <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.First(x => x.Kenmerk.Type.Equals("Kleur")).Kenmerk.Naam + ".jpg")" class="img-responsive" />
-                                    <div class="productNaam"><h5>@item.Merk.Naam</h5></div>
-                                    <div class="artikelNummer"><h6>@( "Artikel nr." + item.ArtikelNummer)</h6></div>
+                                    @if (@Model.FilterSelectie.Kleurselected)
+                                    {
+                                        <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.Where(x => x.Kenmerk.Type.Equals("Kleur")).First(x => @Model.FilterSelectie.Kenmerken.Contains(x.KenmerkId)).Kenmerk.Naam + ".jpg")" class="img-responsive" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.First(x => x.Kenmerk.Type.Equals("Kleur")).Kenmerk.Naam + ".jpg")" class="img-responsive" />
+                                    }
+                                    <div class="productNaam">
+                                        <h5>@item.Merk.Naam</h5>
+                                    </div>
+                                    <div class="artikelNummer">
+                                        <h6>@("Artikel nr." + item.ArtikelNummer)</h6>
+                                    </div>
 
                                     <div class="artikelKleur">
                                         @foreach (var x in item.Product_X_Kenmerk)
@@ -139,7 +147,7 @@
                                             if (x.Kenmerk.Type.Equals("Kleur"))
                                             {
                                                 var kleur = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
-                                                <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode"></span>
+                                                <span href="#" class="kleur-bolletje" style="background-color: #@kleur.Kleurcode"></span>
                                             }
                                         }
                                     </div>

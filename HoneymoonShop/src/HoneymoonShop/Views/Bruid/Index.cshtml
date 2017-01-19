@@ -16,19 +16,15 @@
                 <div class="filterHolder">
                     <h4>Categorieën</h4>
                     <div class="categorie">
-                        @{
-                            foreach (var categorie in @Model.Filter.Categorieën)
-                            {
-                                <div class="backgroundLichtRoze">
-                                    <input type="radio" value="@categorie.Id" name="categorie" @(Model.FilterSelectie.Categorie == categorie.Id ? "checked" : "") />
-                                    <label>@categorie.Naam</label>
-                                </div>
-                            }
-                        }
-                        <div class="backgroundLichtRoze">
-                            <input type="radio" value="" name="categorie" @(Model.FilterSelectie.Categorie == null ? "checked" : "" ) />
-                            <label>Alle Jurken</label>
-                        </div>
+                        <span class="backgroundLichtRoze">
+                            <a asp-action="Categorie" asp-controller="Bruid" asp-route-categorie="1"> <h5>Summer SALE</h5> </a>
+                        </span>
+                        <span class="backgroundLichtRoze">
+                            <a asp-action="Categorie" asp-controller="Bruid" asp-route-categorie="7"><h5><u>Nieuwe Collectie </u></h5> </a>
+                        </span>
+                        <span class="backgroundLichtRoze">
+                            <a asp-action="Categorie" asp-controller="Bruid"><h5>Alle jurken bekijken</h5></a>
+                        </span>
                     </div>
                     <div id="filters">
                         <h4>Filter op:</h4>
@@ -96,8 +92,7 @@
                         }
                     </div>
                 </div>
-
-                <button type="submit">VERZENDEN!</button>
+                <button class="btn" type="submit">VERZENDEN!</button>
             </div>
             <div class="col-md-9 jurkenOverzicht">
                 <div class="row spacer">

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HoneymoonShop.Models.Bruid
 {
@@ -12,6 +13,9 @@ namespace HoneymoonShop.Models.Bruid
 
         [Required]
         public string Naam { get; set; }
+
+        [NotMapped]
+        public bool Selected { get; set; }
 
         public List<Product> Producten { get; set; }
     }

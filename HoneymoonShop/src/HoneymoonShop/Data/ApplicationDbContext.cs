@@ -14,6 +14,10 @@ namespace HoneymoonShop.Data
            //Database.EnsureDeleted();
           // Database.EnsureCreated();
         }
+        public ApplicationDbContext()
+        {
+
+        }
         
         protected override void OnModelCreating(ModelBuilder builder)
         {

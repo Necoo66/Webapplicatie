@@ -79,7 +79,7 @@ namespace HoneymoonShop.Controllers
             /*paginanummering*/
             paginanummering(filterSelectie, producten);
 
-            var limitedProducts = producten.Skip((filterSelectie.Paginanummer - 1) * filterSelectie.AantalTonen).Take(filterSelectie.AantalTonen).ToList();
+            List<Product> limitedProducts = producten.Skip((filterSelectie.Paginanummer - 1) * filterSelectie.AantalTonen).Take(filterSelectie.AantalTonen).ToList();
 
             //ViewBag.url(filterSelectie.geefUrl());
             return View(new ProductFilter(_filter, filterSelectie, limitedProducts));

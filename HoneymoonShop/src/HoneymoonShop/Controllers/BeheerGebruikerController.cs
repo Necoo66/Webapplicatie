@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HoneymoonShop.Data;
 using HoneymoonShop.Models.GebruikerModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HoneymoonShop.Controllers
 {
+    [Authorize]
     public class BeheerGebruikerController : Controller
     {
         private readonly ApplicationDbContext _context;

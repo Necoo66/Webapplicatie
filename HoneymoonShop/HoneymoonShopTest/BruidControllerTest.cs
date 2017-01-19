@@ -72,9 +72,9 @@ namespace HoneymoonShopTest
             /*eind dummy categorie*/
 
             /*begin dummy kenmerk*/
-            var dummyKenmerk = new List<Kenmerk>(){ new Kenmerk() {  Naam = "Rood", Type = "Kleur"},
-                                                        new Kenmerk() {  Naam = "Kant", Type="Neklijn"},
-                                                        new Kenmerk() { Naam = "Gekke silhouette", Type="Silhouette"} }
+            var dummyKenmerk = new List<Kenmerk>(){ new Kenmerk() {  Id = 1, Naam = "Rood", Type = "Kleur"},
+                                                        new Kenmerk() { Id = 2, Naam = "Kant", Type="Neklijn"},
+                                                        new Kenmerk() { Id = 3, Naam = "Gekke silhouette", Type="Silhouette"} }
                                                         .AsQueryable();
 
             mockDbSetKenmerk.As<IQueryable<Kenmerk>>().Setup(x => x.Provider).Returns(dummyKenmerk.Provider);
@@ -90,6 +90,7 @@ namespace HoneymoonShopTest
             {
                 new Product()
                 {
+                    Id = 1,
                     Merk = dummyMerk.First(),
                     Categorie = dummyCategorie[1],
                     Beschrijving ="Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
@@ -98,6 +99,7 @@ namespace HoneymoonShopTest
                 },
                 new Product()
                 {
+                    Id = 2,
                     Merk = dummyMerk.First(),
                     Categorie = dummyCategorie[0],
                     Beschrijving ="Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
@@ -106,6 +108,7 @@ namespace HoneymoonShopTest
                 },
                 new Product()
                 {
+                    Id = 3,
                     Merk = dummyMerk.First(),
                     Categorie = dummyCategorie[2],
                     Beschrijving ="Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
@@ -129,6 +132,26 @@ namespace HoneymoonShopTest
                 new Product_X_Kenmerk()
                 {
                     KenmerkId = 1, ProductId = 1
+                },
+                new Product_X_Kenmerk()
+                {
+                    KenmerkId = 2, ProductId = 2
+                },
+                new Product_X_Kenmerk()
+                {
+                    KenmerkId = 2, ProductId = 3
+                },
+                new Product_X_Kenmerk()
+                {
+                    KenmerkId = 1, ProductId = 1
+                },
+                new Product_X_Kenmerk()
+                {
+                    KenmerkId = 2, ProductId = 2
+                },
+                new Product_X_Kenmerk()
+                {
+                    KenmerkId = 2, ProductId = 3
                 }
             }.AsQueryable();
 

@@ -61,8 +61,8 @@ namespace HoneymoonShop.Controllers
 
             /*sorteren*/
             producten = sorteren(filterSelectie, producten);
-            /*paginanummering*/
 
+            /*paginanummering*/
             paginanummering(filterSelectie, producten);
 
             var limitedProducts = producten.Skip((filterSelectie.Paginanummer - 1) * filterSelectie.AantalTonen).Take(filterSelectie.AantalTonen).ToList();

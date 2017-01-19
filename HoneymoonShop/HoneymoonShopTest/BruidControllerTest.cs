@@ -143,15 +143,15 @@ namespace HoneymoonShopTest
                 },
                 new Product_X_Kenmerk()
                 {
-                    KenmerkId = 1, ProductId = 1
+                    KenmerkId = 2, ProductId = 1
                 },
                 new Product_X_Kenmerk()
                 {
-                    KenmerkId = 2, ProductId = 2
+                    KenmerkId = 3, ProductId = 1
                 },
                 new Product_X_Kenmerk()
                 {
-                    KenmerkId = 2, ProductId = 3
+                    KenmerkId = 1, ProductId = 2
                 }
             }.AsQueryable();
 

@@ -7,10 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HoneymoonShop.Controllers
 {
-    public class YourCustomAuthorize : AuthorizeAttribute
-    {
-        
-    }
+    
     [Authorize]
     public class BeheerController : Controller
     {

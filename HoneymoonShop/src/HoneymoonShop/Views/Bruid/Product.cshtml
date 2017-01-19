@@ -35,7 +35,7 @@
         </div>
 
         <div class="col-md-6">
-            <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_1_" + Model.Product_X_Kenmerk.ToList().Where(x => x.Kenmerk.Type.Equals("Kleur")).First().Kenmerk.Naam + ".jpg")" id="big-image" alt="Jurk afbeelding" class="img-responsive">
+            <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_1_" + Model.Product_X_Kenmerk.ToList().Where(x => x.Kenmerk.Type.Equals("Kleur")).Single().Kenmerk.Naam + ".jpg")" id="big-image" alt="Jurk afbeelding" class="img-responsive">
         </div>
 
         <div class="col-md-3">

@@ -66,14 +66,14 @@
                     <div id="prijs" class="collapse bottomBorder">
                         <input type="hidden" name="minPrijs" value="@Model.FilterSelectie.MinPrijs" />
                         <input type="hidden" name="maxPrijs" value="@Model.FilterSelectie.MaxPrijs" />
-                        <b>€<span class="minPrijs">200</span></b> <input id="prijsSlider" type="text" class="span2" value="123"
+                        <b>€<span class="minPrijs">200</span></b> <input id="prijsSlider" type="text" class="span2" value=""
                                                                          data-slider-tooltip="show"
                                                                          data-slider-ticks-labels='["short", "medium", "long"]'
-                                                                         data-slider-min="@Model.FilterSelectie.MinPrijs"
+                                                                         data-slider-min="200"
                                                                          data-slider-max="@Model.FilterSelectie.MaxPrijs"
-                                                                         data-slider-step="10"
+                                                                         data-slider-step="100"
                                                                          data-slider-value="[@Model.Filter.MinPrijs,@Model.Filter.MaxPrijs]" />
-                        <b>€<span class="maxPrijs">800</span></b>
+                        <b>€<span class="maxPrijs">@Math.Round(Decimal.Parse(Model.FilterSelectie.MaxPrijs + ""))</span></b>
                     </div>
                     <h4 class="marginTop">Filters verfijnen:</h4>
                     @{

@@ -1,13 +1,17 @@
 ﻿<div class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "BeheerAfspraak")'" name="" value="" title="">Afspraken beheren</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "BeheerGebruiker")'" name="" value="" title="">Gebruikers beheren</button>
-        </div>
-    </div>
     @await Html.PartialAsync("_LoginPartial")
+    <div class="row">
+        <div class="title">
+            <h1>Beheer</h1>
+            <h2 class="text-uppercase">Beheer hier uw Afspraken en Klantgebruikers</h2>
+        </div>
+    </div>
+    <div class="row spacer">
+        <div class="col-md-6 col-sm-6 text-center">
+            <button type="button" class="knop" onclick="location.href='@Url.Action("Index", "BeheerAfspraak")'" name="" value="" title="">Afspraken beheren</button>
+        </div>
+        <div class="col-md-6 col-sm-6 text-center">
+            <button type="button" class="knop" onclick="location.href='@Url.Action("Index", "BeheerGebruiker")'" name="" value="" title="">Gebruikers beheren</button>
+        </div>
+    </div>
 </div>

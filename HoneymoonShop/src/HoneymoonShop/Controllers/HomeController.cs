@@ -28,6 +28,10 @@ namespace HoneymoonShop.Controllers
             return View();
         }
 
+        public IActionResult Bruidegom()
+        {
+            return View();
+        }
 
         public IActionResult Error()
         {

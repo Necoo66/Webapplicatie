@@ -88,13 +88,12 @@
                                         {
                                             <li>
                                                 <input type="checkbox" id="@kenmerk.Id@kenmerk.Naam" value="@kenmerk.Id" name="kenmerken" @(Model.FilterSelectie.Kenmerken.Contains(kenmerk.Id) ? "checked" : "") /> @kenmerk.Naam
-                                                <label for="@kenmerk.Id@kenmerk.Naam">
-                                                    @if (kenmerk.Type.Equals("Kleur"))
-                                                    {
-                                                        var kleur = (HoneymoonShop.Models.Bruid.Kleur)kenmerk;
-                                                        <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode"></span>
-                                                    }
-                                                </label>
+                                                <label for="@kenmerk.Id@kenmerk.Naam"></label>
+                                                @if (kenmerk.Type.Equals("Kleur"))
+                                                {
+                                                    var kleur = (HoneymoonShop.Models.Bruid.Kleur)kenmerk;
+                                                    <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode"></span>
+                                                }
                                             </li>
                                         }
                                     }
@@ -104,7 +103,7 @@
                     }
                 </div>
 
-                <button class="btn" type="submit">VERZENDEN!</button>
+                <button class="knop" type="submit">VERZENDEN!</button>
             </div>
 
             <div class="col-md-9">

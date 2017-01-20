@@ -167,6 +167,7 @@ span#DatumSelecteren label {
 .arrow {
     position: absolute;
     bottom: 50px;
+    cursor: pointer;
 }
 
 #datum {

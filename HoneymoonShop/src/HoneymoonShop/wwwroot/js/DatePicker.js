@@ -161,16 +161,19 @@ function toggleSelecteerDatum(id1, id2, id3) {
 }
 
 function checkform() {
-    if ($("#MyForm").valid()) {
-        $('div[id="stap3"]').css("display", "block");
-        $('div[id="stap1"]').css("display", "none");
-        $('div[id="stap2"]').css("display", "none");
+    var naam = $('#Gebruiker_VoornaamAchternaam').val().split(" ");
 
-        //Set
-        document.getElementById('LBnaam').innerHTML = $('#Gebruiker_VoornaamAchternaam').val();
-        document.getElementById('LBtrouwdatum').innerHTML = toDate($('#Gebruiker_Trouwdatum').val());
-        document.getElementById('LBtelefoon').innerHTML = $('#Gebruiker_Telefoonnummer').val();
-        document.getElementById('LBemail').innerHTML = $('#Gebruiker_Email').val();
+    if (naam.length >= 2) {
+        if ($("#MyForm").valid()) {
+            $('div[id="stap3"]').css("display", "block");
+            $('div[id="stap1"]').css("display", "none");
+            $('div[id="stap2"]').css("display", "none");
+            //Set
+            document.getElementById('LBnaam').innerHTML = $('#Gebruiker_VoornaamAchternaam').val();
+            document.getElementById('LBtrouwdatum').innerHTML = toDate($('#Gebruiker_Trouwdatum').val());
+            document.getElementById('LBtelefoon').innerHTML = $('#Gebruiker_Telefoonnummer').val();
+            document.getElementById('LBemail').innerHTML = $('#Gebruiker_Email').val();
+        }
     }
 }
 

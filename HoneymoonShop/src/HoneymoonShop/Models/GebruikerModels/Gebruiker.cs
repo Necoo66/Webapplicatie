@@ -17,7 +17,7 @@ namespace HoneymoonShop.Models.GebruikerModels
 
         [MaxLength(100),
         Required(ErrorMessage = "Voor- en achternaam zijn vereist"),
-        VoorEnAchternaam(ErrorMessage = "Voor- en achternaam zijn vereist"),
+        //VoorEnAchternaam(ErrorMessage = "Voor- en achternaam zijn vereist"),
         Display(Name = "Voor- en achternaam*")]
         public String VoornaamAchternaam { get; set; }
 
@@ -47,20 +47,20 @@ namespace HoneymoonShop.Models.GebruikerModels
 
         public List<Afspraak> Afspraken { get; set; }
 
-        public class VoorEnAchternaam : ValidationAttribute
-        {
-            protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-            {
-                var text = value as string;
-                if (value != null)
-                {
-                    if (2 <= text?.Split().Length)
-                    {
-                        return ValidationResult.Success;
-                    }
-                }
-                return new ValidationResult("Voor- en achternaam zijn vereist");
-            }
-        }
+        //public class VoorEnAchternaam : ValidationAttribute
+        //{
+        //    protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        //    {
+        //        var text = value as string;
+        //        if (value != null)
+        //        {
+        //            if (2 <= text?.Split().Length)
+        //            {
+        //                return ValidationResult.Success;
+        //            }
+        //        }
+        //        return new ValidationResult("Voor- en achternaam zijn vereist");
+        //    }
+        //}
     }
 }

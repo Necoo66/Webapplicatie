@@ -51,6 +51,8 @@ namespace HoneymoonShop.Controllers
         {
             var producten = _context.Product.Include(x => x.Merk).Include(x => x.Product_X_Kenmerk).ThenInclude(x => x.Kenmerk).ToList();
 
+            _filter.MaxPrijs = producten.Max(x => x.Prijs);
+
             if (filterSelectie.Categorie != null && filterSelectie.Categorie != 0)
             {
                 producten = producten.Where(x => x.Categorie.Id == filterSelectie.Categorie).ToList();
@@ -73,6 +75,7 @@ namespace HoneymoonShop.Controllers
 
             filterSelectie.Kleurselected = filterSelectie.Kenmerken.Intersect(_context.Kenmerk.Where(x => x.Type.Equals("Kleur")).Select(x => x.Id)).Any();
 
+            
             /*sorteren*/
             producten = sorteren(filterSelectie, producten);
 
@@ -80,7 +83,7 @@ namespace HoneymoonShop.Controllers
             paginanummering(filterSelectie, producten);
 
             List<Product> limitedProducts = producten.Skip((filterSelectie.Paginanummer - 1) * filterSelectie.AantalTonen).Take(filterSelectie.AantalTonen).ToList();
-
+            
             //ViewBag.url(filterSelectie.geefUrl());
             return View(new ProductFilter(_filter, filterSelectie, limitedProducts));
         }

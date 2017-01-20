@@ -41,7 +41,7 @@
                                 foreach (var merk in @Model.Filter.Merken)
                                 {
                                     <li>
-                                        <input type="checkbox" id=" " value="@merk.Id" name="merken" @(Model.FilterSelectie.Merken.Contains(merk.Id) ? "checked" : "") /> @merk.Naam
+                                        <input type="checkbox" id="@merk.Id@merk.Naam" value="@merk.Id" name="merken" @(Model.FilterSelectie.Merken.Contains(merk.Id) ? "checked" : "") /> @merk.Naam
                                         <label for="@merk.Id@merk.Naam"></label>
                                     </li>
                                 }

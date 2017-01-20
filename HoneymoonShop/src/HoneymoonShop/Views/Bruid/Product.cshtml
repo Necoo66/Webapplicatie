@@ -22,7 +22,7 @@
     </div>
 
     <div class="row spacer">
-        <div class="col-md-3 afbeelding-kiezen">
+        <div class="col-md-3 col-sm-3 afbeelding-kiezen">
             @{var imgkleur = Model.Product_X_Kenmerk.ToList().Where(x => x.Kenmerk.Type.Equals("Kleur")).First().Kenmerk.Naam; }
             <div>
                 <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_1_" + imgkleur + ".jpg")" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
@@ -35,11 +35,11 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-6">
             <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_1_" + imgkleur + ".jpg")" id="big-image" alt="Jurk afbeelding" class="img-responsive">
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-3">
             <h2>@Model.Merk.Naam</h2>
             <span>Artikel nr. @Model.ArtikelNummer</span>
             <p>@Model.Beschrijving</p>

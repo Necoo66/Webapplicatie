@@ -186,6 +186,7 @@ nav {
 }
 
 .banner {
+    position: relative;
     width: 100%;
     margin-top: -70px;
     margin-bottom: 15px;
@@ -194,6 +195,31 @@ nav {
 
     .banner img {
         width: 100%;
+    }
+
+    .bannerText {
+        position: absolute;
+        overflow: hidden;
+        top: 100px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .bannerText .title h1 {
+        font-size: 150px;
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .bannerText .title p {
+        margin-top: -10px;
+        font-size: 40px;
+        color: white;
+    }
+
+    .bannerText .title h2 {
+        top: -20px;
+        font-size: 35px;
+        color: white;
     }
 
 /* Wrapping element */

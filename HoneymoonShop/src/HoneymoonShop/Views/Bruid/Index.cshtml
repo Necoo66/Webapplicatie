@@ -66,8 +66,8 @@
                                                 data-slider-min="10" 
                                                 data-slider-max="1000" 
                                                 data-slider-step="10"
-                                                data-slider-value="[200,800]" /> 
-                            <b>€<span class="maxPrijs">800</span></b>
+                                                data-slider-value="[@Model.FilterSelectie.MinPrijs,@Model.FilterSelectie.MaxPrijs]]" /> 
+                            <b>€<span class="maxPrijs">@(Math.Ceiling(Model.Filter.MaxPrijs / 1000) * 1000)</span></b>
                         </div>
                         <h4 class="marginTop">Filters verfijnen</h4>
 

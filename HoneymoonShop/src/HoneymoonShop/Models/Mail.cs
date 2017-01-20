@@ -40,7 +40,7 @@ namespace HoneymoonShop.Models
         <p>Uw afspraak is gemaakt op:</p>
         <p>{1}</p>
     </td>
-    <td style=""padding:20px; width:50%; background-color:#F0597C;"">
+    <td style=""padding:20px; width:50%; background-color:#F0597C; color: white;"">
         <h4>Wilt u uw afspraak wijzigen?</h4>
         <p>Klik dan op de onderstaande link</p>
         <a href=""#"">honeymoonshop.nl/afspraak/wijzigen?verificationkey=86sab4ho84US84O</a>

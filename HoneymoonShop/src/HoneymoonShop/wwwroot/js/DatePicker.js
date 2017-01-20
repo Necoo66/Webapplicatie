@@ -28,7 +28,6 @@ $('#datepicker')
         onSelect: function (dateText, inst) {
             date = $(this).datepicker('getDate');
             selected = $(this).val();
-            //getAvalibleTimes();
             $("#Afspraak_Datum").val(jQuery.datepicker.formatDate('dd-mm-yy', date));
             $(".datumbanner").text(dayNamesMin[date.getDay()] + " " + date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear());
         },
@@ -55,8 +54,6 @@ function successDate(sqlDates) {
     }
 
     $("#datepicker").datepicker("refresh");
-    //console.log("sqlDates of data:", sqlDates.slice(0, 100));
-    //console.log("disableddates of data:", disableddates.slice(0, 100));
 }
 
 function toDate(sqlDate) {
@@ -95,7 +92,6 @@ function successTijd(sqlDates) {
             document.getElementById("radio3").style.display = "none";
         }
     }
-    //console.log("sqlDates of data:", sqlDates.slice(0, 100));
 }
 
 /*TOGGLE*/

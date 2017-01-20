@@ -6,76 +6,86 @@
 @{
     ViewData["Title"] = "Afspraak";
 }
-<div class="row">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a class="active" href="@Url.Action("index","home")">Home</a></li>
-        <li class="breadcrumb-item">Afspraak</li>
-    </ol>
+
+<div id="banner" class="banner">
+    <img src="~/images/banner/afspraakmaken.png" />
+    <div class="bannerText">
+        <div class="title">
+            <h1>Afspraak maken</h1>
+            <p>Plan jouw afspraak hier in</p>
+            <h2 class="text-uppercase">Voor wat wil je een afspraak maken?</h2>
+        </div>
+    </div>
 </div>
-<div class="row">
+<div class="content">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
-            <div class="row">
-                <div class="col-md-3">
-                    <h3 class="text-capitalize">Soorten afspraken</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="active" href="@Url.Action("index","home")">Home</a></li>
+            <li class="breadcrumb-item">Afspraak</li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3 class="text-capitalize">Soorten afspraken</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                        </p>
+                    </div>
+                    @foreach (var soort in Enum.GetNames(typeof(SoortAfspraak)))
+                    {
+                        <div class="col-md-3 col-sm-4 col-xs-4">
+                            <div class="textOnImage">
+                                <a href="/afspraak/maken?SoortAfspraak=@soort" value="@soort">
+                                    <img src="~/images/afspraak@(soort).jpeg" alt="Trouwjurken passen" class="img-responsive" />
+                                    <h4>@soort <br> passen</h4>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="title">
+                <h1>One stop, shop</h1>
+                <h2>Een jurk of pak kopen?.<br>zo werkt het...</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 bekijkVideos">
+                <img src="~/images/onestopshop.jpeg" alt="" class="img-responsive">
+                <div>
+                    <h2>> bekijk video</h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                        Hoe vind je de perfecte outfit?<br />
+                        Onze specialisten nemen echt de tijd voor je en helpen je met elke stap. Oneindige jurken/pakken passen? geen probleem! Er kunnen zoveel mensen mee als jij zelf wilt
                     </p>
                 </div>
-                @foreach (var soort in Enum.GetNames(typeof(SoortAfspraak)))
-                {
-                    <div class="col-md-3 col-sm-4 col-xs-4">
-                        <div class="textOnImage">
-                            <a href="/afspraak/maken?SoortAfspraak=@soort" value="@soort">
-                                <img src="~/images/afspraak@(soort).jpeg" alt="Trouwjurken passen" class="img-responsive" />
-                                <h4>@soort <br> passen</h4>
-                            </a>
-                        </div>
-                    </div>
-                }
+                <span id="bekijkVideos-nummer">1</span>
+            </div>
+            <div class="col-md-4 bekijkVideos-lijst">
+                <div>
+                    <div class="bg-donkerroze">1</div>
+                    <div class="text-donkerroze">De winkel</div>
+                </div>
+                <div>
+                    <div>2</div>
+                    <div>Onze specialist</div>
+                </div>
+                <div>
+                    <div>3</div>
+                    <div>Naai-atelier</div>
+                </div>
+                <div>
+                    <div>4</div>
+                    <div>Servicepunten</div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="title">
-            <h1>One stop, shop</h1>
-            <h2>Een jurk of pak kopen?.<br>zo werkt het...</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 bekijkVideos">
-            <img src="~/images/onestopshop.jpeg" alt="" class="img-responsive">
-            <div>
-                <h2>> bekijk video</h2>
-                <p>
-                    Hoe vind je de perfecte outfit?<br />
-                    Onze specialisten nemen echt de tijd voor je en helpen je met elke stap. Oneindige jurken/pakken passen? geen probleem! Er kunnen zoveel mensen mee als jij zelf wilt
-                </p>
-            </div>
-            <span id="bekijkVideos-nummer">1</span>
-        </div>
-        <div class="col-md-4 bekijkVideos-lijst">
-            <div>
-                <div class="bg-donkerroze">1</div>
-                <div class="text-donkerroze">De winkel</div>
-            </div>
-            <div>
-                <div>2</div>
-                <div>Onze specialist</div>
-            </div>
-            <div>
-                <div>3</div>
-                <div>Naai-atelier</div>
-            </div>
-            <div>
-                <div>4</div>
-                <div>Servicepunten</div>
-            </div>
-        </div>
-    </div>
-
 </div>
-
-
 <div><img src="~/images/Footer/footerafsrpaak.png" class="img-responsive" /></div>

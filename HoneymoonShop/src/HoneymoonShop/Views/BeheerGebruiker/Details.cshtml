@@ -5,14 +5,15 @@
 }
 
 <div class="content">
-    <h2>Details</h2>
+    @await Html.PartialAsync("_LoginPartial")
     <div class="row">
-        <div class="col-md-12">
-            <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Beheer")'" name="" value="" title="">Beheer</button>
+        <div class="title">
+            <h1>KlantGebruikers</h1>
+            <h2 class="text-uppercase">Details</h2>
         </div>
     </div>
+
     <div>
-        <h4>Gebruiker</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -47,9 +48,16 @@
             </dd>
         </dl>
     </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-        <a asp-action="Index">Back to List</a>
+
+    <div class="row spacer">
+        <div class="col-md-3">
+            <a class="knop" asp-action="Index">Terug naar KlantGebruikers</a>
+        </div>
+        <div class="col-md-3">
+            <a class="knop" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        </div>
     </div>
+
+
     @await Html.PartialAsync("_LoginPartial")
 </div>

@@ -1,7 +1,19 @@
 ﻿@model HoneymoonShop.Models.Bruid.ProductFilter
 
-<div id="banner" class="banner"><img src="~/images/banner1.png" /></div>
-<div class="container">
+<div id="banner" class="banner">
+    <img src="~/images/banner/Dressfinder.jpg" />
+    <div class="bannerText">
+        <div class="title">
+            <h1>Dressfinder</h1>
+            <p>Opzoek naar de perfecte jurk</p>
+            <h2 class="text-uppercase">Van begin tot eind kunnen wij je helpen</h2>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="content">
     <div class="row">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a class="active" asp-controller="Home" asp-action="Index">Home</a></li>
@@ -82,14 +94,12 @@
                                             {
                                                 <li>
                                                     <input id="@kenmerk.Naam" type="checkbox" value="@kenmerk" @(Model.FilterSelectie.Kenmerken.Contains(kenmerk.Id) ? "checked" : "")/>@kenmerk.Naam
-                                                    <label for="@kenmerk.Naam">
-                                                        @if (kenmerk.Type.Equals("Kleur"))
-                                                        {
-                                                            var kleur = (HoneymoonShop.Models.Bruid.Kleur)kenmerk;
-                                                            <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode"></span>
-                                                        }
-                                                    </label>
-
+                                                    <label for="@kenmerk.Naam"></label>
+                                                    @if (kenmerk.Type.Equals("Kleur"))
+                                                    {
+                                                        var kleur = (HoneymoonShop.Models.Bruid.Kleur)kenmerk;
+                                                        <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode"></span>
+                                                    }
                                                 </li>
                                             }
                                         }
@@ -99,7 +109,7 @@
                         }
                     </div>
                 </div>
-                <button class="btn" type="submit">VERZENDEN!</button>
+                <button class="knop" type="submit">VERZENDEN!</button>
             </div>
             <div class="col-md-9 jurkenOverzicht">
                 <div class="row spacer">

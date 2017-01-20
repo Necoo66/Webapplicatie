@@ -485,6 +485,7 @@ footer a {
 
 /*de roze knop/button, A element*/
 .knop{
+    border: none!important;
     background-color: #F0597C;
     color: white;
     padding: 10px 20px 10px 20px;
@@ -495,7 +496,7 @@ footer a {
 
 .knop:hover{
     text-decoration:none;
-
+    color:black;
 }
 
 /*meer ruimte voor onderaan een div*/

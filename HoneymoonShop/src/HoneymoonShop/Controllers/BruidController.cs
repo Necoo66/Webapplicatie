@@ -18,15 +18,6 @@ namespace HoneymoonShop.Controllers
         public BruidController(ApplicationDbContext context)
         {
             _context = context;
-
-            //Dit blokje code alleen voor testing.
-            
-            var Merken = _context.Merk; // Hier komt geen foutmelding
-            var Categorieën = _context.Categorie.ToList(); // Hier wel
-            var Stijlen = _context.Kenmerk.Where(x => x.Type.Equals("Stijl")).ToList();
-            var KenmerkNamen = _context.Kenmerk.Where(x => !x.Type.Equals("Stijl")).Select(x => x.Type).Distinct().ToList();
-            var Kenmerken = _context.Kenmerk.ToList();
-            
             _filter = new Filter()
             {
                 // de toList bij merken komt de foutmelding
@@ -76,7 +67,6 @@ namespace HoneymoonShop.Controllers
 
             //bool om te controleren of er een kleur selected is
             filterSelectie.Kleurselected = filterSelectie.Kenmerken.Intersect(_context.Kenmerk.Where(x => x.Type.Equals("Kleur")).Select(x => x.Id)).Any();
-
             
             /*sorteren*/
             producten = sorteren(filterSelectie, producten);
@@ -86,7 +76,6 @@ namespace HoneymoonShop.Controllers
 
             List<Product> limitedProducts = producten.Skip((filterSelectie.Paginanummer - 1) * filterSelectie.AantalTonen).Take(filterSelectie.AantalTonen).ToList();
             
-            //ViewBag.url(filterSelectie.geefUrl());
             return View(new ProductFilter(_filter, filterSelectie, limitedProducts));
         }
 

@@ -154,8 +154,6 @@
 
         showTooltip: function () {
             this.tooltip.addClass('in');
-            //var left = Math.round(this.percent*this.width);
-            //this.tooltip.css('left', left - this.tooltip.outerWidth()/2);
             this.over = true;
         },
 

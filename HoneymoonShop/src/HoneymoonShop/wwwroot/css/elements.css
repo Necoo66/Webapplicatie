@@ -63,7 +63,7 @@ input {
     box-shadow: none;
 }
 
-    input:focus {
+    input:active, input:focus {
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3) !important;
         border: 2px solid #d3d3d3 !important;
         -webkit-transform: scale(1.05); /* Safari and Chrome */

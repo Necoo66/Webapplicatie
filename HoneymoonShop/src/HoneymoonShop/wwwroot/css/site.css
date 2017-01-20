@@ -387,6 +387,14 @@ footer a {
     nav .websitebuttons ul li a {
         font-size: 1.5vw;
     }
+
+    
+    .bannerText {
+        top:20px;
+    }
+    .bannerText .title h1{
+        font-size:120px;
+    }
 }
 
 @media screen and (max-width: 992px) {
@@ -402,6 +410,8 @@ footer a {
     nav #hamburger-menu-toggle {
         visibility: hidden;
     }
+
+
 }
 
 @media screen and (max-width: 767px) {
@@ -438,6 +448,14 @@ footer a {
         float: right;
         display: block;
     }
+
+    .bannerText .title p{
+        font-size:30px;
+    }
+
+    .bannerText .title h2{
+        font-size:20px;
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -457,6 +475,7 @@ footer a {
     nav .navigation .logo {
         width: 50%;
     }
+
 }
 
 @media screen and (max-width: 400px) {

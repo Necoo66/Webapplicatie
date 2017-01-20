@@ -36,7 +36,7 @@
                     </div>
                     @foreach (var soort in Enum.GetNames(typeof(SoortAfspraak)))
                     {
-                        <div class="col-md-3 col-sm-4 col-xs-4">
+                        <div class="col-md-3 col-sm-4">
                             <div class="textOnImage">
                                 <a href="/afspraak/maken?SoortAfspraak=@soort" value="@soort">
                                     <img src="~/images/afspraak@(soort).jpeg" alt="Trouwjurken passen" class="img-responsive" />

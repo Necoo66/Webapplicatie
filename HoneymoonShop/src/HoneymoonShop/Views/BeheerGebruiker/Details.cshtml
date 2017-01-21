@@ -1,0 +1,63 @@
+@model HoneymoonShop.Models.GebruikerModels.Gebruiker
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="content">
+    @await Html.PartialAsync("_LoginPartial")
+    <div class="row">
+        <div class="title">
+            <h1>KlantGebruikers</h1>
+            <h2 class="text-uppercase">Details</h2>
+        </div>
+    </div>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Nieuwsbrief)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nieuwsbrief)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefoonnummer)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Telefoonnummer)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trouwdatum)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trouwdatum)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.VoornaamAchternaam)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.VoornaamAchternaam)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="row spacer">
+        <div class="col-md-3">
+            <a class="knop" asp-action="Index">Terug naar KlantGebruikers</a>
+        </div>
+        <div class="col-md-3">
+            <a class="knop" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        </div>
+    </div>
+
+
+    @await Html.PartialAsync("_LoginPartial")
+</div>

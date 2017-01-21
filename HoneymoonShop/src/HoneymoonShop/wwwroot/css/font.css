@@ -1,0 +1,29 @@
+﻿@font-face {
+    font-family: Nexa Black;
+    src: url('../fonts/Nexa W01 Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Nexa Bold;
+    src: url('../fonts/Nexa Bold.otf') format('truetype');
+}
+
+@font-face {
+    font-family: Nexa Light;
+    src: url('../fonts/Nexa Light.otf') format('truetype');
+}
+
+@font-face {
+    font-family: Nexa Book;
+    src: url('../fonts/Nexa W01 Book.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Script mt Bold;
+    src: url('../fonts/SCRIPTBL.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: Mrs Eaves Small;
+    src: url('../fonts/mrs-eaves-small-caps-regular-1361504609.ttf') format('truetype');
+}

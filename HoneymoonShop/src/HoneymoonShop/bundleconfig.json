@@ -1,0 +1,34 @@
+﻿// Configure bundling and minification for the project.
+// More info at https://go.microsoft.com/fwlink/?LinkId=808241
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    // An array of relative input file paths. Globbing patterns supported
+    "inputFiles": [
+      "wwwroot/css/AfspraakMaken.css",
+      "wwwroot/css/bekijkVideos.css",
+      "wwwroot/css/bruid.css",
+      "wwwroot/css/datepicker.css",
+      "wwwroot/css/elements.css",
+      "wwwroot/css/font.css",
+      "wwwroot/css/site.css",
+      "wwwroot/css/slider.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/bootstrap-slider.js",
+      "wwwroot/js/DatePicker.js",
+      "wwwroot/js/Dressfinder.js",
+      "wwwroot/js/site.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    // Optinally generate .map file
+    "sourceMap": false
+  }
+]

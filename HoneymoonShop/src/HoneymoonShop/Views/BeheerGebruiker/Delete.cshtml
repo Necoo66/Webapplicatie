@@ -1,0 +1,61 @@
+@model HoneymoonShop.Models.GebruikerModels.Gebruiker
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="content">
+    @await Html.PartialAsync("_LoginPartial")
+    <div class="row">
+        <div class="title">
+            <h1>KlantGebruiker</h1>
+            <h2 class="text-uppercase">Delete, Weet u het zeker?</h2>
+        </div>
+    </div>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Nieuwsbrief)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nieuwsbrief)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefoonnummer)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Telefoonnummer)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trouwdatum)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trouwdatum)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.VoornaamAchternaam)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.VoornaamAchternaam)
+            </dd>
+        </dl>
+        
+        <form asp-action="Delete" class="spacer">
+            <div class="col-md-6">
+                <a class="knop" asp-action="Index">Terug naar afspraken</a>
+            </div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="knop" />
+            </div>
+        </form>
+
+
+    </div>
+</div>

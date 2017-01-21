@@ -1,0 +1,158 @@
+﻿@model HoneymoonShop.Models.Bruid.Product
+@using HoneymoonShop.Models.Bruid
+
+<link rel="stylesheet" href="~/css/bruid.css" />
+
+<div class="content">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="active" asp-controller="Home" asp-action="Index" >Home</a></li>
+            <li class="breadcrumb-item"><a class="active" asp-controller="Home" asp-action="Bruid" >Bruid</a></li>
+            <li class="breadcrumb-item"><a class="active" asp-controller="Bruid" asp-action="Index">Dressfinder</a></li>
+            <li class="breadcrumb-item"><a class="active" asp-controller="Bruid" asp-action="Categorie" asp-route-categorie="@Model.Categorie.Id">@Model.Categorie.Naam</a></li>
+            <li class="breadcrumb-item active">@Model.Merk.Naam</li>
+        </ol>
+    </div>
+
+    <div class="row spacer">
+        <a asp-action="Categorie" asp-controller="Bruid">
+            <img src="~/images/Arrow.png" alt="Terug naar overzicht" style="transform: scaleX(-1);width: 60px;">
+            <u>Terug naar overzicht</u>
+        </a>
+    </div>
+
+    <div class="row spacer">
+        <div class="col-md-3 col-sm-3 afbeelding-kiezen">
+            @{var imgkleur = Model.Product_X_Kenmerk.ToList().Where(x => x.Kenmerk.Type.Equals("Kleur")).First().Kenmerk.Naam; }
+            <div>
+                <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_1_" + imgkleur + ".jpg")" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
+            </div>
+            <div>
+                <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_2_" + imgkleur + ".jpg")" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
+            </div>
+            <div>
+                <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_3_" + imgkleur + ".jpg")" class="img-responsive side-img" onclick="document.getElementById('big-image').src = this.src;">
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-6">
+            <img src="~/images/Producten/Trouwjurken/@(Model.ArtikelNummer + "_1_" + imgkleur + ".jpg")" id="big-image" alt="Jurk afbeelding" class="img-responsive">
+        </div>
+
+        <div class="col-md-3 col-sm-3">
+            <h2>@Model.Merk.Naam</h2>
+            <span>Artikel nr. @Model.ArtikelNummer</span>
+            <p>@Model.Beschrijving</p>
+            <br>
+            <ul>
+                <li>
+                    Merk:<a class="active" asp-controller="Bruid" asp-action="Categorie" asp-route-Merken="@Model.Merk.Id">@Model.Merk.Naam</a>
+                </li>
+                <li>
+                    Kenmerken:
+                    @foreach (var x in Model.Product_X_Kenmerk)
+                    {
+                        @if (!x.Kenmerk.Type.Equals("Kleur"))
+                        {
+                            <a class="active" asp-action="Categorie" asp-controller="Bruid" asp-route-Kenmerken="@(x.Kenmerk.Id)">@x.Kenmerk.Naam,</a>
+                        }
+                    }
+                </li>
+                <li>Prijsindicatie: €@Model.Prijs</li>
+                <li>
+                    Beschikbare kleuren:
+
+                    @foreach (var x in Model.Product_X_Kenmerk)
+                    {
+                        @if (x.Kenmerk.Type.Equals("Kleur"))
+                        {
+                            var y = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
+                            <span href="#" class="kleur-bolletje" style="background-color:#@y.Kleurcode" onclick='changeImage("@x.Kenmerk.Naam")'></span>
+                        }
+                    }
+
+                </li>
+            </ul>
+            <script language="javascript">
+                var artikelnr = @Model.ArtikelNummer;
+                function changeImage(kleur) {
+                    var paden = document.getElementsByClassName("side-img");
+                    for(var i = 0; i < paden.length; i++){
+                        var pad = '/images/Producten/Trouwjurken/' + artikelnr + "_" + (i+1) + "_" + kleur + ".jpg";
+                        console.log(pad);
+                        paden[i].src = pad;
+                    }
+                    document.getElementById("big-image").src = '/images/Producten/Trouwjurken/' + artikelnr + "_" + 1 + "_" + kleur + ".jpg";
+
+                }
+            </script>
+
+            <br><br>
+            <p> Kom deze jurk passen!</p>
+            <a asp-controller="Afspraak" asp-action="Maken" asp-route-SoortAfsraak="Trouwjurken" class="knop">PASAFSPRAAK MAKEN</a>
+        </div>
+    </div>
+
+    <div class="row spacer">
+        <div class="col-md-12">
+            <h2 class="sub-titel"><span>Bijpassende sieraden</span></h2>
+        </div>
+        <div class="col-md-3">
+            <img src="~/images/Producten/Sieraden/a2-6-650-mf-7.jpg" class="img-responsive">
+            <h4>Abrazi</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="~/images/Producten/Sieraden/bb-905-232-1-5.jpg" class="img-responsive">
+            <h4>Abrazi</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="~/images/Producten/Sieraden/a2-6-650-mf-7.jpg" class="img-responsive">
+            <h4>Abrazi</h4>
+        </div>
+        <div class="col-md-3">
+            <img src="~/images/Producten/Sieraden/bb-905-232-1-5.jpg" class="img-responsive">
+            <h4>Abrazi</h4>
+        </div>
+
+        <div class="col-md-12 text-center">
+            <a href="#" class="knop">Bezoek de webshop</a>
+        </div>
+    </div>
+
+    <div class="row spacer">
+        <div class="col-md-12">
+            <h2 class="sub-titel"><span>Of zijn deze jurken mischien iets voor jou</span></h2>
+        </div>
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="jurkenOverzicht">
+                    @foreach (Product item in ViewBag.bijpassend)
+                    {
+                        <div class="product">
+                            <a asp-controller="Bruid" asp-action="Product" asp-route-id="@item.Id">
+                                @{ var img = item.ArtikelNummer + "_1_" + item.Product_X_Kenmerk.ToList().Where(x => x.Kenmerk.Type.Equals("Kleur")).First().Kenmerk.Naam + ".jpg"; }
+                                <img src="~/images/Producten/Trouwjurken/@(img)" class="img-responsive" />
+                                <div class="productNaam"><h5>@item.Merk.Naam</h5></div>
+                                <div class="artikelNummer"><h6>@( "Artikel nr." + item.ArtikelNummer)</h6></div>
+
+                                <div class="artikelKleur">
+                                    @foreach (var x in item.Product_X_Kenmerk)
+                                    {
+                                        if (x.Kenmerk.Type.Equals("Kleur"))
+                                        {
+                                            var kleur = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
+                                            <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode" onclick='changeImage("@x.Kenmerk.Naam")'></span>
+                                        }
+                                    }
+                                </div>
+                            </a>
+                        </div>
+                                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div><img src="~/images/Footer/417033-3-3.jpg" class="img-responsive" /></div>

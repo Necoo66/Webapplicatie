@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplicationHoneymoonShop</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/elements.css" />
+        <link rel="stylesheet" href="~/css/font.css" />
+        <link rel="stylesheet" href="~/css/AfspraakMaken.css" />
+        <link rel="stylesheet" href="~/css/bruid.css" />
+        <link rel="stylesheet" href="~/css/datepicker.css" />
+        <link rel="stylesheet" href="~/css/bekijkVideos.css" />
+        <link rel="stylesheet" href="~/css/slider.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <div class="wrapper">
+        <nav>
+            <div class="websitebuttons">
+                <ul>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">WEBSITE</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About" style="color: #f0597c;">WEBSHOP</a></li>
+                </ul>
+            </div>
+            <div class="telefoon_search">
+                <span class="glyphicon glyphicon-search" onclick="toggleVisibility('search-input', 'telefoonNummer')">
+                    <span class="sr-only">Wat zoek je?</span>
+                </span>
+                <div id="search-input" style="display: none;">
+                    <input type="text" placeholder="Wat zoekje?" />
+                </div>
+                <div id="telefoonNummer">
+                    <a asp-area="" asp-controller="Home" asp-action="Contact"><b>T</b> (010) 4126143</a>
+                </div>
+            </div>
+            <div class="hamburger">
+                <span class="glyphicon glyphicon-align-justify" onclick="toggleVisibility('hamburger-menu-toggle')">
+                    <span class="sr-only">Wat zoek je?</span>
+                </span>
+            </div>
+            <div class="hamburger-menu" id="hamburger-menu-toggle" style="display: none;">
+                <ul>
+                    <li><a asp-controller="Home" asp-action="Index">HOME</a></li>
+                    <li><a asp-controller="Home" asp-action="Bruid">BRUID</a></li>
+                    <li><a asp-controller="Home" asp-action="Bruidegom">BRUIDEGOM</a></li>
+                    <li><a  asp-controller="Bruid" asp-action="Categorie">DE WINKEL</a></li>
+                    <li><a href="">BLOG</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact">CONTACT</a></li>
+                    <li><a asp-controller="Afspraak" asp-action="Index">AFSPRAAK MAKEN</a></li>
+                </ul>
+            </div>
+            <div id="IDnavigation" class="navigation">
+                <div class="logo"><img src="~/images/Honeymoon Shop.svg" alt="Honeymoon Shop" /></div>
+                <div class="buttons">
+                    <ul>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">HOME</a></li>
+                        <li><a asp-controller="Home" asp-action="Bruid">BRUID</a></li>
+                        <li><a asp-controller="Home" asp-action="Bruidegom">BRUIDEGOM</a></li>
+                        <li><a asp-controller="Bruid" asp-action="Categorie">DE WINKEL</a></li>
+                        <li><a href="">BLOG</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">CONTACT</a></li>
+                        <li><a asp-area="" asp-controller="Afspraak" asp-action="Index" style="background-color: #F0597C; color: white;">AFSPRAAK MAKEN</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="noBanner" style="display: none;">
+            <hr />
+        </div>
+        <div class="body-content">
+            @RenderBody()
+        </div>
+        <footer>
+            <div class="content">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <div class="footerblock">
+                            <h1>Afspraak</h1>
+                            <h2 class="text-uppercase">maak een pasafspraak</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="footerblock">
+                            <h1>Social</h1>
+                            <h2 class="text-uppercase">
+                                volg ons
+                            </h2>
+                            <ul>
+                                <li><img src="~/images/Icons/1481216161_Facebook_Rounded.ico" /></li>
+                                <li><img src="~/images/Icons/1481216204_Twitter_Rounded.ico" /></li>
+                                <li><img src="~/images/Icons/1481216219_Pinterest_Rounded.ico" /></li>
+                                <li><img src="~/images/Icons/1481216209_Youtube_Rounded.ico" /></li>
+                                <li><img src="~/images/Icons/1481216214_Instagram_Rounded.ico" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="footerblock">
+                            <h1>Reviews</h1>
+                            <h2 class="text-uppercase">bekijk onze reviews</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <p>
+                            Korte Hoogstraat 4, 3011 GL Rotterdam  <strong>email</strong> info@honeymoonshop.nl <strong>tel</strong> (010) 412 61 43 <strong>whatsapp</strong> (06) 25 19 99 27 <br />
+                            <strong>Openingstijden </strong> <strong>MA </strong> 12.00-17.30  <strong>DI t/m VR </strong> 09.30-17.30  <strong>ZA </strong> 09.30-18.00 <strong>DI t/m VR</strong> 11.00-17.00
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <ul>
+                            <li><h4>WINKEL</h4></li>
+                            <li><a href="#">Over de Honeymoon shop</a></li>
+                            <li><a href="#">Servicepunten</a></li>
+                            <li><a href="#">Routebeschrijving</a></li>
+                            <li><a href="#">Beurzen en evenementen</a></li>
+                            <li><a href="#">Vacatures</a></li>
+                            <li><a href="#">Verkoopvoorwaarden</a></li>
+                            <li><a href="#">CBW erkend</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="pull-left col-xs-4 ">
+                        <div class="pull-left">
+                            <ul>
+                                <li><h4>SERVICE</h4></li>
+                                <li><a href="#">Beoordelingen</a></li>
+                                <li><a href="#">Dressfinder</a></li>
+                                <li><a href="#">Gratis trouwmagazine</a></li>
+                                <li><a href="#">Nieuwsbrief</a></li>
+                                <li><a href="#">Veel gestelde vragen</a></li>
+                                <li><a href="#">CBW erkend</a></li>
+                                <li><a href="#">Reinigen van je trouwjurk</a></li>
+                                <li><a href="#">10 redenen om je afsrpaak te maken</a></li>
+                                <li><a href="#">The Perfect Match</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pull-left col-xs-4">
+                        <div class="pull-left">
+                            <ul>
+                                <li><h4>ACTIES</h4></li>
+                                <li><a href="#">The Grand Wedding Show</a></li>
+                                <li><a href="#">Summer Sale</a></li>
+                                <li><a href="#">Trouwjurken onder de 1000 euro</a></li>
+                                <li><a href="#">Trouwjurken voor de volslanke bruid</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <environment names="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            @*<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>*@
+            <script src="~/js/DatePicker.js" asp-append-version="true"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+            <script src="~/js/bootstrap-slider.js" ></script>
+            <script src="~/js/Dressfinder.js"></script>
+        </environment>
+        <environment names="Staging,Production">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+            </script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
+
+        @RenderSection("scripts", required: false)
+    </div>
+</body>
+</html>

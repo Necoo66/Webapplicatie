@@ -1,0 +1,89 @@
+﻿.ui-datepicker .ui-datepicker-header {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 0;
+    width: 100%;
+}
+
+.ui-datepicker td {
+    border: 0;
+    padding: 0px;
+    text-align: center;
+}
+
+    .ui-datepicker td span, .ui-datepicker td a {
+        display: block;
+        padding: 0px !important;
+        margin: 0px auto;
+        height: 32px;
+        width: 32px;
+        line-height: 34px;
+        font-family:  Nexa Bold;
+    }
+
+.ui-widget.ui-widget-content {
+    margin-top: 30px;
+    border: 0;
+    background-color: #f0597c;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 300px;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border: none !important;
+    color: white;
+    background-color: transparent !important;
+    text-align: center;
+}
+
+    .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+        border: 2px solid #ffffff !important;
+        line-height: 30px;
+        color: #ffffff;
+        border-radius: 50%;
+        text-align: center;
+    }
+
+    .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
+        border: none;
+        background: none;
+        color: white !important;
+    }
+
+.ui-widget-header {
+    color: white;
+    text-transform: uppercase;
+    font-family: Nexa Black;
+}
+
+.ui-datepicker th {
+    color: white;
+    text-transform: uppercase;
+}
+
+.datumNonactief > span.ui-state-default {
+    color: black;
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+    border-bottom-right-radius: 0px;
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+    border-bottom-left-radius: 0px;
+}
+
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+    border-top-right-radius: 0px;
+}
+
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+    border-top-left-radius: 0px;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
+    border: none;
+    background: none;
+    color: #2b2b2b;
+}

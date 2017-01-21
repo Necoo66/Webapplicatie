@@ -1,0 +1,70 @@
+@model HoneymoonShop.Models.GebruikerModels.Afspraak
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="content">
+    @await Html.PartialAsync("_LoginPartial")
+    <div class="row">
+        <div class="title">
+            <h1>Afspraak</h1>
+            <h2 class="text-uppercase">Details</h2>
+        </div>
+    </div>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AfspraakSoort)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AfspraakSoort)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Datum)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Datum)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Tijd)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Tijd)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Gebruiker.VoornaamAchternaam)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Gebruiker.VoornaamAchternaam)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Gebruiker.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Gebruiker.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Gebruiker.Telefoonnummer)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Gebruiker.Telefoonnummer)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Gebruiker.Trouwdatum)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Gebruiker.Trouwdatum)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="row spacer">
+        <div class="col-md-3">
+            <a class="knop" asp-action="Index">Terug naar afspraken</a>
+        </div>
+        <div class="col-md-3">
+            <a class="knop" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        </div>
+    </div>
+</div>

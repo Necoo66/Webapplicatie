@@ -1,0 +1,207 @@
+﻿@model HoneymoonShop.Models.Bruid.ProductFilter
+<div class="content">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="active" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item"><a class="active" asp-controller="Home" asp-action="Bruid">Bruid</a></li>
+            <li class="breadcrumb-item"><a class="active" asp-controller="Bruid" asp-action="Index">Dressfinder</a></li>
+            <li class="breadcrumb-item">
+                @if (Model.FilterSelectie.Categorie != null)
+                {
+                    @Model.Filter.Categorieën.Single(x => x.Id == Model.FilterSelectie.Categorie).Naam
+                }
+                else
+                {
+                    <span>Alle jurken</span>
+                }
+            </li>
+        </ol>
+    </div>
+    <div class="row">
+        <form asp-controller="Bruid" asp-action="Categorie" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace">
+            <div class="col-md-3 filterOpties">
+                <h4>Categorieën</h4>
+                <div class="categorie">
+                    @foreach (var c in Model.Filter.Categorieën)
+                    {
+                        <span class="backgroundLichtRoze">
+                            <a asp-action="Categorie" asp-controller="Bruid" asp-route-Categorie="@c.Id"> <h5>@c.Naam</h5> </a>
+                        </span>
+                    }
+                    <span class="backgroundLichtRoze">
+                        <a asp-action="Categorie" asp-controller="Bruid"><h5>Alle jurken bekijken</h5></a>
+                    </span>
+                </div>
+                <div id="filters">
+                    <h4>Filter op:</h4>
+                    <h5 data-toggle="collapse" data-target="#merk">Merk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span> </h5>
+                    <div id="merk" class="collapse">
+                        <ul>
+                            @{
+                                foreach (var merk in @Model.Filter.Merken)
+                                {
+                                    <li>
+                                        <input type="checkbox" id="@merk.Id@merk.Naam" value="@merk.Id" name="merken" @(Model.FilterSelectie.Merken.Contains(merk.Id) ? "checked" : "") /> @merk.Naam
+                                        <label for="@merk.Id@merk.Naam"></label>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <h5 data-toggle="collapse" data-target="#stijlJurk">Stijl jurk <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+                    <div id="stijlJurk" class="collapse">
+                        <ul>
+                            @{
+                                foreach (var stijl in @Model.Filter.Stijlen)
+                                {
+                                    <li>
+                                        <input type="checkbox" id="@stijl.Id@stijl.Naam" value="@stijl.Id" name="kenmerken" @(Model.FilterSelectie.Kenmerken.Contains(stijl.Id) ? "checked" : "") />@stijl.Naam
+                                        <label for="@stijl.Id@stijl.Naam"></label>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <h5 class="bottomBorder" data-toggle="collapse" data-target="#prijs">Prijs <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+                    <div id="prijs" class="collapse bottomBorder">
+                        <input type="hidden" name="minPrijs" value="@Model.FilterSelectie.MinPrijs" />
+                        <input type="hidden" name="maxPrijs" value="@Model.FilterSelectie.MaxPrijs" />
+                        <b>€<span class="minPrijs">200</span></b> <input id="prijsSlider" type="text" class="span2" value=""
+                                                                         data-slider-tooltip="show"
+                                                                         data-slider-ticks-labels='["short", "medium", "long"]'
+                                                                         data-slider-min="200"
+                                                                         data-slider-max="@Model.Filter.MaxPrijs"
+                                                                         data-slider-step="100"
+                                                                         data-slider-value="[@Model.FilterSelectie.MinPrijs,@Model.FilterSelectie.MaxPrijs]" />
+                        <b>€<span class="maxPrijs">@(Math.Ceiling(Model.Filter.MaxPrijs / 1000) * 1000)  </span></b>
+                    </div>
+                    <h4 class="marginTop">Filters verfijnen:</h4>
+                    @{
+                        foreach (var kenmerkNaam in @Model.Filter.KenmerkNamen)
+                        {
+                            <h5 data-toggle="collapse" data-target="#@kenmerkNaam">@kenmerkNaam <span class="glyphicon glyphicon-chevron-down pijltje"></span> <span style="display: none;" class="glyphicon glyphicon-chevron-up pijltje"></span></h5>
+                            <div id="@kenmerkNaam" class="collapse">
+                                <ul>
+                                    @foreach (var kenmerk in @Model.Filter.Kenmerken)
+                                    {
+                                        if (kenmerkNaam.Equals(kenmerk.Type))
+                                        {
+                                            <li>
+                                                <input type="checkbox" id="@kenmerk.Id@kenmerk.Naam" value="@kenmerk.Id" name="kenmerken" @(Model.FilterSelectie.Kenmerken.Contains(kenmerk.Id) ? "checked" : "") /> @kenmerk.Naam
+                                                <label for="@kenmerk.Id@kenmerk.Naam"></label>
+                                                @if (kenmerk.Type.Equals("Kleur"))
+                                                {
+                                                    var kleur = (HoneymoonShop.Models.Bruid.Kleur)kenmerk;
+                                                    <span href="#" class="kleur-bolletje" style="background-color:#@kleur.Kleurcode"></span>
+                                                }
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <button class="knop" type="submit">VERZENDEN!</button>
+            </div>
+
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12 sorting">
+                        <h5>Sorteren op: </h5>
+
+                        @{
+                            var sorteer = new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Prijs Laag/Hoog", Value = "PrijsLH", Selected = (Model.FilterSelectie.SortingOptie == "PrijsLH") },
+                                new SelectListItem { Text = "Prijs Hoog/Laag", Value = "PrijsHL", Selected = (Model.FilterSelectie.SortingOptie == "PrijsHL") },
+                                new SelectListItem { Text = "Merk A/Z", Value = "MerkAZ", Selected = (Model.FilterSelectie.SortingOptie == "MerkAZ") },
+                                new SelectListItem { Text = "Merk Z/A", Value = "MerkZA", Selected = (Model.FilterSelectie.SortingOptie == "MerkZA") }
+                            };
+                        }
+                        <select name="sortingOptie" asp-items="sorteer"></select>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 jurkenOverzicht">
+                        @foreach (var item in @Model.Producten)
+                        {
+                            <div class="product">
+                                <a href="/bruid/product/@item.Id">
+                                    @if (@Model.FilterSelectie.Kleurselected)
+                                    {
+                                        <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.Where(x => x.Kenmerk.Type.Equals("Kleur")).First(x => @Model.FilterSelectie.Kenmerken.Contains(x.KenmerkId)).Kenmerk.Naam + ".jpg")" class="img-responsive" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/images/Producten/Trouwjurken/@(item.ArtikelNummer + "_1_" + @item.Product_X_Kenmerk.First(x => x.Kenmerk.Type.Equals("Kleur")).Kenmerk.Naam + ".jpg")" class="img-responsive" />
+                                    }
+                                    <div class="productNaam">
+                                        <h5>@item.Merk.Naam</h5>
+                                    </div>
+                                    <div class="artikelNummer">
+                                        <h6>@("Artikel nr." + item.ArtikelNummer)</h6>
+                                    </div>
+
+                                    <div class="artikelKleur">
+                                        @foreach (var x in item.Product_X_Kenmerk)
+                                        {
+                                            if (x.Kenmerk.Type.Equals("Kleur"))
+                                            {
+                                                var kleur = (HoneymoonShop.Models.Bruid.Kleur)x.Kenmerk;
+                                                <span href="#" class="kleur-bolletje" style="background-color: #@kleur.Kleurcode"></span>
+                                            }
+                                        }
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 aantalProducten">
+                        <h5>Aantal tonen: </h5>
+
+                        @{
+                            var aantalTonen = new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "3", Value = "3", Selected = (Model.FilterSelectie.AantalTonen == 3) },
+                                new SelectListItem { Text = "6", Value = "6", Selected = (Model.FilterSelectie.AantalTonen == 6) },
+                                new SelectListItem { Text = "9", Value = "9", Selected = (Model.FilterSelectie.AantalTonen == 9) }
+                            };
+                        }
+                        <select name="AantalTonen" asp-items="@aantalTonen"></select>
+                    </div>
+                    <div class="col-md-6 paginaNummer">
+                        <span class="glyphicon glyphicon-triangle-left"></span>
+                        <ul class="pagination">
+                            @{
+                                for (int i = 1; i <= ViewBag.aantalPagina; i++)
+                                {
+                                    Model.FilterSelectie.Paginanummer = i;
+                                    <li>
+                                        @Html.ActionLink(i.ToString(), "Categorie", "Bruid", Model.FilterSelectie, null)
+                                    </li>
+                                }
+
+                            }
+                        </ul>
+                        <span class="glyphicon glyphicon-triangle-right"></span>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        document.body.style.backgroundColor = "#FFE4EA";
+    </script>
+</div>
+<div><img src="~/images/Footer/417033-3-3.jpg" class="img-responsive" /></div>

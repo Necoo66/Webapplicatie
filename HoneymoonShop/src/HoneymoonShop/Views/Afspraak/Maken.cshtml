@@ -1,0 +1,249 @@
+﻿@model HoneymoonShop.Models.GebruikerModels.AfspraakMaken
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="content">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="active" href="@Url.Action("index","home")">Home</a></li>
+            <li class="breadcrumb-item"><a class="active" asp-controller="Afspraak" asp-action="Index">Afspraak</a></li>
+            <li class="breadcrumb-item">@Html.DisplayFor(model => model.Afspraak.AfspraakSoort) Passen</li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="title">
+            <h1>@Html.DisplayFor(model => model.Afspraak.AfspraakSoort)</h1>
+            <h2 class="text-uppercase">Maak Je Pasafspraak</h2>
+        </div>
+    </div>
+    <div class="hidden">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    </div>
+    <div class="row">
+        <form asp-action="Maken" id="MyForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="afspraakmaken">
+                <div class="menu">
+                    <div class="tab" id="stap1" style="display: block;">
+                        <ul>
+                            <li><button onclick="ToggelPages('stap1', 'stap2', 'stap3')" type="button">1</button><br />Datum en tijd selecteren</li>
+                        </ul>
+                        <div class="gray">
+                            <ul>
+                                <li>|</li>
+                                <li>|</li>
+                                <li>|</li>
+                                <li>|</li>
+                                <li>|</li>
+                                <li>|</li>
+                                <li><button type="button">2</button><br /><span>Gegevens invullen</span></li>
+                                <li>|</li>
+                                <li><button type="button">3</button><br /><span>Gegevens controleren</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab" id="stap2" style="display: none;">
+                        <div class="lightcoral">
+                            <ul>
+                                <li><button onclick="ToggelPages('stap1', 'stap2', 'stap3')" type="button">1</button><br />Datum en tijd selecteren</li>
+                                <li>|</li>
+                            </ul>
+                        </div>
+                        <ul>
+                            <li><button onclick="ToggelPages('stap2', 'stap1', 'stap3')" type="button">2</button><br /><span>Gegevens invullen</span></li>
+                        </ul>
+                        <div class="gray">
+                            <ul>
+                                <li>|</li>
+                                <li>|</li>
+                                <li>|</li>
+                                <li>|</li>
+                                <li>|</li>
+                                <li>|</li>
+                                <li><button type="button">3</button><br /><span>Gegevens controleren</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab" id="stap3" style="display: none;">
+                        <div class="lightcoral">
+                            <ul>
+                                <li><button onclick="ToggelPages('stap1', 'stap2', 'stap3')" type="button">1</button><br />Datum en tijd selecteren</li>
+                                <li>|</li>
+                                <li><button onclick="ToggelPages('stap2', 'stap1', 'stap3')" type="button">2</button><br /><span>Gegevens invullen</span></li>
+                                <li>|</li>
+                            </ul>
+                        </div>
+                        <ul>
+                            <li><button onclick="ToggelPages('stap3', 'stap1', 'stap2')" type="button">3</button><br /><span>Gegevens controleren</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="left">
+                    <div class="tab" id="stap1" style="display: block;">
+                        <h4>Stap 1, Datum en tijd selecteren</h4>
+                        <div class="datumentijdselecteren">
+                            <p>Selecteer eerst een datum en vervolgens een tijdstip dat je wilt komen passen!</p>
+                            <br />
+                            <p>Openingstijden:</p>
+                            <table>
+                                <tr>
+                                    <td>MA</td>
+                                    <td>12:00-17:30</td>
+                                </tr>
+                                <tr>
+                                    <td>DI-VR</td>
+                                    <td>09:30-17:30</td>
+                                </tr>
+                                <tr>
+                                    <td>ZA</td>
+                                    <td>09:30-18:00</td>
+                                </tr>
+                                <tr>
+                                    <td>ZO</td>
+                                    <td>11:00-17:00</td>
+                                </tr>
+                            </table>
+                            <br>
+                            <span>Op alle werkdagen kunnen er ook schoenen worden gepast. Helaas is dit niet mogelijk in het weekend.</span>
+                            <button class="text-uppercase" onclick="toggleSelecteerTijd('stap2', 'stap1', 'stap3')" id="ButtonStap2" type="button" style="display: none;"> Naar stap 2 </button>
+                        </div>
+                    </div>
+                    <div class="tab" id="stap2" style="display: none;">
+                        <h4>Stap 2, Gegevens invullen</h4>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label asp-for="Gebruiker.VoornaamAchternaam" class="col-md-12"></label>
+                                <div class="col-md-12">
+                                    <input asp-for="Gebruiker.VoornaamAchternaam" type="text" class="form-control" />
+                                    <span asp-validation-for="Gebruiker.VoornaamAchternaam" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Gebruiker.Trouwdatum" class="col-md-12"></label>
+                                <div class="col-md-12">
+                                    <input asp-for="Gebruiker.Trouwdatum" type="date" value="" class="form-control" />
+                                    <span asp-validation-for="Gebruiker.Trouwdatum" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Gebruiker.Telefoonnummer" class="col-md-12"></label>
+                                <div class="col-md-12">
+                                    <input asp-for="Gebruiker.Telefoonnummer" type="tel" class="form-control" />
+                                    <span asp-validation-for="Gebruiker.Telefoonnummer" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Gebruiker.Email" class="col-md-12"></label>
+                                <div class="col-md-12">
+                                    <input asp-for="Gebruiker.Email" type="email" class="form-control emailCheck1" />
+                                    <span asp-validation-for="Gebruiker.Email" id="email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Gebruiker.EmailBevestiging" class="col-md-12"></label>
+                                <div class="col-md-12">
+                                    <input asp-for="Gebruiker.EmailBevestiging" type="email" class="form-control" />
+                                    <span asp-validation-for="Gebruiker.EmailBevestiging" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="checkbox">
+                                        <input asp-for="Gebruiker.Nieuwsbrief" />
+                                        <span></span>
+                                        <label asp-for="Gebruiker.Nieuwsbrief"></label>
+                                    </label>
+                                </div>
+                            </div>
+                            <input asp-for="Afspraak.Datum" type="hidden" value=""/>
+                            <input asp-for="Afspraak.AfspraakSoort" type="hidden"/>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <button onclick="return checkform()" class="text-uppercase" id="ButtonStap3" type="button"> Naar stap 3 </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab" id="stap3" style="display: none;">
+                        <h4>Stap 3, Gegevens controleren</h4>
+                        <p>
+                            Controleer alle gegevens voor je pasafspraak bij Honeymoon shop aan
+                            Korte Hoogstraat 4, te Rotterdam
+                        </p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="text-uppercase" type="submit"> AFSPRAAK BEVESTIGEN </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="tab" id="stap1a" style="display: block;">
+                        <h4><img src="~/images/heart-icon.png" />Selecteer een datum:</h4>
+                        <div id="datepicker"></div>
+                        <input asp-for="Afspraak.Datum" value="" type="hidden" />
+                        <span class="arrow" style="right: 20px;" onclick="toggleSelecteerDatum('stap1a', 'stap1b', 'ButtonStap2')">Selecteer een tijd <img src="~/images/pijl.png" alt="Alternate Text" /></span>
+                    </div>
+                    <div class="tab" id="stap1b" style="display: none;">
+                        <h4><img src="~/images/heart-icon.png" />Selecteer een tijdstip:</h4>
+                        <label class="datumbanner"></label>
+                        <label class="radio" id="radio1">
+                            <input asp-for="Afspraak.Tijd" id="radio1" type="radio" value="9:30" />
+                            <span></span>
+                            <label for="radio1">09 : 30</label>
+                        </label>
+                        <label class="radio" id="radio2">
+                            <input asp-for="Afspraak.Tijd" id="radio2" type="radio" value="12:30" />
+                            <span></span>
+                            <label for="radio2">12 : 30</label>
+                        </label>
+                        <label class="radio" id="radio3">
+                            <input asp-for="Afspraak.Tijd" id="radio3" type="radio" value="15:00" />
+                            <span></span>
+                            <label for="radio3">15 : 00</label>
+                        </label>
+                        <span class="arrow" onclick="toggleSelecteerDatum('stap1b', 'stap1a', 'ButtonStap2')"><img src="~/images/pijllinks.png" alt="Alternate Text" />Terug naar datum selecteren </span>
+                    </div>
+                    <div class="tab" id="stap2" style="display: none;">
+                        <h4><img src="~/images/heart-icon.png" />Gekozen tijd en datum: </h4>
+                        <label class="datumbanner"></label>
+                        <p class="col-md-12"> Vul je persoonlijke gegevens in om de pasafspraak compleet te maken</p>
+                        <span class="arrow" onclick="ToggelPages('stap1', 'stap2', 'stap3')"><img src="~/images/pijllinks.png" alt="Alternate Text" />Terug naar stap 1 om datum te wijzigen </span>
+                    </div>
+                    <div class="tab" id="stap3" style="display: none;">
+                        <h4><img src="~/images/heart-icon.png" />Controleer je gegevens</h4>
+                        <label class="datumbanner"></label>
+                        <p>
+                            <table>
+                                <tr>
+                                    <td>Naam:</td>
+                                    <td><label id="LBnaam"></label></td>
+                                </tr>
+                                <tr>
+                                    <td>Trouwdatum:</td>
+                                    <td><label id="LBtrouwdatum"></label></td>
+                                </tr>
+                                <tr>
+                                    <td>Telefoon:</td>
+                                    <td><label id="LBtelefoon"></label></td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail:</td>
+                                    <td><label id="LBemail"></label></td>
+                                </tr>
+                            </table>
+                        </p>
+                        <span class="arrow" onclick="ToggelPages('stap2', 'stap1', 'stap3')"><img src="~/images/pijllinks.png" alt="Alternate Text" />Terug naar stap 2 om gegevens te wijzigen </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div><img src="~/images/Footer/footerafsrpaak.png" class="img-responsive" /></div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

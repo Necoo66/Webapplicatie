@@ -1,0 +1,74 @@
+@model IEnumerable<HoneymoonShop.Models.GebruikerModels.Gebruiker>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="content">
+    @await Html.PartialAsync("_LoginPartial")
+    <div class="row">
+        <div class="title">
+            <h1>KlantGebruikers</h1>
+            <h2 class="text-uppercase">Beheer</h2>
+        </div>
+    </div>
+    <div class="row spacer">
+        <div class="col-md-6">
+            <button type="button" class="knop" onclick="location.href='@Url.Action("Index", "Beheer")'" name="" value="" title="">Terug naar Menu</button>
+        </div>
+        <div class="col-md-6 text-right">
+            <p>
+                <a class="knop" asp-action="Create">Create New</a>
+            </p>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nieuwsbrief)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefoonnummer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trouwdatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VoornaamAchternaam)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nieuwsbrief)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefoonnummer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trouwdatum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VoornaamAchternaam)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

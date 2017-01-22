@@ -85,8 +85,8 @@ namespace HoneymoonShop
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
             app.UseGoogleAuthentication(new GoogleOptions()
             {
-                ClientId = Configuration["Authentication:Google:ClientId"],
-                ClientSecret = Configuration["Authentication:Google:ClientSecret"],
+                ClientId = "1059325727609-g3jb4j03021r2dtfim4rh7mkga22r2kh.apps.googleusercontent.com",
+                ClientSecret = "I5OlSi-yC2k_uZ7v3PCeH0K3",
             });
 
             app.UseMvc(routes =>
